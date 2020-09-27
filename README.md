@@ -1,3 +1,6 @@
 # CS319_Group2A_Project
 
-### This repository includes the group project for the CS319 class. A proper ReadMe file will replace this one.
+##### We intend to implement the classic Monoploy game with extra feautures. The added features are, the barter system, airports, different pre-defined AI's
+##### save and load features, difficulty settings, and custamization of the board.
+
+##### Full details of our planned implementation can be found at 
