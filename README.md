@@ -1,4 +1,4 @@
-# CS319_Group2A_Project
+# CS319_Group2A_Project_Monopoly
 
 ##### We intend to implement the classic Monoploy game with extra feautures. The added features are, the barter system, airports, different pre-defined AI's save and load features, difficulty settings, and custamization of the board.
 
