@@ -11,7 +11,7 @@
 # 
 
 ## Changelog 01.11.2020
-## Iteration 1 Project Analysis Report
+## [Iteration 1 Project Analysis Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/Iteration%201%20-%20Project%20Analysis%20Report.pdf)
 
 ## Implementation Report
 
