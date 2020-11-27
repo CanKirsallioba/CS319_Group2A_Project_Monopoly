@@ -9,7 +9,7 @@
       <Button layoutX="463.0" layoutY="112.0" mnemonicParsing="false" onAction="#goToNewGameScreen" text="Start New Game" />
       <Button layoutX="463.0" layoutY="238.0" mnemonicParsing="false" onAction="#goToCreditsScreen" prefHeight="25.0" prefWidth="103.0" text="Credits" />
       <Button layoutX="463.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Load Game" />
-      <Button layoutX="463.0" layoutY="199.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="How To Play" />
+      <Button layoutX="463.0" layoutY="199.0" mnemonicParsing="false" onAction="#goToHowToPlayScreen" prefHeight="25.0" prefWidth="103.0" text="How To Play" />
       <Button layoutX="463.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Settings" />
       <Button layoutX="463.0" layoutY="318.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Quit" />
       <Text layoutX="100.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert Main Menu Image Here" wrappingWidth="171.7421875" />
