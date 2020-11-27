@@ -75,4 +75,23 @@ public class MainMenu {
 
         window.show();
     }
+
+
+    public void goToMapBuilderScreen( ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("mapbuilder.fxml"));
+
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        // Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        tableViewParent.setId("pane3");
+
+        window.setScene(tableViewScene);
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
+        window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
+
+        window.show();
+    }
 }
