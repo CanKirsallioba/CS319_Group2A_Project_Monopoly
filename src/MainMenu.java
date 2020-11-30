@@ -16,7 +16,6 @@ public class MainMenu {
 
     @FXML
     public void goToCreditsScreen( ActionEvent event) throws IOException {
-        System.out.println( "mahmut");
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Credits.fxml"));
 
         Scene tableViewScene = new Scene(tableViewParent);
@@ -37,7 +36,6 @@ public class MainMenu {
 
     @FXML
     public void goToHowToPlayScreen( ActionEvent event) throws IOException {
-        System.out.println( "mahmut");
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("HowToPlay.fxml"));
 
         Scene tableViewScene = new Scene(tableViewParent);

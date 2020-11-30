@@ -36,4 +36,15 @@ public class MapBuilder {
 
         window.show();
     }
+
+    @FXML
+    public void openDialog(ActionEvent event) throws IOException {
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().add(new Label("The player will customize the property in this screen"));
+        Scene dialogScene = new Scene(dialogVbox, 300, 200);
+        dialog.setScene(dialogScene);
+        dialog.show();
+    }
 }

@@ -24,7 +24,7 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="266.0">
                     <children>
-                        <Button id="1" mnemonicParsing="false" prefHeight="41.0" prefWidth="270.0" text="Property1" />
+                        <Button id="1" mnemonicParsing="false" prefHeight="41.0" prefWidth="270.0" text="Property1" onAction="#openDialog"/>
                         <Button id="2" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property2" />
                         <Button id="3" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property3" />
                         <Button id="4" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property4" />
