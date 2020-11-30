@@ -16,7 +16,7 @@
             <font>
                 <Font size="25.0" />
             </font></Label>
-        <Label layoutX="603.0" layoutY="134.0" prefHeight="48.0" prefWidth="252.0" text="        TILE INCOME">
+        <Label layoutX="635.0" layoutY="134.0" prefHeight="48.0" prefWidth="187.0" text="GO TILE INCOME">
             <font>
                 <Font size="24.0" />
             </font></Label>
@@ -24,39 +24,25 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="266.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="270.0" text="Property1" />
-                        <Button layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property2" />
-                        <Button layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property3" />
-                        <Button layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property4" />
-                        <Button layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property5" />
-                        <Button layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property6" />
-                        <Button layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property7" />
-                        <Button layoutY="280.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property8" />
-                        <Button layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property9" />
-                        <Button layoutY="360.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property10" />
-                        <Button layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property11" />
-                        <Button layoutY="440.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property12" />
-                        <Button layoutY="480.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property13" />
-                        <Button layoutY="520.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property14" />
-                        <Button layoutY="560.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property15" />
-                        <Button layoutY="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property16" />
+                        <Button id="1" mnemonicParsing="false" prefHeight="41.0" prefWidth="270.0" text="Property1" />
+                        <Button id="2" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property2" />
+                        <Button id="3" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property3" />
+                        <Button id="4" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property4" />
+                        <Button id="5" layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property5" />
+                        <Button id="6" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property6" />
+                        <Button id="7" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property7" />
+                        <Button id="8" layoutY="280.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property8" />
+                        <Button id="9" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property9" />
+                        <Button id="10" layoutY="360.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property10" />
+                        <Button id="11" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property11" />
+                        <Button id="12" layoutY="440.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property12" />
+                        <Button id="13" layoutY="480.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property13" />
+                        <Button id="14" layoutY="520.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property14" />
+                        <Button id="15" layoutY="560.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property15" />
+                        <Button id="16" layoutY="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="268.0" text="Property16" />
                     </children></AnchorPane>
             </content>
         </ScrollPane>
-        <Button layoutX="610.0" layoutY="289.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="-">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Button>
-        <Button layoutX="808.0" layoutY="289.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="+">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Button>
-        <Label layoutX="705.0" layoutY="288.0" prefHeight="41.0" prefWidth="60.0" text="500">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Label>
+      <Spinner amountToStepBy="200" initialValue="400" layoutX="626.0" layoutY="278.0" max="5000" min="200" prefHeight="74.0" prefWidth="203.0" />
     </children>
 </Pane>
