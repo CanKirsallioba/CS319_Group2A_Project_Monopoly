@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewGame">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewGameController">
     <children>
         <Button layoutX="183.0" layoutY="445.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="203.0" onAction="#goToMainMenu" text="BACK" />
         <Button layoutX="630.0" layoutY="444.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="197.0" text="START GAME" />
@@ -67,8 +67,16 @@
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Spinner layoutX="159.0" layoutY="53.0" max="6" min="0" prefHeight="25.0" prefWidth="69.0" />
-                <Spinner layoutX="159.0" layoutY="90.0" max="6" min="0" prefHeight="25.0" prefWidth="69.0" />
+                <Spinner fx:id="humanSpinner" layoutX="159.0" layoutY="53.0" prefHeight="25.0" prefWidth="69.0">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory />
+                    </valueFactory>
+                </Spinner>
+                <Spinner fx:id="botSpinner" layoutX="159.0" layoutY="90.0" prefHeight="25.0" prefWidth="69.0">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory />
+                    </valueFactory>
+                </Spinner>
             </children>
         </Pane>
         <Pane layoutX="351.0" layoutY="315.0" prefHeight="73.0" prefWidth="340.0">
