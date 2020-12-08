@@ -4,19 +4,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
+<AnchorPane id="pane" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@MainMenuStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
    <children>
-      <Button layoutX="600.0" layoutY="103.0" mnemonicParsing="false" onAction="#goToNewGameScreen" text="Start New Game" />
-      <Button layoutX="600.0" layoutY="251.0" mnemonicParsing="false" onAction="#goToCreditsScreen" prefHeight="27.0" prefWidth="118.0" text="Credits" />
-      <Button layoutX="600.0" layoutY="152.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Load Game" />
-      <Button layoutX="600.0" layoutY="203.0" mnemonicParsing="false" onAction="#goToHowToPlayScreen" prefHeight="27.0" prefWidth="118.0" text="How To Play" />
-      <Button layoutX="600.0" layoutY="300.0" mnemonicParsing="false" onAction="#goToMapBuilderScreen" prefHeight="27.0" prefWidth="118.0" text="Board Builder" />
-      <Button layoutX="600.0" layoutY="345.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Settings" />
-      <Button fx:id="quitButton" layoutX="600.0" layoutY="389.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="27.0" prefWidth="118.0" text="Exit Game" />
-      <Text layoutX="72.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert Main Menu Image Here" wrappingWidth="215.7421875" />
-      <Text layoutX="314.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly">
+      <Button layoutX="1500.0" layoutY="150.0" mnemonicParsing="false" onAction="#goToNewGameScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Start New Game" textAlignment="CENTER" />
+      <Button layoutX="1500.0" layoutY="450.0" mnemonicParsing="false" onAction="#goToCreditsScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Credits" />
+      <Button layoutX="1500.0" layoutY="250.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Load Game" />
+      <Button layoutX="1500.0" layoutY="550.0" mnemonicParsing="false" onAction="#goToHowToPlayScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="How To Play" />
+      <Button layoutX="1500.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToMapBuilderScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Board Builder" />
+      <Button layoutX="1500.0" layoutY="650.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Settings" />
+      <Button fx:id="quitButton" layoutX="1500.0" layoutY="750.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Exit Game" />
+      <Text layoutX="72.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="215.7421875" />
+      <Text fill="#ff784a" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly" textAlignment="CENTER" wrappingWidth="1920.0">
          <font>
-            <Font name="Fira Code Medium" size="36.0" />
+            <Font name="AppleMyungjo Regular" size="75.0" />
          </font>
       </Text>
    </children>

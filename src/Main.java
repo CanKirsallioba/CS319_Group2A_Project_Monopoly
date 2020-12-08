@@ -12,17 +12,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainmenu.fxml"));
         primaryStage.setTitle("Monopoly Game");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 1920, 1080));
 
         //primaryStage.setMaximized( true);
         //primaryStage.setFullScreen(true);
 
         primaryStage.show();
 
-
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        primaryStage.setX((screenBounds.getWidth() - primaryStage.getWidth()) / 2);
-        primaryStage.setY((screenBounds.getHeight() - primaryStage.getHeight()) / 2);
 
     }
 

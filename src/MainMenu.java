@@ -28,10 +28,6 @@ public class MainMenu {
 
         window.setScene(tableViewScene);
 
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
-        window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
-
         window.show();
     }
 
@@ -49,11 +45,6 @@ public class MainMenu {
         tableViewParent.setId("pane");
         tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
 
-
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
-        window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
-
         window.show();
     }
 
@@ -64,13 +55,10 @@ public class MainMenu {
 
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("pane2");
+        tableViewParent.setId("pane");
+        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
 
         window.setScene(tableViewScene);
-
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
-        window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
 
         window.show();
     }
@@ -83,13 +71,10 @@ public class MainMenu {
 
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("pane3");
+        tableViewParent.setId("pane");
+        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
 
         window.setScene(tableViewScene);
-
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
-        window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
 
         window.show();
     }

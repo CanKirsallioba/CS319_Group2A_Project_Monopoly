@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HowToPlayController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HowToPlayController">
     <children>
-        <Label alignment="CENTER" prefHeight="60.0" prefWidth="800.0" text="How to Play">
+        <Label alignment="CENTER" prefHeight="60.0" prefWidth="1920.0" text="How to Play">
             <font>
-                <Font name="Georgia" size="39.0"/>
+                <Font name="Georgia" size="39.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="howToPlayScrollPane" layoutY="70.0" prefHeight="530.0" prefWidth="800.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+        <ScrollPane fx:id="howToPlayScrollPane" layoutY="80.0" prefHeight="1000.0" prefWidth="1920.0" style="-fx-background-color: transparent; -fx-background: transparent;">
             <content>
-                <Label fx:id="howToPlayLabel" alignment="TOP_LEFT" prefWidth="750.0" text="Label" wrapText="true">
+                <Label fx:id="howToPlayLabel" alignment="TOP_LEFT" layoutY="15.0" prefWidth="1870.0" text="Label" wrapText="true">
                     <font>
                         <Font name="Georgia" size="18.0" />
                     </font>
@@ -27,9 +27,8 @@
         </ScrollPane>
         <AnchorPane layoutX="27.0" layoutY="10.0" prefHeight="48.0" prefWidth="55.0">
             <children>
-                <ImageView fx:id="backIcon" fitHeight="48.0" fitWidth="55.0" layoutX="27.0" layoutY="10.0"
-                           pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../resources/back.png"/>
+                <ImageView fx:id="backIcon" fitHeight="48.0" fitWidth="55.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/back.png" />
                 </ImageView>
             </children>
         </AnchorPane>

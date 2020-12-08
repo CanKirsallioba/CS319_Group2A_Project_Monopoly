@@ -44,10 +44,6 @@ public class CreditsController implements Initializable {
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(tableViewScene);
 
-                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
-                window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
-
                 window.show();
             }
         });
