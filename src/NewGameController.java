@@ -56,7 +56,7 @@ public class NewGameController implements Initializable {
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
 
         //spinner management, makes sure the player number is at most 6
         humanSpinner.setValueFactory(spinnerValueFactoryHuman);
@@ -109,7 +109,7 @@ public class NewGameController implements Initializable {
 
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("panemenu");
+        tableViewParent.setId("pane");
 
         window.setScene(tableViewScene);
 

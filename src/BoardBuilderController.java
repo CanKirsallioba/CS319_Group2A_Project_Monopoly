@@ -59,7 +59,7 @@ public class BoardBuilderController implements Initializable {
         Scene tableViewScene = new Scene(tableViewParent);
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("panemenu");
+        tableViewParent.setId("pane");
         window.setScene(tableViewScene);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
