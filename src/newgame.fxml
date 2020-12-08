@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewGameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewGameController">
     <children>
-        <Button layoutX="183.0" layoutY="445.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="203.0" onAction="#goToMainMenu" text="BACK" />
-        <Button layoutX="630.0" layoutY="444.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="197.0" onAction="#handleStartGame" text="START GAME" />
+        <Button layoutX="183.0" layoutY="445.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="41.0" prefWidth="203.0" stylesheets="@ButtonStyle.css" text="BACK" />
+        <Button layoutX="630.0" layoutY="444.0" mnemonicParsing="false" onAction="#handleStartGame" prefHeight="41.0" prefWidth="197.0" stylesheets="@ButtonStyle.css" text="START GAME" />
         <Label layoutX="69.0" layoutY="38.0" prefHeight="80.0" prefWidth="583.0" text="NEW GAME">
             <font>
                 <Font name="Calibri" size="58.0" />
             </font></Label>
         <Pane layoutX="97.0" layoutY="118.0" prefHeight="73.0" prefWidth="302.0">
             <children>
-                <ComboBox fx:id="comboBoard" layoutX="150.0" layoutY="24.0" prefHeight="25.0" prefWidth="139.0" onAction="#handleComboBoardAction"/>
+                <ComboBox fx:id="comboBoard" layoutX="150.0" layoutY="24.0" onAction="#handleComboBoardAction" prefHeight="25.0" prefWidth="139.0" />
                 <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MAP:" wrappingWidth="116.404296875">
                     <font>
                         <Font size="19.0" />
@@ -31,7 +29,7 @@
                         <Font size="19.0" />
                     </font>
                 </Text>
-                <ComboBox fx:id="comboPace" layoutX="151.0" layoutY="24.0" prefHeight="25.0" prefWidth="139.0" onAction="#handleComboPaceAction"/>
+                <ComboBox fx:id="comboPace" layoutX="151.0" layoutY="24.0" onAction="#handleComboPaceAction" prefHeight="25.0" prefWidth="139.0" />
             </children>
         </Pane>
         <Pane layoutX="578.0" layoutY="121.0" prefHeight="140.0" prefWidth="302.0">
@@ -70,7 +68,7 @@
                         <Font size="19.0" />
                     </font>
                 </Text>
-                <ComboBox fx:id="comboAI" layoutX="172.0" layoutY="24.0" prefHeight="25.0" prefWidth="139.0" onAction="#handleComboAIAction"/>
+                <ComboBox fx:id="comboAI" layoutX="172.0" layoutY="24.0" onAction="#handleComboAIAction" prefHeight="25.0" prefWidth="139.0" />
             </children>
         </Pane>
     </children>

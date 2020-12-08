@@ -56,6 +56,8 @@ public class NewGameController implements Initializable {
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+
         //spinner management, makes sure the player number is at most 6
         humanSpinner.setValueFactory(spinnerValueFactoryHuman);
         botSpinner.setValueFactory(spinnerValueFactoryBot);
