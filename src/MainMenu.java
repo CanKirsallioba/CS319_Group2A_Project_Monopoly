@@ -12,7 +12,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainMenu {
-    Button button1 = new Button("Play Game");
+    @FXML
+    private Button quitButton = new Button("Exit Game");
 
     @FXML
     public void goToCreditsScreen( ActionEvent event) throws IOException {
@@ -76,7 +77,7 @@ public class MainMenu {
 
 
     public void goToMapBuilderScreen( ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("mapbuilder.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("boardbuilder.fxml"));
 
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -91,5 +92,11 @@ public class MainMenu {
         window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
 
         window.show();
+    }
+
+    @FXML
+    private void quitGame(){
+        Stage stage = (Stage) quitButton.getScene().getWindow();
+        stage.close();
     }
 }

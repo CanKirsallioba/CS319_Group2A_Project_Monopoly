@@ -4,15 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
    <children>
       <Button layoutX="600.0" layoutY="103.0" mnemonicParsing="false" onAction="#goToNewGameScreen" text="Start New Game" />
       <Button layoutX="600.0" layoutY="251.0" mnemonicParsing="false" onAction="#goToCreditsScreen" prefHeight="27.0" prefWidth="118.0" text="Credits" />
       <Button layoutX="600.0" layoutY="152.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Load Game" />
       <Button layoutX="600.0" layoutY="203.0" mnemonicParsing="false" onAction="#goToHowToPlayScreen" prefHeight="27.0" prefWidth="118.0" text="How To Play" />
-      <Button layoutX="600.0" layoutY="300.0" mnemonicParsing="false" onAction="#goToMapBuilderScreen" prefHeight="27.0" prefWidth="118.0" text="Map Builder" />
+      <Button layoutX="600.0" layoutY="300.0" mnemonicParsing="false" onAction="#goToMapBuilderScreen" prefHeight="27.0" prefWidth="118.0" text="Board Builder" />
       <Button layoutX="600.0" layoutY="345.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Settings" />
-      <Button layoutX="600.0" layoutY="389.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Quit" />
+      <Button fx:id="quitButton" layoutX="600.0" layoutY="389.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="27.0" prefWidth="118.0" text="Exit Game" />
       <Text layoutX="72.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert Main Menu Image Here" wrappingWidth="215.7421875" />
       <Text layoutX="314.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly">
          <font>
