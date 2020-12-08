@@ -4,35 +4,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewGameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewGameController">
     <children>
-        <Button layoutX="183.0" layoutY="445.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="41.0" prefWidth="203.0" stylesheets="@ButtonStyle.css" text="BACK" />
-        <Button layoutX="630.0" layoutY="444.0" mnemonicParsing="false" onAction="#handleStartGame" prefHeight="41.0" prefWidth="197.0" stylesheets="@ButtonStyle.css" text="START GAME" />
-        <Label layoutX="69.0" layoutY="38.0" prefHeight="80.0" prefWidth="583.0" text="NEW GAME">
+        <Button layoutX="352.0" layoutY="736.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="BACK" />
+        <Button layoutX="1234.0" layoutY="736.0" mnemonicParsing="false" onAction="#handleStartGame" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="START GAME" />
+        <Label alignment="CENTER" layoutY="38.0" prefHeight="80.0" prefWidth="1920.0" text="NEW GAME" textAlignment="CENTER">
             <font>
                 <Font name="Calibri" size="58.0" />
             </font></Label>
-        <Pane layoutX="97.0" layoutY="118.0" prefHeight="73.0" prefWidth="302.0">
+        <Pane layoutX="124.0" layoutY="271.0" prefHeight="120.0" prefWidth="450.0">
             <children>
-                <ComboBox fx:id="comboBoard" layoutX="150.0" layoutY="24.0" onAction="#handleComboBoardAction" prefHeight="25.0" prefWidth="139.0" />
-                <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MAP:" wrappingWidth="116.404296875">
+                <ComboBox fx:id="comboBoard" layoutX="268.0" layoutY="47.0" onAction="#handleComboBoardAction" prefHeight="25.0" prefWidth="139.0" />
+                <Text layoutX="47.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MAP:" wrappingWidth="183.404296875">
                     <font>
                         <Font size="19.0" />
                     </font>
                 </Text>
             </children>
         </Pane>
-        <Pane layoutX="97.0" layoutY="210.0" prefHeight="73.0" prefWidth="302.0">
+        <Pane layoutX="124.0" layoutY="478.0" prefHeight="120.0" prefWidth="450.0">
             <children>
-                <Text layoutX="35.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME PACE:">
+                <Text layoutX="32.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME PACE:" wrappingWidth="165.285165309906">
                     <font>
                         <Font size="19.0" />
                     </font>
                 </Text>
-                <ComboBox fx:id="comboPace" layoutX="151.0" layoutY="24.0" onAction="#handleComboPaceAction" prefHeight="25.0" prefWidth="139.0" />
+                <ComboBox fx:id="comboPace" layoutX="265.0" layoutY="47.0" onAction="#handleComboPaceAction" prefHeight="25.0" prefWidth="139.0" />
             </children>
         </Pane>
-        <Pane layoutX="578.0" layoutY="121.0" prefHeight="140.0" prefWidth="302.0">
+        <Pane layoutX="973.0" layoutY="265.0" prefHeight="165.0" prefWidth="379.0">
             <children>
                 <Text layoutX="76.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" NUMBER OF PLAYERS">
                     <font>
@@ -61,14 +61,14 @@
                 </Spinner>
             </children>
         </Pane>
-        <Pane layoutX="351.0" layoutY="315.0" prefHeight="73.0" prefWidth="340.0">
+        <Pane layoutX="992.0" layoutY="502.0" prefHeight="73.0" prefWidth="340.0">
             <children>
                 <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT CHARACTER:">
                     <font>
                         <Font size="19.0" />
                     </font>
                 </Text>
-                <ComboBox fx:id="comboAI" layoutX="172.0" layoutY="24.0" onAction="#handleComboAIAction" prefHeight="25.0" prefWidth="139.0" />
+                <ComboBox fx:id="comboAI" layoutX="187.0" layoutY="23.0" onAction="#handleComboAIAction" prefHeight="25.0" prefWidth="139.0" />
             </children>
         </Pane>
     </children>
