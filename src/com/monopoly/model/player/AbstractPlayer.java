@@ -67,7 +67,7 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
-    /*
+    /**
     *   If player has waited in jail for less than 3 turns,
     *   waits the player in the jail for 1 turn, without doing anything. Returns true in this case.
     *   Otherwise returns false.
@@ -83,7 +83,7 @@ public abstract class AbstractPlayer implements Player {
         }
     }
 
-    /*
+    /**
     * Problematic !! Name needs to be changed
     * if player bails out, bails him out using selected method
     */
@@ -136,7 +136,7 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
-    /*
+    /**
     *  Adds the bailOutOfJail card to player's inventory.
     *  @param card is the card to add to the inventory.
     */
@@ -145,7 +145,7 @@ public abstract class AbstractPlayer implements Player {
         cards.add( card);
     }
 
-    /*
+    /**
     * Removes the last from players bailOutOfJail cards.
     */
     @Override
@@ -154,7 +154,7 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
-    /*
+    /**
     * Calls the PlayerToken's move method to move the player on the board by specified amount.
     * Updates currTileInd accordingly.
     * @param amount is the number of tiles to go.
@@ -164,7 +164,7 @@ public abstract class AbstractPlayer implements Player {
         currTileInd = playerToken.move(amount).getIndex();
     }
 
-    /*
+    /**
     * Sends player to jail by calling the PlayerToken's gotoJail method.
      */
     @Override
@@ -173,7 +173,7 @@ public abstract class AbstractPlayer implements Player {
         playerToken.goToJail();
     }
 
-    /*
+    /**
     * Adds the TitleDeedCard to player's titleDeeds.
     * @param card is the newly acquired TitleDeedCard.
      */
@@ -182,7 +182,7 @@ public abstract class AbstractPlayer implements Player {
         titleDeeds.add( card);
     }
 
-    /*
+    /**
     * Removes the given TitleDeedCard from player's titleDeeds.
     * @param card is the card being removed.
      */
@@ -191,7 +191,7 @@ public abstract class AbstractPlayer implements Player {
         titleDeeds.remove( card);
     }
 
-    /*
+    /**
     * Changes the balance.
     * @param amount is the change in the balance.
      */
@@ -206,7 +206,7 @@ public abstract class AbstractPlayer implements Player {
         bankrupt = true;
     }
 
-    /*
+    /**
     * @return the currTileInd
      */
     @Override
@@ -214,7 +214,7 @@ public abstract class AbstractPlayer implements Player {
         return currTileInd;
     }
 
-    /*
+    /**
     * @return the selected taxOption
      */
     @Override
@@ -222,7 +222,7 @@ public abstract class AbstractPlayer implements Player {
         return taxOption;
     }
 
-    /*
+    /**
     * Updated the taxOption according to param
     * @param selectedOption is the option player selected for paying income tax.
      */
@@ -231,7 +231,7 @@ public abstract class AbstractPlayer implements Player {
         this.taxOption = selectedOption;
     }
 
-    /*
+    /**
     * @return balance
      */
     @Override
@@ -239,7 +239,7 @@ public abstract class AbstractPlayer implements Player {
         return balance;
     }
 
-    /*
+    /**
     * @return consecutiveDoubleCount
      */
     @Override
@@ -247,7 +247,7 @@ public abstract class AbstractPlayer implements Player {
         return consecutiveDoubleCount;
     }
 
-    /*
+    /**
     * @return the type of player's token as a String
      */
     @Override
