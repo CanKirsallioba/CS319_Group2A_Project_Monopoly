@@ -14,5 +14,7 @@ public class PropertyTile extends Tile {
         return titleDeedCard.getPossibleActions();
     }
 
-
+    public TitleDeedCard getTitleDeedCard() {
+        return titleDeedCard;
+    }
 }

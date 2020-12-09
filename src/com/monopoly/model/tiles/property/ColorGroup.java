@@ -1,6 +1,7 @@
 package com.monopoly.model.tiles.property;
 
 import com.monopoly.model.player.Player;
+import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.Tile;
 
 import java.io.Serializable;
@@ -20,7 +21,15 @@ public class ColorGroup implements Serializable {
     public void setGroup(ArrayList<Tile> group) {
         this.group = group;
     }
-    public boolean checkIfUpgradable(){
-        return false;
+
+    //this method checks whether the specified player owns all properties in this color group
+    public boolean allOwnedByPlayer(Player player){
+        for(int i = 0; i < group.size(); i++)
+        {
+            if(((PropertyTile)group.get(i)).getTitleDeedCard().getOwner() != player){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.monopoly.model.tiles.property;
 
+import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.Action;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ public class TitleDeedCard implements Serializable {
 
     String propertyName;
     int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
+    boolean isOwned;
     boolean isMortgaged;
     int upgradeLevel;
     int propertyValue;
@@ -21,7 +23,7 @@ public class TitleDeedCard implements Serializable {
     int upgradeCost;
     int mortgagedTurnNumber;
     ColorGroup colorGroup;
-
+    Player owner;
 
 
     public Action[] getPropertyActions() {
@@ -30,6 +32,46 @@ public class TitleDeedCard implements Serializable {
 
     public void setPropertyActions(Action[] propertyActions) {
         this.propertyActions = propertyActions;
+    }
+
+    /**
+     * Finds the action with the specified name and activates it
+     * @param actionName the name of action
+     */
+    public void deactivateAction(String actionName){
+        for(Action action: propertyActions){
+            if(action.getName().equals(actionName)) {
+                action.setActive(false);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Finds the action with the specified name and deactivates it
+     * @param actionName the name of action
+     */
+    public void activateAction(String actionName){
+        for(Action action: propertyActions){
+            if(action.getName().equals(actionName)) {
+                action.setActive(true);
+                return;
+            }
+        }
+    }
+
+    public void updateActions(){
+        if(isOwned){
+            activateAction("Upgrade Property");
+            deactivateAction("Buy Property");
+
+            if(upgradeLevel > 0)
+                activateAction("Downgrade Property");
+
+            if(upgradeLevel < 5)
+                activateAction("Upgrade Property");
+
+        }
     }
 
     public int getLevelFourRent() {
@@ -50,6 +92,14 @@ public class TitleDeedCard implements Serializable {
 
     public boolean isMortgaged() {
         return isMortgaged;
+    }
+
+    public boolean isOwned() {
+        return isOwned;
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 
     public void setMortgaged(boolean mortgaged) {
@@ -157,5 +207,19 @@ public class TitleDeedCard implements Serializable {
 
 
     public Action[] getPossibleActions() {
+    }
+
+    /**
+     * Checks whether the property is upgradable. If yes, upgrades the property and returns true. If no, returns false
+     * @return true if the property is upgraded and false otherwise
+     */
+    public boolean upgrade(){
+        if(!colorGroup.allOwnedByPlayer(owner)) //if the player
+            return false;
+
+        getOwner().changeBalance((-1) * upgradeCost);
+        upgradeLevel++;
+        updateActions();
+        return true;
     }
 }
