@@ -36,7 +36,7 @@ property or not, and evaluate the barter offers made to it.
   We plan to implement options for users to save and load the games that enables users to save their
 unfinished games to be played later on, and load any saved games.
  #
-  We wish to change two train stations in classic monopoly into airports. Should a player land on an
+  We wish to change two train stations in classic com.monopoly into airports. Should a player land on an
 airport, they will be transported to the other airport.
   #
   We also plan to implement a barter system, where the players can swap properties or buy each

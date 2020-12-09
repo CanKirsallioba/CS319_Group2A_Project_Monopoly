@@ -1,1 +1,0 @@
-All the code files will be here, inside a folder named "src".

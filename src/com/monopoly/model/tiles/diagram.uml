@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="703.0" y="561.0">com.monopoly.model.tiles.actionStrategy.JailTileActionStrategy</node>
+    <node x="385.0" y="722.0">com.monopoly.model.tiles.actionStrategy.GoToJailTileActionStrategy</node>
+    <node x="1144.0" y="456.0">com.monopoly.model.tiles.PropertyTile</node>
+    <node x="454.0" y="632.0">com.monopoly.model.tiles.actionStrategy.PropertyActionsStrategy</node>
+    <node x="991.0" y="409.0">com.monopoly.model.tiles.JailTile</node>
+    <node x="308.0" y="297.0">com.monopoly.model.tiles.actionStrategy.CardTileActionStrategy</node>
+    <node x="349.0" y="0.0">com.monopoly.model.tiles.actionStrategy.AbstractStrategyFactory</node>
+    <node x="1342.0" y="419.0">com.monopoly.model.tiles.property</node>
+    <node x="0.0" y="167.0">com.monopoly.model.tiles.actionStrategy.FreeParkingTileActionStrategy</node>
+    <node x="0.0" y="822.0">com.monopoly.model.tiles.AbstractTileFactory</node>
+    <node x="33.0" y="963.0">com.monopoly.model.tiles.TileFactory</node>
+    <node x="210.0" y="544.0">com.monopoly.model.tiles.actionStrategy.IncomeTaxTileActionStrategy</node>
+    <node x="1092.0" y="669.0">com.monopoly.model.tiles.GoToJailTile</node>
+    <node x="682.0" y="703.0">com.monopoly.model.tiles.card</node>
+    <node x="901.0" y="490.0">com.monopoly.model.tiles.Tile</node>
+    <node x="605.0" y="440.0">com.monopoly.model.tiles.actionStrategy.ActionStrategy</node>
+    <node x="561.0" y="128.0">com.monopoly.model.tiles.actionStrategy.TeleportTileActionStrategy</node>
+    <node x="1022.0" y="527.0">com.monopoly.model.tiles.actionStrategy.Command</node>
+    <node x="855.0" y="634.0">com.monopoly.model.tiles.GoTile</node>
+    <node x="1015.0" y="311.0">com.monopoly.model.tiles.FreeParkingTile</node>
+    <node x="914.0" y="747.0">com.monopoly.model.tiles.IncomeTaxTile</node>
+    <node x="994.0" y="598.0">com.monopoly.model.tiles.CardTile</node>
+    <node x="468.0" y="473.0">com.monopoly.model.tiles.Action</node>
+    <node x="770.0" y="213.0">com.monopoly.model.tiles.actionStrategy.PropertyTileActionStrategy</node>
+    <node x="516.0" y="226.0">com.monopoly.model.tiles.actionStrategy.StrategyFactory</node>
+    <node x="806.0" y="402.0">com.monopoly.model.tiles.TeleportTile</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.monopoly.model.tiles.FreeParkingTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="4.966842959695157" y="0.5748660832980477" />
+      <point x="4.966842959695157" y="0.5748660832980477" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.StrategyFactory" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.PropertyActionsStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.GoToJailTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.Action" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.card" target="com.monopoly.model.tiles.card">
+      <point x="-27.0" y="15.0" />
+      <point x="719.0" y="753.625" />
+      <point x="708.625" y="764.0" />
+      <point x="661.375" y="764.0" />
+      <point x="651.0" y="753.625" />
+      <point x="651.0" y="732.125" />
+      <point x="661.375" y="721.75" />
+      <point x="-64.0" y="3.75" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.Tile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.StrategyFactory" target="com.monopoly.model.tiles.actionStrategy.AbstractStrategyFactory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.CardTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.PropertyTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="-4.534262949572707" />
+      <point x="0.0" y="-4.534262949572721" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.JailTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="4.874036047641425" y="-1.1152455363247267" />
+      <point x="4.874036047641425" y="-1.1152455363247213" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.TileFactory" target="com.monopoly.model.tiles.AbstractTileFactory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.IncomeTaxTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.FreeParkingTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.PropertyTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="2.236067977499772" y="4.47213595499958" />
+      <point x="2.236067977499772" y="4.4721359549995725" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.GoToJailTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="-4.223198906143182" y="2.6766753630485027" />
+      <point x="-4.223198906143182" y="2.6766753630485027" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.PropertyTile" target="com.monopoly.model.tiles.property">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.GoTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="-2.6522223903296833" y="-4.238598399498812" />
+      <point x="-2.652222390329655" y="-4.2385983994988266" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.IncomeTaxTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="-4.671091930896864" y="-1.783507828160623" />
+      <point x="-4.671091930896864" y="-1.783507828160623" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.JailTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.CardTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.JailTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.GoToJailTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.FreeParkingTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.CardTileActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.GoTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.TeleportTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="2.688551308123934" y="-4.215648451138335" />
+      <point x="2.6885513081239196" y="-4.215648451138335" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.TeleportTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.IncomeTaxTile" target="com.monopoly.model.tiles.Tile">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.Tile" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.TeleportTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.card" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="-4.87070444934805" y="1.129707115628264" />
+      <point x="-4.870704449348054" y="1.1297071156282534" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.actionStrategy.PropertyTileActionStrategy" target="com.monopoly.model.tiles.actionStrategy.ActionStrategy">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.monopoly.model.tiles.CardTile" target="com.monopoly.model.tiles.actionStrategy.Command">
+      <point x="-4.736702853840768" y="-1.6011389928475808" />
+      <point x="-4.736702853840768" y="-1.6011389928475808" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal" zoom="0.6000000000000001" x="888.9523809523808" y="613.0873015873016" />
+  <SelectedNodes>
+    <node>com.monopoly.model.tiles.Tile</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
