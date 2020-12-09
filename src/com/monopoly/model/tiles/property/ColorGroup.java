@@ -20,4 +20,7 @@ public class ColorGroup implements Serializable {
     public void setGroup(ArrayList<Tile> group) {
         this.group = group;
     }
+    public boolean checkIfUpgradable(){
+        return false;
+    }
 }
