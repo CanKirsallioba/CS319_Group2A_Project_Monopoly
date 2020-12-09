@@ -254,4 +254,29 @@ public abstract class AbstractPlayer implements Player {
     public String getTokenType() {
         return playerToken.getType();
     }
+
+    /**
+     * set the playerToken's type
+     * @param type is the type of the playerToken
+     */
+    @Override
+    public void setTokenType(String type){
+        this.playerToken.setType( type);
+    }
+
+    /**
+     * set the playerToken's type
+     * @param index is the current tile's index
+     */
+    @Override
+    public void setCurrentTileIndex(int index){
+        currTileInd = index;
+        playerToken.teleport( index); // faulty-naming but works in principle
+    }
+
+    //TO-DO
+    @Override
+    public void startAuction(ArrayList<TitleDeedCard> titleDeeds){
+
+    }
 }

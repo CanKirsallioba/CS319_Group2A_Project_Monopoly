@@ -25,12 +25,6 @@ public class PlayerToken {
         currTileObj = board.getTiles().get(0);
     }
 
-    // possibly redundant
-    public PlayerToken(int currentTile, String type) {
-        this.currentTileIndex = currentTile;
-        this.type = type;
-    }
-
     /**
      * Moves the token by the specified amount.
      * @param amount is the number of tiles to go
@@ -82,5 +76,9 @@ public class PlayerToken {
      */
     boolean passedGoInTheLastMove() {
         return currentTileIndex < lastDiceRoll;
+    }
+
+    void setType( String t){
+        type = t;
     }
 }

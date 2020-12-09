@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println( "Start");
 	// write your code here
+        /*
         Player player = new Player() {
             @Override
             public Dice rollDice() {
@@ -103,6 +104,8 @@ public class Main {
                 return super.hashCode();
             }
         };
+
+         */
         Tile tile = createTile();
         System.out.println(tile.name);
 //        Command[] c = tile.getPossibleActions(player);

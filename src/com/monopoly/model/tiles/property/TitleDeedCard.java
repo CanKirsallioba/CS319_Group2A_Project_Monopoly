@@ -157,5 +157,6 @@ public class TitleDeedCard implements Serializable {
 
 
     public Action[] getPossibleActions() {
+        return null;
     }
 }
