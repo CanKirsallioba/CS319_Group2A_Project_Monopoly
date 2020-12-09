@@ -10,6 +10,7 @@ import com.monopoly.model.tiles.property.TitleDeedCard;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println( "Start");
 	// write your code here
         Player player = new Player() {
             @Override

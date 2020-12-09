@@ -6,7 +6,6 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
     @Override
     public void button1Strategy(Player player) { // pay tax
         player.getTaxOption();
-        player.
     }
 
     @Override
