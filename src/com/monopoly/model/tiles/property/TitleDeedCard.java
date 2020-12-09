@@ -338,4 +338,12 @@ public class TitleDeedCard implements Serializable {
         updateActions();
         return upgradeCost/2;
     }
+
+    /**
+     * Downgrades the property until its upgrade value becomes zero
+     */
+    public void resetProperty(){
+        while(upgradeLevel > 0)
+            downgrade();
+    }
 }
