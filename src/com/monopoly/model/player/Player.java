@@ -21,7 +21,7 @@ public interface Player extends Serializable {
     void declareBankruptcy();
     int getCurrentTileIndex();
     int getTaxOption();
-    int setTaxOption();
+    void setTaxOption( int selectedOption);
     int getBalance();
     int getConsecutiveDoubleCount();
     String getTokenType();

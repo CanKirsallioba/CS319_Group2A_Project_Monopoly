@@ -79,8 +79,8 @@ public class Main {
             }
 
             @Override
-            public int setTaxOption() {
-                return 0;
+            public void setTaxOption( int i) {
+
             }
 
             @Override

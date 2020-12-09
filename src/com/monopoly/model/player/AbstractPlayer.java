@@ -33,9 +33,6 @@ public abstract class AbstractPlayer implements Player {
     AbstractPlayer( ) {
 
     }
-    public void setTaxOption(int taxOption) {
-        this.taxOption = taxOption;
-    }
 
     public ArrayList<TitleDeedCard> getTitleDeeds() {
         return titleDeeds;
@@ -194,9 +191,13 @@ public abstract class AbstractPlayer implements Player {
         titleDeeds.remove( card);
     }
 
+    /*
+    * Changes the balance.
+    * @param amount is the change in the balance.
+     */
     @Override
     public void changeBalance(int amount) {
-
+        balance += amount;
     }
 
     // SUBJECT TO IMPORTANT CHANGES
@@ -205,33 +206,52 @@ public abstract class AbstractPlayer implements Player {
         bankrupt = true;
     }
 
+    /*
+    * @return the currTileInd
+     */
     @Override
     public int getCurrentTileIndex() {
-        return 0;
+        return currTileInd;
     }
 
+    /*
+    * @return the selected taxOption
+     */
     @Override
     public int getTaxOption() {
-        return 0;
+        return taxOption;
     }
 
+    /*
+    * Updated the taxOption according to param
+    * @param selectedOption is the option player selected for paying income tax.
+     */
     @Override
-    public int setTaxOption() {
-        return 0;
+    public void setTaxOption( int selectedOption) {
+        this.taxOption = selectedOption;
     }
 
+    /*
+    * @return balance
+     */
     @Override
     public int getBalance() {
-        return 0;
+        return balance;
     }
 
+    /*
+    * @return consecutiveDoubleCount
+     */
     @Override
     public int getConsecutiveDoubleCount() {
-        return 0;
+        return consecutiveDoubleCount;
     }
 
+    /*
+    * @return the type of player's token as a String
+     */
     @Override
     public String getTokenType() {
-        return null;
+        return playerToken.getType();
     }
 }
