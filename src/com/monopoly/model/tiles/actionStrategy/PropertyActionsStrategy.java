@@ -8,45 +8,50 @@ import java.util.ArrayList;
 public class PropertyActionsStrategy extends ActionStrategy {
 
     /**
-     * This strategy is related to the buy operation, also has the possibility to initi.
+     * This strategy is related to the upgrade property action.
      * @param player is the player that the action is inflicted on.
       */
     @Override
     public void button1Strategy(Player player) {
-        // TODO isWillingToBuy will be set from the GUI.
-        boolean isWillingToBuy = false;
-    /*
-        if ((player.getBalance() >= player.currentTile().getPrice()) && isWillingToBuy && !player.currentTile().isOwned()) {
-            player.changeBalance(- player.currentTile().getPrice());
-            player.addProperty(player.currentTile());
-        } else if (isWillingToBuy && !player.currentTile().isOwned()) {
-            ArrayList<TitleDeedCard> titleDeedCards;
-            player.startAuction(titleDeedCards);
+        PropertyTile tile;
+        if (player.getCurrentTile() instanceof PropertyTile) {
+            tile = (PropertyTile) player.getCurrentTile();
         }
-        */
-     */
+        TitleDeedCard card = tile.getTitleDeedCard();
+
+        int upgradeLevel = card.getUpgradeLevel();
+        int upgradeCost = card.getUpgradeCost();
+
+        if (player.getBalance() <= upgradeCost && upgradeLevel != 5) {
+            player.changeBalance(-upgradeCost);
+            card.setUpgradeLevel(upgradeLevel++);
+        }
     }
 
     /**
-     * This strategy is related to the pay rent operation, also has the possibility to initiate trade.
+     * This strategy is related to the downgrade property action.
      * @param player is the player that the action is inflicted on.
      */
     @Override
     public void button2Strategy(Player player) {
-        /*
-        int totalRent = player.currentTile().getPropertyValue();
-
-        if (player.getBalance() >= totalRent) {
-            player.changeBalance(-totalRent);
-            Player otherPlayer = player.currentTile().getOwner();
-            otherPlayer.changeBalance(totalRent);
-        } else {
-            player.startTrade(otherPlayer);
+        PropertyTile tile;
+        if (player.getCurrentTile() instanceof PropertyTile) {
+            tile = (PropertyTile) player.getCurrentTile();
         }
+        TitleDeedCard card = tile.getTitleDeedCard();
 
-         */
+        int upgradeLevel = card.getUpgradeLevel();
+
+        if (upgradeLevel > 0) {
+            int downgradeMoney = card.downgrade();
+            player.changeBalance(downgradeMoney);
+        }
     }
 
+    /**
+     * This strategy is related to the mortgage a property action.
+     * @param player is the player that the action is inflicted on.
+     */
     @Override
     public void button3Strategy(Player player) {
 

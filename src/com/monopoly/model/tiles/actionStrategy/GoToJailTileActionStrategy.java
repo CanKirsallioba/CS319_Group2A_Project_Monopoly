@@ -3,9 +3,13 @@ package com.monopoly.model.tiles.actionStrategy;
 import com.monopoly.model.player.Player;
 
 public class GoToJailTileActionStrategy extends ActionStrategy {
+    /**
+     * This strategy is related to sending the player to the jail.
+     * @param player is the player that the action is inflicted on.
+     */
     @Override
     public void button1Strategy(Player player) {
-
+        player.goToJail();
     }
 
     @Override
