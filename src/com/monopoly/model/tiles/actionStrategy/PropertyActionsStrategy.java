@@ -15,7 +15,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
     public void button1Strategy(Player player) {
         // TODO isWillingToBuy will be set from the GUI.
         boolean isWillingToBuy = false;
-
+    /*
         if ((player.getBalance() >= player.currentTile().getPrice()) && isWillingToBuy && !player.currentTile().isOwned()) {
             player.changeBalance(- player.currentTile().getPrice());
             player.addProperty(player.currentTile());
@@ -23,6 +23,8 @@ public class PropertyActionsStrategy extends ActionStrategy {
             ArrayList<TitleDeedCard> titleDeedCards;
             player.startAuction(titleDeedCards);
         }
+        */
+     */
     }
 
     /**
@@ -31,6 +33,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     @Override
     public void button2Strategy(Player player) {
+        /*
         int totalRent = player.currentTile().getPropertyValue();
 
         if (player.getBalance() >= totalRent) {
@@ -40,6 +43,8 @@ public class PropertyActionsStrategy extends ActionStrategy {
         } else {
             player.startTrade(otherPlayer);
         }
+
+         */
     }
 
     @Override
