@@ -19,8 +19,8 @@ public class Main {
             }
 
             @Override
-            public void waitInJail() {
-
+            public boolean waitInJail() {
+                return false; // placeholder
             }
 
             @Override

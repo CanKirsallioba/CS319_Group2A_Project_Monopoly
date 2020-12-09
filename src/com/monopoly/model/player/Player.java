@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public interface Player extends Serializable {
     Dice rollDice();
-    void waitInJail();
+    boolean waitInJail();
     void checkBailOut();
     void addBailOutFromJailCard(Card card);
     void removeBailOutFromJailCard();

@@ -15,9 +15,7 @@ public class PlayerToken {
         this.type = type;
     }
 
-    Tile move(int amount) {
-        return null;
-    }
+    Tile move(int amount) { return null; }
 
     void goToJail() {
     }

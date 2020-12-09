@@ -12,6 +12,7 @@ public abstract class AbstractPlayer implements Player {
     private int balance;
     private boolean bankrupt;
     private int consecutiveDoubleCount;
+    private int inJailFor;
 
     AbstractPlayer( ) {
 
@@ -53,25 +54,47 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
+    /*  If player has waited in jail for less than 3 turns,
+    *   waits the player in the jail for 1 turn, without doing anything. Returns true in this case.
+    *   Otherwise returns false.
+    */
     @Override
-    public void waitInJail() {
-
+    public boolean waitInJail() {
+        if( inJailFor < 3){
+            inJailFor++;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
+    /*  Sikintili
+    *
+    *
+    */
     @Override
     public void checkBailOut() {
 
     }
 
+
+    /* Adds the bailOutOfJail card to player's inventory.
+    *  @param card is the card to add to the inventory.
+    */
     @Override
     public void addBailOutFromJailCard(Card card) {
-
+        cards.add( card);
     }
 
+    /* Removes the last from players bailOutOfJail cards.
+    *
+    */
     @Override
     public void removeBailOutFromJailCard() {
-
+        cards.remove( cards.size()-1);
     }
+
 
     @Override
     public void moveToken(int amount) {
