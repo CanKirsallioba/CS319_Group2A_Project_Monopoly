@@ -122,14 +122,22 @@ public abstract class AbstractPlayer implements Player {
         playerToken.goToJail();
     }
 
+    /*
+    * Adds the TitleDeedCard to player's titleDeeds.
+    * @param card is the newly acquired TitleDeedCard.
+     */
     @Override
     public void addTitleDeedCard(TitleDeedCard card) {
-
+        titleDeeds.add( card);
     }
 
+    /*
+    * Removes the given TitleDeedCard from player's titleDeeds.
+    * @param card is the card being removed.
+     */
     @Override
     public void removeTitleDeedCard(TitleDeedCard card) {
-
+        titleDeeds.remove( card);
     }
 
     @Override
