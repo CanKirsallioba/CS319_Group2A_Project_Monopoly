@@ -1,5 +1,6 @@
 package com.monopoly.model.player;
 
+import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
@@ -12,7 +13,11 @@ public abstract class AbstractPlayer implements Player {
     private int balance;
     private boolean bankrupt;
     private int consecutiveDoubleCount;
+
+    // newly added
     private int inJailFor;
+    private Tile currTile;
+    private PlayerToken playerToken;
 
     AbstractPlayer( ) {
 
@@ -79,7 +84,8 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
-    /* Adds the bailOutOfJail card to player's inventory.
+    /*
+    *  Adds the bailOutOfJail card to player's inventory.
     *  @param card is the card to add to the inventory.
     */
     @Override
@@ -87,8 +93,8 @@ public abstract class AbstractPlayer implements Player {
         cards.add( card);
     }
 
-    /* Removes the last from players bailOutOfJail cards.
-    *
+    /*
+    * Removes the last from players bailOutOfJail cards.
     */
     @Override
     public void removeBailOutFromJailCard() {
@@ -96,9 +102,14 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
+    /*
+    * Calls the PlayerToken's move method to move the player on the board by specified amount.
+    * Updates currTile accordingly.
+    * @param amount is the number of tiles to go.
+     */
     @Override
     public void moveToken(int amount) {
-
+        currTile = playerToken.move(amount);
     }
 
     @Override
