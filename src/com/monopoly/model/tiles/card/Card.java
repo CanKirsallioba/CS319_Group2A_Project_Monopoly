@@ -1,26 +1,28 @@
 package com.monopoly.model.tiles.card;
 
 import com.monopoly.model.tiles.actionStrategy.ActionStrategy;
-
+import com.monopoly.model.tiles.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Card implements Serializable {
-    ActionStrategy strategy;
     String instruction;
+    ArrayList<Action> actions;
+
     String type;
 
-    public Card(ActionStrategy strategy, String instruction, String type) {
-        this.strategy = strategy;
+    public Card(ArrayList<Action> actions, String instruction, String type) {
+        this.actions = actions;
         this.instruction = instruction;
         this.type = type;
     }
 
-    public ActionStrategy getStrategy() {
-        return strategy;
+    public ArrayList<Action> getActions() {
+        return actions;
     }
 
-    public void setStrategy(ActionStrategy strategy) {
-        this.strategy = strategy;
+    public void setActions(ArrayList<Action> actions) {
+        this.actions = actions;
     }
 
     public String getInstruction() {

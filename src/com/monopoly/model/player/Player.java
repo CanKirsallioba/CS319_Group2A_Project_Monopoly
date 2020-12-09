@@ -1,10 +1,12 @@
 package com.monopoly.model.player;
 
 import com.monopoly.model.board.Dice;
+import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public interface Player extends Serializable {
@@ -25,4 +27,7 @@ public interface Player extends Serializable {
     int getBalance();
     int getConsecutiveDoubleCount();
     String getTokenType();
+    void setTokenType(String type);
+    void setCurrentTileIndex( int index);
+    void startAuction(ArrayList<TitleDeedCard> tDC);
 }
