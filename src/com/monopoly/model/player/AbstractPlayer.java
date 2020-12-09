@@ -19,6 +19,16 @@ public abstract class AbstractPlayer implements Player {
     private int currTileInd;
     private PlayerToken playerToken;
     private boolean isInJail;
+    int totalWorth;
+    int liquidTotalWorth;
+
+    // possibly subject to change
+    int getOutOfJailChoice;
+    boolean bailsOut;
+    static final int BAIL_OUT_OF_JAIL_USING_CARD = 100;
+    static final int BAIL_OUT_OF_JAIL_USING_MONEY = 101;
+    static final int BAIL_OUT_OF_JAIL_USING_DICE  = 102;
+
 
     AbstractPlayer( ) {
 
@@ -77,11 +87,55 @@ public abstract class AbstractPlayer implements Player {
     }
 
     /*
-    * Problematic
+    * Problematic !! Name needs to be changed
+    * if player bails out, bails him out using selected method
     */
     @Override
     public void checkBailOut() {
+        int bailOutCost = 0; // SUBJECT TO CHANGE
 
+        // check if player bails out
+        // apply the selected bail out procedure
+        if (bailsOut) {
+            if( getOutOfJailChoice == BAIL_OUT_OF_JAIL_USING_CARD){
+                removeBailOutFromJailCard();
+
+                isInJail = false;
+                inJailFor = 0;
+                bailsOut = false;
+            }
+            else if( getOutOfJailChoice == BAIL_OUT_OF_JAIL_USING_MONEY){
+                changeBalance( bailOutCost);
+
+                isInJail = false;
+                inJailFor = 0;
+                bailsOut = false;
+            }
+            else if( getOutOfJailChoice == BAIL_OUT_OF_JAIL_USING_DICE){
+                if(consecutiveDoubleCount == 1){
+
+                    isInJail = false;
+                    inJailFor = 0;
+                    bailsOut = false;
+                }
+            }
+        }
+
+        // if cannot bail out with choice at turn 3
+        // force player to bail out or declare bankruptcy
+        if( !waitInJail()){ // inJailFor is updated in waitInJail
+            if( liquidTotalWorth < bailOutCost){
+                // force bankruptcy
+                declareBankruptcy();
+            }
+            else{
+                changeBalance( bailOutCost);
+
+                isInJail = false;
+                inJailFor = 0;
+                bailsOut = false;
+            }
+        }
     }
 
 
@@ -145,9 +199,10 @@ public abstract class AbstractPlayer implements Player {
 
     }
 
+    // SUBJECT TO IMPORTANT CHANGES
     @Override
     public void declareBankruptcy() {
-
+        bankrupt = true;
     }
 
     @Override
