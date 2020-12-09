@@ -14,22 +14,13 @@ public class PropertyTileActionStrategy extends ActionStrategy {
     }
 
     /**
-     * This strategy is related to the buy operation, also has the possibility to initi.
+     * This strategy is related to the buy operation.
+     *
      * @param player is the player that the action is inflicted on.
      */
     @Override
     public void button1Strategy(Player player) {
-        PropertyTile tile;
-        if (player.getCurrentTile() instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile();
-        }
-        TitleDeedCard card = tile.getTitleDeedCard();
-
-        if ((player.getBalance() >= card.getPrice()) && isWillingToBuy && !carde.isOwned()) {
-            player.changeBalance(- card.getPrice());
-            player.addTitleDeedCard(card);
-        }
-
+        buyProperty ( player );
     }
 
     /**
@@ -72,6 +63,65 @@ public class PropertyTileActionStrategy extends ActionStrategy {
     public void button4Strategy(Player player) {
         System.out.println("S4");
 
+    }
+
+    /**
+     * This method is the helper method for the button1Strategy.
+     * @param player the player that the action is inflicted on.
+     */
+    private void buyProperty(Player player) {
+        PropertyTile tile;
+        if (player.getCurrentTile () instanceof PropertyTile) {
+            tile = (PropertyTile) player.getCurrentTile ();
+        }
+        TitleDeedCard card = tile.getTitleDeedCard ();
+
+        if ((player.getBalance () >= card.getPrice ()) && !card.isOwned ()) {
+            player.changeBalance ( -card.getPrice () );
+            player.addTitleDeedCard ( card );
+        }
+    }
+
+    /**
+     * This method is the helper method for the button2Strategy.
+     * @param player the player that the action is inflicted on.
+     */
+    private void payRent(Player player) {
+        PropertyTile tile;
+        if (!(player.getCurrentTile () instanceof PropertyTile)) {
+            throw new RuntimeException ( "Wrong tile type" );
+        }
+        tile = (PropertyTile) player.getCurrentTile ();
+        TitleDeedCard card = tile.getTitleDeedCard ();
+
+        int totalRent = card.getPropertyValue ();
+
+        if (player.getBalance () >= totalRent) {
+            player.changeBalance ( -totalRent );
+            Player otherPlayer = card.getOwner ();
+            otherPlayer.changeBalance ( totalRent );
+        } else {
+//            player.startTrade ( otherPlayer );
+            // Todo
+        }
+    }
+
+    /**
+     * This method is the helper method for the button3Strategy.
+     * @param player the player that the action is inflicted on.
+     */
+    private void startAuction(Player player) {
+        PropertyTile propertyTile;
+        if (!(player.getCurrentTile () instanceof PropertyTile)) {
+            throw new RuntimeException ( "Wrong tile type" );
+        }
+        tile = (PropertyTile) player.getCurrentTile ();
+        TitleDeedCard card = tile.getTitleDeedCard ();
+        if (!card.isOwned ()) {
+            ArrayList<TitleDeedCard> titleDeedCards;
+            titleDeedCards.add ( card );
+            player.startAuction ( titleDeedCards );
+        }
     }
 
     public String[] getActionNames() {
