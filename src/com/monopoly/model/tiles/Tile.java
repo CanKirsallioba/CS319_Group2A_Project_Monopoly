@@ -9,7 +9,7 @@ import java.io.Serializable;
 public abstract class Tile implements Serializable {
     public String name = this.getClass().getSimpleName();
     protected AbstractActionFactory actionFactory;
-    boolean hasAdditionalFunctionality;
+    boolean hasCustomizedFunctionality;
     Action[] actions;
 
     // newly added
@@ -18,11 +18,11 @@ public abstract class Tile implements Serializable {
     Tile() {
         actionFactory = new ActionFactory();
         actions = actionFactory.getActionList(name);
-        hasAdditionalFunctionality = false;
+        hasCustomizedFunctionality = false;
     }
 
     public Action[] getPossibleActions(Player player) {
-        if (hasAdditionalFunctionality) {
+        if (hasCustomizedFunctionality) {
             return hook();
         } else {
             return actions;

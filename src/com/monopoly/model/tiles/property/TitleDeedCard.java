@@ -5,9 +5,13 @@ import com.monopoly.model.tiles.Action;
 import java.io.Serializable;
 
 public class TitleDeedCard implements Serializable {
-
+    // TODO state si olacak
+    // TODO Her state icin farkli action arraylistleri olacak
+    // TODO Kendi state ini handle edecek hem owned hem de levellari icin state i olacak.
+    // TODO reset methodu
     final double mortgageRemovalMultiplier = 1.1;
     Action[] propertyActions;
+
     String propertyName;
     int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
     boolean isMortgaged;
@@ -18,22 +22,7 @@ public class TitleDeedCard implements Serializable {
     int mortgagedTurnNumber;
     ColorGroup colorGroup;
 
-    public TitleDeedCard(Action[] propertyActions, String propertyName, int levelOneRent, int levelTwoRent, int levelThreeRent, int levelFourRent, int levelFiveRent, boolean isMortgaged, int upgradeLevel, int propertyValue, int mortgageValue, int upgradeCost, int mortgagedTurnNumber, ColorGroup colorGroup) {
-        this.propertyActions = propertyActions;
-        this.propertyName = propertyName;
-        this.levelOneRent = levelOneRent;
-        this.levelTwoRent = levelTwoRent;
-        this.levelThreeRent = levelThreeRent;
-        this.levelFourRent = levelFourRent;
-        this.levelFiveRent = levelFiveRent;
-        this.isMortgaged = isMortgaged;
-        this.upgradeLevel = upgradeLevel;
-        this.propertyValue = propertyValue;
-        this.mortgageValue = mortgageValue;
-        this.upgradeCost = upgradeCost;
-        this.mortgagedTurnNumber = mortgagedTurnNumber;
-        this.colorGroup = colorGroup;
-    }
+
 
     public Action[] getPropertyActions() {
         return propertyActions;
@@ -167,4 +156,6 @@ public class TitleDeedCard implements Serializable {
     }
 
 
+    public Action[] getPossibleActions() {
+    }
 }
