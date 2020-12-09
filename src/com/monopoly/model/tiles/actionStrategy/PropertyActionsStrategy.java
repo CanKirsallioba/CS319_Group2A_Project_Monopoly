@@ -31,12 +31,16 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-
+        mortgageProperty(player);
     }
 
+    /**
+     * This strategy is related to removing the mortgage of a property.
+     * @param player is the player that the action is inflicted on.
+     */
     @Override
     public void button4Strategy(Player player) {
-
+        removeMortgage(player);
     }
 
     /**
@@ -75,6 +79,40 @@ public class PropertyActionsStrategy extends ActionStrategy {
         if (upgradeLevel > 0) {
             int downgradeMoney = card.downgrade();
             player.changeBalance(downgradeMoney);
+        }
+    }
+
+    /**
+     * This method is the helper method for the button3Strategy.
+     * @param player the player that the action is inflicted on.
+     */
+    private void mortgageProperty(Player player){
+        PropertyTile tile;
+        if (player.getCurrentTile() instanceof PropertyTile) {
+            tile = (PropertyTile) player.getCurrentTile();
+        }
+        TitleDeedCard card = tile.getTitleDeedCard();
+
+        if(!card.isMortgaged()){
+            int mortgageMoney = card.mortgage();
+            player.changeBalance(mortgageMoney);
+        }
+    }
+
+    /**
+     * This method is the helper method for the button4Strategy.
+     * @param player the player that the action is inflicted on.
+     */
+    private void removeMortgage(Player player){
+        PropertyTile tile;
+        if (player.getCurrentTile() instanceof PropertyTile) {
+            tile = (PropertyTile) player.getCurrentTile();
+        }
+        TitleDeedCard card = tile.getTitleDeedCard();
+
+        if(card.isMortgaged()){
+            int mortgageRemovalFee = card.removeMortgage();
+            player.changeBalance(-mortgageRemovalFee);
         }
     }
 }

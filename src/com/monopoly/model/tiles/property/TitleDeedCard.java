@@ -244,13 +244,6 @@ public class TitleDeedCard implements Serializable {
     }
 
     /**
-     * This method mortgages the property
-     */
-    public void mortgage() {
-
-    }
-
-    /**
      * @return the penalty of removing the mortgage of the property
      */
     public int mortgageRemovalPenalty() {
@@ -345,5 +338,22 @@ public class TitleDeedCard implements Serializable {
     public void resetProperty(){
         while(upgradeLevel > 0)
             downgrade();
+    }
+
+
+    /**
+     * This method mortgages the property and returns the player's gain after mortgaging the proeprty
+     */
+    public int mortgage() {
+        isMortgaged = true;
+        return mortgageValue;
+    }
+
+    /**
+     * This method removes the mortgage of the property and returns the mortgage removal fee
+     */
+    public int removeMortgage() {
+        isMortgaged = false;
+        return (int)(mortgageValue * mortgageRemovalMultiplier);
     }
 }
