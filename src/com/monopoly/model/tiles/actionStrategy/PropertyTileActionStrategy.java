@@ -2,6 +2,7 @@ package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.PropertyTile;
+import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
 import java.util.ArrayList;
@@ -30,19 +31,20 @@ public class PropertyTileActionStrategy extends ActionStrategy {
     @Override
     public void button2Strategy(Player player) {
         PropertyTile tile;
-        if (player.getCurrentTile() instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile();
+        if (!(player.getCurrentTile () instanceof PropertyTile)) {
+            throw new RuntimeException ( "Wrong tile type" );
         }
+        tile = (PropertyTile) player.getCurrentTile ();
         TitleDeedCard card = tile.getTitleDeedCard();
-
-        int totalRent = tile.getPropertyValue();
+        int totalRent = card.getPropertyValue();
 
         if (player.getBalance() >= totalRent) {
             player.changeBalance(-totalRent);
-            Player otherPlayer = tile.getOwner();
+            Player otherPlayer = card.getOwner();
             otherPlayer.changeBalance(totalRent);
         } else {
-            player.startTrade(otherPlayer);
+            // todo here must change
+//            player.startTrade(otherPlayer);
         }
     }
 
@@ -52,11 +54,15 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-        if (!card.isOwned()) {
-            ArrayList<TitleDeedCard> titleDeedCards;
-            player.startAuction(titleDeedCards);
+        PropertyTile tile;
+        if (!(player.getCurrentTile () instanceof PropertyTile)) {
+            throw new RuntimeException ( "Wrong tile type" );
         }
-
+        tile = (PropertyTile) player.getCurrentTile ();
+        TitleDeedCard card = tile.getTitleDeedCard ();
+        ArrayList<TitleDeedCard> titleDeedCards = new ArrayList<>();
+        titleDeedCards.add(card);
+        player.startAuction(titleDeedCards);
     }
 
     @Override
@@ -71,13 +77,13 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      */
     private void buyProperty(Player player) {
         PropertyTile tile;
-        if (player.getCurrentTile () instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile ();
+        if (!(player.getCurrentTile () instanceof PropertyTile)) {
+            throw new RuntimeException ( "Wrong tile type" );
         }
+        tile = (PropertyTile) player.getCurrentTile ();
         TitleDeedCard card = tile.getTitleDeedCard ();
-
-        if ((player.getBalance () >= card.getPrice ()) && !card.isOwned ()) {
-            player.changeBalance ( -card.getPrice () );
+        if ((player.getBalance () >= card.getPropertyValue()) && !card.isOwned ()) {
+            player.changeBalance ( -card.getPropertyValue() );
             player.addTitleDeedCard ( card );
         }
     }
@@ -115,10 +121,10 @@ public class PropertyTileActionStrategy extends ActionStrategy {
         if (!(player.getCurrentTile () instanceof PropertyTile)) {
             throw new RuntimeException ( "Wrong tile type" );
         }
-        tile = (PropertyTile) player.getCurrentTile ();
+        PropertyTile tile = (PropertyTile) player.getCurrentTile ();
         TitleDeedCard card = tile.getTitleDeedCard ();
         if (!card.isOwned ()) {
-            ArrayList<TitleDeedCard> titleDeedCards;
+            ArrayList<TitleDeedCard> titleDeedCards = new ArrayList<>();
             titleDeedCards.add ( card );
             player.startAuction ( titleDeedCards );
         }

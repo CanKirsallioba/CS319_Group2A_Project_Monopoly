@@ -30,4 +30,16 @@ public interface Player extends Serializable {
     void setTokenType(String type);
     void setCurrentTileIndex( int index);
     void startAuction(ArrayList<TitleDeedCard> tDC);
+// methods should be added.
+    void payBailOutMoney();
+
+    void throwDoubleDice();
+
+    void useBailOutOfJailCard();
+
+    Tile getCurrentTile();
+
+    TitleDeedCard getSelectedTitleDeedCard();
+
+    Object getToken();
 }

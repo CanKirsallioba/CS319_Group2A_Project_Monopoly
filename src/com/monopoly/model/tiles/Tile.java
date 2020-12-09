@@ -5,12 +5,13 @@ import com.monopoly.model.tiles.actionStrategy.AbstractActionFactory;
 import com.monopoly.model.tiles.actionStrategy.ActionFactory;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public abstract class Tile implements Serializable {
     public String name = this.getClass().getSimpleName();
     protected AbstractActionFactory actionFactory;
     boolean hasCustomizedFunctionality;
-    Action[] actions;
+    ArrayList<Action> actions;
 
     // newly added
     int index;
@@ -21,12 +22,11 @@ public abstract class Tile implements Serializable {
         hasCustomizedFunctionality = false;
     }
 
-    public Action[] getPossibleActions(Player player) {
+    public ArrayList<Action> getPossibleActions(Player player) {
         if (hasCustomizedFunctionality) {
             return hook();
         } else {
             return actions;
-
         }
     }
 
@@ -38,5 +38,5 @@ public abstract class Tile implements Serializable {
         return index;
     }
 
-    protected abstract Action[] hook();
+    protected abstract ArrayList<Action> hook();
 }

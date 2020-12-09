@@ -1,5 +1,6 @@
 package com.monopoly.model.tiles;
 
+import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.actionStrategy.Command;
 
 public class Action {
@@ -7,7 +8,20 @@ public class Action {
     Command command;
     boolean isMandatory;
     boolean isActive;
+    Player player;
 
+    public void execute() {
+        command.execute(player);
+    }
+
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
     public String getName() {
         return name;
     }

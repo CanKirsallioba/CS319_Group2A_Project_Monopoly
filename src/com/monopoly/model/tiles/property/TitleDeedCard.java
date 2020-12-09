@@ -1,9 +1,9 @@
 package com.monopoly.model.tiles.property;
 
 import com.monopoly.model.player.Player;
-import com.monopoly.model.tiles.Action;
-
+import com.monopoly.model.tiles.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class TitleDeedCard implements Serializable {
     // TODO state si olacak
@@ -11,7 +11,7 @@ public class TitleDeedCard implements Serializable {
     // TODO Kendi state ini handle edecek hem owned hem de levellari icin state i olacak.
     // TODO reset methodu
     final double mortgageRemovalMultiplier = 1.1;
-    Action[] propertyActions;
+    ArrayList<Action> propertyActions;
 
     String propertyName;
     int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
@@ -26,11 +26,11 @@ public class TitleDeedCard implements Serializable {
     Player owner;
 
 
-    public Action[] getPropertyActions() {
+    public ArrayList<Action> getPropertyActions() {
         return propertyActions;
     }
 
-    public void setPropertyActions(Action[] propertyActions) {
+    public void setPropertyActions(ArrayList<Action> propertyActions) {
         this.propertyActions = propertyActions;
     }
 
@@ -303,7 +303,7 @@ public class TitleDeedCard implements Serializable {
     /**
      * @return the possible actions associated with the property
      */
-    public Action[] getPossibleActions() {
+    public ArrayList<Action> getPossibleActions() {
         return null;
     }
 

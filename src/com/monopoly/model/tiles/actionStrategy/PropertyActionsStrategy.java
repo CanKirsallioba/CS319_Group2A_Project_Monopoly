@@ -1,9 +1,8 @@
 package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
+import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
-
-import java.util.ArrayList;
 
 public class PropertyActionsStrategy extends ActionStrategy {
 
@@ -48,12 +47,8 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void upgradeProperty(Player player) {
-        PropertyTile tile;
-        if (player.getCurrentTile() instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile();
-        }
-        TitleDeedCard card = tile.getTitleDeedCard();
 
+        TitleDeedCard card = player.getSelectedTitleDeedCard();
         int upgradeLevel = card.getUpgradeLevel();
         int upgradeCost = card.getUpgradeCost();
 
@@ -68,12 +63,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void downgradeProperty(Player player) {
-        PropertyTile tile;
-        if (player.getCurrentTile() instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile();
-        }
-        TitleDeedCard card = tile.getTitleDeedCard();
-
+        TitleDeedCard card = player.getSelectedTitleDeedCard();
         int upgradeLevel = card.getUpgradeLevel();
 
         if (upgradeLevel > 0) {
@@ -87,12 +77,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void mortgageProperty(Player player){
-        PropertyTile tile;
-        if (player.getCurrentTile() instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile();
-        }
-        TitleDeedCard card = tile.getTitleDeedCard();
-
+        TitleDeedCard card = player.getSelectedTitleDeedCard();
         if(!card.isMortgaged()){
             int mortgageMoney = card.mortgage();
             player.changeBalance(mortgageMoney);
@@ -104,11 +89,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void removeMortgage(Player player){
-        PropertyTile tile;
-        if (player.getCurrentTile() instanceof PropertyTile) {
-            tile = (PropertyTile) player.getCurrentTile();
-        }
-        TitleDeedCard card = tile.getTitleDeedCard();
+        TitleDeedCard card = player.getSelectedTitleDeedCard();
 
         if(card.isMortgaged()){
             int mortgageRemovalFee = card.removeMortgage();

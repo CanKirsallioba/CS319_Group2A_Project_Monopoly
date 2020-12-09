@@ -1,7 +1,7 @@
 package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
-import com.monopoly.model.player.PlayerToken;
+import com.monopoly.model.tiles.TeleportTile;
 
 public class TeleportTileActionStrategy extends ActionStrategy {
 
@@ -11,7 +11,11 @@ public class TeleportTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button1Strategy(Player player) {
-        player.getToken().teleport(player.getCurrentTileIndex());
+        TeleportTile tile = (TeleportTile) player.getCurrentTile();
+        int index = tile.getIndex();
+        int counterpart = tile.getCounterpartIndex();
+        player.moveToken(counterpart-index + 1);
+
     }
 
     @Override

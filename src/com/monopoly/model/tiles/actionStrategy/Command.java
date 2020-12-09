@@ -1,5 +1,7 @@
 package com.monopoly.model.tiles.actionStrategy;
 
+import com.monopoly.model.player.Player;
+
 public interface Command {
-    void execute();
+    void execute(Player player);
 }
