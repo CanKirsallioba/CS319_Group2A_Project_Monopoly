@@ -1,10 +1,12 @@
 package com.monopoly.model.player;
 
+import com.monopoly.model.board.Board;
 import com.monopoly.model.tiles.Tile;
 
 public class PlayerToken {
     int currentTile;
     String type;
+    Board board;
 
     PlayerToken(String type) {
 
@@ -15,9 +17,11 @@ public class PlayerToken {
         this.type = type;
     }
 
+
     Tile move(int amount) { return null; }
 
     void goToJail() {
+        currentTile = board.getJailTileIndex();
     }
 
     void teleport(int teleportTileIndex) {

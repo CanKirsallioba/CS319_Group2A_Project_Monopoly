@@ -16,8 +16,9 @@ public abstract class AbstractPlayer implements Player {
 
     // newly added
     private int inJailFor;
-    private Tile currTile;
+    private int currTileInd;
     private PlayerToken playerToken;
+    private boolean isInJail;
 
     AbstractPlayer( ) {
 
@@ -59,7 +60,8 @@ public abstract class AbstractPlayer implements Player {
     }
 
 
-    /*  If player has waited in jail for less than 3 turns,
+    /*
+    *   If player has waited in jail for less than 3 turns,
     *   waits the player in the jail for 1 turn, without doing anything. Returns true in this case.
     *   Otherwise returns false.
     */
@@ -74,9 +76,8 @@ public abstract class AbstractPlayer implements Player {
         }
     }
 
-    /*  Sikintili
-    *
-    *
+    /*
+    * Problematic
     */
     @Override
     public void checkBailOut() {
@@ -104,17 +105,21 @@ public abstract class AbstractPlayer implements Player {
 
     /*
     * Calls the PlayerToken's move method to move the player on the board by specified amount.
-    * Updates currTile accordingly.
+    * Updates currTileInd accordingly.
     * @param amount is the number of tiles to go.
      */
     @Override
     public void moveToken(int amount) {
-        currTile = playerToken.move(amount);
+        currTileInd = playerToken.move(amount).getIndex();
     }
 
+    /*
+    * Sends player to jail by calling the PlayerToken's gotoJail method.
+     */
     @Override
     public void goToJail() {
-
+        isInJail = true;
+        playerToken.goToJail();
     }
 
     @Override

@@ -9,6 +9,8 @@ import java.util.Iterator;
 public class Board implements Iterable<Tile>, Serializable {
     ArrayList<Tile> tiles;
 
+    // newly added
+    int jailTileIndex;
 
     public ArrayList<Tile> getTiles() {
         return tiles;
@@ -21,5 +23,13 @@ public class Board implements Iterable<Tile>, Serializable {
     @Override
     public Iterator<Tile> iterator() {
         return tiles.iterator();
+    }
+
+    public int getJailTileIndex() {
+        return jailTileIndex;
+    }
+
+    public void setJailTileIndex(int jailTileIndex) {
+        this.jailTileIndex = jailTileIndex;
     }
 }

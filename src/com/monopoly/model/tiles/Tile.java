@@ -12,6 +12,9 @@ public abstract class Tile implements Serializable {
     boolean hasAdditionalFunctionality;
     Action[] actions;
 
+    // newly added
+    int index;
+
     Tile() {
         actionFactory = new ActionFactory();
         actions = actionFactory.getActionList(name);
@@ -25,6 +28,14 @@ public abstract class Tile implements Serializable {
             return actions;
 
         }
+    }
+
+    public void setIndex( int index){
+        this.index = index;
+    }
+
+    public int getIndex(){
+        return index;
     }
 
     protected abstract Action[] hook();
