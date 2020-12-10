@@ -11,6 +11,7 @@ public class PropertyTile extends Tile {
 
     @Override
     protected Action[] hook() {
+
         return titleDeedCard.getPossibleActions();
     }
 

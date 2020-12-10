@@ -24,6 +24,7 @@ public abstract class Tile implements Serializable {
 
     public ArrayList<Action> getPossibleActions(Player player) {
         if (hasCustomizedFunctionality) {
+//            player.setSelectedTitleDeed(titleDeed)
             return hook();
         } else {
             return actions;

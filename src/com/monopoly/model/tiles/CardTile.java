@@ -1,10 +1,12 @@
 package com.monopoly.model.tiles;
 
+import java.util.ArrayList;
+
 public class CardTile extends Tile {
 
     @Override
-    protected Action[] hook() {
-        return new Action[0];
+    protected ArrayList<Action> hook() {
+        return null;
     }
 
 }

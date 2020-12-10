@@ -1,5 +1,7 @@
 package com.monopoly.model.player;
 
+import com.monopoly.model.AuctionModel;
+import com.monopoly.model.TradeModel;
 import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;
@@ -28,6 +30,10 @@ public abstract class AbstractPlayer implements Player {
     static final int BAIL_OUT_OF_JAIL_USING_CARD = 100;
     static final int BAIL_OUT_OF_JAIL_USING_MONEY = 101;
     static final int BAIL_OUT_OF_JAIL_USING_DICE  = 102;
+    AuctionModel auctionModel;
+    TradeModel tradeModel;
+    TitleDeedCard selectedTitleDeed;
+    // TODO add drawn card property.
 
 
     AbstractPlayer( ) {
