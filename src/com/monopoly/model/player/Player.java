@@ -44,4 +44,6 @@ public interface Player extends Serializable {
     PlayerToken getPlayerToken();
 
     void setDrawnCard(Card card);
+
+    void setSelectedTitleDeedCard(TitleDeedCard titleDeedCard);
 }

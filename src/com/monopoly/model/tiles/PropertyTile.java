@@ -12,12 +12,8 @@ public class PropertyTile extends Tile {
 
     @Override
     protected ArrayList<Action> hook(Player player) {
-        if (getTitleDeedCard().isOwned()) {
-            setActive(actions, "Buy Property", false);
-        } else {
-            setActive(actions, "Pay Rent", false);
-        }
-        return actions;
+        player.setSelectedTitleDeedCard(getTitleDeedCard());
+        return getTitleDeedCard().getPropertyActions();
     }
 
 

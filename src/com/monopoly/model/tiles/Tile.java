@@ -27,7 +27,6 @@ public abstract class Tile implements Serializable {
         ArrayList<Action> actionsToBeReturned = hook(player);
         for(Action action : actionsToBeReturned) {
             action.setPlayer(player);
-            action.setActive(true);
         }
         return actionsToBeReturned;
     }
