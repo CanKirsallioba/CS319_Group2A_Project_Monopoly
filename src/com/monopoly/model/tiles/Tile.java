@@ -4,6 +4,7 @@ import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.actionStrategy.AbstractActionFactory;
 import com.monopoly.model.tiles.actionStrategy.ActionFactory;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -23,12 +24,12 @@ public abstract class Tile implements Serializable {
     }
 
     public ArrayList<Action> getPossibleActions(Player player) {
-        if (hasCustomizedFunctionality) {
-//            player.setSelectedTitleDeed(titleDeed)
-            return hook();
-        } else {
-            return actions;
+        ArrayList<Action> actionsToBeReturned = hook(player);
+        for(Action action : actionsToBeReturned) {
+            action.setPlayer(player);
+            action.setActive(true);
         }
+        return actionsToBeReturned;
     }
 
     public void setIndex( int index){
@@ -39,5 +40,12 @@ public abstract class Tile implements Serializable {
         return index;
     }
 
-    protected abstract ArrayList<Action> hook();
+    public void setActive(ArrayList<Action> actionList, String actionName, boolean active) {
+        for(Action action: actionList) {
+            if (action.getName().equals(actionName)) {
+                action.setActive(active);
+            }
+        }
+    }
+    protected abstract ArrayList<Action> hook(Player player);
 }

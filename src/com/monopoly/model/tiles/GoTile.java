@@ -1,8 +1,12 @@
 package com.monopoly.model.tiles;
 
+import com.monopoly.model.player.Player;
+
+import java.util.ArrayList;
+
 public class GoTile extends Tile {
     @Override
-    protected Action[] hook() {
-        return new Action[0];
+    protected ArrayList<Action> hook(Player player) {
+        return actions;
     }
 }

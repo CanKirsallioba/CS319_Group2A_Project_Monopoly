@@ -3,7 +3,9 @@ package com.monopoly.model.tiles;
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.actionStrategy.Command;
 
-public class Action {
+import java.io.Serializable;
+
+public class Action implements Serializable {
     String name;
     Command command;
     boolean isMandatory;

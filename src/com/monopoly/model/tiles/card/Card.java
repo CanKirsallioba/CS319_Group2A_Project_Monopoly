@@ -1,5 +1,7 @@
 package com.monopoly.model.tiles.card;
+
 import com.monopoly.model.tiles.*;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

@@ -1,15 +1,13 @@
 package com.monopoly.model.tiles;
 
+import com.monopoly.model.player.Player;
+
 import java.util.ArrayList;
 
 public class TeleportTile extends Tile {
 
     private int counterpartIndex;
 
-    @Override
-    protected ArrayList<Action> hook() {
-        return null;
-    }
 
     public int getCounterpartIndex() {
         return counterpartIndex;
@@ -17,5 +15,10 @@ public class TeleportTile extends Tile {
 
     public void setCounterpartIndex(int counterpartIndex) {
         this.counterpartIndex = counterpartIndex;
+    }
+
+    @Override
+    protected ArrayList<Action> hook(Player player) {
+        return actions;
     }
 }
