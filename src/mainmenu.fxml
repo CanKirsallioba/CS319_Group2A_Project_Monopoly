@@ -11,7 +11,7 @@
       <Button layoutX="1500.0" layoutY="250.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Load Game" />
       <Button layoutX="1500.0" layoutY="550.0" mnemonicParsing="false" onAction="#goToHowToPlayScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="How To Play" />
       <Button layoutX="1500.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToMapBuilderScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Board Builder" />
-      <Button layoutX="1500.0" layoutY="650.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Settings" />
+      <Button layoutX="1500.0" layoutY="650.0" mnemonicParsing="false" onAction="#goToSettingsScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Settings" />
       <Button fx:id="quitButton" layoutX="1500.0" layoutY="750.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="75.0" prefWidth="300.0" stylesheets="@MainMenuStyle.css" text="Exit Game" />
       <Text layoutX="72.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="215.7421875" />
       <Text fill="#ff784a" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly" textAlignment="CENTER" wrappingWidth="1920.0">

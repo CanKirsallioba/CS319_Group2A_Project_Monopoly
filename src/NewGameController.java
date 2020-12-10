@@ -25,6 +25,7 @@ public class NewGameController implements Initializable {
     private Spinner<Integer> botSpinner;
     @FXML
     private Spinner<Integer> humanSpinner;
+
     @FXML
     private int humanPlayers = 1;
     @FXML
@@ -139,7 +140,22 @@ public class NewGameController implements Initializable {
 
     @FXML
     //where we give/save these settings to boardconfig object (model)
-    private void handleStartGame(ActionEvent event) {
+    private void handleStartGame(ActionEvent event) throws IOException {
         numOfPlayers = humanPlayers + botPlayers;
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        // Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
+        window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
+        window.show();
+
+
     }
 }

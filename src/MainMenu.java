@@ -17,71 +17,45 @@ public class MainMenu {
 
     @FXML
     public void goToCreditsScreen( ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Credits.fxml"));
-
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        // Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("pane");
-        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
-
-        window.setScene(tableViewScene);
-
-        window.show();
+        changeScreen(event, "Credits.fxml");
     }
 
     @FXML
     public void goToHowToPlayScreen( ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("HowToPlay.fxml"));
-
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        // Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-
-
-        tableViewParent.setId("pane");
-        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
-
-        window.show();
+        changeScreen(event, "HowToPlay.fxml");
     }
 
     public void goToNewGameScreen( ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("newgame.fxml"));
-
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        // Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("pane");
-        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
-
-        window.setScene(tableViewScene);
-
-        window.show();
+        changeScreen(event, "newgame.fxml");
     }
 
 
     public void goToMapBuilderScreen( ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("boardbuilder.fxml"));
+        changeScreen(event, "boardBuilder.fxml");
+    }
 
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        // Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        tableViewParent.setId("pane");
-        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
-
-        window.setScene(tableViewScene);
-
-        window.show();
+    public void goToSettingsScreen(ActionEvent event) throws IOException {
+        changeScreen(event, "settings.fxml");
     }
 
     @FXML
     private void quitGame(){
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
+    }
+
+    private void changeScreen(ActionEvent event, String fxmlFile) throws IOException{
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource(fxmlFile));
+
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        // Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        tableViewParent.setId("pane");
+        tableViewScene.getStylesheets().addAll(this.getClass().getResource("CreditsStyle.css").toExternalForm());
+
+        window.setScene(tableViewScene);
+
+        window.show();
     }
 }
