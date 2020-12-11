@@ -2,19 +2,71 @@ package com.monopoly.model.player;
 
 import com.monopoly.model.AuctionModel;
 import com.monopoly.model.TradeModel;
+import com.monopoly.model.board.Dice;
 import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public abstract class AbstractPlayer implements Player {
+public abstract class AbstractPlayer extends Observable implements Player  {
     private int taxOption;
     private ArrayList<TitleDeedCard> titleDeeds;
     private ArrayList<Card> cards;
     private int balance;
     private boolean bankrupt;
     private int consecutiveDoubleCount;
+
+    @Override
+    public Dice rollDice() {
+        return null;
+    }
+
+    @Override
+    public void payBailOutMoney() {
+
+    }
+
+    @Override
+    public void throwDoubleDice() {
+
+    }
+
+    @Override
+    public void useBailOutOfJailCard() {
+
+    }
+
+    @Override
+    public Tile getCurrentTile() {
+        return null;
+    }
+
+    @Override
+    public TitleDeedCard getSelectedTitleDeedCard() {
+        return null;
+    }
+
+    @Override
+    public PlayerToken getPlayerToken() {
+        return null;
+    }
+
+    @Override
+    public void setDrawnCard(Card card) {
+
+    }
+
+    @Override
+    public void getDrawnCard(Card card) {
+
+    }
+
+    @Override
+    public void setSelectedTitleDeedCard(TitleDeedCard titleDeedCard) {
+
+    }
 
     // newly added
     private int inJailFor;
@@ -33,7 +85,7 @@ public abstract class AbstractPlayer implements Player {
     AuctionModel auctionModel;
     TradeModel tradeModel;
     TitleDeedCard selectedTitleDeed;
-    // TODO add drawn card property.
+    Card drawnCard;
 
 
     AbstractPlayer( ) {

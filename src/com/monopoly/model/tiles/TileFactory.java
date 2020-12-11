@@ -1,9 +1,9 @@
 package com.monopoly.model.tiles;
 
-import com.monopoly.model.ConfigPlaceHolder;
+import com.monopoly.model.ConfigAdapter;
 
 public class TileFactory extends AbstractTileFactory {
-    TileFactory(ConfigPlaceHolder configPlaceHolder) {
+    TileFactory(ConfigAdapter configPlaceHolder) {
 
     }
 

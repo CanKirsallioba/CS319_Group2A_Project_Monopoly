@@ -1,11 +1,12 @@
 package com.monopoly.model.session;
 
 import com.monopoly.model.BoardConfiguration;
-import com.monopoly.model.ConfigPlaceHolder;
+import com.monopoly.model.ConfigAdapter;
+import jdk.nashorn.internal.parser.JSONParser;
 
 public class GameSessionBuilder {
     BoardConfiguration boardConfiguration;
-    ConfigPlaceHolder configPlaceHolder;
+    ConfigAdapter configPlaceHolder;
 
     public BoardConfiguration getBoardConfiguration() {
         return boardConfiguration;
@@ -15,15 +16,15 @@ public class GameSessionBuilder {
         this.boardConfiguration = boardConfiguration;
     }
 
-    public ConfigPlaceHolder getConfigPlaceHolder() {
+    public ConfigAdapter getConfigPlaceHolder() {
         return configPlaceHolder;
     }
 
-    public void setConfigPlaceHolder(ConfigPlaceHolder configPlaceHolder) {
+    public void setConfigPlaceHolder(ConfigAdapter configPlaceHolder) {
         this.configPlaceHolder = configPlaceHolder;
     }
 
-    GameSessionBuilder(BoardConfiguration boardConfiguration, ConfigPlaceHolder configPlaceHolder) {
+    GameSessionBuilder(BoardConfiguration boardConfiguration, ConfigAdapter configPlaceHolder) {
 
     }
     public void build() {

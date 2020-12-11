@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Board implements Iterable<Tile>, Serializable {
+    String boardName;
+    int salary;
     ArrayList<Tile> tiles;
 
     // newly added

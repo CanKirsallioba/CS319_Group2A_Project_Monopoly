@@ -1,7 +1,7 @@
 package com.monopoly.model.player;
 
 import com.monopoly.model.BoardConfiguration;
-import com.monopoly.model.ConfigPlaceHolder;
+import com.monopoly.model.ConfigAdapter;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class PlayerFactory extends AbstractPlayerFactory {
     }
 
     @Override
-    public ArrayList<Player> get(BoardConfiguration boardConfiguration, ConfigPlaceHolder configPlaceHolder) {
+    public ArrayList<Player> get(BoardConfiguration boardConfiguration, ConfigAdapter configPlaceHolder) {
         return null;
     }
 
