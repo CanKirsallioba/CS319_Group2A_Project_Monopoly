@@ -1,0 +1,36 @@
+#sceneBackground {
+    -fx-background-color: #00B9A2;
+}
+
+#gameBoard {
+    -fx-background-color: #9BE1C7;
+}
+
+.card {
+    -fx-background-color: #FFD03A;
+}
+
+.label {
+    -fx-font-size: 18px;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.menuButtons {
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-size: 16px;
+    -fx-font-family: SansSerif;
+    -fx-background-color: #28007f;
+}
+
+.cardButtons {
+    -fx-font-family: SansSerif;
+    -fx-border-radius: 10;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+    -fx-background-color: #4CB44B;
+    -fx-text-fill: #FFF1FF;
+}
