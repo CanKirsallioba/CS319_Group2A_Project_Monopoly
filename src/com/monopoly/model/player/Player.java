@@ -11,26 +11,46 @@ import java.util.ArrayList;
 
 public interface Player extends Serializable {
     Dice rollDice();
+
     boolean waitInJail();
+
     void checkBailOut();
+
     void addBailOutFromJailCard(Card card);
+
     void removeBailOutFromJailCard();
+
     void moveToken(int amount);
+
     void goToJail();
+
     void addTitleDeedCard(TitleDeedCard card);
+
     void removeTitleDeedCard(TitleDeedCard card);
+
     void changeBalance(int amount);
+
     void declareBankruptcy();
+
     int getCurrentTileIndex();
+
     int getTaxOption();
-    void setTaxOption( int selectedOption);
+
+    void setTaxOption(int selectedOption);
+
     int getBalance();
+
     int getConsecutiveDoubleCount();
+
     String getTokenType();
+
     void setTokenType(String type);
-    void setCurrentTileIndex( int index);
+
+    void setCurrentTileIndex(int index);
+
     void startAuction(ArrayList<TitleDeedCard> tDC);
-// methods should be added.
+
+    // methods should be added.
     void payBailOutMoney();
 
     void throwDoubleDice();
@@ -44,6 +64,8 @@ public interface Player extends Serializable {
     PlayerToken getPlayerToken();
 
     void setDrawnCard(Card card);
+
+    void getDrawnCard(Card card);
 
     void setSelectedTitleDeedCard(TitleDeedCard titleDeedCard);
 }

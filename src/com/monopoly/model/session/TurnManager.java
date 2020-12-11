@@ -1,5 +1,6 @@
 package com.monopoly.model.session;
 
+import com.monopoly.model.board.Dice;
 import com.monopoly.model.player.Player;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class TurnManager implements Serializable {
     ArrayList<Player> players;
     int currentPlayerIndex;
-
+    Dice dice;
     TurnManager() {
 
     }
@@ -47,5 +48,13 @@ public class TurnManager implements Serializable {
     public TurnManager(ArrayList<Player> players, int currentPlayerIndex) {
         this.players = players;
         this.currentPlayerIndex = currentPlayerIndex;
+    }
+
+    public Dice getDice() {
+        return this.dice;
+    }
+
+    public void setDice(Dice dice) {
+        this.dice = dice;
     }
 }

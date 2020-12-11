@@ -3,12 +3,20 @@ package com.monopoly.model.session;
 import com.monopoly.model.BoardConfiguration;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class GameSessionManager {
     private GameSession game;
     private Path fileLocation;
     private String fileName;
-    GameSessionManager() {}
+
+    public GameSessionManager(GameSession game, Path fileLocation, String fileName) {
+        this.game = game;
+        this.fileLocation = fileLocation;
+        this.fileName = fileName;
+    }
+
+    private String selectedGameSessionName;
 
     public GameSession getGame() {
         return game;
@@ -38,17 +46,19 @@ public class GameSessionManager {
 
     }
 
-    void saveGame() {
+    void saveGame(GameSession gameSession) {
 
     }
 
-    public GameSessionManager(GameSession game, Path fileLocation, String fileName) {
-        this.game = game;
-        this.fileLocation = fileLocation;
-        this.fileName = fileName;
+    public String getSelectedGameSessionName() {
+        return selectedGameSessionName;
     }
 
-    String[] getSavedGameSession() {
+    public void setSelectedGameSessionName(String selectedGameSessionName) {
+        this.selectedGameSessionName = selectedGameSessionName;
+    }
+
+    ArrayList<String> getSavedGameSession() {
         return null;
     }
 

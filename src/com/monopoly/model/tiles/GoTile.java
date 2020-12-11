@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class GoTile extends Tile {
     @Override
-    protected ArrayList<Action> hook(Player player) {
+    public ArrayList<GameAction> hook(Player player) {
         return actions;
     }
 }

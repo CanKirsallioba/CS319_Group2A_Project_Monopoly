@@ -1,10 +1,9 @@
 package com.monopoly.model.tiles.actionStrategy;
 
-import com.monopoly.model.tiles.*;
+import com.monopoly.model.tiles.GameAction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractActionFactory {
-    public abstract ArrayList<Action> getActionList(String className);
+    public abstract ArrayList<GameAction> getActionList(String className);
 }

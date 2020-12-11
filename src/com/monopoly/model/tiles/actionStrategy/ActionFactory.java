@@ -1,9 +1,8 @@
 package com.monopoly.model.tiles.actionStrategy;
 
-import com.monopoly.model.tiles.*;
+import com.monopoly.model.tiles.GameAction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ActionFactory extends AbstractActionFactory {
     public static ActionStrategy createStrategy(String className) {
@@ -11,7 +10,7 @@ public class ActionFactory extends AbstractActionFactory {
     }
 
     @Override
-    public ArrayList<Action> getActionList(String className) {
+    public ArrayList<GameAction> getActionList(String className) {
         return null;
     }
 }

@@ -2,6 +2,7 @@ package com.monopoly.model.tiles;
 
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.property.TitleDeedCard;
+
 import java.util.ArrayList;
 
 public class PropertyTile extends Tile {
@@ -11,7 +12,7 @@ public class PropertyTile extends Tile {
     }
 
     @Override
-    protected ArrayList<Action> hook(Player player) {
+    public ArrayList<GameAction> hook(Player player) {
         player.setSelectedTitleDeedCard(getTitleDeedCard());
         return getTitleDeedCard().getPropertyActions();
     }

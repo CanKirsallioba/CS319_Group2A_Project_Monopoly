@@ -13,7 +13,7 @@ public class CardTile extends Tile {
 
 
     @Override
-    protected ArrayList<Action> hook(Player player) {
+    public ArrayList<GameAction> hook(Player player) {
         Card card = cardDeck.drawCard();
         player.setDrawnCard(card);
         return card.getActions();

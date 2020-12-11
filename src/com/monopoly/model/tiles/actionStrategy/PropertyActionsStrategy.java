@@ -1,7 +1,6 @@
 package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
-import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
 public class PropertyActionsStrategy extends ActionStrategy {

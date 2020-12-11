@@ -1,7 +1,8 @@
 package com.monopoly.model.tiles.property;
 
 import com.monopoly.model.player.Player;
-import com.monopoly.model.tiles.*;
+import com.monopoly.model.tiles.GameAction;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public class TitleDeedCard implements Serializable {
     // TODO Kendi state ini handle edecek hem owned hem de levellari icin state i olacak.
     // TODO reset methodu
     final double mortgageRemovalMultiplier = 1.1;
-    ArrayList<Action> propertyActions;
+    ArrayList<GameAction> propertyActions;
 
     String propertyName;
     int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
@@ -26,11 +27,11 @@ public class TitleDeedCard implements Serializable {
     Player owner;
 
 
-    public ArrayList<Action> getPropertyActions() {
+    public ArrayList<GameAction> getPropertyActions() {
         return propertyActions;
     }
 
-    public void setPropertyActions(ArrayList<Action> propertyActions) {
+    public void setPropertyActions(ArrayList<GameAction> propertyActions) {
         this.propertyActions = propertyActions;
     }
 
@@ -40,7 +41,7 @@ public class TitleDeedCard implements Serializable {
      * @return true if deactivation is successful
      */
     public boolean deactivateAction(String actionName){
-        for(Action action: propertyActions){
+        for(GameAction action: propertyActions){
             if(action.getName().equals(actionName)) {
                 action.setActive(false);
                 return true;
@@ -55,7 +56,7 @@ public class TitleDeedCard implements Serializable {
      * @return true if activation is successful
      */
     public boolean activateAction(String actionName){
-        for(Action action: propertyActions){
+        for(GameAction action: propertyActions){
             if(action.getName().equals(actionName)) {
                 action.setActive(true);
                 return true;
@@ -303,7 +304,7 @@ public class TitleDeedCard implements Serializable {
     /**
      * @return the possible actions associated with the property
      */
-    public ArrayList<Action> getPossibleActions() {
+    public ArrayList<GameAction> getPossibleActions() {
         return null;
     }
 

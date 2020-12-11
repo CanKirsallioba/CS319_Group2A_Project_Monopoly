@@ -5,7 +5,7 @@ import com.monopoly.model.tiles.actionStrategy.Command;
 
 import java.io.Serializable;
 
-public class Action implements Serializable {
+public class GameAction implements Serializable {
     String name;
     Command command;
     boolean isMandatory;
@@ -56,6 +56,6 @@ public class Action implements Serializable {
         isActive = active;
     }
 
-    Action(String name, Command command, boolean mandatory) {
+    GameAction(String name, Command command, boolean mandatory) {
     }
 }

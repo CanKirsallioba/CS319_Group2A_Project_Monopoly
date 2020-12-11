@@ -2,7 +2,6 @@ package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.PropertyTile;
-import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
 import java.util.ArrayList;
