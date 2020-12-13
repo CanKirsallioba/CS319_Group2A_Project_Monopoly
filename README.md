@@ -11,6 +11,8 @@
 # 
 
 ## Changelog 
+## 13.12.2020: [Iteration 2 Design Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/CS319_G2A_Iteration2_DesignReport.pdf)
+## 13.12.2020: [Iteration 2 Project Analysis Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/CS319_G2A_Iteration2_AnalysisReport.pdf)
 ## 29.11.2020: [Iteration 1 Design Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/CS319_G2A_Iteration1_DesignReport.pdf)
 ## 01.11.2020: [Iteration 1 Project Analysis Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/Iteration%201%20-%20Project%20Analysis%20Report.pdf)
 
