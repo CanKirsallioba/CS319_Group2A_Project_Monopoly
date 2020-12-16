@@ -9,7 +9,6 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button1Strategy(Player player) {
-        // TODO implement payTax() method in Player class
         player.setTaxOption ( 0 );
     }
 
@@ -28,7 +27,8 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-
+        // TODO implement payTax() method in Player class
+        player.payTax();
     }
 
     @Override

@@ -5,25 +5,18 @@ import com.monopoly.model.tiles.GameAction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Card implements Serializable {
     String instruction;
-    ArrayList<GameAction> actions;
+    HashMap<String, Integer> cardDetails;
 
     String type;
 
-    public Card(ArrayList<GameAction> actions, String instruction, String type) {
-        this.actions = actions;
+    public Card(String instruction, String type, HashMap<String, Integer> cardDetails) {
         this.instruction = instruction;
         this.type = type;
-    }
-
-    public ArrayList<com.monopoly.model.tiles.GameAction> getActions() {
-        return actions;
-    }
-
-    public void setActions(ArrayList<GameAction> actions) {
-        this.actions = actions;
+        this.cardDetails = cardDetails;
     }
 
     public String getInstruction() {
@@ -40,5 +33,13 @@ public class Card implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public HashMap<String, Integer> getCardDetails() {
+        return cardDetails;
+    }
+
+    public void setCardDetails(HashMap<String, Integer> cardDetails) {
+        this.cardDetails = cardDetails;
     }
 }
