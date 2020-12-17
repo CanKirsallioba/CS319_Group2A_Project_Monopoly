@@ -5,24 +5,23 @@ import com.monopoly.model.tiles.Tile;
 
 public class PlayerToken {
     int currentTileIndex;
-    Tile currTileObj; // newly added
+    Tile currentTile;
     String type;
-
-    // newly added
-    Board board; // POSSIBLY SUBJECT TO CHANGE
+    Board board;
     int lastDiceRoll;
 
     /**
     * Main constructor.
     * @param type is the type of the token
-    * @param b is the board of the game
+    * @param board is the board of the game
      */
-    PlayerToken(String type, Board b) {
-        board = b; // pass-by-reference ?
-
+    PlayerToken(String type, Board board) {
+        this.board = board; // pass-by-reference ?
         this.type = type;
+
+        // put the token to go tile in the beginning
         currentTileIndex = 0;
-        currTileObj = board.getTiles().get(0);
+        currentTile = board.getTiles().get(0);
     }
 
     /**
@@ -32,11 +31,10 @@ public class PlayerToken {
      */
     Tile move(int amount) {
         currentTileIndex = (currentTileIndex + amount) % 40; // 40 possibly needs to be replaced with getTileCount etc.
-        currTileObj = board.getTiles().get(currentTileIndex);
+        currentTile = board.getTiles().get(currentTileIndex);
         lastDiceRoll = amount;
-        return currTileObj;
+        return currentTile;
     }
-
 
     /**
      * Sends the token to jail.
@@ -45,14 +43,13 @@ public class PlayerToken {
         currentTileIndex = board.getJailTileIndex();
     }
 
-
     /**
      * Teleports the player to the pair's second teleport tile.
      * @param teleportTileIndex is the index of the tile to teleport to
      */
     void teleport(int teleportTileIndex) {
         currentTileIndex = teleportTileIndex; // 40 possibly needs to be replaced with getTileCount etc.
-        currTileObj = board.getTiles().get(currentTileIndex);
+        currentTile = board.getTiles().get(currentTileIndex);
     }
 
 
@@ -64,10 +61,17 @@ public class PlayerToken {
     }
 
     /**
+     * @param type is the new type
+     */
+    void setType( String type){
+        type = type;
+    }
+
+    /**
      * @return the currTileObj
      */
     Tile getCurrentTile() {
-        return currTileObj;
+        return currentTile;
     }
 
     /**
@@ -78,7 +82,13 @@ public class PlayerToken {
         return currentTileIndex < lastDiceRoll;
     }
 
-    void setType( String t){
-        type = t;
+    // newly added
+    public int getLastDiceRoll() {
+        return lastDiceRoll;
     }
+
+    public void setLastDiceRoll(int lastDiceRoll) {
+        this.lastDiceRoll = lastDiceRoll;
+    }
+
 }
