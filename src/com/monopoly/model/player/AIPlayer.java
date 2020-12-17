@@ -9,11 +9,22 @@ public class AIPlayer extends AbstractPlayer {
         this.aiStrategy = aiStrategy;
     }
 
+    void makeAndExecutePropertyDecision(){
+        aiStrategy.makeAndExecutePropertyDecision( this);
+    }
+
+    void makeAndExecuteTradeDecision(){
+        aiStrategy.makeAndExecuteTradeDecision( this);
+    }
+
+    void makeAndExecuteAuctionDecision(){
+        aiStrategy.makeAndExecuteAuctionDecision( this);
+    }
+
 
 
     @Override
     public void playTurn(){
-        AIDecision a;
 
         // roll dice
         // maybe jail
@@ -23,14 +34,9 @@ public class AIPlayer extends AbstractPlayer {
         // get possible actions
 
         // decision making
-        a =     BUY_PROPERTY;
 
 
         // decision taken
-        if( a == BUY_PROPERTY){
-             ArrayList<GameAction> x = currentTile.getPossibleActions(this);
-
-        }
 
     }
 

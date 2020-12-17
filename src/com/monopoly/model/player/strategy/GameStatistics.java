@@ -11,6 +11,16 @@ public class GameStatistics {
     Board board;
     ArrayList<Player> players;
 
+    GameStatistics(){
+        board = null;
+        players = null;
+    }
+
+    GameStatistics( Board board, ArrayList<Player> players){
+        this.board = board;
+        this.players = players;
+    }
+
     public int calculateAverageRent(){
         int numberOfPropertyTiles = 0;
         int totalRentValue = 0;
@@ -99,5 +109,22 @@ public class GameStatistics {
         }
         return netWorthValue;
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
 
 }

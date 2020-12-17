@@ -78,7 +78,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         // if bail out choice is by money && player has more money than the fine
         } else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {
-            changeBalance (bailOutCost);
+            payBailOutMoney();
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
@@ -230,7 +230,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     @Override
     public void payBailOutMoney() {
-        changeBalance(playerToken.getBoard().getBoardSalary() / 4);
+        changeBalance(-(playerToken.getBoard().getBoardSalary() / 4));
     }
 
     // getter and setter methods in the design

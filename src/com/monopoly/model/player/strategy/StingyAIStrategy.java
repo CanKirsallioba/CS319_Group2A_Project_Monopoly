@@ -1,4 +1,21 @@
 package com.monopoly.model.player.strategy;
 
-public class StingyAIStrategy {
+import com.monopoly.model.player.AIPlayer;
+
+public class StingyAIStrategy extends AIStrategy {
+    @Override
+    public void makeAndExecutePropertyDecision( AIPlayer player){
+
+    }
+
+    @Override
+    public void makeAndExecuteTradeDecision( AIPlayer player){
+
+    }
+
+    @Override
+    public void makeAndExecuteAuctionDecision( AIPlayer player){
+
+    }
+
 }

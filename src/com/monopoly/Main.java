@@ -1,6 +1,5 @@
 package com.monopoly;
 
-import com.monopoly.model.board.Dice;
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.Tile;
