@@ -2,7 +2,6 @@ package com.monopoly.model.player;
 
 import com.monopoly.model.AuctionModel;
 import com.monopoly.model.TradeModel;
-import com.monopoly.model.board.Dice;
 import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;
@@ -17,22 +16,19 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     private int balance;
     private boolean bankrupt;
     private int consecutiveDoubleCount;
-
-    // newly added
-    private int inJailFor;
+    private int turnsSpentInJail;
     private int currentTileIndex;
     private PlayerToken playerToken;
     private boolean isInJail;
     int totalWorth;
     int liquidTotalWorth;
-
-    // possibly subject to change
     BailOutChoice getOutOfJailChoice;
     boolean canBailOut;
     AuctionModel auctionModel;
     TradeModel tradeModel;
     TitleDeedCard selectedTitleDeed;
     Card drawnCard;
+    Dice playersDice;
 
     // attributes not in the design
     Tile currentTile;
@@ -46,7 +42,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     public abstract void playTurn();
 
     // not getter-setter methods in the design report
-    //TODO -- needs code review
     /**
      *   If player has waited in jail for less than 3 turns,
      *   waits the player in the jail for 1 turn, without doing anything. Returns true in this case.
@@ -54,8 +49,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public boolean waitInJail() {
-        if( inJailFor < 3){
-            inJailFor++;
+        if( turnsSpentInJail < 3){
+            turnsSpentInJail++;
             return true;
         }
         else{
@@ -63,44 +58,47 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         }
     }
 
-    //TODO -- needs code review
+    //TODO -- bailOutCost için initializer yazılmalı
     /**
      * if player bails out, bails him out using selected method
      */
     @Override
     public void checkBailOut() {
-        int bailOutCost = 0; // SUBJECT TO CHANGE
+        int bailOutCost = 0; // TODO
 
-        // check if player bails out
-        // apply the selected bail out procedure
-        if (canBailOut) {
-            if( getOutOfJailChoice == BailOutChoice.BAIL_OUT_CARD){
-                removeBailOutFromJailCard();
+        // check if player can bail out
+        // if he/she can, apply the selected bail out procedure
 
+        // if bail out choice is by card && player has at least 1 bailout card in his inventory
+        if (getOutOfJailChoice == BailOutChoice.BAIL_OUT_CARD && cards.size() > 0) {
+            removeBailOutFromJailCard ();
+
+            isInJail = false;
+            turnsSpentInJail = 0;
+            return;
+
+        // if bail out choice is by money && player has more money than the fine
+        } else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {
+            changeBalance (bailOutCost);
+
+            isInJail = false;
+            turnsSpentInJail = 0;
+            return;
+
+        // if bail out choice is by dice && player threw a double dice
+        } else if (getOutOfJailChoice == BailOutChoice.DOUBLE_DICE) {
+            rollDice();
+
+            if( consecutiveDoubleCount == 1){
                 isInJail = false;
-                inJailFor = 0;
-                canBailOut = false;
-            }
-            else if( getOutOfJailChoice == BailOutChoice.MONEY){
-                changeBalance( bailOutCost);
-
-                isInJail = false;
-                inJailFor = 0;
-                canBailOut = false;
-            }
-            else if( getOutOfJailChoice == BailOutChoice.DOUBLE_DICE){
-                if(consecutiveDoubleCount == 1){
-
-                    isInJail = false;
-                    inJailFor = 0;
-                    canBailOut = false;
-                }
+                turnsSpentInJail = 0;
+                return;
             }
         }
 
         // if cannot bail out with choice at turn 3
         // force player to bail out or declare bankruptcy
-        if( !waitInJail()){ // inJailFor is updated in waitInJail
+        if( !waitInJail()){ // turnsSpentInJail is updated in waitInJail
             if( liquidTotalWorth < bailOutCost){
                 // force bankruptcy
                 declareBankruptcy();
@@ -109,7 +107,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 changeBalance( bailOutCost);
 
                 isInJail = false;
-                inJailFor = 0;
+                turnsSpentInJail = 0;
                 canBailOut = false;
             }
         }
@@ -121,7 +119,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public void goToJail() {
-        // set in jail to true
+
+        consecutiveDoubleCount = 0;
         isInJail = true;
 
         // send token to jail
@@ -150,7 +149,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         bankrupt = true;
     }
 
-    // TODO finalize design & missing methods
+    // TODO ADD MONEY TO PLAYER'S ACCOUNT IF PLAYER PASSED GO IN THE LAST MOVE
     /**
      * Calls the PlayerToken's move method to move the player on the board by specified amount.
      * Updates currTileInd accordingly.
@@ -161,17 +160,20 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         // update player's tile accordingly
         currentTile = playerToken.move(amount); // also move player's token
         currentTileIndex = currentTile.getIndex();
+
+        if (playerToken.passedGoInTheLastMove()) {
+            // TODO
+        }
     }
 
-    //TODO
     @Override
     public void startAuction(ArrayList<TitleDeedCard> titleDeeds){
-
+        auctionModel.startAuction(titleDeeds);
     }
 
-    // TODO
+    @Override
     public void startTrade( Player otherPlayer){
-
+        tradeModel.startTrade(this, otherPlayer);
     }
 
     /**
@@ -209,18 +211,27 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         titleDeeds.remove( card);
     }
 
-    // non getter-setter methods that were added by initiative
-
-    // in design, is in Player interface but not in abstract player
-    // also, do not think this method belongs to the player
-    // since rollDice is also a method of the Dice class,
-    // method or board should keep an instance of Dice
+    /**
+     * Sets getOutOfJailChoice to the parameter. Then calls checkBailOut to initiate further actions regarding jail.
+     */
     @Override
-    public Dice rollDice() {
-        return null;
+    public void setGetOutOfJailChoice(BailOutChoice getOutOfJailChoice) {
+        this.getOutOfJailChoice = getOutOfJailChoice;
+        checkBailOut();
     }
 
-    // in design, is in Player interface but not in abstract player
+    @Override
+    public Dice rollDice() {
+        playersDice.rollDice();
+
+        if(playersDice.getDice1() == playersDice.getDice2()){
+            setConsecutiveDoubleCount( getConsecutiveDoubleCount() + 1);
+        }
+
+        return playersDice;
+    }
+
+    // TODO bailOutMoney'e erisim yok checkBailOu'takiyle ayni sekilde
     @Override
     public void payBailOutMoney() {
 
@@ -287,11 +298,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public BailOutChoice getGetOutOfJailChoice() {
         return getOutOfJailChoice;
-    }
-
-    @Override
-    public void setGetOutOfJailChoice(BailOutChoice getOutOfJailChoice) {
-        this.getOutOfJailChoice = getOutOfJailChoice;
     }
 
     @Override

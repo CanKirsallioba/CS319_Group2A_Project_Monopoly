@@ -1,14 +1,17 @@
 package com.monopoly.model.player;
 
-import com.monopoly.model.board.Dice;
 
 public class HumanPlayer extends AbstractPlayer {
 
-    public HumanPlayer() {
+    public HumanPlayer(){
+
     }
 
     @Override
-    public Dice rollDice() {
-        return null;
+    public void playTurn(){
+        // add the code for human player here
+
+
+
     }
 }
