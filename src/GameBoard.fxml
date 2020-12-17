@@ -27,7 +27,7 @@
                            </image>
                         </ImageView>
                      </children></AnchorPane>
-                  <AnchorPane layoutX="1050.0" prefHeight="150.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" stylesheets="@GameBoardStyle.css">
+                  <AnchorPane fx:id="goToJail" layoutX="1050.0" prefHeight="150.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" stylesheets="@GameBoardStyle.css">
                      <children>
                         <ImageView fx:id="goToJail" fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -92,7 +92,8 @@
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./plane-up.png" />
-                           </image></ImageView>
+                           </image>
+                        </ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="650.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
@@ -204,7 +205,7 @@
                   <AnchorPane layoutX="350.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
-                        <ImageView fitHeight="140.0" fitWidth="100.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./chance-vertical.png" />
                            </image></ImageView>
@@ -232,7 +233,7 @@
                   <AnchorPane layoutX="650.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
-                        <ImageView fitHeight="140.0" fitWidth="100.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./income-tax.png" />
                            </image></ImageView>
@@ -255,7 +256,7 @@
                   <AnchorPane layoutX="850.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
-                        <ImageView fitHeight="140.0" fitWidth="100.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./community-chest.png" />
                            </image></ImageView>
