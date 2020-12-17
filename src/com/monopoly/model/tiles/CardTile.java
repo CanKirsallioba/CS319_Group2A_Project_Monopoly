@@ -13,9 +13,9 @@ public class CardTile extends Tile {
     @Override
     public ArrayList<GameAction> hook(Player player) {
         Card card = cardDeck.drawCard();
-        player.setDrawnCard(card);
+        player.setCurrentlyDrawnCard(card);
 
-        setActive(actions, "PERFOR_INSTRUCTION", true);
+        setActive(actions, "Perform Instruction", true);
 
         return actions;
     }

@@ -84,17 +84,14 @@ public class TitleDeedCard implements Serializable {
                 deactivateAction("Upgrade Property");
 
 
-            if(!isMortgaged) {
-                activateAction("Mortgage Property");
-                deactivateAction("Remove Mortgage");
-            }
-            else{
-                deactivateAction("Mortgage Property");
-                activateAction("Remove Mortgage");
-            }
+        if(!isMortgaged) {
+            activateAction("Mortgage Property");
+            deactivateAction("Remove Mortgage");
         }
-        else
-            activateAction("Buy Property");
+        else{
+            deactivateAction("Mortgage Property");
+            activateAction("Remove Mortgage");
+        }
     }
 
     /**

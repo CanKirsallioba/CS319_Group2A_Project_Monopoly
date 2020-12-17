@@ -47,7 +47,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     private void upgradeProperty(Player player) {
 
-        TitleDeedCard card = player.getSelectedTitleDeedCard();
+        TitleDeedCard card = player.getSelectedTitleDeed ();
         int upgradeLevel = card.getUpgradeLevel();
         int upgradeCost = card.getUpgradeCost();
 
@@ -62,7 +62,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void downgradeProperty(Player player) {
-        TitleDeedCard card = player.getSelectedTitleDeedCard();
+        TitleDeedCard card = player.getSelectedTitleDeed();
         int upgradeLevel = card.getUpgradeLevel();
 
         if (upgradeLevel > 0) {
@@ -76,7 +76,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void mortgageProperty(Player player){
-        TitleDeedCard card = player.getSelectedTitleDeedCard();
+        TitleDeedCard card = player.getSelectedTitleDeed();
         if(!card.isMortgaged()){
             int mortgageMoney = card.mortgage();
             player.changeBalance(mortgageMoney);
@@ -88,7 +88,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void removeMortgage(Player player){
-        TitleDeedCard card = player.getSelectedTitleDeedCard();
+        TitleDeedCard card = player.getSelectedTitleDeed();
 
         if(card.isMortgaged()){
             int mortgageRemovalFee = card.removeMortgage();

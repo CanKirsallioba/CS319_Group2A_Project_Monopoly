@@ -9,7 +9,7 @@ public class GoToJailTile extends Tile {
 
     @Override
     public ArrayList<GameAction> hook(Player player) {
-        setActive(actions, "GO_TO_JAIL", true);
+        setActive(actions, "Go To Jail", true);
         return actions;
     }
 }

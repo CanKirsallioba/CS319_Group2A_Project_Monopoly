@@ -3,8 +3,6 @@ package com.monopoly.model.tiles;
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.actionStrategy.Command;
 
-import sun.jvm.hotspot.tools.jcore.NameFilter;
-
 import java.io.Serializable;
 
 public class GameAction implements Serializable {

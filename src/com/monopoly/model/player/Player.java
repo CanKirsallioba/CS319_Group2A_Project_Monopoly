@@ -2,7 +2,7 @@ package com.monopoly.model.player;
 
 import com.monopoly.model.AuctionModel;
 import com.monopoly.model.TradeModel;
-import com.monopoly.model.board.Dice;
+import com.monopoly.model.player.Dice;
 import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;

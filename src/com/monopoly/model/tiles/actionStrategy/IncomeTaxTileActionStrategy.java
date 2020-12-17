@@ -28,7 +28,7 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
     @Override
     public void button3Strategy(Player player) {
         // TODO implement payTax() method in Player class
-        player.payTax();
+        // TODO player.payTax();
     }
 
     @Override

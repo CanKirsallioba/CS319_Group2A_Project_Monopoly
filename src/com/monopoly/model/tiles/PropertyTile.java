@@ -13,8 +13,16 @@ public class PropertyTile extends Tile {
 
     @Override
     public ArrayList<GameAction> hook(Player player) {
-        player.setSelectedTitleDeedCard(getTitleDeedCard());
-        return getTitleDeedCard().getPropertyActions();
+        if(!(titleDeedCard.isOwned())){
+            setActive ( actions, "Buy Property", true );
+            setActive ( actions, "Pay Rent", false );
+        } else if(titleDeedCard.getOwner() != player){
+            setActive ( actions, "Buy Property", false );
+            setActive ( actions, "Pay Rent", true );
+        } else {
+            throw new RuntimeException();
+        }
+        return actions;
     }
 
 

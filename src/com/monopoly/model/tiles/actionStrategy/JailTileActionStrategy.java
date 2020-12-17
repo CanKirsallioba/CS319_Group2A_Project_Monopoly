@@ -1,5 +1,6 @@
 package com.monopoly.model.tiles.actionStrategy;
 
+import com.monopoly.model.player.BailOutChoice;
 import com.monopoly.model.player.Player;
 
 public class JailTileActionStrategy extends ActionStrategy {
@@ -9,7 +10,7 @@ public class JailTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button1Strategy(Player player) {
-        player.waitInJail();
+        player.setGetOutOfJailChoice ( BailOutChoice.WAIT );
     }
 
     /**
@@ -18,7 +19,7 @@ public class JailTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button2Strategy(Player player) {
-         player.payBailOutMoney();
+         player.setGetOutOfJailChoice ( BailOutChoice.MONEY );
     }
 
     /**
@@ -27,7 +28,8 @@ public class JailTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-        player.throwDoubleDice();
+        player.setGetOutOfJailChoice(BailOutChoice.DOUBLE_DICE);
+        player.rollDice();
     }
 
     /**
@@ -36,6 +38,7 @@ public class JailTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button4Strategy(Player player) {
-        player.useBailOutOfJailCard();
+        player.setGetOutOfJailChoice(BailOutChoice.BAIL_OUT_CARD);
+        player.removeBailOutFromJailCard();
     }
 }

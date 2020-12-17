@@ -21,7 +21,7 @@ public class CardTileActionStrategy extends ActionStrategy {
         "bail out of jail"
          */
 
-        Card drawnCard = player.getDrawnCard();
+        Card drawnCard = player.getCurrentlyDrawnCard();
         if (drawnCard.getCardDetails().containsKey("BAIL_OUT_OF_JAIL")) {
             //player adds a bail out of jail card to their hand
             player.addBailOutFromJailCard(drawnCard);
@@ -36,12 +36,12 @@ public class CardTileActionStrategy extends ActionStrategy {
                 player.changeBalance(-amountToPay);
             } else if(player.getBalance() < amountToPay) {
                 if (player.getTotalWorth() > amountToPay) {
-                    player.payWithMortgage();
+                    //TODO player.payWithMortgage();
                 } else {
                     player.declareBankruptcy();
                 }
             } else {
-                throw RuntimeException;
+                throw new RuntimeException();
             }
             
         } else if (drawnCard.getCardDetails().containsKey("RECEIVE")) {

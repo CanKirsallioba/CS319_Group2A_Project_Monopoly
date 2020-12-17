@@ -8,14 +8,14 @@ public class IncomeTaxTile extends Tile {
 
     @Override
     public ArrayList<GameAction> hook(Player player) {
-        if (player.getTaxOption() != -1) {
-            setActive(actions, "TAX_OPTION1", true);
-            setActive(actions, "TAX_OPTION2", true);
-            setActive(actions, "PAY_TAX", false);
+        if (player.getTaxOption() != null) {
+            setActive(actions, "Tax Option 1", true);
+            setActive(actions, "Tax Option 2", true);
+            setActive(actions, "Pay Tax", false);
         } else {
-            setActive(actions, "PAY_TAX", true);
-            setActive(actions, "TAX_OPTION1", false);
-            setActive(actions, "TAX_OPTION2", false);
+            setActive(actions, "Pay Tax", true);
+            setActive(actions, "Tax Option 1", false);
+            setActive(actions, "Tax Option 2", false);
         }
         return actions;
     }

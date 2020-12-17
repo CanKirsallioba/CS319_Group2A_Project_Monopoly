@@ -1,6 +1,7 @@
 package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
+import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.TeleportTile;
 
 public class TeleportTileActionStrategy extends ActionStrategy {
@@ -11,6 +12,9 @@ public class TeleportTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button1Strategy(Player player) {
+        if (!(player.getCurrentTile () instanceof TeleportTile)) {
+            throw new RuntimeException ( "Wrong tile type" );
+        }
         TeleportTile tile = (TeleportTile) player.getCurrentTile();
         int index = tile.getIndex();
         int counterpart = tile.getCounterpartIndex();
