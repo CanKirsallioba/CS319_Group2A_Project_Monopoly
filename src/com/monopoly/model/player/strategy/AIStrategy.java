@@ -7,4 +7,5 @@ public abstract class AIStrategy {
         public abstract void makeAndExecutePropertyDecision( AIPlayer player);
         public abstract void makeAndExecuteTradeDecision( AIPlayer player);
         public abstract void makeAndExecuteAuctionDecision( AIPlayer player);
+        public abstract void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer);
 }

@@ -19,4 +19,10 @@ public class BalancedAIStrategy extends AIStrategy {
     public void makeAndExecuteAuctionDecision( AIPlayer player){
 
     }
+
+    @Override
+    public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer){
+
+    }
+
 }

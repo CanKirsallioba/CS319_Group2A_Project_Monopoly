@@ -19,4 +19,8 @@ public class AdventurousAIStrategy extends AIStrategy{
 
     }
 
+    @Override
+    public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer){
+
+    }
 }

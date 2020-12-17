@@ -2,6 +2,10 @@ package com.monopoly.model.player;
 
 import com.monopoly.model.player.strategy.AIStrategy;
 import com.monopoly.model.player.strategy.GameStatistics;
+import com.monopoly.model.tiles.CardTile;
+import com.monopoly.model.tiles.IncomeTaxTile;
+import com.monopoly.model.tiles.PropertyTile;
+import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
 public class AIPlayer extends AbstractPlayer {
@@ -13,6 +17,10 @@ public class AIPlayer extends AbstractPlayer {
 
     void makeAndExecutePropertyDecision(){
         aiStrategy.makeAndExecutePropertyDecision( this);
+    }
+
+    void makeAndExecuteIncomeTaxDecision(){
+        aiStrategy.makeAndExecuteIncomeTaxDecision(this);
     }
 
     void makeAndExecuteTradeDecision(){
@@ -66,21 +74,25 @@ public class AIPlayer extends AbstractPlayer {
         // if player is not in jail, plays turn normally
         else{
             rollDice();
+            if( getConsecutiveDoubleCount() == 3){
+                goToJail();
+            }
+            // if the AI player did not throw 3 double dice
+            else {
+                moveToken( playersDice.getDiceResultSum());
+                Tile currentlyLandedTile = getCurrentTile();
+                if( currentlyLandedTile instanceof PropertyTile){
+                    makeAndExecutePropertyDecision();
+                }
+                else if( currentlyLandedTile instanceof CardTile){
+                    //TODO
+                }
+                else if( currentlyLandedTile instanceof IncomeTaxTile){
+                    makeAndExecuteIncomeTaxDecision();
+                }
+                // if not on a tile that requires a specific action, do not do anything
+            }
         }
-
-
-        // roll dice
-        // maybe jail
-        // move player
-
-        // arrived at a tile
-        // get possible actions
-
-        // decision making
-
-
-        // decision taken
-
     }
 
 
