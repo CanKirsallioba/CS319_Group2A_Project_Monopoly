@@ -296,6 +296,11 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     }
 
     @Override
+    public void setPlayerToken( PlayerToken playerToken){
+        this.playerToken = playerToken;
+    }
+
+    @Override
     public BailOutChoice getGetOutOfJailChoice() {
         return getOutOfJailChoice;
     }
