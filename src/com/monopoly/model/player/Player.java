@@ -89,6 +89,8 @@ public interface Player extends Serializable {
 
     Dice rollDice();
 
+    ArrayList<Card> getCards();
+
 
     // methods that are not in the design report
     // that should be added
