@@ -89,7 +89,7 @@ public interface Player extends Serializable {
 
     Dice rollDice();
 
-    ArrayList<Card> getCards();
+    ArrayList<Card> getBailOutOfJailCards();
 
 
     // methods that are not in the design report

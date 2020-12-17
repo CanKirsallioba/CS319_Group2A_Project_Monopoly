@@ -91,4 +91,14 @@ public class PlayerToken {
         this.lastDiceRoll = lastDiceRoll;
     }
 
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+
 }
