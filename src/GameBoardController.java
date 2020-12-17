@@ -197,11 +197,126 @@ public class GameBoardController implements Initializable {
     @FXML
     private Button endTurnButton;
 
+    @FXML
+    private ImageView goTileImage;
+
+    @FXML
+    private Label brownLabel1;
+    @FXML
+    private Label brownPrice1;
+
+    @FXML
+    private Label brownLabel2;
+    @FXML
+    private Label brownPrice2;
+
+    @FXML
+    private Label lightBlueLabel1;
+    @FXML
+    private Label lightBluePrice1;
+    @FXML
+    private Label lightBlueLabel2;
+    @FXML
+    private Label lightBluePrice2;
+    @FXML
+    private Label lightBlueLabel3;
+    @FXML
+    private Label lightBluePrice3;
+
+
+    @FXML
+    private Label pinkLabel1;
+    @FXML
+    private Label pinkPrice1;
+    @FXML
+    private Label pinkLabel2;
+    @FXML
+    private Label pinkPrice2;
+    @FXML
+    private Label pinkLabel3;
+    @FXML
+    private Label pinkPrice3;
+
+
+    @FXML
+    private Label orangeLabel1;
+    @FXML
+    private Label orangePrice1;
+    @FXML
+    private Label orangeLabel2;
+    @FXML
+    private Label orangePrice2;
+    @FXML
+    private Label orangeLabel3;
+    @FXML
+    private Label orangePrice3;
+
+    @FXML
+    private Label redLabel1;
+    @FXML
+    private Label redPrice1;
+    @FXML
+    private Label redLabel2;
+    @FXML
+    private Label redPrice2;
+    @FXML
+    private Label redLabel3;
+    @FXML
+    private Label redPrice3;
+
+
+    @FXML
+    private Label yellowLabel1;
+    @FXML
+    private Label yellowPrice1;
+    @FXML
+    private Label yellowLabel2;
+    @FXML
+    private Label yellowPrice2;
+    @FXML
+    private Label yellowLabel3;
+    @FXML
+    private Label yellowPrice3;
+
+
+    @FXML
+    private Label greenLabel1;
+    @FXML
+    private Label greenPrice1;
+    @FXML
+    private Label greenLabel2;
+    @FXML
+    private Label greenPrice2;
+    @FXML
+    private Label greenLabel3;
+    @FXML
+    private Label greenPrice3;
+
+
+    @FXML
+    private Label blueLabel1;
+    @FXML
+    private Label bluePrice1;
+    @FXML
+    private Label blueLabel2;
+    @FXML
+    private Label bluePrice2;
+
+    @FXML
+    public void handleMenuButton() {}
+
+    @FXML
+    public void handleEndTurnButton() {}
+
+    @FXML
+    public void handleRollDiceButton() {}
+
+    @FXML
+    public void handleBuyPropertyButton() {}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        p1NameLabel.getStylesheets().add(this.getClass().getResource("GameBoardStyle.css").toExternalForm());
-        p1NameLabel.getStyleClass().add("label");
+        yellowPrice1.setText("100");
     }
 
 
