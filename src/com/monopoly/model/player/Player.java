@@ -1,5 +1,7 @@
 package com.monopoly.model.player;
 
+import com.monopoly.model.AuctionModel;
+import com.monopoly.model.TradeModel;
 import com.monopoly.model.board.Dice;
 import com.monopoly.model.tiles.Tile;
 import com.monopoly.model.tiles.card.Card;
@@ -10,59 +12,87 @@ import java.util.ArrayList;
 
 
 public interface Player extends Serializable {
-    Dice rollDice();
+
+    // in the order written in the design report
 
     boolean waitInJail();
 
     void checkBailOut();
 
-    void addBailOutFromJailCard(Card card);
-
-    void removeBailOutFromJailCard();
-
-    void moveToken(int amount);
-
     void goToJail();
-
-    void addTitleDeedCard(TitleDeedCard card);
-
-    void removeTitleDeedCard(TitleDeedCard card);
 
     void changeBalance(int amount);
 
     void declareBankruptcy();
 
-    int getCurrentTileIndex();
-
     int getTaxOption();
 
     void setTaxOption(int selectedOption);
 
-    int getBalance();
-
     int getConsecutiveDoubleCount();
 
-    String getTokenType();
-
-    void setTokenType(String type);
-
-    void setCurrentTileIndex(int index);
-
-    void startAuction(ArrayList<TitleDeedCard> tDC);
-
-    // methods should be added.
-    void payBailOutMoney();
-
-    void throwDoubleDice();
-
-    void useBailOutOfJailCard();
+    void setConsecutiveDoubleCount( int consecutiveDoubleCount);
 
     Tile getCurrentTile();
 
-    TitleDeedCard getSelectedTitleDeedCard();
+    void setCurrentTile(Tile currentTile);
+
+    void moveToken(int amount);
 
     PlayerToken getPlayerToken();
 
-    void setDrawnCard(Card card)Card
-    void setStleDeedCard(TitleDeedCard titleDeedCard);
+    void setPlayerToken(PlayerToken playerToken);
+
+    BailOutChoice getGetOutOfJailChoice();
+
+    void setGetOutOfJailChoice(BailOutChoice bailOutChoice);
+
+    int getTotalWorth();
+
+    void setTotalWorth( int totalWorth);
+
+    int getLiquidTotalWorth();
+
+    void setLiquidTotalWorth( int liquidTotalWorth);
+
+    void startAuction(ArrayList<TitleDeedCard> titleDeedCards);
+
+    AuctionModel getAuctionModel();
+
+    void setAuctionModel( AuctionModel auctionModel);
+
+    void startTrade(Player otherPlayer);
+
+    TradeModel getTradeModel();
+
+    void setTradeModel( TradeModel tradeModel);
+
+    void addBailOutFromJailCard(Card card);
+
+    void removeBailOutFromJailCard();
+
+    TitleDeedCard getSelectedTitleDeed();
+
+    void setSelectedTitleDeed( TitleDeedCard selectedTitleDeed);
+
+    Card getCurrentlyDrawnCard();
+
+    void setCurrentlyDrawnCard( Card currentlyDrawnCard);
+
+    boolean isBankrupt();
+
+    void playTurn();
+
+    Dice rollDice();
+
+
+    // methods that are not in the design report
+    // that should be added
+    void addTitleDeedCard(TitleDeedCard card);
+
+    void removeTitleDeedCard(TitleDeedCard card);
+
+    int getBalance();
+
+    void payBailOutMoney();
 }
