@@ -12,11 +12,11 @@ import java.util.Observable;
 public abstract class AbstractPlayer extends Observable implements Player  {
     private TaxOption taxOption;
     private ArrayList<TitleDeedCard> titleDeeds;
-    private ArrayList<Card> cards;
+    private ArrayList<Card> bailOutOfJailCards;
     private int balance;
     private boolean bankrupt;
     private int consecutiveDoubleCount;
-    private int turnsSpentInJail;
+    private int numberOfTurnsSpentInJail;
     private int currentTileIndex;
     private PlayerToken playerToken;
     private boolean isInJail;
@@ -49,9 +49,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public boolean waitInJail() {
-
-        if( turnsSpentInJail < 3){
-            turnsSpentInJail++;
+        if( numberOfTurnsSpentInJail < 3){
+            numberOfTurnsSpentInJail++;
             return true;
         }
         else{
@@ -59,23 +58,22 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         }
     }
 
-    //TODO -- bailOutCost için initializer yazılmalı
     /**
      * if player bails out, bails him out using selected method
      */
     @Override
     public void checkBailOut() {
-        int bailOutCost = 0; // TODO
+        int bailOutCost = playerToken.getBoard().getBoardSalary() / 4;
 
         // check if player can bail out
         // if he/she can, apply the selected bail out procedure
 
         // if bail out choice is by card && player has at least 1 bailout card in his inventory
-        if (getOutOfJailChoice == BailOutChoice.BAIL_OUT_CARD && cards.size() > 0) {
+        if (getOutOfJailChoice == BailOutChoice.BAIL_OUT_CARD && bailOutOfJailCards.size() > 0) {
             removeBailOutFromJailCard ();
 
             isInJail = false;
-            turnsSpentInJail = 0;
+            numberOfTurnsSpentInJail = 0;
             return;
 
         // if bail out choice is by money && player has more money than the fine
@@ -83,7 +81,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             changeBalance (bailOutCost);
 
             isInJail = false;
-            turnsSpentInJail = 0;
+            numberOfTurnsSpentInJail = 0;
             return;
 
         // if bail out choice is by dice && player threw a double dice
@@ -92,14 +90,14 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
             if( consecutiveDoubleCount == 1){
                 isInJail = false;
-                turnsSpentInJail = 0;
+                numberOfTurnsSpentInJail = 0;
                 return;
             }
         }
 
         // if cannot bail out with choice at turn 3
         // force player to bail out or declare bankruptcy
-        if( !waitInJail()){ // turnsSpentInJail is updated in waitInJail
+        if( !waitInJail()){ // turnsSpentInJail is updated in waitInJail, which is called at the end of every turn
             if( liquidTotalWorth < bailOutCost){
                 // force bankruptcy
                 declareBankruptcy();
@@ -108,13 +106,12 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 changeBalance( bailOutCost);
 
                 isInJail = false;
-                turnsSpentInJail = 0;
+                numberOfTurnsSpentInJail = 0;
                 canBailOut = false;
             }
         }
     }
 
-    // TODO - Finalize design +++ Pending Code Review
     /**
      * Sends player to jail by calling the PlayerToken's gotoJail method.
      */
@@ -140,7 +137,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         balance += amount;
     }
 
-    // TODO finalize design
     /**
      * If the player cannot pay his/her debt or resigns from the game
      * declare bankruptcy by setting bankrupt true
@@ -163,7 +159,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         currentTileIndex = currentTile.getIndex();
 
         if (playerToken.passedGoInTheLastMove()) {
-            // TODO
+            changeBalance(playerToken.getBoard().getBoardSalary() );
         }
     }
 
@@ -183,7 +179,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public void addBailOutFromJailCard(Card card) {
-        cards.add( card);
+        bailOutOfJailCards.add( card);
     }
 
     /**
@@ -191,7 +187,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public void removeBailOutFromJailCard() {
-        cards.remove( cards.size()-1);
+        bailOutOfJailCards.remove( bailOutOfJailCards.size()-1);
     }
 
     /**
@@ -232,10 +228,9 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         return playersDice;
     }
 
-    // TODO bailOutMoney'e erisim yok checkBailOu'takiyle ayni sekilde
     @Override
     public void payBailOutMoney() {
-
+        changeBalance(playerToken.getBoard().getBoardSalary() / 4);
     }
 
     // getter and setter methods in the design
@@ -264,7 +259,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         return balance;
     }
 
-
+    @Override
     public void setBalance(int balance) {
         this.balance = balance;
     }
@@ -352,7 +347,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     // end of getter & setters in the design
 
-    // TODO determine whether these methods are going to stay
     // setters and getters not in the design
     public ArrayList<TitleDeedCard> getTitleDeeds() {
         return titleDeeds;
@@ -362,12 +356,12 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         this.titleDeeds = titleDeeds;
     }
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    public ArrayList<Card> getBailOutOfJailCards() {
+        return bailOutOfJailCards;
     }
 
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
+    public void setBailOutOfJailCards(ArrayList<Card> bailOutOfJailCards) {
+        this.bailOutOfJailCards = bailOutOfJailCards;
     }
 
     public void setBankrupt(boolean bankrupt) {
@@ -399,41 +393,4 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     public void setInJail(boolean inJail) {
         isInJail = inJail;
     }
-
-
-//    /**
-//    * @return the currTileInd
-//     */
-//    @Override
-//    public int getCurrentTileIndex() {
-//        return currTileInd;
-//    }
-
-//    /**
-//    * @return the type of player's token as a String
-//     */
-//    @Override
-//    public String getTokenType() {
-//        return playerToken.getType();
-//    }
-//
-//    /**
-//     * set the playerToken's type
-//     * @param type is the type of the playerToken
-//     */
-//    @Override
-//    public void setTokenType(String type){
-//        this.playerToken.setType( type);
-//    }
-//
-//    /**
-//     * set the playerToken's type
-//     * @param index is the current tile's index
-//     */
-//    @Override
-//    public void setCurrentTileIndex(int index){
-//        currTileInd = index;
-//        playerToken.teleport( index); // faulty-naming but works in principle
-//    }
-//
 }

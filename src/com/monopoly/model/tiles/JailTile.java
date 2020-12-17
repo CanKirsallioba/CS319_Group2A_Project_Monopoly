@@ -11,7 +11,7 @@ public class JailTile extends Tile {
     public ArrayList<GameAction> hook(Player player) {
 
         if(player.getGetOutOfJailChoice() != BailOutChoice.WAIT) {
-            if (player.getCards().size() != 0) {
+            if (player.getBailOutOfJailCards().size() != 0) {
                 setActive(actions, "Bail Out Of Jail", true); //we might have to check the existence of the card later
             }
             if (player.getLiquidTotalWorth() > 0) { // TODO: Fix the bail out price
