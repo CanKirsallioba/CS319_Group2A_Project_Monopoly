@@ -19,6 +19,7 @@ public class TeleportTile extends Tile {
 
     @Override
     public ArrayList<GameAction> hook(Player player) {
+        setActive(actions, "TELEPORT", true);
         return actions;
     }
 }

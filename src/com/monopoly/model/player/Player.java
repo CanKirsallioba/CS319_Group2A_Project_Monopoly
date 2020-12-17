@@ -63,6 +63,6 @@ public interface Player extends Serializable {
 
     PlayerToken getPlayerToken();
 
-    void setDrawnCard(Card card)Card
-    void setStleDeedCard(TitleDeedCard titleDeedCard);
+    void setDrawnCard(Card card);
+    void setitleDeedCard(TitleDeedCard titleDeedCard);
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class GoTile extends Tile {
     @Override
     public ArrayList<GameAction> hook(Player player) {
+        setActive(actions, "RECEIVE GO TILE INCOME", true);
         return actions;
     }
 }
