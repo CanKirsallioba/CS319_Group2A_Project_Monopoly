@@ -1,21 +1,17 @@
 package com.monopoly.model.session;
 
+import com.monopoly.model.BoardConfiguration;
 import com.monopoly.model.board.Board;
 import com.monopoly.model.board.Dice;
 
 import java.io.Serializable;
 
 public class GameSession implements Serializable {
-    String game
+    String gameSessionName;
+    BoardConfiguration boardConfiguration;
     Board board;
     TurnManager turnManager;
     Dice dice;
-
-    public GameSession(Board board, TurnManager turnManager) {
-        this.board = board;
-        this.turnManager = turnManager;
-        this.dice = turnManager.getDice();
-    }
 
 
     public Board getBoard() {

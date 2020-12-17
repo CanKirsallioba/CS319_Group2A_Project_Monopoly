@@ -1,30 +1,32 @@
 package com.monopoly.data;
 
-public class FileManager {
-    public String[] gameSaves;
-    final int MAX_SIZE = 0;
-    public String[] configFiles;
+import java.util.ArrayList;
 
-    public int getMaxSize() {
+public class FileManager {
+    public static ArrayList<String> gameSaves;
+    final static int MAX_SIZE = 0;
+    public static ArrayList<String> configFiles;
+
+    public static int getMaxSize() {
 
         return -1;
     }
 
-    public String[] getGameSaves() {
+    public static ArrayList<String> getGameSaves() {
 
         return null;
     }
 
-    public void addSavedGames(String fileName) {
+    public static void addSavedGames(String fileName) {
 
     }
 
-    public String[] getConfigFiles() {
+    public static ArrayList<String> getConfigFiles() {
 
         return null;
     }
 
-    public void addConfigFile(String fileName) {
+    public static void addConfigFile(String fileName) {
         
     }
 }

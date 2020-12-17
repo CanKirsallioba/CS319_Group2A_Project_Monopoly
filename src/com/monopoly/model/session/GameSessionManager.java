@@ -1,5 +1,8 @@
 package com.monopoly.model.session;
 
+import com.monopoly.data.ConfigHandler;
+import com.monopoly.data.FileManager;
+import com.monopoly.data.SerializationHandler;
 import com.monopoly.model.BoardConfiguration;
 
 import java.nio.file.Path;
@@ -9,15 +12,39 @@ public class GameSessionManager {
     private GameSession game;
     private Path fileLocation;
     private String fileName;
-
-    public GameSessionManager(GameSession game, Path fileLocation, String fileName) {
-        this.game = game;
-        this.fileLocation = fileLocation;
-        this.fileName = fileName;
-    }
-
+    private ArrayList<String> boardNames;
+    private SerializationHandler serializationHandler;
+    private ConfigHandler configHandler;
     private String selectedGameSessionName;
 
+
+
+    void loadGame() {
+        GameSession session = serializationHandler.load(getSelectedGameSessionName());
+        setGame(session);
+        setFileName(getSelectedGameSessionName());
+    }
+
+    void saveGame(GameSession gameSession) {
+        serializationHandler.save(gameSession, getFileName());
+    }
+
+
+    public static ArrayList<String> getSavedGameSession() {
+        return FileManager.getGameSaves();
+    }
+
+    void newGame(BoardConfiguration config) {
+        GameSessionBuilder gameSessionBuilder = new GameSessionBuilder(config, configHandler.getConfig(getFileName()));
+        game = gameSessionBuilder.build();
+    }
+    public String getSelectedGameSessionName() {
+        return selectedGameSessionName;
+    }
+
+    public void setSelectedGameSessionName(String selectedGameSessionName) {
+        this.selectedGameSessionName = selectedGameSessionName;
+    }
     public GameSession getGame() {
         return game;
     }
@@ -42,27 +69,6 @@ public class GameSessionManager {
         this.fileName = fileName;
     }
 
-    void loadGame() {
 
-    }
 
-    void saveGame(GameSession gameSession) {
-
-    }
-
-    public String getSelectedGameSessionName() {
-        return selectedGameSessionName;
-    }
-
-    public void setSelectedGameSessionName(String selectedGameSessionName) {
-        this.selectedGameSessionName = selectedGameSessionName;
-    }
-
-    ArrayList<String> getSavedGameSession() {
-        return null;
-    }
-
-    void newGame(BoardConfiguration config) {
-
-    }
 }

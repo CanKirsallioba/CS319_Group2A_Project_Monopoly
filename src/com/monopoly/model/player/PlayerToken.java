@@ -15,7 +15,7 @@ public class PlayerToken {
     * @param type is the type of the token
     * @param board is the board of the game
      */
-    PlayerToken(String type, Board board) {
+    public PlayerToken(String type, Board board) {
         this.board = board; // pass-by-reference ?
         this.type = type;
 
