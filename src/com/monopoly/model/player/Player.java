@@ -25,9 +25,13 @@ public interface Player extends Serializable {
 
     void declareBankruptcy();
 
-    int getTaxOption();
+    TaxOption getTaxOption();
 
-    void setTaxOption(int selectedOption);
+    void setTaxOption(TaxOption selectedOption);
+
+    int getBalance();
+
+    void setBalance( int balance);
 
     int getConsecutiveDoubleCount();
 
@@ -92,7 +96,6 @@ public interface Player extends Serializable {
 
     void removeTitleDeedCard(TitleDeedCard card);
 
-    int getBalance();
 
     void payBailOutMoney();
 }
