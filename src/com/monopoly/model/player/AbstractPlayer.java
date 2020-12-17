@@ -373,6 +373,31 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         this.bankrupt = bankrupt;
     }
 
+    @Override
+    public TitleDeedCard getSelectedTitleDeed(){
+        return selectedTitleDeed;
+    }
+
+    public void setSelectedTitleDeed( TitleDeedCard selectedTitleDeed){
+        this.selectedTitleDeed = selectedTitleDeed;
+    }
+
+
+    public Card getCurrentlyDrawnCard() {
+        return drawnCard;
+    }
+
+    public void setCurrentlyDrawnCard(Card drawnCard) {
+        this.drawnCard = drawnCard;
+    }
+
+    public boolean isInJail() {
+        return isInJail;
+    }
+
+    public void setInJail(boolean inJail) {
+        isInJail = inJail;
+    }
 
 
 //    /**
