@@ -1,6 +1,6 @@
 package com.monopoly.model.session;
 
-import com.monopoly.model.board.Dice;
+import com.monopoly.model.player.Dice;
 import com.monopoly.model.player.Player;
 
 import java.io.Serializable;

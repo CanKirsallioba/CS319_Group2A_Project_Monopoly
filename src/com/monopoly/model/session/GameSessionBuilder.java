@@ -40,10 +40,10 @@ public class GameSessionBuilder {
         BoardFactory boardFactory = new BoardFactory();
         PlayerFactory playerFactory = new PlayerFactory();
 
-        Board board = boardFactory.get(boardConfiguration, getConfig());
+        Board board = boardFactory.get(getBoardConfiguration(), getConfig());
 
         TurnManager turnManager = new TurnManager();
-        turnManager.setPlayers(playerFactory.get(boardConfiguration, getConfig()));
+        turnManager.setPlayers(playerFactory.get(getBoardConfiguration(), getConfig()));
         ArrayList<String> tokenTypes = null;
         int tokenNumber = 0;
         for (Player player : turnManager.getPlayers()) {

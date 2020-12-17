@@ -49,6 +49,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public boolean waitInJail() {
+
         if( turnsSpentInJail < 3){
             turnsSpentInJail++;
             return true;

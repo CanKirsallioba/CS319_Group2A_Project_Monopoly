@@ -69,28 +69,28 @@ public class TitleDeedCard implements Serializable {
     /**
      * Updates the property's actions based according to the state of property (owned, mortgaged and upgradeLevel)
      */
-    public void updateActions(){
-        if(isOwned){
+    public void updateActions() {
+        if (isOwned) {
             deactivateAction("Buy Property");
 
-            if(upgradeLevel > 0)
+            if (upgradeLevel > 0)
                 activateAction("Downgrade Property");
             else
                 deactivateAction("Downgrade Property");
 
-            if(upgradeLevel < 5)
+            if (upgradeLevel < 5)
                 activateAction("Upgrade Property");
             else
                 deactivateAction("Upgrade Property");
 
 
-        if(!isMortgaged) {
-            activateAction("Mortgage Property");
-            deactivateAction("Remove Mortgage");
-        }
-        else{
-            deactivateAction("Mortgage Property");
-            activateAction("Remove Mortgage");
+            if (!isMortgaged) {
+                activateAction("Mortgage Property");
+                deactivateAction("Remove Mortgage");
+            } else {
+                deactivateAction("Mortgage Property");
+                activateAction("Remove Mortgage");
+            }
         }
     }
 

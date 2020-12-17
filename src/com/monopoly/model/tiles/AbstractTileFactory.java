@@ -1,11 +1,9 @@
 package com.monopoly.model.tiles;
 
 import com.monopoly.model.ConfigAdapter;
+import org.json.simple.JSONObject;
 
 
 public abstract class AbstractTileFactory {
-
-    ConfigAdapter configPlaceHolder;
-
-    public abstract Tile getTile(String tileName);
+    public abstract Tile getTile(JSONObject config);
 }
