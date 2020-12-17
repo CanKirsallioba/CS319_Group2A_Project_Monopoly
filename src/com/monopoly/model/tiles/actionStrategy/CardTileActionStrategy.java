@@ -22,27 +22,40 @@ public class CardTileActionStrategy extends ActionStrategy {
          */
 
         Card drawnCard = player.getDrawnCard();
-        if (drawnCard.getCardDetails().containsKey("bail out of jail")) {
+        if (drawnCard.getCardDetails().containsKey("BAIL_OUT_OF_JAIL")) {
             //player adds a bail out of jail card to their hand
             player.addBailOutFromJailCard(drawnCard);
-        } else if(drawnCard.getCardDetails().containsKey("go to jail")) {
+        } else if(drawnCard.getCardDetails().containsKey("GO_TO_JAIL")) {
             //player goes to jail
             player.goToJail();
-        } else if(drawnCard.getCardDetails().containsKey("pay")) {
+        } else if(drawnCard.getCardDetails().containsKey("PAY")) 
+        {
             // Pay x amount of money
-            player.changeBalance(-drawnCard.getCardDetails().get("pay"));
-        } else if (drawnCard.getCardDetails().containsKey("receive")) {
+            int amountToPay = drawnCard.getCardDetails().get("PAY");
+            if (player.getBalance() >= amountToPay) {
+                player.changeBalance(-amountToPay);
+            } else if(player.getBalance() < amountToPay) {
+                if (player.getTotalWorth() > amountToPay) {
+                    player.payWithMortgage();
+                } else {
+                    player.declareBankruptcy();
+                }
+            } else {
+                throw RuntimeException;
+            }
+            
+        } else if (drawnCard.getCardDetails().containsKey("RECEIVE")) {
             // Receive x amount of money
-            player.changeBalance(drawnCard.getCardDetails().get("receive"));
-        } else if (drawnCard.getCardDetails().containsKey("forward")) {
+            player.changeBalance(drawnCard.getCardDetails().get("RECEIVE"));
+        } else if (drawnCard.getCardDetails().containsKey("FORWARD")) {
             // Move token forward x tiles
-            player.moveToken(drawnCard.getCardDetails().get("forward"));
-        } else if (drawnCard.getCardDetails().containsKey("backward")) {
+            player.moveToken(drawnCard.getCardDetails().get("FORWARD"));
+        } else if (drawnCard.getCardDetails().containsKey("BACKWARD")) {
             // Move token backward x tiles
-            player.moveToken(-drawnCard.getCardDetails().get("backward"));
-        } else if(drawnCard.getCardDetails().containsKey("move to")){
+            player.moveToken(-drawnCard.getCardDetails().get("BACKWARD"));
+        } else if(drawnCard.getCardDetails().containsKey("MOVE_TO")){
             //Move token to a specific tile
-            player.moveToken(drawnCard.getCardDetails().get("move to"));
+            player.moveToken(drawnCard.getCardDetails().get("MOVE_TO"));
         }
 
     }

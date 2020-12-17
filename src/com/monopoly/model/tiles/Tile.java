@@ -8,6 +8,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Tile implements Serializable {
+    
+    public String tileName;
+    public String name = this.getClass().getSimpleName();
+    protected AbstractActionFactory actionFactory;
+    boolean hasCustomizedFunctionality;
+    ArrayList<GameAction> actions;
+
+    // newly added
+    int index;
+    
+    
+    Tile() {
+        actionFactory = new ActionFactory();
+        actions = actionFactory.getActionList(name);
+        hasCustomizedFunctionality = false;
+    }
+
+    
     public String getTileName() {
         return tileName;
     }
@@ -46,21 +64,6 @@ public abstract class Tile implements Serializable {
 
     public void setActions(ArrayList<GameAction> actions) {
         this.actions = actions;
-    }
-
-    public String tileName;
-    public String name = this.getClass().getSimpleName();
-    protected AbstractActionFactory actionFactory;
-    boolean hasCustomizedFunctionality;
-    ArrayList<GameAction> actions;
-
-    // newly added
-    int index;
-
-    Tile() {
-        actionFactory = new ActionFactory();
-        actions = actionFactory.getActionList(name);
-        hasCustomizedFunctionality = false;
     }
 
     public ArrayList<GameAction> getPossibleActions(Player player) {

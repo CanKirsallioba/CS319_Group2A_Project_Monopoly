@@ -1,7 +1,6 @@
 package com.monopoly.model.tiles;
 
 import com.monopoly.model.player.Player;
-import com.monopoly.model.tiles.actionStrategy.CardTileActionStrategy;
 import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.card.CardDeck;
 
@@ -15,5 +14,9 @@ public class CardTile extends Tile {
     public ArrayList<GameAction> hook(Player player) {
         Card card = cardDeck.drawCard();
         player.setDrawnCard(card);
+
+        setActive(actions, "PERFOR_INSTRUCTION", true);
+
+        return actions;
     }
 }

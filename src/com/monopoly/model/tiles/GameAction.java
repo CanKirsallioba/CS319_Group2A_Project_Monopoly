@@ -3,6 +3,8 @@ package com.monopoly.model.tiles;
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.actionStrategy.Command;
 
+import sun.jvm.hotspot.tools.jcore.NameFilter;
+
 import java.io.Serializable;
 
 public class GameAction implements Serializable {
@@ -56,6 +58,10 @@ public class GameAction implements Serializable {
         isActive = active;
     }
 
-    GameAction(String name, Command command, boolean mandatory) {
+    GameAction(String name, Command command, boolean isMandatory, boolean isActive) {
+        this.name = name;
+        this.command = command;
+        this.isMandatory = isMandatory;
+        this.isActive = isActive;
     }
 }
