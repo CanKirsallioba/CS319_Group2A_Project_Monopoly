@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -29,7 +30,7 @@
                      </children></AnchorPane>
                   <AnchorPane fx:id="goToJail" layoutX="1050.0" prefHeight="150.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" stylesheets="@GameBoardStyle.css">
                      <children>
-                        <ImageView fx:id="goToJail" fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./go-to-jail.png" />
                            </image>
@@ -207,7 +208,7 @@
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./chance-vertical.png" />
+                              <Image url="@chance-vertical.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="450.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" stylesheets="@GameBoardStyle.css">
@@ -228,7 +229,10 @@
                   <AnchorPane layoutX="550.0" prefHeight="150.0" prefWidth="100.0" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@./plane-down.png" />
+                           </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="650.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
@@ -642,7 +646,7 @@
          <effect>
             <ColorAdjust />
          </effect></Button>
-      <Button fx:id="endTurnButton" layoutX="1100.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleRollDiceButton" prefHeight="60.0" prefWidth="250.0" style="-fx-font-size: 22;" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Roll Dice">
+      <Button fx:id="button2" layoutX="1100.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButton2" prefHeight="60.0" prefWidth="250.0" style="-fx-font-size: 22;" stylesheets="@GameBoardStyle.css" text="Button2">
          <font>
             <Font size="22.0" />
          </font>
@@ -656,8 +660,12 @@
          </textFill>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button fx:id="rollDiceButton1" alignment="CENTER" layoutX="1100.0" layoutY="775.0" mnemonicParsing="false" onAction="#handleBuyPropertyButton" prefHeight="60.0" prefWidth="250.0" style="-fx-font-size: 22;" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Buy Property">
+         </cursor>
+         <styleClass>
+            <String fx:value="menuButtons" />
+            <String fx:value="gameButtons" />
+         </styleClass></Button>
+      <Button fx:id="button4" alignment="CENTER" layoutX="1100.0" layoutY="775.0" mnemonicParsing="false" onAction="#handleButton4" prefHeight="60.0" prefWidth="250.0" style="-fx-font-size: 22;" stylesheets="@GameBoardStyle.css" text="Button4">
          <font>
             <Font size="22.0" />
          </font>
@@ -675,6 +683,50 @@
          <effect>
             <ColorAdjust />
          </effect>
+         <styleClass>
+            <String fx:value="menuButtons" />
+            <String fx:value="gameButtons" />
+         </styleClass>
+      </Button>
+      <Button fx:id="button1" layoutX="600.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButton1" prefHeight="60.0" prefWidth="250.0" style="-fx-font-size: 22;" stylesheets="@GameBoardStyle.css" text="Button1">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <styleClass>
+            <String fx:value="menuButtons" />
+            <String fx:value="gameButtons" />
+         </styleClass>
+      </Button>
+      <Button fx:id="button3" layoutX="600.0" layoutY="775.0" mnemonicParsing="false" onAction="#handleButton3" prefHeight="60.0" prefWidth="250.0" style="-fx-font-size: 22;" stylesheets="@GameBoardStyle.css" text="Button3">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <styleClass>
+            <String fx:value="menuButtons" />
+            <String fx:value="gameButtons" />
+         </styleClass>
       </Button>
    </children>
 </AnchorPane>

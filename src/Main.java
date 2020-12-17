@@ -8,15 +8,18 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static Stage primaryStage;
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mainmenu.fxml"));
+    public void start(Stage stage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+        primaryStage = stage;
+
         primaryStage.setTitle("Monopoly Game");
         primaryStage.setScene(new Scene(root, 1920, 1080));
 
         //primaryStage.setMaximized( true);
         //primaryStage.setFullScreen(true);
-
         primaryStage.show();
 
 

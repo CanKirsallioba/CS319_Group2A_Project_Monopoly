@@ -1,15 +1,26 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
+
     /*
         Player Cards
          */
@@ -303,16 +314,38 @@ public class GameBoardController implements Initializable {
     private Label bluePrice2;
 
     @FXML
-    public void handleMenuButton() {}
+    public void handleMenuButton() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("Menu");
+        stage.setScene(new Scene(root1));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void exit() {
+        Stage stage = (Stage) yellowPrice1.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     public void handleEndTurnButton() {}
 
-    @FXML
-    public void handleRollDiceButton() {}
 
     @FXML
-    public void handleBuyPropertyButton() {}
+    public void handleButton1() {}
+
+    @FXML
+    public void handleButton2() {}
+
+    @FXML
+    public void handleButton3() {}
+
+    @FXML
+    public void handleButton4() {}
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
