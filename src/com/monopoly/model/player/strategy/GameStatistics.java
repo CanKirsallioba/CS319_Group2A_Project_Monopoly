@@ -11,39 +11,35 @@ public class GameStatistics {
     Board board;
     ArrayList<Player> players;
 
+    /**
+     * Default constructor.
+     */
     GameStatistics(){
         board = null;
         players = null;
     }
 
+    /**
+     * Default constructor that initializes the board according to parameters.
+     * @param board is the board of the game
+     * @param players are the players in the game
+     */
     GameStatistics( Board board, ArrayList<Player> players){
         this.board = board;
         this.players = players;
     }
 
+    /**
+     * Calculates the average rent according to ownership situation of the properties on the board.
+     * @return average rent of properties
+     */
     public int calculateAverageRent(){
         int numberOfPropertyTiles = 0;
         int totalRentValue = 0;
 
         for( Tile tile: board.getTiles()){
             if( tile instanceof PropertyTile){
-                int upgradeLevel = 0;
-                upgradeLevel = ((PropertyTile) tile).getTitleDeedCard().getUpgradeLevel();
-                if( upgradeLevel == 1){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelOneRent();
-                }
-                else if( upgradeLevel == 2){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelTwoRent();
-                }
-                else if( upgradeLevel == 3){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelThreeRent();
-                }
-                else if( upgradeLevel == 4){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelFourRent();
-                }
-                else if( upgradeLevel == 5){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelFiveRent();
-                }
+                totalRentValue += ( (PropertyTile) tile).getTitleDeedCard().getCurrentRent();
                 numberOfPropertyTiles++;
             }
         }
@@ -51,42 +47,24 @@ public class GameStatistics {
         return totalRentValue / numberOfPropertyTiles;
     }
 
+    /**
+     * @return the maximum rent on the board
+     */
     public int getMaximumRent(){
         int maxRent = 0;
         for( Tile tile: board.getTiles()){
             if( tile instanceof PropertyTile){
-                int upgradeLevel = 0;
-                upgradeLevel = ((PropertyTile) tile).getTitleDeedCard().getUpgradeLevel();
-                if( upgradeLevel == 1){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelOneRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelOneRent();
-                    }
-                }
-                else if( upgradeLevel == 2){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelTwoRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelTwoRent();
-                    }
-                }
-                else if( upgradeLevel == 3){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelThreeRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelThreeRent();
-                    }
-                }
-                else if( upgradeLevel == 4){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelFourRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelFourRent();
-                    }
-                }
-                else if( upgradeLevel == 5){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelFiveRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelFiveRent();
-                    }
+                if ( ( (PropertyTile) tile).getTitleDeedCard().getCurrentRent() > maxRent ){
+                    maxRent = ((PropertyTile) tile).getTitleDeedCard().getCurrentRent();
                 }
             }
         }
         return maxRent;
     }
 
+    /**
+     * @return the number of properties on the board who does not have an owner
+     */
     public int calculateNumberOfPropertiesWithoutOwner(){
         int numOfProperties = 0;
         int numOfOwnedProperties = 0;
@@ -94,7 +72,7 @@ public class GameStatistics {
             if( tile instanceof PropertyTile){
                 numOfProperties++;
                 int upgradeLevel = 0;
-                if ( ((PropertyTile) tile).getTitleDeedCard().getIsOwned()){
+                if ( ((PropertyTile) tile).getTitleDeedCard().isOwned() ){
                     numOfOwnedProperties++;
                 }
             }
@@ -102,6 +80,9 @@ public class GameStatistics {
         return numOfProperties - numOfOwnedProperties;
     }
 
+    /**
+     * @return the collective net worth of players in the game
+     */
     public int calculateNetWorthOfPlayers() {
         int netWorthValue = 0;
         for( Player currentPlayer: players){
@@ -110,18 +91,32 @@ public class GameStatistics {
         return netWorthValue;
     }
 
+    /**
+     * @return the board attribute
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     * Sets the board attribute to the parameter
+     * @param board is the new board
+     */
     public void setBoard(Board board) {
         this.board = board;
     }
 
+    /**
+     * @return the players attribute
+     */
     public ArrayList<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * Sets the players attribute to the parameter
+     * @param players is the new players list
+     */
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
