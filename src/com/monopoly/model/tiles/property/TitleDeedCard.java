@@ -2,6 +2,7 @@ package com.monopoly.model.tiles.property;
 
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.GameAction;
+import com.monopoly.model.tiles.PropertyTile;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -349,5 +350,38 @@ public class TitleDeedCard implements Serializable {
     public int removeMortgage() {
         isMortgaged = false;
         return (int)(mortgageValue * mortgageRemovalMultiplier);
+    }
+
+
+    /**
+     *
+     * @return the current rent based on upgrade level
+     */
+    public int getCurrentRent(){
+        int upgradeLevel = 0;
+        int rent = 0;
+
+        upgradeLevel = getUpgradeLevel();
+
+        if( upgradeLevel == 0){
+                rent = getLevelZeroRent();
+        }
+        else if( upgradeLevel == 1){
+            rent = getLevelOneRent();
+
+        }
+        else if( upgradeLevel == 2){
+            rent = getLevelTwoRent();
+        }
+        else if( upgradeLevel == 3){
+            rent = getLevelThreeRent();
+        }
+        else if( upgradeLevel == 4){
+            rent = getLevelFourRent();
+        }
+        else if( upgradeLevel == 5){
+            rent = getLevelFiveRent();
+        }
+        return rent;
     }
 }
