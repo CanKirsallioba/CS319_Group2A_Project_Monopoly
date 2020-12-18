@@ -30,6 +30,33 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     Card drawnCard;
 
     @Override
+    public String toString() {
+        //String titleDeedInfo = "{ ";
+        //for (TitleDeedCard deed : titleDeeds){
+          //  titleDeedInfo = titleDeedInfo + ", " + deed.getPropertyName();
+        //}
+        //titleDeedInfo = titleDeedInfo + " }";
+
+        return "AbstractPlayer{" +
+                //"\ntaxOption=" + taxOption.name() +
+                ", \ntitleDeeds=" + titleDeeds.size() +
+                ", \nbailOutOfJailCards=" + bailOutOfJailCards.size() +
+                ", \nbalance=" + balance +
+                ", \nbankrupt=" + bankrupt +
+                ", \nconsecutiveDoubleCount=" + consecutiveDoubleCount +
+                ", \nnumberOfTurnsSpentInJail=" + numberOfTurnsSpentInJail +
+                ", \ncurrentTileIndex=" + currentTileIndex +
+                ", \nisInJail=" + isInJail +
+                ", \ntotalWorth=" + totalWorth +
+                ", \nliquidTotalWorth=" + liquidTotalWorth +
+                ", \ncanBailOut=" + canBailOut +
+                ", \nselectedTitleDeed=" + selectedTitleDeed.getPropertyName() +
+                ", \ndrawnCard=" + drawnCard.getInstruction() +
+                ", \nplayersDice=" + playersDice.getDiceResultSum() +
+                "}";
+    }
+
+    @Override
     public Dice getPlayersDice() {
         return playersDice;
     }

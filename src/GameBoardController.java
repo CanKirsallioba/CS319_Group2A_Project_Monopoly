@@ -393,6 +393,8 @@ public class GameBoardController implements Initializable {
         System.out.println("Player: " + getGameSession().getTurnManager().getCurrentPlayerIndex() + "\n"
                 + "TileIndex: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getIndex() + "\n"
                 + "Tile: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getTileName());
+
+        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
     }
 
 
