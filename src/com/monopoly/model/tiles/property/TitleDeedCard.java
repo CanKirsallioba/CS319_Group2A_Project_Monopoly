@@ -16,7 +16,7 @@ public class TitleDeedCard implements Serializable {
     ArrayList<GameAction> propertyActions;
 
     String propertyName;
-    int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
+    int levelZeroRent, levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
     boolean isOwned;
     boolean isMortgaged;
     int upgradeLevel;
@@ -247,12 +247,24 @@ public class TitleDeedCard implements Serializable {
     }
 
     public String getPropertyName() {
-        return "";
+        return propertyName;
 
     }
 
     public void setPropertyName(String propertyName) {
         this.propertyName = propertyName;
+    }
+
+    /**
+     * @return level zero rent of the property
+     */
+    public int getLevelZeroRent() {
+        return levelZeroRent;
+
+    }
+
+    public void setLevelZeroRent(int levelZeroRent) {
+        this.levelZeroRent = levelZeroRent;
     }
 
     /**
@@ -272,6 +284,7 @@ public class TitleDeedCard implements Serializable {
      */
     public int getLevelTwoRent() {
         return levelTwoRent;
+
     }
 
     /**

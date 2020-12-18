@@ -1,6 +1,7 @@
 package com.monopoly.model.tiles.actionStrategy;
 
 import com.monopoly.model.player.Player;
+import com.monopoly.model.player.TaxOption;
 
 public class IncomeTaxTileActionStrategy extends ActionStrategy {
     /**
@@ -9,7 +10,7 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button1Strategy(Player player) {
-        player.setTaxOption ( 0 );
+        player.setTaxOption ( TaxOption.FIXED_TAX_AMOUNT );
     }
 
     /**
@@ -18,7 +19,7 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button2Strategy(Player player) {
-        player.setTaxOption ( 1 );
+        player.setTaxOption ( TaxOption.TAX_WITH_RATIO );
     }
 
     /**

@@ -25,12 +25,21 @@ public class BoardFactory {
         }
         board.setTiles(tiles);
 
-        // associate the color groups - work in progress to discuss with teammates
-        JSONArray colorGroups = (JSONArray) config.get("colorGroups");
-        for (Object colorConfig : colorGroups) {
-            JSONObject colorObj = (JSONObject) ((JSONObject) colorConfig).get("colorGroup");
-            String color = (String) colorObj.get("color");
-
+        // associate the color groups
+        ArrayList<Tile> colorGroupOfTile = new ArrayList<>();
+        for( Tile tileCheck : tiles ) {
+            if (tileCheck instanceof PropertyTile) {
+                for (Tile tileInstance : tiles) {
+                    if (tileInstance instanceof PropertyTile) {
+                        if (((PropertyTile) tileCheck).getTitleDeedCard().getColorGroup().getColor() == ((PropertyTile) tileInstance).getTitleDeedCard().getColorGroup().getColor()
+                            && tileCheck.getIndex() != tileInstance.getIndex()){
+                            colorGroupOfTile.add(tileInstance);
+                        }
+                    }
+                }
+                ((PropertyTile) tileCheck).getTitleDeedCard().getColorGroup().setGroup( colorGroupOfTile);
+                colorGroupOfTile.clear();
+            }
         }
 
         //set jail index to board
@@ -49,6 +58,7 @@ public class BoardFactory {
         // set board name.
         String boardName = (String) boardConfig.get("boardName");
         board.setBoardName(boardName);
-        return null;
+
+        return board;
     }
 }
