@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="pane" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.monopoly.controller.MainMenu">
+   <children>
+      <Button layoutX="1500.0" layoutY="150.0" mnemonicParsing="false" onAction="#goToNewGameScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="Start New Game" textAlignment="CENTER" />
+      <Button layoutX="1500.0" layoutY="450.0" mnemonicParsing="false" onAction="#goToCreditsScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="Credits" />
+      <Button layoutX="1500.0" layoutY="250.0" mnemonicParsing="false" onAction="#goToLoadGameScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="Load Game" />
+      <Button layoutX="1500.0" layoutY="550.0" mnemonicParsing="false" onAction="#goToHowToPlayScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="How To Play" />
+      <Button layoutX="1500.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToMapBuilderScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="Board Builder" />
+      <Button layoutX="1500.0" layoutY="650.0" mnemonicParsing="false" onAction="#goToSettingsScreen" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="Settings" />
+      <Button fx:id="quitButton" layoutX="1500.0" layoutY="750.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="75.0" prefWidth="300.0" stylesheets="@main/resources/MainMenuStyle.cssinMenuStyle.css" text="Exit Game" />
+      <Text layoutX="72.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="215.7421875" />
+      <Text fill="#ff784a" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly" textAlignment="CENTER" wrappingWidth="1920.0">
+         <font>
+            <Font name="AppleMyungjo Regular" size="75.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
