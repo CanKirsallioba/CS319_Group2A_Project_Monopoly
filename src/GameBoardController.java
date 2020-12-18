@@ -80,293 +80,88 @@ public class GameBoardController implements Initializable {
     @FXML
     private Button button1, button2, button3, button4;
     @FXML
-    private AnchorPane player1Card;
-
-    @FXML
-    private AnchorPane player2Card;
-
-    @FXML
-    private AnchorPane player3Card;
-
-    @FXML
-    private AnchorPane player4Card;
-
-    @FXML
-    private AnchorPane player5Card;
-
-    @FXML
-    private AnchorPane player6Card;
+    private AnchorPane player1Card, player2Card, player3Card, player4Card, player5Card, player6Card;
 
     /*
     Player Name Labels
      */
     @FXML
-    private Label p1NameLabel;
-
-    @FXML
-    private Label p2NameLabel;
-
-    @FXML
-    private Label p3NameLabel;
-
-    @FXML
-    private Label p4NameLabel;
-
-    @FXML
-    private Label p5NameLabel;
-
-    @FXML
-    private Label p6NameLabel;
+    private Label p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel, p5NameLabel, p6NameLabel;
 
     /*
     Players' money amount labels
      */
 
     @FXML
-    private Label p1moneyLabel;
-
-    @FXML
-    private Label p2moneyLabel;
-
-    @FXML
-    private Label p3moneyLabel;
-
-    @FXML
-    private Label p4moneyLabel;
-
-    @FXML
-    private Label p5moneyLabel;
-
-    @FXML
-    private Label p6moneyLabel;
+    private Label p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel, p6moneyLabel;
 
     /*
     Players' number of property labels
      */
 
     @FXML
-    private Label p1NumOfPropLabel;
-
-    @FXML
-    private Label p2NumOfPropLabel;
-
-    @FXML
-    private Label p3NumOfPropLabel;
-
-    @FXML
-    private Label p4NumOfPropLabel;
-
-    @FXML
-    private Label p5NumOfPropLabel;
-
-    @FXML
-    private Label p6NumOfPropLabel;
+    private Label p1NumOfPropLabel, p2NumOfPropLabel, p3NumOfPropLabel, p4NumOfPropLabel, p5NumOfPropLabel, p6NumOfPropLabel;
 
     /*
     Players' see properties buttons
      */
 
     @FXML
-    private Button p1SeePropertiesButton;
-
-    @FXML
-    private Button p2SeePropertiesButton;
-
-    @FXML
-    private Button p3SeePropertiesButton;
-
-    @FXML
-    private Button p4SeePropertiesButton;
-
-    @FXML
-    private Button p5SeePropertiesButton;
-
-    @FXML
-    private Button p6SeePropertiesButton;
+    private Button p1SeePropertiesButton, p2SeePropertiesButton, p3SeePropertiesButton, p4SeePropertiesButton, p5SeePropertiesButton, p6SeePropertiesButton;
 
     /*
     Players' trade buttons
      */
     @FXML
-    private Button p1TradeButton;
-
-    @FXML
-    private Button p2TradeButton;
-
-    @FXML
-    private Button p3TradeButton;
-
-    @FXML
-    private Button p4TradeButton;
-
-    @FXML
-    private Button p5TradeButton;
-
-    @FXML
-    private Button p6TradeButton;
+    private Button p1TradeButton, p2TradeButton, p3TradeButton, p4TradeButton, p5TradeButton, p6TradeButton;
 
     /*
     Player's token labels
      */
 
     @FXML
-    private Label p1TokenLabel;
-
-    @FXML
-    private Label p2TokenLabel;
-
-    @FXML
-    private Label p3TokenLabel;
-
-    @FXML
-    private Label p4TokenLabel;
-
-    @FXML
-    private Label p5TokenLabel;
-
-    @FXML
-    private Label p6TokenLabel;
-
+    private Label p1TokenLabel, p2TokenLabel, p3TokenLabel, p4TakenLabel, p5TokenLabel, p6TokenLabel;
 
     /*
     Players' token images
      */
 
     @FXML
-    private ImageView p1TokenImage;
-
-    @FXML
-    private ImageView p2TokenImage;
-
-    @FXML
-    private ImageView p3TokenImage;
-
-    @FXML
-    private ImageView p4TokenImage;
-
-    @FXML
-    private ImageView p5TokenImage;
-
-    @FXML
-    private ImageView p6TokenImage;
+    private ImageView p1TokenImage, p2TokenImage, p3TokenImage, p4TokenImage, p5TokenImage, p6TokenImage;
 
     /*
     Game Buttons
      */
 
     @FXML
-    private Button menuButton;
-
-    @FXML
-    private Button rollDiceButton;
-
-    @FXML
-    private Button endTurnButton;
+    private Button menuButton, rollDiceButton, endTurnButton;
 
     @FXML
     private ImageView goTileImage;
 
     @FXML
-    private Label brownLabel1;
-    @FXML
-    private Label brownPrice1;
+    private Label brownLabel1, brownPrice1, brownLabel2, brownPrice2;
 
     @FXML
-    private Label brownLabel2;
-    @FXML
-    private Label brownPrice2;
+    private Label lightBlueLabel1, lightBluePrice1, lightBlueLabel2, lightBluePrice2, lightBlueLabel3, lightBluePrice3;
 
     @FXML
-    private Label lightBlueLabel1;
-    @FXML
-    private Label lightBluePrice1;
-    @FXML
-    private Label lightBlueLabel2;
-    @FXML
-    private Label lightBluePrice2;
-    @FXML
-    private Label lightBlueLabel3;
-    @FXML
-    private Label lightBluePrice3;
-
+    private Label pinkLabel1, pinkPrice1, pinkLabel2, pinkPrice2, pinkLabel3, pinkPrice3;
 
     @FXML
-    private Label pinkLabel1;
-    @FXML
-    private Label pinkPrice1;
-    @FXML
-    private Label pinkLabel2;
-    @FXML
-    private Label pinkPrice2;
-    @FXML
-    private Label pinkLabel3;
-    @FXML
-    private Label pinkPrice3;
-
+    private Label orangeLabel1, orangePrice1, orangeLabel2, orangePrice2, orangeLabel3, orangePrice3;
 
     @FXML
-    private Label orangeLabel1;
-    @FXML
-    private Label orangePrice1;
-    @FXML
-    private Label orangeLabel2;
-    @FXML
-    private Label orangePrice2;
-    @FXML
-    private Label orangeLabel3;
-    @FXML
-    private Label orangePrice3;
+    private Label redLabel1, redPrice1, redLabel2, redPrice2, redLabel3, redPrice3;
 
     @FXML
-    private Label redLabel1;
-    @FXML
-    private Label redPrice1;
-    @FXML
-    private Label redLabel2;
-    @FXML
-    private Label redPrice2;
-    @FXML
-    private Label redLabel3;
-    @FXML
-    private Label redPrice3;
-
+    private Label yellowLabel1, yellowPrice1, yellowLabel2, yellowPrice2, yellowLabel3, yellowPrice3;
 
     @FXML
-    private Label yellowLabel1;
-    @FXML
-    private Label yellowPrice1;
-    @FXML
-    private Label yellowLabel2;
-    @FXML
-    private Label yellowPrice2;
-    @FXML
-    private Label yellowLabel3;
-    @FXML
-    private Label yellowPrice3;
-
+    private Label greenLabel1, greenPrice1, greenLabel2, greenPrice2, greenLabel3, greenPrice3;
 
     @FXML
-    private Label greenLabel1;
-    @FXML
-    private Label greenPrice1;
-    @FXML
-    private Label greenLabel2;
-    @FXML
-    private Label greenPrice2;
-    @FXML
-    private Label greenLabel3;
-    @FXML
-    private Label greenPrice3;
-
-
-    @FXML
-    private Label blueLabel1;
-    @FXML
-    private Label bluePrice1;
-    @FXML
-    private Label blueLabel2;
-    @FXML
-    private Label bluePrice2;
+    private Label blueLabel1, bluePrice1, blueLabel2, bluePrice2;
 
     @FXML
     private GameSession gameSession;
@@ -473,9 +268,4 @@ public class GameBoardController implements Initializable {
     public void openTitleDeedCard() throws IOException {
         openPopUp("TitleDeedCardUI.fxml", "Title Deed Card");
     }
-
-
-
-
-
 }
