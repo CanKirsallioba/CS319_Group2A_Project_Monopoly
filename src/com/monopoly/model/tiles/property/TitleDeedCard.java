@@ -477,4 +477,21 @@ public class TitleDeedCard implements Serializable {
         }
         return rent;
     }
+
+
+    /**
+     * Checks if the action of upgrading the property is active at a moment
+     * @return true if the property is upgradable
+     */
+    public boolean isUpgradable(){
+        return actionNames.get("Upgrade Property").isActive();
+    }
+
+    /**
+     * Checks if the action of downgrading the property is active at a moment
+     * @return true if the property is downgradable
+     */
+    public boolean isDowngradable(){
+        return actionNames.get("Downgrade Property").isActive();
+    }
 }
