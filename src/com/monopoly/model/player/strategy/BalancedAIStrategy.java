@@ -26,13 +26,13 @@ public class BalancedAIStrategy extends AIStrategy {
                 if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() && player.getLiquidTotalWorth() >= player.getBalance()){
                     for(TitleDeedCard titleDeedCard: player.getTitleDeeds()){
                         if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
-                            getGameActions( titleDeedCard.getPossibleActions(), "Downgrade");
+                            getGameAction( titleDeedCard.getPossibleActions(), "Downgrade");
                         }
                     }
                     if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()){
                         for( TitleDeedCard titleDeedCard: player.getTitleDeeds() ){
                             if( titleDeedCard.isMortgaged() == false && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
-                                getGameActions( titleDeedCard.getPossibleActions(), "Mortgage");
+                                getGameAction( titleDeedCard.getPossibleActions(), "Mortgage");
                             }
                         }
                     }
@@ -46,7 +46,7 @@ public class BalancedAIStrategy extends AIStrategy {
                 }
 
                 // pay the rent
-                getGameActions( currentPropertyTile.getTitleDeedCard()itleDeedCard().getPossibleActions(), "Pay Rent");
+                getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Pay Rent");
 
             }
 
@@ -59,12 +59,12 @@ public class BalancedAIStrategy extends AIStrategy {
                 // if the player can pay the maximum rent even after buying this property, buy it
                 if( player.getBalance() - gameStatistics.getMaximumRent() < 0){
 
-                    getGameActions( currentPropertyTile.getTitleDeedCard()itleDeedCard().getPossibleActions(), "Buy Property");
+                    getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Buy Property");
                 }
             }
             // if does not fit the criteria do not buy
             else{
-                getGameActions( currentPropertyTile.getTitleDeedCard()itleDeedCard().getPossibleActions(), "Dont Buy Property");
+                getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Dont Buy Property");
             }
         }
     }
