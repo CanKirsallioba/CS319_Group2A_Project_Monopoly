@@ -15,7 +15,7 @@ public class TitleDeedCard implements Serializable {
     ArrayList<GameAction> propertyActions;
 
     String propertyName;
-    int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
+    int levelZeroRent, levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
     boolean isOwned;
     boolean isMortgaged;
     int upgradeLevel;
@@ -249,7 +249,7 @@ public class TitleDeedCard implements Serializable {
     }
 
     public String getPropertyName() {
-        return "";
+        return propertyName;
 
     }
 
@@ -258,22 +258,34 @@ public class TitleDeedCard implements Serializable {
     }
 
     /**
+     * @return level zero rent of the property
+     */
+    public int getLevelZeroRent() {
+        return levelZeroRent;
+
+    }
+
+    public void setLevelZeroRent(int levelZeroRent) {
+        this.levelZeroRent = levelZeroRent;
+    }
+
+    /**
      * @return level one rent of the property
      */
     public int getLevelOneRent() {
-        return 0;
+        return levelOneRent;
 
     }
 
     public void setLevelOneRent(int levelOneRent) {
-
+        this.levelOneRent = levelOneRent;
     }
 
     /**
      * @return level two rent of the property
      */
     public int getLevelTwoRent() {
-        return 0;
+        return levelTwoRent;
 
     }
 
@@ -281,21 +293,21 @@ public class TitleDeedCard implements Serializable {
      * @param levelTwoRent level two rent of the property
      */
     public void setLevelTwoRent(int levelTwoRent) {
-
+        this.levelTwoRent = levelTwoRent;
     }
 
     /**
      * @return level three rent of the property
      */
     public int getLevelThreeRent() {
-        return 0;
+        return levelThreeRent;
     }
 
     /**
      * @param levelThreeRent level three rent of the property
      */
     public void setLevelThreeRent(int levelThreeRent) {
-
+        this.levelThreeRent = levelThreeRent;
     }
 
     /**

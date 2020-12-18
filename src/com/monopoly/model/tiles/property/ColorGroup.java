@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class ColorGroup implements Serializable {
     ArrayList<Tile> group;
+    Color color;
 
     public ColorGroup(ArrayList<Tile> group) {
         this.group = group;
@@ -31,5 +32,13 @@ public class ColorGroup implements Serializable {
             }
         }
         return true;
+    }
+
+    public Color getColor(){
+        return color;
+    }
+
+    public void setColor( Color color){
+        this.color = color;
     }
 }
