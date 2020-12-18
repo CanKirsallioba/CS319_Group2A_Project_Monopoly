@@ -10,6 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.session.GameSession;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -309,6 +311,19 @@ public class GameBoardController implements Initializable {
     private Label blueLabel2;
     @FXML
     private Label bluePrice2;
+
+    @FXML
+    private GameSession gameSession;
+
+    public GameSession getGameSession() {
+        return gameSession;
+    }
+
+    public void setGameSession(GameSession gameSession) {
+
+        this.gameSession = gameSession;
+        System.out.println(gameSession);
+    }
 
     @FXML
     public void handleMenuButton() throws IOException {

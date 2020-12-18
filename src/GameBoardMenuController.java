@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import model.session.GameSession;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,6 +30,9 @@ public class GameBoardMenuController implements Initializable {
 
     @FXML
     private Button returnButton;
+
+    @FXML
+    private GameSession gameSession;
 
     @FXML
     public void handleResume() {

@@ -13,6 +13,8 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import model.BoardConfiguration;
+import model.session.GameSession;
 
 import java.io.IOException;
 import java.net.URL;
@@ -111,7 +113,7 @@ public class NewGameController implements Initializable {
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         tableViewParent.setId("pane");
-
+//        GameBoardController controller = fxmlLoader.<GameBoardController>getController();
         window.setScene(tableViewScene);
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -141,15 +143,26 @@ public class NewGameController implements Initializable {
     @FXML
     //where we give/save these settings to boardconfig object (model)
     private void handleStartGame(ActionEvent event) throws IOException {
+        // User ID acquired from a textbox called txtUserId
+//        int userId = Integer.parseInt(this.txtUserId.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+
+        Parent root = (Parent)fxmlLoader.load();
+        GameBoardController controller = fxmlLoader.<GameBoardController>getController();
+        controller.setGameSession(new GameSession());
+        Scene scene = new Scene(root);
+
+
         numOfPlayers = humanPlayers + botPlayers;
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-
+//        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+//        Scene tableViewScene = new Scene(tableViewParent);
+//        BoardConfiguration boardConfiguration;
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-        window.setScene(tableViewScene);
+        window.setScene(scene);
 
         //primaryStage.setMaximized(true);
         //primaryStage.setFullScreen(true);
