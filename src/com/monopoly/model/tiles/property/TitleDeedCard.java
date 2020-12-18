@@ -70,27 +70,24 @@ public class TitleDeedCard implements Serializable {
      * Updates the property's actions based according to the state of property (owned, mortgaged and upgradeLevel)
      */
     public void updateActions() {
-        if (isOwned) {
-            deactivateAction("Buy Property");
 
-            if (upgradeLevel > 0)
-                activateAction("Downgrade Property");
-            else
-                deactivateAction("Downgrade Property");
+        if (upgradeLevel > 0)
+            activateAction("Downgrade Property");
+        else
+            deactivateAction("Downgrade Property");
 
-            if (upgradeLevel < 5)
-                activateAction("Upgrade Property");
-            else
-                deactivateAction("Upgrade Property");
+        if (upgradeLevel < 5)
+            activateAction("Upgrade Property");
+        else
+            deactivateAction("Upgrade Property");
 
 
-            if (!isMortgaged) {
-                activateAction("Mortgage Property");
-                deactivateAction("Remove Mortgage");
-            } else {
-                deactivateAction("Mortgage Property");
-                activateAction("Remove Mortgage");
-            }
+        if (!isMortgaged) {
+            activateAction("Mortgage Property");
+            deactivateAction("Remove Mortgage");
+        } else {
+            deactivateAction("Mortgage Property");
+            activateAction("Remove Mortgage");
         }
     }
 
@@ -245,7 +242,7 @@ public class TitleDeedCard implements Serializable {
      * @return the penalty of removing the mortgage of the property
      */
     public int mortgageRemovalPenalty() {
-        return 0;
+        return 0; //TODO penalty or multiplier?
     }
 
     public String getPropertyName() {
@@ -261,41 +258,40 @@ public class TitleDeedCard implements Serializable {
      * @return level one rent of the property
      */
     public int getLevelOneRent() {
-        return 0;
+        return levelOneRent;
 
     }
 
     public void setLevelOneRent(int levelOneRent) {
-
+        this.levelOneRent = levelOneRent;
     }
 
     /**
      * @return level two rent of the property
      */
     public int getLevelTwoRent() {
-        return 0;
-
+        return levelTwoRent;
     }
 
     /**
      * @param levelTwoRent level two rent of the property
      */
     public void setLevelTwoRent(int levelTwoRent) {
-
+        this.levelTwoRent = levelTwoRent;
     }
 
     /**
      * @return level three rent of the property
      */
     public int getLevelThreeRent() {
-        return 0;
+        return levelThreeRent;
     }
 
     /**
      * @param levelThreeRent level three rent of the property
      */
     public void setLevelThreeRent(int levelThreeRent) {
-
+        this.levelThreeRent = levelThreeRent;
     }
 
     /**

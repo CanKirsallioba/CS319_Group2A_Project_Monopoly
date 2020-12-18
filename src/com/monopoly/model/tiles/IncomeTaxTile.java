@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class IncomeTaxTile extends Tile {
 
     @Override
-    public ArrayList<GameAction> hook(Player player) {
+    protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions){
         if (player.getTaxOption() != null) {
             setActive(actions, "Tax Option 1", true);
             setActive(actions, "Tax Option 2", true);
