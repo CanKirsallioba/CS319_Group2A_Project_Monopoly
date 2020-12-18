@@ -14,9 +14,10 @@ public abstract class AIStrategy {
     public abstract void makeAndExecuteCardDecision(AIPlayer aiPlayer);
 
     /**
-     * @param gameAction
-     * @param gameActionName
-     * @return
+     * Gets the relevant game action from the game action list.
+     * @param gameAction is the list of game actions possible from the currently landed tile
+     * @param gameActionName is the name of the action wanted to get
+     * @return the desired game action
      */
     public GameAction getGameAction(ArrayList<GameAction> gameAction, String gameActionName){
         for(GameAction action: gameAction) {
