@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public class Board implements Iterable<Tile>, Serializable {
     String boardName;
-    int salary;
+    int boardSalary;
     ArrayList<Tile> tiles;
 
     // newly added
@@ -35,12 +35,12 @@ public class Board implements Iterable<Tile>, Serializable {
         this.jailTileIndex = jailTileIndex;
     }
 
-    public int getSalary() {
-        return salary;
+    public int getBoardSalary() {
+        return boardSalary;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setBoardSalary(int salary) {
+        this.boardSalary = salary;
     }
 
     public String getBoardName() {

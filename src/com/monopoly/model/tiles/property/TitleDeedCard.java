@@ -6,6 +6,7 @@ import com.monopoly.model.tiles.PropertyTile;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TitleDeedCard implements Serializable {
     // TODO state si olacak
@@ -14,7 +15,6 @@ public class TitleDeedCard implements Serializable {
     // TODO reset methodu
     final double mortgageRemovalMultiplier = 1.1;
     ArrayList<GameAction> propertyActions;
-
     String propertyName;
     int levelZeroRent, levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
     boolean isOwned;
@@ -71,12 +71,22 @@ public class TitleDeedCard implements Serializable {
      * Updates the property's actions based according to the state of property (owned, mortgaged and upgradeLevel)
      */
     public void updateActions() {
+        /*
+        UNOWNED
+            all deactivated
+        - level 0:
+        upgrade active:
+        unmortgaged & mortgage active:
+        downgrade deactive:
+
+
+        */
 
         if (upgradeLevel > 0)
             activateAction("Downgrade Property");
         else
             deactivateAction("Downgrade Property");
-
+        // todo check if tiles are even.
         if (upgradeLevel < 5)
             activateAction("Upgrade Property");
         else
