@@ -15,11 +15,11 @@ public class TurnManager implements Serializable {
     }
 
     public Player getCurrentPlayer() {
-        return null;
+        return getPlayers().get(getCurrentPlayerIndex());
     }
 
     public void playTurn() {
-
+        getCurrentPlayer().playTurn();
     }
 
     public ArrayList<Player> getPlayers() {
@@ -27,10 +27,14 @@ public class TurnManager implements Serializable {
     }
 
     public void endTurn() {
-
+        do {
+            setCurrentPlayerIndex(getCurrentPlayerIndex() + 1);
+        } while (getPlayers().get(getCurrentPlayerIndex()).isBankrupt());
+        playTurn();
     }
-    public void addPlayer() {
-
+    public void addPlayer(Player player) {
+        // add player interface i degisti.
+        players.add(player);
     }
 
     public void setPlayers(ArrayList<Player> players) {
@@ -51,6 +55,7 @@ public class TurnManager implements Serializable {
     }
 
     public Dice getDice() {
+        // todo all players must have same dice object. and this dice object should be set to turnmanager
         return this.dice;
     }
 
