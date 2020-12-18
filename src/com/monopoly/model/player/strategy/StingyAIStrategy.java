@@ -23,4 +23,9 @@ public class StingyAIStrategy extends AIStrategy {
 
     }
 
+    @Override
+    public void makeAndExecuteCardDecision(AIPlayer aiPlayer){
+
+    }
+
 }

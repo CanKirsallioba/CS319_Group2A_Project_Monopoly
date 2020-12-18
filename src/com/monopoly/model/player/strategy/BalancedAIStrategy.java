@@ -1,6 +1,7 @@
 package com.monopoly.model.player.strategy;
 
 import com.monopoly.model.player.AIPlayer;
+import com.monopoly.model.player.TaxOption;
 import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 
@@ -78,7 +79,17 @@ public class BalancedAIStrategy extends AIStrategy {
 
     @Override
     public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer){
+        if( aiPlayer.getTaxOption() == null){
+            aiPlayer.setTaxOption( TaxOption.TAX_WITH_RATIO);
+        }
 
+        // pay the tax
+        //TODO
+        aiPlayer.setBalance( (int) (aiPlayer.getBalance() * (1 - 0.2)) );
     }
 
+    @Override
+    public void makeAndExecuteCardDecision(AIPlayer aiPlayer){
+
+    }
 }
