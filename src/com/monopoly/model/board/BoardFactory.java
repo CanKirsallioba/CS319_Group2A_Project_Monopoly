@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class BoardFactory {
     public Board get(BoardConfiguration boardConfiguration, JSONObject config) {
+        // todo Tile Katsayilari degismiyor.
         Board board = new Board();
         TileFactory tileFactory = new TileFactory();
 
@@ -52,7 +53,7 @@ public class BoardFactory {
         // set salary
         if(boardConfig.get("salary") != null){
             int salary = ((Long) boardConfig.get("salary")).intValue();
-            board.setSalary(salary);
+            board.setBoardSalary(salary);
         }
 
         // set board name.
