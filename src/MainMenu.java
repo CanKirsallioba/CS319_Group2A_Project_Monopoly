@@ -56,6 +56,7 @@ public class MainMenu {
 
         window.setScene(tableViewScene);
 
+
         window.show();
     }
 }

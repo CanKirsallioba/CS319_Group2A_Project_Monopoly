@@ -326,6 +326,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleButton2() throws IOException {
+        openTitleDeedCard();
     }
 
     @FXML
@@ -390,6 +391,10 @@ public class GameBoardController implements Initializable {
     }
     public void seeInformationCardPlayer6() throws IOException {
         openInformationCard("Player 6");
+    }
+
+    public void openTitleDeedCard() throws IOException {
+        openPopUp("TitleDeedCardUI.fxml", "Title Deed Card");
     }
 
 

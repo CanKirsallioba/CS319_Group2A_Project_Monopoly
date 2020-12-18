@@ -151,6 +151,8 @@ public class NewGameController implements Initializable {
 
         window.setScene(tableViewScene);
 
+        //primaryStage.setMaximized(true);
+        //primaryStage.setFullScreen(true);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
         window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
