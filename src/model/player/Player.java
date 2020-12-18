@@ -88,6 +88,8 @@ public interface Player extends Serializable {
 
     Dice rollDice();
 
+    ArrayList<TitleDeedCard> getTitleDeeds();
+
     ArrayList<Card> getBailOutOfJailCards();
 
 
