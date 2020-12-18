@@ -29,6 +29,10 @@ public class MainMenu {
         changeScreen(event, "newgame.fxml");
     }
 
+    public void goToLoadGameScreen( ActionEvent event) throws IOException {
+        changeScreen(event, "LoadGame.fxml");
+    }
+
 
     public void goToMapBuilderScreen( ActionEvent event) throws IOException {
         changeScreen(event, "boardBuilder.fxml");
