@@ -35,7 +35,7 @@ public class MainMenu {
 
 
     public void goToMapBuilderScreen( ActionEvent event) throws IOException {
-        changeScreen(event, "boardBuilder.fxml");
+        changeScreen(event, "boardbuilder.fxml");
     }
 
     public void goToSettingsScreen(ActionEvent event) throws IOException {
