@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-image: url(CreditsBackground.jpg);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChangePropertyController">
+   <children>
+      <Label fx:id="propertyNameLabel" alignment="CENTER" layoutX="150.0" layoutY="50.0" prefWidth="300.0" text="Property Name" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="125.0" prefHeight="39.0" prefWidth="102.0" text="RENT">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="173.0" prefHeight="39.0" prefWidth="102.0" text="Site Only">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="212.0" prefHeight="39.0" prefWidth="124.0" text="With 1 House">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="251.0" prefHeight="39.0" prefWidth="150.0" text="With 2 Houses">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="290.0" prefHeight="39.0" prefWidth="150.0" text="With 3 Houses">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="329.0" prefHeight="39.0" prefWidth="150.0" text="With 4 Houses">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="368.0" prefHeight="39.0" prefWidth="150.0" text="With Hotel">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="407.0" prefHeight="39.0" prefWidth="102.0" text="PRICES">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="446.0" prefHeight="39.0" prefWidth="150.0" text="Land">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="485.0" prefHeight="39.0" prefWidth="150.0" text="Upgrading Price">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="567.0" prefHeight="39.0" prefWidth="165.0" text="Mortgage Value">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="104.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="39.0" prefWidth="102.0" text="Back" />
+      <Button fx:id="applyButton" layoutX="399.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleApply" prefHeight="39.0" prefWidth="102.0" text="Apply" />
+      <Button fx:id="decreaseSiteOnly" layoutX="345.0" layoutY="175.0" mnemonicParsing="false" onAction="#handleDecreaseSiteOnly" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseSiteOnly" layoutX="493.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleIncreaseSiteOnly" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseWith1House" layoutX="345.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleDecreaseWith1House" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseWith2Houses" layoutX="345.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleDecreaseWith2Houses" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseWith3Houses" layoutX="345.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleDecreaseWith3Houses" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseWith4Houses" layoutX="345.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleDecreaseWith4Houses" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseWithHotel" layoutX="345.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleDecreaseWithHotel" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseWith1House" layoutX="493.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleIncreaseWith1House" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseWith2Houses" layoutX="493.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleIncreaseWith2Houses" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseWith3Houses" layoutX="493.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleIncreaseWith3Houses" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseWith4Houses" layoutX="493.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleIncreaseWith4Houses" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseWithHotel" layoutX="493.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleIncreaseWithHotel" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseLand" layoutX="345.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleDecreaseLand" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseUpgradingPrice" layoutX="345.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleDecreaseUpgradingPrice" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseLand" layoutX="493.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleIncreaseLand" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseUpgradingPrice" layoutX="493.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleIncreaseUpgradingPrice" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseMortgageValue" layoutX="345.0" layoutY="569.0" mnemonicParsing="false" onAction="#handleDecreaseMortgageValue" prefHeight="36.0" prefWidth="38.0" text="-">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="increaseMortgageValue" layoutX="493.0" layoutY="569.0" mnemonicParsing="false" onAction="#handleIncreaseMortgageValue" text="+">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Button>
+      <Label fx:id="siteOnlyLabel" alignment="CENTER" layoutX="400.0" layoutY="175.0" prefHeight="36.0" prefWidth="76.0" text="20" />
+      <Label fx:id="with1HouseLabel" alignment="CENTER" layoutX="399.0" layoutY="214.0" prefHeight="36.0" prefWidth="76.0" text="100" />
+      <Label fx:id="with2HousesLabel" alignment="CENTER" layoutX="399.0" layoutY="253.0" prefHeight="36.0" prefWidth="76.0" text="300" />
+      <Label fx:id="with3HousesLabel" alignment="CENTER" layoutX="399.0" layoutY="292.0" prefHeight="36.0" prefWidth="76.0" text="750" />
+      <Label fx:id="with4HousesLabel" alignment="CENTER" layoutX="399.0" layoutY="331.0" prefHeight="36.0" prefWidth="76.0" text="925" />
+      <Label fx:id="withHotelLabel" alignment="CENTER" layoutX="399.0" layoutY="370.0" prefHeight="36.0" prefWidth="76.0" text="1100" />
+      <Label fx:id="landPriceLabel" alignment="CENTER" layoutX="399.0" layoutY="448.0" prefHeight="36.0" prefWidth="76.0" text="500" />
+      <Label fx:id="upgradingPriceLabel" alignment="CENTER" layoutX="399.0" layoutY="487.0" prefHeight="36.0" prefWidth="76.0" text="150" />
+      <Label fx:id="mortgageValueLabel" alignment="CENTER" layoutX="399.0" layoutY="569.0" prefHeight="36.0" prefWidth="76.0" text="120" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreditsController">
+    <Label alignment="CENTER" prefHeight="60.0" prefWidth="1920.0" text="CREDITS">
+        <font>
+            <Font name="Georgia" size="39.0" />
+        </font>
+    </Label>
+    <Text layoutX="4.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Designers: Emre Açıkgöz, Burak Yiğit Uslu, Can Kırımca, Can Kırşallıoba, Cemre Biltekin, Mustafa Yaşar." wrappingWidth="1920.0">
+        <font>
+            <Font name="Georgia" size="20.0" />
+        </font>
+    </Text>
+    <Text layoutX="4.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="As a group of 6 people from CS319 - Object-Oriented Software Engineering course, we have decided to implement a digital version of the Monopoly game that was published by Hasbro, Inc in 1935 for the term project using Java." wrappingWidth="1920.0">
+        <font>
+            <Font name="Georgia" size="20.0" />
+        </font>
+    </Text>
+    <Text layoutX="4.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="One of the reasons that we have decided to create a digital version of Monopoly is that, considering the publication year, it is impressive that Monopoly is still one of the leading board games that is played in so many countries, thus, it would be entertaining to play this game on a computer with properties that we define. " wrappingWidth="1920.0">
+        <font>
+            <Font name="Georgia" size="20.0" />
+        </font>
+    </Text>
+    <Text layoutX="4.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Another reason is that, since there are many instances in the game, we could implement them as objects in Java, thus, it is convenient to design it as a part of Object-Oriented Software Engineering course. In addition to the classic Monopoly game with all of the base game functionalities, we will add various features in order to make a brand new and more entertaining digital version of the game. These features are discussed in detail in the Overview section under their own headlines, and include Artificial Intelligence (AI) players with custom characteristics, teleportation tiles such as airports and train stations, user-created custom boards, save &amp; load game features and more... " wrappingWidth="1920.0">
+        <font>
+            <Font name="Georgia" size="20.0" />
+        </font>
+    </Text>
+    <AnchorPane layoutX="27.0" layoutY="10.0" prefHeight="45.0" prefWidth="45.0">
+        <children>
+            <ImageView fx:id="backIcon" fitHeight="48.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+            </ImageView>
+        </children>
+    </AnchorPane>
+</AnchorPane>
