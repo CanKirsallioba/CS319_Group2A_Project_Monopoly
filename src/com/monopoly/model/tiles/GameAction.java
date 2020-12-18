@@ -56,7 +56,7 @@ public class GameAction implements Serializable {
         isActive = active;
     }
 
-    GameAction(String name, Command command, boolean isMandatory, boolean isActive) {
+    public GameAction(String name, Command command, boolean isMandatory, boolean isActive) {
         this.name = name;
         this.command = command;
         this.isMandatory = isMandatory;
