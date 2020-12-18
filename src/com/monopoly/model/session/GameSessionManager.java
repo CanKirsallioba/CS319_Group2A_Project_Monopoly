@@ -31,7 +31,7 @@ public class GameSessionManager {
 
 
     public static ArrayList<String> getSavedGameSession() {
-        return FileManager.getGameSaves();
+        return FileManager.getSavedSessionNames();
     }
 
     void newGame(BoardConfiguration config) {
