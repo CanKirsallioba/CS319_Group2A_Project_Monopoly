@@ -23,16 +23,16 @@ public class BalancedAIStrategy extends AIStrategy {
                 // if player does not have the balance to pay rent &&
                 // but liquid total worth > rent
                 // mortgage & downgrade to pay rent
-                if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() && player.getLiquidTotalWorth() >= player.getBalance()){
+                if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() && player.getLiquidTotalWorth() >= currentPropertyTile.getTitleDeedCard().getCurrentRent()){
                     for(TitleDeedCard titleDeedCard: player.getTitleDeeds()){
-                        if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
-                            getGameAction( titleDeedCard.getPossibleActions(), "Downgrade");
+                        if( titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable() && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
+                            getGameAction( titleDeedCard.getPossibleActions(), "Downgrade").execute();
                         }
                     }
                     if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()){
                         for( TitleDeedCard titleDeedCard: player.getTitleDeeds() ){
                             if( titleDeedCard.isMortgaged() == false && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
-                                getGameAction( titleDeedCard.getPossibleActions(), "Mortgage");
+                                getGameAction( titleDeedCard.getPossibleActions(), "Mortgage").execute();
                             }
                         }
                     }
@@ -46,10 +46,8 @@ public class BalancedAIStrategy extends AIStrategy {
                 }
 
                 // pay the rent
-                getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Pay Rent");
-
+                getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Pay Rent").execute();
             }
-
         }
         // decision path for unowned property
         else {
@@ -58,13 +56,12 @@ public class BalancedAIStrategy extends AIStrategy {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
                 if( player.getBalance() - gameStatistics.getMaximumRent() < 0){
-
-                    getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Buy Property");
+                    getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Buy Property").execute();
                 }
             }
             // if does not fit the criteria do not buy
             else{
-                getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Dont Buy Property");
+                getGameAction( currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Dont Buy Property").execute();
             }
         }
     }
