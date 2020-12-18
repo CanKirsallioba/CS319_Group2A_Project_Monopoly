@@ -126,6 +126,57 @@ public class GameBoardController implements Initializable {
 
     private class PlayerCardObserver implements Observer{
         Player player;
+        Label playerMoney, numberOfProperties;
+        Button seeProperties, tradeButton;
+
+        // todo player card container object will be added as parameter
+        public PlayerCardObserver(Player player, Label playerMoney, Label numberOfProperties, Button seeProperties, Button tradeButton) {
+            this.player = player;
+            this.playerMoney = playerMoney;
+            this.numberOfProperties = numberOfProperties;
+            this.seeProperties = seeProperties;
+            this.tradeButton = tradeButton;
+        }
+
+        public Player getPlayer() {
+            return player;
+        }
+
+        public void setPlayer(Player player) {
+            this.player = player;
+        }
+
+        public Label getPlayerMoney() {
+            return playerMoney;
+        }
+
+        public void setPlayerMoney(Label playerMoney) {
+            this.playerMoney = playerMoney;
+        }
+
+        public Label getNumberOfProperties() {
+            return numberOfProperties;
+        }
+
+        public void setNumberOfProperties(Label numberOfProperties) {
+            this.numberOfProperties = numberOfProperties;
+        }
+
+        public Button getSeeProperties() {
+            return seeProperties;
+        }
+
+        public void setSeeProperties(Button seeProperties) {
+            this.seeProperties = seeProperties;
+        }
+
+        public Button getTradeButton() {
+            return tradeButton;
+        }
+
+        public void setTradeButton(Button tradeButton) {
+            this.tradeButton = tradeButton;
+        }
 
         PlayerCardObserver(Player player){
             this.player = player;
@@ -142,62 +193,6 @@ public class GameBoardController implements Initializable {
                         playerIndex = i + 1;
                         break;
                     }
-                }
-
-                Label playerMoney, numberOfProperties;
-                Button seeProperties, tradeButton;
-
-
-                //this switch block determines the index of the player and assigns the labels and buttons accordingly
-                switch(playerIndex){
-                    case 1:
-                        p1NameLabel.setText("Player 1");
-                        playerMoney = p1moneyLabel;
-                        numberOfProperties = p1NumOfPropLabel;
-                        seeProperties = p1SeePropertiesButton;
-                        tradeButton = p1TradeButton;
-                        break;
-                    case 2:
-                        p2NameLabel.setText("Player 2");
-                        playerMoney = p2moneyLabel;
-                        numberOfProperties = p2NumOfPropLabel;
-                        seeProperties = p2SeePropertiesButton;
-                        tradeButton = p2TradeButton;
-                        break;
-                    case 3:
-                        p3NameLabel.setText("Player 3");
-                        playerMoney = p3moneyLabel;
-                        numberOfProperties = p3NumOfPropLabel;
-                        seeProperties = p3SeePropertiesButton;
-                        tradeButton = p3TradeButton;
-                        break;
-                    case 4:
-                        p4NameLabel.setText("Player 4");
-                        playerMoney = p4moneyLabel;
-                        numberOfProperties = p4NumOfPropLabel;
-                        seeProperties = p4SeePropertiesButton;
-                        tradeButton = p4TradeButton;
-                        break;
-                    case 5:
-                        p5NameLabel.setText("Player 5");
-                        playerMoney = p5moneyLabel;
-                        numberOfProperties = p5NumOfPropLabel;
-                        seeProperties = p5SeePropertiesButton;
-                        tradeButton = p5TradeButton;
-                        break;
-                    case 6:
-                        p6NameLabel.setText("Player 6");
-                        playerMoney = p6moneyLabel;
-                        numberOfProperties = p6NumOfPropLabel;
-                        seeProperties = p6SeePropertiesButton;
-                        tradeButton = p6TradeButton;
-                        break;
-                    default:
-                        playerMoney = null;
-                        numberOfProperties = null;
-                        seeProperties = null;
-                        tradeButton = null;
-                        break;
                 }
 
                 playerMoney.setText(player.getBalance() + "");
