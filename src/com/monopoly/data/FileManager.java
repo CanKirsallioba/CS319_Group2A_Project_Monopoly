@@ -3,30 +3,33 @@ package com.monopoly.data;
 import java.util.ArrayList;
 
 public class FileManager {
-    public static ArrayList<String> gameSaves;
     final static int MAX_SIZE = 0;
-    public static ArrayList<String> configFiles;
+    private static ArrayList<String> configList = new ArrayList<String>() {
+        {
+            add("templateConfig.json");
+        }
+    };
+    private static ArrayList<String> sessionNames;
 
     public static int getMaxSize() {
 
         return -1;
     }
 
-    public static ArrayList<String> getGameSaves() {
-
-        return null;
+    public static ArrayList<String> getSavedSessionNames(){
+        return sessionNames;
     }
 
-    public static void addSavedGames(String fileName) {
+    //???
+    //public String getSessionLocation( String sessionName){
+    //  return;
+    //}
 
+    public static ArrayList<String> getBoardConfigNames(){
+        return configList;
     }
 
-    public static ArrayList<String> getConfigFiles() {
-
-        return null;
-    }
-
-    public static void addConfigFile(String fileName) {
-        
+    public static void addBoardConfigName(String fileName) {
+        configList.add( fileName);
     }
 }
