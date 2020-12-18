@@ -377,7 +377,7 @@ public class TitleDeedCard implements Serializable {
         upgradeLevel = getUpgradeLevel();
 
         if( upgradeLevel == 0){
-                rent = getLevelZeroRent();
+            rent = getLevelZeroRent();
         }
         else if( upgradeLevel == 1){
             rent = getLevelOneRent();

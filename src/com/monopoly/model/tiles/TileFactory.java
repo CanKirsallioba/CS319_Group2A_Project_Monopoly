@@ -1,5 +1,6 @@
 package com.monopoly.model.tiles;
 
+import com.monopoly.model.tiles.card.*;
 import com.monopoly.model.tiles.property.Color;
 import com.monopoly.model.tiles.property.ColorGroup;
 import com.monopoly.model.tiles.property.TitleDeedCard;
@@ -75,11 +76,14 @@ public class TileFactory extends AbstractTileFactory {
             CardTile cardTile = new CardTile();
             cardTile.setTileName( tileType);
             cardTile.setIndex( tileIndex);
+            CardDeckBuilder deckBuilder = new CardDeckBuilder();
             if (associatedDeck.equals("ChanceCardDeck")) {
-                //TODO
+                ChanceCardDeck chance = (ChanceCardDeck) deckBuilder.build(config);
+                cardTile.setCardDeck( chance);
                 return cardTile;
             } else if (associatedDeck.equals("CommunityChestCardDeck")) {
-                //TODO
+                CommunityChestCardDeck communityChestCardDeck = (CommunityChestCardDeck) deckBuilder.build(config);
+                cardTile.setCardDeck( communityChestCardDeck);
                 return cardTile;
             } else {
                 throw new RuntimeException("Wrong card deck type in configuration file!!");
