@@ -34,7 +34,8 @@ public class ConfigHandler {
         String fileName;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = df.format(new Date());
-        fileName = config.get("boardName") + "_" + formatted + ".json";
+        JSONObject boardConfig = (JSONObject) config.get("boardConfig");
+        fileName = boardConfig.get("boardName") + "_" + formatted + ".json";
 
         //Write JSON file with given configurations
         try (FileWriter file = new FileWriter(fileName)) {
