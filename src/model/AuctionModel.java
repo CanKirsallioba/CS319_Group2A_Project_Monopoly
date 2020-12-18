@@ -7,16 +7,53 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public class AuctionModel extends Observable {
+
     boolean active;
-    Player player;
+    Player highestBiddingPlayer;
     int highestBid;
+    int remainingTime;
 
     AuctionModel() {
-        active = false;
+        active = true;
+        highestBid = 0;
+        remainingTime = 60;
+        highestBiddingPlayer = null;
+
     }
 
     public void startAuction(ArrayList<TitleDeedCard> titleDeedCards) {
         active = true;
+    }
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Player getHighestBiddingPlayer() {
+        return highestBiddingPlayer;
+    }
+
+    public void setHighestBiddingPlayer(Player highestBiddingPlayer) {
+        this.highestBiddingPlayer = highestBiddingPlayer;
+    }
+
+    public int getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(int highestBid) {
+        this.highestBid = highestBid;
+    }
+
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+
+    public void setRemainingTime(int remainingTime) {
+        this.remainingTime = remainingTime;
     }
 
     public void bid(Player player) {
@@ -28,7 +65,7 @@ public class AuctionModel extends Observable {
 
     public void endAuction() {
         active = false;
-        if (player == null) {
+        if (highestBiddingPlayer == null) {
 
         } else {
 

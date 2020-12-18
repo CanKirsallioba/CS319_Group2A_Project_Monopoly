@@ -3,8 +3,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.TradeModel;
 
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class TradeController implements Initializable {
@@ -17,6 +20,28 @@ public class TradeController implements Initializable {
     public Button backButton;
 
     public TextField playerAMoney, playerBMoney;
+
+    public TradeModel getTradeModel() {
+        return tradeModel;
+    }
+
+    public void setTradeModel(TradeModel tradeModel) {
+        this.tradeModel = tradeModel;
+    }
+
+    TradeModel tradeModel;
+
+
+    public void init() {
+
+    }
+    private class TradeObserver implements Observer {
+
+        @Override
+        public void update(Observable o, Object arg) {
+
+        }
+    }
 
     public void handleAddPlayerB() {}
     public void handleAddPlayerA() {}

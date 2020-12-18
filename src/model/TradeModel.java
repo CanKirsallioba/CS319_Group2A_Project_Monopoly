@@ -15,15 +15,24 @@ public class TradeModel extends Observable {
     int moneyPlayer2;
 
     public void startTrade(Player player1, Player player2) {
-
+        setChanged();
+        notifyObservers();
     }
 
     public void completeTrade() {
-
+        // todo complete the trade.
+        player1 = null;
+        player2 = null;
+        setChanged();
+        notifyObservers();
     }
 
     public void cancelTrade() {
-
+        // todo clear everything
+        player1 = null;
+        player2 = null;
+        setChanged();
+        notifyObservers();
     }
 
     public Player getPlayer1() {

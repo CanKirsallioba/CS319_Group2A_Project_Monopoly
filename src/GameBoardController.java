@@ -10,8 +10,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.AuctionModel;
+import model.TradeModel;
+import model.board.Board;
+import model.player.Dice;
 import model.player.Player;
 import model.session.GameSession;
+import model.session.TurnManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +29,18 @@ public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
 
+    TurnManager turnManager;
+    Board board;
+    Dice dice;
+    ArrayList<Player> playerList;
+    // trade controllera bu modeli aktarmak gerekli.
+    TradeModel model;
+
+    // auction controllera bu modeli aktarmak gerekli.
+    AuctionModel auctionModel;
+
     public void init() {
+
         Label[] nameLabels = {brownLabel1, brownLabel2, lightBlueLabel1, lightBlueLabel2, lightBlueLabel3,
                         pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
                         redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
@@ -36,14 +52,15 @@ public class GameBoardController implements Initializable {
                         greenPrice1, greenPrice2, greenPrice3, bluePrice1, bluePrice2};
 
 
-
-
         Label[] arr = {lightBlueLabel1, lightBlueLabel2, lightBlueLabel3};
         GameActionButtonObserver gameActionButtonObserver = new GameActionButtonObserver(button1, 0);
         GameActionButtonObserver gameActionButtonObserver1 = new GameActionButtonObserver(button2, 1);
         GameActionButtonObserver gameActionButtonObserver2 = new GameActionButtonObserver(button3, 2);
         GameActionButtonObserver gameActionButtonObserver3 = new GameActionButtonObserver(button4, 3);
         ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
+        playerList = getGameSession().getTurnManager().getPlayers();
+        board = getGameSession().getBoard();
+        turnManager = getGameSession().getTurnManager();
         System.out.println(players.size());
         for (Player player : players) {
             Observable observable = (Observable) player;
@@ -54,14 +71,36 @@ public class GameBoardController implements Initializable {
 
         }
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
-
+        dice = getGameSession().getDice();
 
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    private class DiceObserver implements Observer {
 
+        @Override
+        public void update(Observable o, Object arg) {
+            // todo update dice view.
+        }
+    }
+
+    private class CurrentlyDrawnCardObserver implements Observer {
+
+        @Override
+        public void update(Observable o, Object arg) {
+
+            if (o instanceof Player) {
+                Player player = (Player) o;
+                if (player.getCurrentlyDrawnCard() != null) {
+                    // todo card view will be set visible.
+                } else {
+                    // todo card view will be set invisible.
+                }
+            }
+        }
+    }
     private class GameActionButtonObserver implements Observer {
         Button button;
         int buttonNumber;
@@ -83,6 +122,7 @@ public class GameBoardController implements Initializable {
             }
         }
     }
+
 
     /*
         Player Cards
@@ -281,5 +321,29 @@ public class GameBoardController implements Initializable {
 
     public void openTitleDeedCard() throws IOException {
         openPopUp("TitleDeedCardUI.fxml", "Title Deed Card");
+    }
+
+    public TurnManager getTurnManager() {
+        return turnManager;
+    }
+
+    public void setTurnManager(TurnManager turnManager) {
+        this.turnManager = turnManager;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
     }
 }

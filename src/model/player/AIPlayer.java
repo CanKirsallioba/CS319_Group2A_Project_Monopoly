@@ -7,7 +7,10 @@ import model.tiles.PropertyTile;
 import model.tiles.Tile;
 import model.tiles.property.TitleDeedCard;
 
-public class AIPlayer extends AbstractPlayer {
+import java.util.Observable;
+import java.util.Observer;
+
+public class AIPlayer extends AbstractPlayer implements Observer {
     AIStrategy aiStrategy;
 
     /**
@@ -120,5 +123,8 @@ public class AIPlayer extends AbstractPlayer {
     }
 
 
-
+    @Override
+    public void update(Observable o, Object arg) {
+        // todo AuctionModel and trade...
+    }
 }

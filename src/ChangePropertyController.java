@@ -5,13 +5,21 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.player.Player;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ChangePropertyController implements Initializable {
+    Player currentPlayer;
+    public void setPlayerPropertyCardPlayer(Player player) {
+        currentPlayer = player;
+    }
 
+    public void init() {
+
+    }
     @FXML /* Labels */
     public Label propertyNameLabel;
     public Label siteOnlyLabel;

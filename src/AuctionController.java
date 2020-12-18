@@ -2,6 +2,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import model.AuctionModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,6 +10,19 @@ import java.util.ResourceBundle;
 import static java.lang.Integer.parseInt;
 
 public class AuctionController implements Initializable {
+    public AuctionModel getAuctionModel() {
+        return auctionModel;
+    }
+
+    public void setAuctionModel(AuctionModel auctionModel) {
+        this.auctionModel = auctionModel;
+    }
+
+    AuctionModel auctionModel;
+
+    public void init() {
+
+    }
 
     @FXML
     public Button auctionButton1;
