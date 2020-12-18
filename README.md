@@ -10,8 +10,11 @@
 
 # 
 
-## Changelog 01.11.2020
-## [Iteration 1 Project Analysis Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/Iteration%201%20-%20Project%20Analysis%20Report.pdf)
+## Changelog 
+## 13.12.2020: [Iteration 2 Design Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/CS319_G2A_Iteration2_DesignReport.pdf)
+## 13.12.2020: [Iteration 2 Project Analysis Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/CS319_G2A_Iteration2_AnalysisReport.pdf)
+## 29.11.2020: [Iteration 1 Design Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/CS319_G2A_Iteration1_DesignReport.pdf)
+## 01.11.2020: [Iteration 1 Project Analysis Report](https://github.com/CanKirsallioba/CS319_Group2A_Project_Monopoly/blob/master/reports/Iteration%201%20-%20Project%20Analysis%20Report.pdf)
 
 ## Implementation Report
 
@@ -35,7 +38,7 @@ property or not, and evaluate the barter offers made to it.
   We plan to implement options for users to save and load the games that enables users to save their
 unfinished games to be played later on, and load any saved games.
  #
-  We wish to change two train stations in classic monopoly into airports. Should a player land on an
+  We wish to change two train stations in classic com.monopoly into airports. Should a player land on an
 airport, they will be transported to the other airport.
   #
   We also plan to implement a barter system, where the players can swap properties or buy each
