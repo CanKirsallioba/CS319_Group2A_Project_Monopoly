@@ -2,6 +2,7 @@ package com.monopoly.model.tiles.property;
 
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.GameAction;
+import com.monopoly.model.tiles.PropertyTile;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -70,27 +71,24 @@ public class TitleDeedCard implements Serializable {
      * Updates the property's actions based according to the state of property (owned, mortgaged and upgradeLevel)
      */
     public void updateActions() {
-        if (isOwned) {
-            deactivateAction("Buy Property");
 
-            if (upgradeLevel > 0)
-                activateAction("Downgrade Property");
-            else
-                deactivateAction("Downgrade Property");
+        if (upgradeLevel > 0)
+            activateAction("Downgrade Property");
+        else
+            deactivateAction("Downgrade Property");
 
-            if (upgradeLevel < 5)
-                activateAction("Upgrade Property");
-            else
-                deactivateAction("Upgrade Property");
+        if (upgradeLevel < 5)
+            activateAction("Upgrade Property");
+        else
+            deactivateAction("Upgrade Property");
 
 
-            if (!isMortgaged) {
-                activateAction("Mortgage Property");
-                deactivateAction("Remove Mortgage");
-            } else {
-                deactivateAction("Mortgage Property");
-                activateAction("Remove Mortgage");
-            }
+        if (!isMortgaged) {
+            activateAction("Mortgage Property");
+            deactivateAction("Remove Mortgage");
+        } else {
+            deactivateAction("Mortgage Property");
+            activateAction("Remove Mortgage");
         }
     }
 
@@ -245,7 +243,7 @@ public class TitleDeedCard implements Serializable {
      * @return the penalty of removing the mortgage of the property
      */
     public int mortgageRemovalPenalty() {
-        return 0;
+        return 0; //TODO penalty or multiplier?
     }
 
     public String getPropertyName() {
@@ -365,5 +363,38 @@ public class TitleDeedCard implements Serializable {
     public int removeMortgage() {
         isMortgaged = false;
         return (int)(mortgageValue * mortgageRemovalMultiplier);
+    }
+
+
+    /**
+     *
+     * @return the current rent based on upgrade level
+     */
+    public int getCurrentRent(){
+        int upgradeLevel = 0;
+        int rent = 0;
+
+        upgradeLevel = getUpgradeLevel();
+
+        if( upgradeLevel == 0){
+                rent = getLevelZeroRent();
+        }
+        else if( upgradeLevel == 1){
+            rent = getLevelOneRent();
+
+        }
+        else if( upgradeLevel == 2){
+            rent = getLevelTwoRent();
+        }
+        else if( upgradeLevel == 3){
+            rent = getLevelThreeRent();
+        }
+        else if( upgradeLevel == 4){
+            rent = getLevelFourRent();
+        }
+        else if( upgradeLevel == 5){
+            rent = getLevelFiveRent();
+        }
+        return rent;
     }
 }

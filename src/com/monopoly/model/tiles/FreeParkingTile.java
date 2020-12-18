@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class FreeParkingTile extends Tile {
 
     @Override
-    public ArrayList<GameAction> hook(Player player) {
+    protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
         return actions;
     }
 }

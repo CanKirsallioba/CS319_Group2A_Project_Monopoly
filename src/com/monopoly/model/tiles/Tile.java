@@ -67,7 +67,7 @@ public abstract class Tile implements Serializable {
     }
 
     public ArrayList<GameAction> getPossibleActions(Player player) {
-        ArrayList<GameAction> actionsToBeReturned = hook(player);
+        ArrayList<GameAction> actionsToBeReturned = hook(player, getActions());
         for(GameAction action : actionsToBeReturned) {
             action.setPlayer(player);
         }
@@ -89,5 +89,5 @@ public abstract class Tile implements Serializable {
             }
         }
     }
-    public abstract ArrayList<GameAction> hook(Player player);
+    protected abstract ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions);
 }

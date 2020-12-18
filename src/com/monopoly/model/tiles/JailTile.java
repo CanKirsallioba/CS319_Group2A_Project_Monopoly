@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class JailTile extends Tile {
 
     @Override
-    public ArrayList<GameAction> hook(Player player) {
+    protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
 
         if(player.getGetOutOfJailChoice() != BailOutChoice.WAIT) {
             if (player.getBailOutOfJailCards().size() != 0) {
