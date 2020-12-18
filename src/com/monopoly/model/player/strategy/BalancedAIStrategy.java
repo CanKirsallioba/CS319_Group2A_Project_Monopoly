@@ -2,8 +2,10 @@ package com.monopoly.model.player.strategy;
 
 import com.monopoly.model.player.AIPlayer;
 import com.monopoly.model.player.TaxOption;
+import com.monopoly.model.tiles.IncomeTaxTile;
 import com.monopoly.model.tiles.PropertyTile;
 import com.monopoly.model.tiles.property.TitleDeedCard;
+import com.monopoly.model.tiles.GameAction;
 
 public class BalancedAIStrategy extends AIStrategy {
 
@@ -85,11 +87,13 @@ public class BalancedAIStrategy extends AIStrategy {
 
         // pay the tax
         //TODO
-        aiPlayer.setBalance( (int) (aiPlayer.getBalance() * (1 - 0.2)) );
+        getGameAction( ((IncomeTaxTile) aiPlayer.getCurrentTile()).getPossibleActions(aiPlayer), "Pay Tax").execute();
     }
 
     @Override
     public void makeAndExecuteCardDecision(AIPlayer aiPlayer){
+
+
 
     }
 }
