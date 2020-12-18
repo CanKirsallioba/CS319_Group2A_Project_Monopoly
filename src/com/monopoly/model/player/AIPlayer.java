@@ -11,28 +11,56 @@ import com.monopoly.model.tiles.property.TitleDeedCard;
 public class AIPlayer extends AbstractPlayer {
     AIStrategy aiStrategy;
 
+    /**
+     * Default constructor for AIPlayer
+     * @param aiStrategy used for decisionmaking in certain situations
+     */
     public AIPlayer(AIStrategy aiStrategy) {
         this.aiStrategy = aiStrategy;
     }
 
+    /**
+     * Makes a decision and executes it according to its strategy. Is invoked when player lands on a PropertyTile.
+     */
     void makeAndExecutePropertyDecision(){
         aiStrategy.makeAndExecutePropertyDecision( this);
     }
 
+    /**
+     * Makes a decision and executes it according to its strategy. Is invoked when player lands on a IncomeTaxTile.
+     */
     void makeAndExecuteIncomeTaxDecision(){
         aiStrategy.makeAndExecuteIncomeTaxDecision(this);
     }
 
+    /**
+     * Makes a decision and executes it according to its strategy. Is invoked when player lands on a CardTile.
+     */
+    void makeAndExecuteCardDecision(){
+        aiStrategy.makeAndExecuteCardDecision( this);
+    }
+
+    /**
+     * Makes a decision  to accept or reject a trade offer and executes that decision according to its strategy.
+     * Is invoked when player is made a trade offer.
+     */
     void makeAndExecuteTradeDecision(){
         aiStrategy.makeAndExecuteTradeDecision( this);
     }
 
+    /**
+     * Makes and executes a decision  to bid or not bid to an auction at its given state according to its strategy.
+     * Is invoked when player is involved in an auction.
+     */
     void makeAndExecuteAuctionDecision(){
         aiStrategy.makeAndExecuteAuctionDecision( this);
     }
 
 
 
+    /**
+     * Plays the turn for an AI Player.
+     */
     @Override
     public void playTurn(){
         // if player is in jail, tries to bail out of jail

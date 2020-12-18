@@ -11,6 +11,8 @@ public abstract class AIStrategy {
         public abstract void makeAndExecuteTradeDecision( AIPlayer player);
         public abstract void makeAndExecuteAuctionDecision( AIPlayer player);
         public abstract void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer);
+        public abstract void makeAndExecuteCardDecision(AIPlayer aiPlayer);
+
         public GameAction getGameAction(ArrayList<GameAction> gameAction, String gameActionName){
                 for(GameAction action: gameAction) {
                         if (action.getName().equals(gameActionName))

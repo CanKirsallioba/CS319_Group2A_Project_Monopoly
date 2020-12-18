@@ -81,4 +81,8 @@ public class BalancedAIStrategy extends AIStrategy {
 
     }
 
+    @Override
+    public void makeAndExecuteCardDecision(AIPlayer aiPlayer){
+
+    }
 }
