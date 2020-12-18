@@ -34,4 +34,20 @@ public class Board implements Iterable<Tile>, Serializable {
     public void setJailTileIndex(int jailTileIndex) {
         this.jailTileIndex = jailTileIndex;
     }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public String getBoardName() {
+        return boardName;
+    }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
+    }
 }

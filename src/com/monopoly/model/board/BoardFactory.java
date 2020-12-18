@@ -18,28 +18,37 @@ public class BoardFactory {
         ArrayList<Tile> tiles = new ArrayList<>();
         JSONArray tileConfigs = (JSONArray) config.get("tiles");
 
+        //set tiles from config file
         for (Object tileConfig : tileConfigs) {
             JSONObject tileObj = (JSONObject) ((JSONObject) tileConfig).get("tile");
             tiles.add(tileFactory.getTile(tileObj));
         }
         board.setTiles(tiles);
 
-        // Todo associate the color groups.
-//        JSONArray colorGroups = (JSONArray) config.get("colorGroups");
-//        for (Object colorObject : colorGroups) {
-//            String color = (String) ((JSONObject) colorObject).get("color");
-//            ArrayList<PropertyTile> propertiesInSameColorGroup = new ArrayList<PropertyTile>();
-//            for (Tile tile : tiles) {
-//                if( tile instanceof PropertyTile) {
-//                    TitleDeedCard card = ((PropertyTile) tile).getTitleDeedCard();
-//                    card.getColorGroup();
-//                }
-//            }
-//        }
-        // TODO set jail tile index.
-//        board.setJailTileIndex((Integer)config.get());
-        // TODO set salary
-        // TODO set board name.
+        // associate the color groups - work in progress to discuss with teammates
+        JSONArray colorGroups = (JSONArray) config.get("colorGroups");
+        for (Object colorConfig : colorGroups) {
+            JSONObject colorObj = (JSONObject) ((JSONObject) colorConfig).get("colorGroup");
+            String color = (String) colorObj.get("color");
+
+        }
+
+        //set jail index to board
+        JSONObject boardConfig = (JSONObject) config.get("boardConfig");
+        if(boardConfig.get("jailTileIndex") != null){
+            int jailTileIndex = ((Long) boardConfig.get("jailTileIndex")).intValue();
+            board.setJailTileIndex(jailTileIndex);
+        }
+
+        // set salary
+        if(boardConfig.get("salary") != null){
+            int salary = ((Long) boardConfig.get("salary")).intValue();
+            board.setSalary(salary);
+        }
+
+        // set board name.
+        String boardName = (String) boardConfig.get("boardName");
+        board.setBoardName(boardName);
         return null;
     }
 }
