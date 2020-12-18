@@ -243,6 +243,26 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     }
 
     /**
+     * Updates totalWorth and liquidTotalWorth
+     */
+    public void updatePlayerWorth(){
+        int newTotalWorth = balance;
+        int newLiquidTotalWorth = balance;
+
+        for( TitleDeedCard currentTitleDeedCard : titleDeeds){
+            newTotalWorth += currentTitleDeedCard.getPropertyValue();
+            newLiquidTotalWorth += currentTitleDeedCard.getMortgageValue();
+
+            int currentUpgradeLevel = currentTitleDeedCard.getUpgradeLevel();
+            newTotalWorth += currentUpgradeLevel * currentTitleDeedCard.getUpgradeCost();
+            newLiquidTotalWorth += (currentUpgradeLevel * currentTitleDeedCard.getUpgradeCost()) / 2;
+        }
+
+        totalWorth = newTotalWorth;
+        liquidTotalWorth = newLiquidTotalWorth;
+    }
+
+    /**
      * Updated the taxOption according to param
      * @param selectedOption is the option player selected for paying income tax.
      */
