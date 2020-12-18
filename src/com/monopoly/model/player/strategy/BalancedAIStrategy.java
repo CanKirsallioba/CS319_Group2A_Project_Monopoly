@@ -22,13 +22,13 @@ public class BalancedAIStrategy extends AIStrategy {
                 // mortgage & downgrade to pay rent
                 if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() && player.getLiquidTotalWorth() >= player.getBalance()){
                     for(TitleDeedCard titleDeedCard: player.getTitleDeeds()){
-                        if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
+                        if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
                             titleDeedCard.downgrade();
                         }
                     }
-                    if( getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()){
+                    if( player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()){
                         for( TitleDeedCard titleDeedCard: player.getTitleDeeds() ){
-                            if( titleDeedCard.isMortgaged() == false && getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
+                            if( titleDeedCard.isMortgaged() == false && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent() ){
                                 titleDeedCard.mortgage();
                             }
                         }
@@ -48,10 +48,10 @@ public class BalancedAIStrategy extends AIStrategy {
         }
         else {
             // if player has more than twice the money required to buy the property
-            if( getBalance() >= 2 * currentPropertyTile.getTitleDeedCard().getPropertyValue() ){
+            if( player.getBalance() >= 2 * currentPropertyTile.getTitleDeedCard().getPropertyValue() ){
 
                 // if the player can pay the maximum rent even after buying this property, buy it
-                if( getBalance() - getgameStatistics.getMaximumRent() < 0){
+                if( player.getBalance() - gameStatistics.getMaximumRent() < 0){
 
                     // TODO EXECUTE BUY PROPERTY
                 }
