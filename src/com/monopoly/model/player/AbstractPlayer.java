@@ -63,7 +63,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public void checkBailOut() {
-        int bailOutCost = playerToken.getBoard().getBoardSalary() / 4;
+        int bailOutCost = playerToken.getBoard().getSalary() / 4;
 
         // check if player can bail out
         // if he/she can, apply the selected bail out procedure
@@ -159,7 +159,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         currentTileIndex = currentTile.getIndex();
 
         if (playerToken.passedGoInTheLastMove()) {
-            changeBalance(playerToken.getBoard().getBoardSalary() );
+            changeBalance(playerToken.getBoard().getSalary() );
         }
     }
 
@@ -230,7 +230,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     @Override
     public void payBailOutMoney() {
-        changeBalance(-(playerToken.getBoard().getBoardSalary() / 4));
+        changeBalance(-(playerToken.getBoard().getSalary() / 4));
     }
 
     // getter and setter methods in the design
