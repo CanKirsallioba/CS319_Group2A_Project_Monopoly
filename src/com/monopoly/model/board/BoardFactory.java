@@ -17,8 +17,10 @@ public class BoardFactory {
 
         ArrayList<Tile> tiles = new ArrayList<>();
         JSONArray tileConfigs = (JSONArray) config.get("tiles");
+
         for (Object tileConfig : tileConfigs) {
-            tiles.add(tileFactory.getTile((JSONObject) tileConfig));
+            JSONObject tileObj = (JSONObject) ((JSONObject) tileConfig).get("tile");
+            tiles.add(tileFactory.getTile(tileObj));
         }
         board.setTiles(tiles);
 
