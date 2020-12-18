@@ -30,7 +30,7 @@ public class ConfigHandler {
         return config;
     }
 
-    public void createConfig(  JSONObject config){
+    public String createConfig(  JSONObject config){
         String fileName;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = df.format(new Date());
@@ -45,6 +45,7 @@ public class ConfigHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return fileName;
     }
 
     public JSONObject getConfigTemplate(){
