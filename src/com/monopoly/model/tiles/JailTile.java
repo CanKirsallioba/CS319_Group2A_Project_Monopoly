@@ -12,12 +12,12 @@ public class JailTile extends Tile {
 
         if(player.getGetOutOfJailChoice() != BailOutChoice.WAIT) {
             if (player.getBailOutOfJailCards().size() != 0) {
-                setActive(actions, "Bail Out Of Jail", true); //we might have to check the existence of the card later
+                setActive(actions, "Use Bail Out Of Jail Card", true);
             }
             if (player.getLiquidTotalWorth() > 0) { // TODO: Fix the bail out price
                 setActive(actions, "Pay Bail Bond", true);
             }
-            setActive(actions, "Throw Double Dice", true);
+            setActive(actions, "Roll Dice", true);
         }else {
             setActive(actions, "Wait", true);
         }
