@@ -3,6 +3,7 @@ package com.monopoly.model.tiles.property;
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.GameAction;
 import com.monopoly.model.tiles.PropertyTile;
+import com.monopoly.model.tiles.actionStrategy.ActionFactory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +27,34 @@ public class TitleDeedCard implements Serializable {
     int mortgagedTurnNumber;
     ColorGroup colorGroup;
     Player owner;
+    HashMap<String, GameAction> actionNames;
 
+
+    public TitleDeedCard(){
+        levelOneRent = 0;
+        levelTwoRent = 0;
+        levelThreeRent = 0;
+        levelFourRent = 0;
+        levelFiveRent = 0;
+        propertyName = "";
+        isMortgaged = false;
+        isOwned = false;
+        upgradeLevel = 0;
+        propertyValue = 0;
+        mortgageValue = 0;
+        upgradeCost = 0;
+        colorGroup = null;
+        owner = null;
+
+
+        ActionFactory actionFactory = new ActionFactory();
+        propertyActions = actionFactory.getActionList("PropertyTile");
+
+        actionNames = new HashMap<>();
+        for(GameAction action: propertyActions){
+            actionNames.put(action.getName(), action);
+        }
+    }
 
     public ArrayList<GameAction> getPropertyActions() {
         return propertyActions;
@@ -42,13 +70,15 @@ public class TitleDeedCard implements Serializable {
      * @return true if deactivation is successful
      */
     public boolean deactivateAction(String actionName){
-        for(GameAction action: propertyActions){
-            if(action.getName().equals(actionName)) {
-                action.setActive(false);
-                return true;
-            }
+
+        GameAction selectedAction = actionNames.get(actionName);
+
+        if(selectedAction != null){
+            selectedAction.setActive(false);
+            return true;
+        }else{
+            return false;
         }
-        return false;
     }
 
     /**
@@ -57,13 +87,14 @@ public class TitleDeedCard implements Serializable {
      * @return true if activation is successful
      */
     public boolean activateAction(String actionName){
-        for(GameAction action: propertyActions){
-            if(action.getName().equals(actionName)) {
-                action.setActive(true);
-                return true;
-            }
+        GameAction selectedAction = actionNames.get(actionName);
+
+        if(selectedAction != null){
+            selectedAction.setActive(true);
+            return true;
+        }else{
+            return false;
         }
-        return false;
     }
 
 
@@ -99,6 +130,45 @@ public class TitleDeedCard implements Serializable {
         } else {
             deactivateAction("Mortgage Property");
             activateAction("Remove Mortgage");
+        }
+
+        switch (upgradeLevel){
+            case 0:
+                deactivateAction("Downgrade Property");
+                activateAction("Upgrade Property");
+                if(isMortgaged()) {
+                    activateAction("Remove Mortgage");
+                    deactivateAction("Mortgage Property");
+                }
+                else{
+                    deactivateAction("Remove Mortgage");
+                    activateAction("Mortgage Property");
+                }
+                break;
+            case 5 :
+                activateAction("Downgrade Property");
+                deactivateAction("Upgrade Property");
+                if(isMortgaged()) {
+                    activateAction("Remove Mortgage");
+                    deactivateAction("Mortgage Property");
+                }
+                else{
+                    deactivateAction("Remove Mortgage");
+                    activateAction("Mortgage Property");
+                }
+                break;
+            default:
+                activateAction("Downgrade Property");
+                activateAction("Upgrade Property");
+                if(isMortgaged()) {
+                    activateAction("Remove Mortgage");
+                    deactivateAction("Mortgage Property");
+                }
+                else{
+                    deactivateAction("Remove Mortgage");
+                    activateAction("Mortgage Property");
+                }
+                break;
         }
     }
 

@@ -27,23 +27,7 @@ public class GameStatistics {
 
         for( Tile tile: board.getTiles()){
             if( tile instanceof PropertyTile){
-                int upgradeLevel = 0;
-                upgradeLevel = ((PropertyTile) tile).getTitleDeedCard().getUpgradeLevel();
-                if( upgradeLevel == 1){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelOneRent();
-                }
-                else if( upgradeLevel == 2){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelTwoRent();
-                }
-                else if( upgradeLevel == 3){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelThreeRent();
-                }
-                else if( upgradeLevel == 4){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelFourRent();
-                }
-                else if( upgradeLevel == 5){
-                    totalRentValue += ((PropertyTile) tile).getTitleDeedCard().getLevelFiveRent();
-                }
+                totalRentValue += ( (PropertyTile) tile).getTitleDeedCard().getCurrentRent();
                 numberOfPropertyTiles++;
             }
         }
@@ -55,32 +39,8 @@ public class GameStatistics {
         int maxRent = 0;
         for( Tile tile: board.getTiles()){
             if( tile instanceof PropertyTile){
-                int upgradeLevel = 0;
-                upgradeLevel = ((PropertyTile) tile).getTitleDeedCard().getUpgradeLevel();
-                if( upgradeLevel == 1){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelOneRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelOneRent();
-                    }
-                }
-                else if( upgradeLevel == 2){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelTwoRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelTwoRent();
-                    }
-                }
-                else if( upgradeLevel == 3){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelThreeRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelThreeRent();
-                    }
-                }
-                else if( upgradeLevel == 4){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelFourRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelFourRent();
-                    }
-                }
-                else if( upgradeLevel == 5){
-                    if( maxRent < ((PropertyTile) tile).getTitleDeedCard().getLevelFiveRent()){
-                        maxRent = ((PropertyTile) tile).getTitleDeedCard().getLevelFiveRent();
-                    }
+                if ( ( (PropertyTile) tile).getTitleDeedCard().getCurrentRent() > maxRent ){
+                    maxRent = ((PropertyTile) tile).getTitleDeedCard().getCurrentRent();
                 }
             }
         }
@@ -94,7 +54,7 @@ public class GameStatistics {
             if( tile instanceof PropertyTile){
                 numOfProperties++;
                 int upgradeLevel = 0;
-                if ( ((PropertyTile) tile).getTitleDeedCard().getIsOwned()){
+                if ( ((PropertyTile) tile).getTitleDeedCard().isOwned() ){
                     numOfOwnedProperties++;
                 }
             }
