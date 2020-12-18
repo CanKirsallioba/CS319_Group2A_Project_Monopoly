@@ -4,8 +4,11 @@ import com.monopoly.model.player.AIPlayer;
 import com.monopoly.model.player.TaxOption;
 import com.monopoly.model.tiles.IncomeTaxTile;
 import com.monopoly.model.tiles.PropertyTile;
+import com.monopoly.model.tiles.card.Card;
 import com.monopoly.model.tiles.property.TitleDeedCard;
 import com.monopoly.model.tiles.GameAction;
+
+import java.util.ArrayList;
 
 public class BalancedAIStrategy extends AIStrategy {
 
@@ -92,13 +95,51 @@ public class BalancedAIStrategy extends AIStrategy {
         }
 
         // pay the tax
-        //TODO
         getGameAction(((IncomeTaxTile) aiPlayer.getCurrentTile()).getPossibleActions(aiPlayer), "Pay Tax").execute();
     }
 
     @Override
     public void makeAndExecuteCardDecision(AIPlayer aiPlayer) {
+        ArrayList<GameAction> gameActions = aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
+        Card currentCard = aiPlayer.getCurrentlyDrawnCard();
 
+        if( currentCard.getCardDetails().containsKey("PAY") ){
+            int moneyToPay = currentCard.getCardDetails().get( "PAY");
+            if( aiPlayer.getBalance() > moneyToPay){
+                getGameAction(gameActions, "Apply").execute();
+            }
+            else if( aiPlayer.getLiquidTotalWorth() >= moneyToPay){
 
+                while( aiPlayer.getBalance() < moneyToPay){ //
+
+                    for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
+                        if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
+                                && aiPlayer.getBalance() < moneyToPay) {
+
+                           getGameAction(titleDeedCard.getPossibleActions(), "Downgrade").execute();
+                        }
+                    }
+                    if (aiPlayer.getBalance() < moneyToPay) {
+                        for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
+                            if (titleDeedCard.isMortgaged() == false
+                                    && aiPlayer.getBalance() < moneyToPay) {
+
+                             getGameAction(titleDeedCard.getPossibleActions(), "Mortgage").execute();
+                            }
+                        }
+                    }
+                }
+
+                // now he has acquired the money
+                getGameAction(gameActions, "Apply").execute();
+            }
+            else if( aiPlayer.getLiquidTotalWorth() < moneyToPay){
+                aiPlayer.declareBankruptcy();
+            }
+
+        }
+        else{
+            getGameAction(gameActions, "Apply").execute();
+        }
     }
 }
