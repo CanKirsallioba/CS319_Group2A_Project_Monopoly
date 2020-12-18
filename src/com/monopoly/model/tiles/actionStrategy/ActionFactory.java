@@ -12,15 +12,11 @@ public class ActionFactory extends AbstractActionFactory {
         switch (className) {
             case "PropertyTile":
                 // todo title deed e set etsin mi?
-                // todo
                 ActionStrategy propertyTile = new PropertyActionsStrategy();
+                ActionStrategy propertyAction = new PropertyActionsStrategy();
                 actions.add(new GameAction("Buy Property", propertyTile::button1Strategy, false, true));
                 actions.add(new GameAction("Pay Rent", propertyTile::button2Strategy, true, false));
                 actions.add(new GameAction("Start Auction", propertyTile::button3Strategy, false, false));
-
-                break;
-            case "PropertyActions":
-                ActionStrategy propertyAction = new PropertyActionsStrategy();
                 actions.add(new GameAction("Upgrade Property", propertyAction::button3Strategy, false, false));
                 actions.add(new GameAction("Downgrade Property", propertyAction::button3Strategy, false, false));
                 actions.add(new GameAction("Mortgage Property", propertyAction::button3Strategy, false, false));
@@ -43,13 +39,18 @@ public class ActionFactory extends AbstractActionFactory {
 
                 break;
             case "JailTile":
-                ActionStrategy jailTile = new CardTileActionStrategy();
+                ActionStrategy jailTile = new JailTileActionStrategy();
                 actions.add(new GameAction("Roll Dice", jailTile::button3Strategy, false, true));
                 actions.add(new GameAction("Pay Bail Bond", jailTile::button2Strategy, false, true));
                 actions.add(new GameAction("Use Bail Out Of Jail Card", jailTile::button4Strategy, false, true));
 
                 break;
 
+            case "GoToJailTile":
+                ActionStrategy goToJailTile = new GoToJailTileActionStrategy();
+                actions.add(new GameAction("Go To Jail", goToJailTile::button1Strategy, true, false));
+
+                break;
         }
         return actions;
     }
