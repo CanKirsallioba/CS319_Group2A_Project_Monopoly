@@ -9,6 +9,13 @@ public class ChanceCardDeck extends CardDeck {
 
     @Override
     public Card drawCard() {
-        return null;
+        Card top;
+        if (cardArrayList.size() == 0) {
+            throw new RuntimeException("ChanceCardDeck is empty.");
+        } else {
+            top = cardArrayList.remove(0);
+            cardArrayList.add(top);
+        }
+        return top;
     }
 }

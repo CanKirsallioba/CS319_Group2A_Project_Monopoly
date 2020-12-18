@@ -29,7 +29,7 @@ public class TurnManager implements Serializable {
     public void endTurn() {
         do {
             setCurrentPlayerIndex(getCurrentPlayerIndex() + 1);
-        } while (getPlayers().get(getCurrentPlayerIndex()).isBankrupt());
+        } while (getPlayers().get(getCurrentPlayerIndex()).isBankrupt() && !getPlayers().stream().allMatch(Player::isBankrupt));
         playTurn();
     }
     public void addPlayer(Player player) {
