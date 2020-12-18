@@ -6,7 +6,6 @@ import com.monopoly.model.tiles.property.TitleDeedCard;
 
 public class BalancedAIStrategy extends AIStrategy {
 
-
     @Override
     public void makeAndExecutePropertyDecision( AIPlayer player){
         PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
