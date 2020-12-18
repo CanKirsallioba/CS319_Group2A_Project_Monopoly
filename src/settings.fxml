@@ -12,12 +12,12 @@
    <children>
       <ImageView fx:id="settings" fitHeight="450.0" fitWidth="600.0" layoutX="150.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/settings.png" />
+            <Image url="@settings.png" />
          </image>
       </ImageView>
       <ImageView fx:id="music" fitHeight="100.0" fitWidth="100.0" layoutX="800.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/music-note.png" />
+            <Image url="@music-note.png" />
          </image>
       </ImageView>
       <Label layoutX="950.0" layoutY="250.0" prefHeight="100.0" prefWidth="250.0" text="Music">
@@ -32,7 +32,7 @@
       </Slider>
       <ImageView fx:id="sound" fitHeight="100.0" fitWidth="100.0" layoutX="800.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/volume.png" />
+            <Image url="@volume.png" />
          </image>
       </ImageView>
       <Label layoutX="950.0" layoutY="500.0" prefHeight="100.0" prefWidth="250.0" text="Sound">

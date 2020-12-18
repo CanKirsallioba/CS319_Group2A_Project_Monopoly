@@ -32,7 +32,7 @@ public class MenuSettingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        File file = new File("resources/back.png");
+        File file = new File("back.png");
         Image image = new Image(file.toURI().toString());
         menuBack.setImage(image);
 

@@ -24,7 +24,7 @@
                      <children>
                         <ImageView fx:id="freeParking" fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./free-parking.png" />
+                              <Image url="@free-parking.png" />
                            </image>
                         </ImageView>
                      </children></AnchorPane>
@@ -32,7 +32,7 @@
                      <children>
                         <ImageView fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./go-to-jail.png" />
+                              <Image url="@go-to-jail.png" />
                            </image>
                         </ImageView>
                      </children></AnchorPane>
@@ -55,7 +55,7 @@
                      <children>
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./chance-vertical.png" />
+                              <Image url="@chance-vertical.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="350.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
@@ -92,7 +92,7 @@
                      <children>
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./plane-up.png" />
+                              <Image url="@plane-up.png" />
                            </image>
                         </ImageView>
                      </children></AnchorPane>
@@ -130,7 +130,7 @@
                      <children>
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./water-up.png" />
+                              <Image url="@water-up.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="950.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
@@ -156,7 +156,7 @@
                      <children>
                         <ImageView fx:id="jailVisit" fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./jail-visit.png" />
+                              <Image url="@jail-visit.png" />
                            </image>
                         </ImageView>
                      </children></AnchorPane>
@@ -164,7 +164,7 @@
                      <children>
                         <ImageView fx:id="goTileImage" fitHeight="148.0" fitWidth="148.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./go-tile.png" />
+                              <Image url="@go-tile.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -231,7 +231,7 @@
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
                         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./plane-down.png" />
+                              <Image url="@plane-down.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="650.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
@@ -239,7 +239,7 @@
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./income-tax.png" />
+                              <Image url="@income-tax.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="750.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
@@ -262,7 +262,7 @@
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" />
                         <ImageView fitHeight="140.0" fitWidth="100.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./community-chest.png" />
+                              <Image url="@community-chest.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="950.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;">
@@ -311,7 +311,7 @@
                         <AnchorPane layoutX="119.0" prefHeight="81.3333" prefWidth="30.0" />
                         <ImageView fitHeight="76.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./chest-left.png" />
+                              <Image url="@chest-left.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
@@ -330,7 +330,7 @@
                         <AnchorPane layoutX="119.0" prefHeight="81.0" prefWidth="30.0" />
                         <ImageView fitHeight="76.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./plane-left.png" />
+                              <Image url="@plane-left.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
@@ -360,7 +360,7 @@
                         <AnchorPane layoutX="119.0" prefHeight="81.0" prefWidth="30.0" />
                         <ImageView fitHeight="76.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./electric-left.png" />
+                              <Image url="@electric-left.png" />
                            </image></ImageView>
                      </children></AnchorPane>
                   <AnchorPane prefHeight="83.333" prefWidth="150.0">
@@ -398,7 +398,7 @@
                      <children>
                         <ImageView fitHeight="77.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./chest-right.png" />
+                              <Image url="@chest-right.png" />
                            </image></ImageView>
                      </children>
                   </AnchorPane>
@@ -414,7 +414,7 @@
                      <children>
                         <ImageView fitHeight="77.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./plane-right.png" />
+                              <Image url="@plane-right.png" />
                            </image></ImageView>
                      </children>
                   </AnchorPane>
@@ -422,7 +422,7 @@
                      <children>
                         <ImageView fitHeight="82.0" fitWidth="140.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./change-right.png" />
+                              <Image url="@change-right.png" />
                            </image></ImageView>
                      </children>
                   </AnchorPane>
@@ -439,7 +439,7 @@
                         <AnchorPane prefHeight="81.0" prefWidth="30.0" />
                         <ImageView fitHeight="75.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@./tax-right.png" />
+                              <Image url="@tax-right.png" />
                            </image></ImageView>
                      </children>
                   </AnchorPane>
@@ -455,7 +455,7 @@
             </VBox>
             <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="250.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@./logo.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

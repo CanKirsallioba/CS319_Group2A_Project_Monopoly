@@ -28,7 +28,7 @@
         <AnchorPane layoutX="27.0" layoutY="10.0" prefHeight="48.0" prefWidth="55.0">
             <children>
                 <ImageView fx:id="backIcon" fitHeight="48.0" fitWidth="55.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../resources/back.png" />
+                    <Image url="@back.png" />
                 </ImageView>
             </children>
         </AnchorPane>
