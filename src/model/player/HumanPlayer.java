@@ -3,7 +3,11 @@ package model.player;
 
 public class HumanPlayer extends AbstractPlayer {
 
-    public HumanPlayer(){ }
+    public HumanPlayer(){
+        setChanged();
+        notifyObservers();
+        System.out.println("IN players ");
+    }
 
     /**
      * playTurn method for the human player, which does the standard and mandorty things each player must do
@@ -18,5 +22,7 @@ public class HumanPlayer extends AbstractPlayer {
             }
             moveToken( playersDice.getDiceResultSum());
         }
+        setChanged();
+        notifyObservers();
     }
 }

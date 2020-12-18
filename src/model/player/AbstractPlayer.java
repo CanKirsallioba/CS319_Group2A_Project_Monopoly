@@ -28,6 +28,17 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     TradeModel tradeModel;
     TitleDeedCard selectedTitleDeed;
     Card drawnCard;
+
+    @Override
+    public Dice getPlayersDice() {
+        return playersDice;
+    }
+
+    @Override
+    public void setPlayersDice(Dice playersDice) {
+        this.playersDice = playersDice;
+    }
+
     Dice playersDice;
 
     // attributes not in the design

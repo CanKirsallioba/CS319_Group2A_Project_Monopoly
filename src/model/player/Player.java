@@ -99,4 +99,7 @@ public interface Player extends Serializable {
 
 
     void payBailOutMoney();
+
+    public Dice getPlayersDice();
+    public void setPlayersDice(Dice playersDice);
 }

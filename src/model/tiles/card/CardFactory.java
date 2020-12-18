@@ -12,7 +12,7 @@ public class CardFactory extends AbstractCardFactory {
     public Card createCard(JSONObject config) {
         String instruction = (String)config.get("instruction");
         String command = (String) config.get("command");
-        int value = (Integer) config.get("parameter");
+        int value = ((Long) config.get("parameter")).intValue();
         HashMap<String, Integer> cardDetails = new HashMap<String, Integer>();
         cardDetails.put(command, value);
         return new Card(instruction, "card type is not specified yet!", cardDetails);

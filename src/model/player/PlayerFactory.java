@@ -23,7 +23,7 @@ public class PlayerFactory extends AbstractPlayerFactory {
 
         for (int i =0 ; i< humanPlayerCount; i++) {
             HumanPlayer player = new HumanPlayer();
-            player.setBalance((Integer) boardConfig.get("salary"));
+            player.setBalance(((Long) boardConfig.get("salary")).intValue());
             players.add(player);
         }
         for (int i = humanPlayerCount; i < boardConfiguration.getMaxPlayerCount(); i++) {
@@ -39,7 +39,7 @@ public class PlayerFactory extends AbstractPlayerFactory {
                 throw new RuntimeException("AIChracteristics are not updated.");
             }
             AIPlayer player = new AIPlayer(aiStrategy);
-            player.setBalance((Integer) boardConfig.get("salary"));
+            player.setBalance(((Long) boardConfig.get("salary")).intValue());
             players.add(player);
         }
 

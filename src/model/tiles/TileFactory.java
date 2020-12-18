@@ -27,6 +27,9 @@ public class TileFactory extends AbstractTileFactory {
 
             String colorGroupName = (String) config.get("associatedColorGroup");
             colorGroupName = colorGroupName.toUpperCase();
+//            System.out.println("Color" + colorGroupName);
+//            System.out.println(""+ Color.valueOf(colorGroupName));
+//            System.out.println(Color.valueOf(colorGroupName).getClass());
             colorGroup.setColor( Color.valueOf(colorGroupName));
             deedCard.setColorGroup( colorGroup);
 
@@ -132,8 +135,14 @@ public class TileFactory extends AbstractTileFactory {
             goToJailTile.setIndex( tileIndex);
             return goToJailTile;
 
-        } else {
-            throw new RuntimeException("Wrong Tile");
+        } else if (tileType.equals("FreeParkingTile")) {
+            FreeParkingTile freeParkingTile = new FreeParkingTile();
+            freeParkingTile.setTileName( tileType);
+            freeParkingTile.setIndex( tileIndex);
+            return freeParkingTile;
+
+        }else {
+            throw new RuntimeException("Wrong Tile " + tileType);
         }
     }
 }

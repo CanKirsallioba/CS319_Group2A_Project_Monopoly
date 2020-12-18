@@ -17,6 +17,11 @@ public class GameSessionManager {
     private ConfigHandler configHandler;
     private String selectedGameSessionName;
 
+    public GameSessionManager() {
+        configHandler = new ConfigHandler();
+        serializationHandler = new SerializationHandler();
+        boardNames = new ArrayList<>();
+    }
 
 
     void loadGame() {
@@ -34,7 +39,7 @@ public class GameSessionManager {
         return FileManager.getSavedSessionNames();
     }
 
-    void newGame(BoardConfiguration config) {
+    public void newGame(BoardConfiguration config) {
         GameSessionBuilder gameSessionBuilder = new GameSessionBuilder(config, configHandler.getConfig(getFileName()));
         game = gameSessionBuilder.build();
     }

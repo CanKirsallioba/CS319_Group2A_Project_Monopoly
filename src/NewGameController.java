@@ -14,7 +14,10 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.BoardConfiguration;
+import model.GamePace;
+import model.player.AICharacteristic;
 import model.session.GameSession;
+import model.session.GameSessionManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -147,14 +150,25 @@ public class NewGameController implements Initializable {
 //        int userId = Integer.parseInt(this.txtUserId.getText());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
-
         Parent root = (Parent)fxmlLoader.load();
+
         GameBoardController controller = fxmlLoader.<GameBoardController>getController();
-        controller.setGameSession(new GameSession());
-        Scene scene = new Scene(root);
 
-
+        BoardConfiguration boardConfiguration = new BoardConfiguration();
+        boardConfiguration.setGamePace(GamePace.MEDIUM);
+        boardConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
+        boardConfiguration.setHumanPlayerCount(2);
+        boardConfiguration.setMaxPlayerCount(2);
+        GameSessionManager sessionManager = new GameSessionManager();
+        sessionManager.setFileName("templateConfig.json");
+        sessionManager.newGame(boardConfiguration);
+        GameSession session = sessionManager.getGame();
+//        System.out.println(session);
         numOfPlayers = humanPlayers + botPlayers;
+        controller.setGameSession(session);
+        controller.init();
+
+        Scene scene = new Scene(root);
 
 //        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
 //        Scene tableViewScene = new Scene(tableViewParent);

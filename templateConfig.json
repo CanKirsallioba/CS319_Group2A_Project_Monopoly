@@ -1,0 +1,484 @@
+{
+  "boardConfig":{
+    "boardName": "Classic",
+    "tileCount": 40,
+    "salary": 2000,
+    "jailTileIndex": 10
+  },
+  "tiles": [
+    {"tile":{
+      "tileType": "GoTile",
+      "tileIndex": 0,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Kasimpasa",
+      "tileIndex": 1
+      "associatedColorGroup": "Brown",
+      "price": 6000,
+      "upgradeCost": 5000,
+      "rentLevel0": 200,
+      "rentLevel1": 1000,
+      "rentLevel2": 3000,
+      "rentLevel3": 9000,
+      "rentLevel4": 16000,
+      "rentLevel5": 25000,
+      "mortgageValue": 3000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "CommunityChestCardDeck",
+      "tileIndex": 2,
+      "CommunityChestCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Dolapdere",
+      "tileIndex": 3
+      "associatedColorGroup": "Brown",
+      "price": 6000,
+      "upgradeCost": 5000,
+      "rentLevel0": 400,
+      "rentLevel1": 2000,
+      "rentLevel2": 6000,
+      "rentLevel3": 18000,
+      "rentLevel4": 32000,
+      "rentLevel5": 45000,
+      "mortgageValue": 3000,
+    }},
+    {"tile":{
+      "tileType": "IncomeTaxTile",
+      "tileIndex": 4,
+      "fixedTax": 20000,
+      "percentageTax": 20
+    }},
+    {"tile":{
+      "tileType": "TeleportTile",
+      "tileIndex": 5,
+      "counterTile": 25
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Sultanahmet",
+      "tileIndex": 6
+      "associatedColorGroup": "Turquoise",
+      "price": 10000,
+      "upgradeCost": 5000,
+      "rentLevel0": 600,
+      "rentLevel1": 3000,
+      "rentLevel2": 9000,
+      "rentLevel3": 27000,
+      "rentLevel4": 40000,
+      "rentLevel5": 55000,
+      "mortgageValue": 5000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "ChanceCardDeck",
+      "tileIndex": 7,
+      "ChanceCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Karakoy",
+      "tileIndex": 8
+      "associatedColorGroup": "Turquoise",
+      "price": 10000,
+      "upgradeCost": 5000,
+      "rentLevel0": 600,
+      "rentLevel1": 3000,
+      "rentLevel2": 9000,
+      "rentLevel3": 27000,
+      "rentLevel4": 40000,
+      "rentLevel5": 55000,
+      "mortgageValue": 5000,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Sirkeci",
+      "tileIndex": 9
+      "associatedColorGroup": "Turquoise",
+      "price": 12000,
+      "upgradeCost": 5000,
+      "rentLevel0": 800,
+      "rentLevel1": 4000,
+      "rentLevel2": 10000,
+      "rentLevel3": 30000,
+      "rentLevel4": 35000,
+      "rentLevel5": 60000,
+      "mortgageValue": 6000,
+    }},
+    {"tile":{
+      "tileType": "JailTile",
+      "tileIndex": 10
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Beyoglu",
+      "tileIndex": 11
+      "associatedColorGroup": "Pink",
+      "price": 14000,
+      "upgradeCost": 10000,
+      "rentLevel0": 1000,
+      "rentLevel1": 5000,
+      "rentLevel2": 15000,
+      "rentLevel3": 45000,
+      "rentLevel4": 62500,
+      "rentLevel5": 75000,
+      "mortgageValue": 7000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "ChanceCardDeck",
+      "tileIndex": 12,
+      "ChanceCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Besiktas",
+      "tileIndex": 13
+      "associatedColorGroup": "Pink",
+      "price": 14000,
+      "upgradeCost": 10000,
+      "rentLevel0": 1000,
+      "rentLevel1": 5000,
+      "rentLevel2": 15000,
+      "rentLevel3": 45000,
+      "rentLevel4": 62500,
+      "rentLevel5": 75000,
+      "mortgageValue": 7000,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Taksim",
+      "tileIndex": 14
+      "associatedColorGroup": "Pink",
+      "price": 16000,
+      "upgradeCost": 10000,
+      "rentLevel0": 1200,
+      "rentLevel1": 6000,
+      "rentLevel2": 18000,
+      "rentLevel3": 50000,
+      "rentLevel4": 70000,
+      "rentLevel5": 90000,
+      "mortgageValue": 8000,
+    }},
+    {"tile":{
+      "tileType": "TeleportTile",
+      "tileIndex": 15,
+      "counterTile": 35
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Harbiye",
+      "tileIndex": 16
+      "associatedColorGroup": "Orange",
+      "price": 18000,
+      "upgradeCost": 10000,
+      "rentLevel0": 1400,
+      "rentLevel1": 7000,
+      "rentLevel2": 20000,
+      "rentLevel3": 55000,
+      "rentLevel4": 75000,
+      "rentLevel5": 95000,
+      "mortgageValue": 9000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "CommunityChestCardDeck",
+      "tileIndex": 17,
+      "CommunityChestCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Sisli",
+      "tileIndex": 18
+      "associatedColorGroup": "Orange",
+      "price": 18000,
+      "upgradeCost": 10000,
+      "rentLevel0": 1400,
+      "rentLevel1": 7000,
+      "rentLevel2": 20000,
+      "rentLevel3": 55000,
+      "rentLevel4": 75000,
+      "rentLevel5": 95000,
+      "mortgageValue": 9000,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Mecidiyekoy",
+      "tileIndex": 19
+      "associatedColorGroup": "Orange",
+      "price": 20000,
+      "upgradeCost": 10000,
+      "rentLevel0": 1600,
+      "rentLevel1": 8000,
+      "rentLevel2": 22000,
+      "rentLevel3": 60000,
+      "rentLevel4": 80000,
+      "rentLevel5": 100000,
+      "mortgageValue": 10000,
+    }},
+    {"tile":{
+      "tileType": "FreeParkingTile",
+      "tileIndex": 20
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Bostanci",
+      "tileIndex": 21
+      "associatedColorGroup": "Red",
+      "price": 22000,
+      "upgradeCost": 15000,
+      "rentLevel0": 1800,
+      "rentLevel1": 9000,
+      "rentLevel2": 25000,
+      "rentLevel3": 70000,
+      "rentLevel4": 87500,
+      "rentLevel5": 105000,
+      "mortgageValue": 11000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "ChanceCardDeck",
+      "tileIndex": 22,
+      "ChanceCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Erenkoy",
+      "tileIndex": 23
+      "associatedColorGroup": "Red",
+      "price": 22000,
+      "upgradeCost": 15000,
+      "rentLevel0": 1800,
+      "rentLevel1": 9000,
+      "rentLevel2": 25000,
+      "rentLevel3": 70000,
+      "rentLevel4": 87500,
+      "rentLevel5": 105000,
+      "mortgageValue": 11000,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Caddebostan",
+      "tileIndex": 24
+      "associatedColorGroup": "Red",
+      "price": 24000,
+      "upgradeCost": 15000,
+      "rentLevel0": 2000,
+      "rentLevel1": 10000,
+      "rentLevel2": 30000,
+      "rentLevel3": 75000,
+      "rentLevel4": 92500,
+      "rentLevel5": 110000,
+      "mortgageValue": 12000,
+    }},
+    {"tile":{
+      "tileType": "TeleportTile",
+      "tileIndex": 25,
+      "counterTile":5
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Nisantasi",
+      "tileIndex": 26
+      "associatedColorGroup": "Yellow",
+      "price": 26000,
+      "upgradeCost": 15000,
+      "rentLevel0": 2200,
+      "rentLevel1": 11000,
+      "rentLevel2": 33000,
+      "rentLevel3": 80000,
+      "rentLevel4": 97500,
+      "rentLevel5": 115000,
+      "mortgageValue": 13000,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Tesvikiye",
+      "tileIndex": 27
+      "associatedColorGroup": "Yellow",
+      "price": 26000,
+      "upgradeCost": 15000,
+      "rentLevel0": 2200,
+      "rentLevel1": 11000,
+      "rentLevel2": 33000,
+      "rentLevel3": 80000,
+      "rentLevel4": 97500,
+      "rentLevel5": 115000,
+      "mortgageValue": 13000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "CommunityChestCardDeck",
+      "tileIndex": 28,
+      "CommunityChestCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Macka",
+      "tileIndex": 29
+      "associatedColorGroup": "Yellow",
+      "price": 28000,
+      "upgradeCost": 15000,
+      "rentLevel0": 2400,
+      "rentLevel1": 12000,
+      "rentLevel2": 36000,
+      "rentLevel3": 85000,
+      "rentLevel4": 102500,
+      "rentLevel5": 120000,
+      "mortgageValue": 14000,
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 30
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Levent",
+      "tileIndex": 31
+      "associatedColorGroup": "Green",
+      "price": 30000,
+      "upgradeCost": 20000,
+      "rentLevel0": 2600,
+      "rentLevel1": 13000,
+      "rentLevel2": 39000,
+      "rentLevel3": 90000,
+      "rentLevel4": 110000,
+      "rentLevel5": 127500,
+      "mortgageValue": 15000,
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Etiler",
+      "tileIndex": 32
+      "associatedColorGroup": "Green",
+      "price": 30000,
+      "upgradeCost": 20000,
+      "rentLevel0": 2600,
+      "rentLevel1": 13000,
+      "rentLevel2": 39000,
+      "rentLevel3": 90000,
+      "rentLevel4": 110000,
+      "rentLevel5": 127500,
+      "mortgageValue": 15000,
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "CommunityChestCardDeck",
+      "tileIndex": 33,
+      "CommunityChestCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Bebek",
+      "tileIndex": 34
+      "associatedColorGroup": "Green",
+      "price": 32000,
+      "upgradeCost": 20000,
+      "rentLevel0": 2800,
+      "rentLevel1": 15000,
+      "rentLevel2": 45000,
+      "rentLevel3": 100000,
+      "rentLevel4": 120000,
+      "rentLevel5": 140500,
+      "mortgageValue": 16000,
+    }},
+    {"tile":{
+      "tileType": "TeleportTile",
+      "tileIndex": 35,
+      "counterTile":15
+    }},
+    {"tile":{
+      "tileType": "CardTile",
+      "associatedDeck": "ChanceCardDeck",
+      "tileIndex": 36,
+      "ChanceCardDeck": [
+        {"card":{
+          "instruction": "",
+          "command": "RECEIVE",
+          "parameter": 560
+        }}
+      ]
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Tarabya",
+      "tileIndex": 37
+      "associatedColorGroup": "Blue",
+      "price": 35000,
+      "upgradeCost": 20000,
+      "rentLevel0": 3500,
+      "rentLevel1": 17500,
+      "rentLevel2": 50000,
+      "rentLevel3": 110000,
+      "rentLevel4": 130000,
+      "rentLevel5": 150000,
+      "mortgageValue": 17500,
+    }},
+    {"tile":{
+      "tileType": "IncomeTaxTile",
+      "tileIndex": 38,
+      "fixedTax": 20000,
+      "percentageTax": 20
+    }},
+    {"tile":{
+      "tileType": "PropertyTile",
+      "tileName": "Yenikoy",
+      "tileIndex": 39
+      "associatedColorGroup": "Blue",
+      "price": 35000,
+      "upgradeCost": 40000,
+      "rentLevel0": 5000,
+      "rentLevel1": 20000,
+      "rentLevel2": 60000,
+      "rentLevel3": 140000,
+      "rentLevel4": 170000,
+      "rentLevel5": 200000,
+      "mortgageValue": 20000,
+    }}
+  ]
+}
