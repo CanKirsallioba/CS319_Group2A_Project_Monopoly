@@ -56,8 +56,6 @@ public class AIPlayer extends AbstractPlayer {
         aiStrategy.makeAndExecuteAuctionDecision( this);
     }
 
-
-
     /**
      * Plays the turn for an AI Player.
      */
@@ -75,7 +73,6 @@ public class AIPlayer extends AbstractPlayer {
                 if( getBalance() >= (getPlayerToken().getBoard().getBoardSalary() / 4) ){
                     setGetOutOfJailChoice(BailOutChoice.MONEY);
                 }
-                // TODO add upgradedable && downgradeable (isDowngradeable()) to TitleDeedCard
                 else{
                     for(TitleDeedCard titleDeedCard: getTitleDeeds()){
                         if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && getBalance() < (getPlayerToken().getBoard().getBoardSalary() / 4)){
@@ -113,7 +110,7 @@ public class AIPlayer extends AbstractPlayer {
                     makeAndExecutePropertyDecision();
                 }
                 else if( currentlyLandedTile instanceof CardTile){
-                    //TODO
+                    makeAndExecuteCardDecision();
                 }
                 else if( currentlyLandedTile instanceof IncomeTaxTile){
                     makeAndExecuteIncomeTaxDecision();
