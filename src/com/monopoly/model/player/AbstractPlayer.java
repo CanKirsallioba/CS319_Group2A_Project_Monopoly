@@ -146,7 +146,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         bankrupt = true;
     }
 
-    // TODO ADD MONEY TO PLAYER'S ACCOUNT IF PLAYER PASSED GO IN THE LAST MOVE
     /**
      * Calls the PlayerToken's move method to move the player on the board by specified amount.
      * Updates currTileInd accordingly.
@@ -158,6 +157,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         currentTile = playerToken.move(amount); // also move player's token
         currentTileIndex = currentTile.getIndex();
 
+        // Update players balance
         if (playerToken.passedGoInTheLastMove()) {
             changeBalance(playerToken.getBoard().getBoardSalary() );
         }
@@ -223,6 +223,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         if(playersDice.getDice1() == playersDice.getDice2()){
             setConsecutiveDoubleCount( getConsecutiveDoubleCount() + 1);
+        } else {
+            setConsecutiveDoubleCount ( 0 );
         }
 
         return playersDice;
