@@ -11,7 +11,7 @@ public class CardTile extends Tile {
     // this will be set board builder
 
     @Override
-    public ArrayList<GameAction> hook(Player player) {
+    protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
         Card card = cardDeck.drawCard();
         player.setCurrentlyDrawnCard(card);
 
