@@ -476,8 +476,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="p1SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
-            <Button fx:id="p1TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
+            <Button fx:id="p1SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#seeInformationCardPlayer1" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
+            <Button fx:id="p1TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#tradeWithPlayer1" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
             <Label fx:id="p1TokenLabel" layoutY="260.0" prefHeight="70.0" prefWidth="320.0" stylesheets="@GameBoardStyle.css" text="Token:">
                <font>
                   <Font size="24.0" />
@@ -506,8 +506,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="p2SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
-            <Button fx:id="p2TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
+            <Button fx:id="p2SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#seeInformationCardPlayer2" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
+            <Button fx:id="p2TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#tradeWithPlayer2" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
             <Label fx:id="p2TokenLabel" layoutY="260.0" prefHeight="70.0" prefWidth="320.0" text="Token:">
                <font>
                   <Font size="24.0" />
@@ -535,8 +535,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="p3SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
-            <Button fx:id="p3TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
+            <Button fx:id="p3SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#seeInformationCardPlayer3" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
+            <Button fx:id="p3TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#tradeWithPlayer3" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
             <Label fx:id="p3TokenLabel" layoutY="260.0" prefHeight="70.0" prefWidth="320.0" text="Token:">
                <font>
                   <Font size="24.0" />
@@ -564,8 +564,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="p6SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
-            <Button fx:id="p6TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
+            <Button fx:id="p6SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#seeInformationCardPlayer6" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
+            <Button fx:id="p6TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#tradeWithPlayer6" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
             <Label fx:id="p6TokenLabel" layoutY="260.0" prefHeight="70.0" prefWidth="320.0" text="Token:">
                <font>
                   <Font size="24.0" />
@@ -593,8 +593,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="p5SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
-            <Button fx:id="p5TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
+            <Button fx:id="p5SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#seeInformationCardPlayer5" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
+            <Button fx:id="p5TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#tradeWithPlayer5" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
             <Label fx:id="p5TokenLabel" layoutY="260.0" prefHeight="70.0" prefWidth="320.0" text="Token:">
                <font>
                   <Font size="24.0" />
@@ -622,8 +622,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="p4SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
-            <Button fx:id="p4TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
+            <Button fx:id="p4SeePropertiesButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#seeInformationCardPlayer4" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="See Properties" />
+            <Button fx:id="p4TradeButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#tradeWithPlayer4" prefHeight="40.0" prefWidth="120.0" styleClass="cardButtons" stylesheets="@GameBoardStyle.css" text="Trade" />
             <Label fx:id="p4TokenLabel" layoutY="260.0" prefHeight="70.0" prefWidth="320.0" text="Token:">
                <font>
                   <Font size="24.0" />

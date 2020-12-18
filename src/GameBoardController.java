@@ -8,13 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GameBoardController implements Initializable {
@@ -315,19 +312,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleMenuButton() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setTitle("Menu");
-        stage.setScene(new Scene(root1));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.centerOnScreen();
-        stage.show();
-    }
-
-    public void exit() {
-        Stage stage = (Stage) yellowPrice1.getScene().getWindow();
-        stage.close();
+        openPopUp("GameBoardMenu.fxml", "Menu");
     }
 
     @FXML
@@ -335,16 +320,78 @@ public class GameBoardController implements Initializable {
 
 
     @FXML
-    public void handleButton1() {}
+    public void handleButton1() throws IOException {
+        openAuction();
+    }
 
     @FXML
-    public void handleButton2() {}
+    public void handleButton2() throws IOException {
+    }
 
     @FXML
     public void handleButton3() {}
 
     @FXML
     public void handleButton4() {}
+
+    @FXML
+    public void openAuction() throws IOException {
+        openPopUp("Auction.fxml", "Auction");
+    }
+
+    public void openInformationCard(String title) throws IOException {
+        openPopUp("InformationCard.fxml", "Information Card of " + title);
+    }
+
+    private void openPopUp(String fxmlFile, String title) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle(title);
+        stage.setScene(new Scene(root1));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void tradeWithPlayer1() throws IOException {
+        openPopUp("Trade.fxml", "Trade between Player A and 1");
+    }
+    public void tradeWithPlayer2() throws IOException {
+        openPopUp("Trade.fxml", "Trade between Player A and 2");
+    }
+    public void tradeWithPlayer3() throws IOException {
+        openPopUp("Trade.fxml", "Trade between Player A and 3");
+    }
+    public void tradeWithPlayer4() throws IOException {
+        openPopUp("Trade.fxml", "Trade between Player A and 4");
+    }
+    public void tradeWithPlayer5() throws IOException {
+        openPopUp("Trade.fxml", "Trade between Player A and 5");
+    }
+    public void tradeWithPlayer6() throws IOException {
+        openPopUp("Trade.fxml", "Trade between Player A and 6");
+    }
+
+    public void seeInformationCardPlayer1() throws IOException {
+        openInformationCard("Player 1");
+    }
+    public void seeInformationCardPlayer2() throws IOException {
+        openInformationCard("Player 2");
+    }
+    public void seeInformationCardPlayer3() throws IOException {
+        openInformationCard("Player 3");
+    }
+    public void seeInformationCardPlayer4() throws IOException {
+        openInformationCard("Player 4");
+    }
+    public void seeInformationCardPlayer5() throws IOException {
+        openInformationCard("Player 5");
+    }
+    public void seeInformationCardPlayer6() throws IOException {
+        openInformationCard("Player 6");
+    }
+
 
 
     @Override
