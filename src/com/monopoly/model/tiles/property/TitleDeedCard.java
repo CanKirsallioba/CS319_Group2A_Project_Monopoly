@@ -454,7 +454,7 @@ public class TitleDeedCard implements Serializable {
      * Checks if the action of upgrading the property is active at a moment
      * @return true if the property is upgradable
      */
-    public boolean isUpgradable(){
+    public boolean isUpgradeable(){
         return actionNames.get("Upgrade Property").isActive();
     }
 
@@ -462,7 +462,7 @@ public class TitleDeedCard implements Serializable {
      * Checks if the action of downgrading the property is active at a moment
      * @return true if the property is downgradable
      */
-    public boolean isDowngradable(){
+    public boolean isDowngradeable(){
         return actionNames.get("Downgrade Property").isActive();
     }
 }
