@@ -426,4 +426,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     public void setInJail(boolean inJail) {
         isInJail = inJail;
     }
+
+
 }

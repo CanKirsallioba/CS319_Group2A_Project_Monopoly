@@ -26,7 +26,19 @@ public class GameBoardController implements Initializable {
     public AnchorPane gameBoard;
 
     public void init() {
-        yellowPrice1.setText("100");
+        Label[] nameLabels = {brownLabel1, brownLabel2, lightBlueLabel1, lightBlueLabel2, lightBlueLabel3,
+                        pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
+                        redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
+                        greenLabel1, greenLabel2, greenLabel3, blueLabel1, blueLabel2};
+
+        Label[] priceLabels = {brownPrice1, brownPrice2, lightBluePrice1, lightBluePrice2, lightBluePrice3,
+                        pinkPrice1, pinkPrice2, pinkLabel3, orangePrice1, orangePrice2, orangePrice3,
+                        redPrice1, redPrice2, redPrice3, yellowPrice1, yellowPrice2, yellowPrice3,
+                        greenPrice1, greenPrice2, greenPrice3, bluePrice1, bluePrice2};
+
+
+
+
         Label[] arr = {lightBlueLabel1, lightBlueLabel2, lightBlueLabel3};
         ButtonObserver buttonObserver = new ButtonObserver(button1, 0);
         ButtonObserver buttonObserver1 = new ButtonObserver(button2, 1);
@@ -132,6 +144,7 @@ public class GameBoardController implements Initializable {
     /*
     Game Buttons
      */
+
 
     @FXML
     private Button menuButton, rollDiceButton, endTurnButton;
