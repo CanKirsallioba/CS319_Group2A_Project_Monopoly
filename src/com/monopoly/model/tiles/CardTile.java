@@ -19,4 +19,12 @@ public class CardTile extends Tile {
 
         return actions;
     }
+
+    public void setCardDeck( CardDeck cardDeck){
+        this.cardDeck = cardDeck;
+    }
+
+    public CardDeck getCardDeck(){
+        return cardDeck;
+    }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CardDeckBuilder {
     public CardDeck build(JSONObject config) {
-        String associatedDeck = (String) config.get("AssociatedDeck");
+        String associatedDeck = (String) config.get("associatedDeck");
         AbstractCardFactory cardFactory = new CardFactory();
         Card createdCard;
         CardDeck cardDeck;
