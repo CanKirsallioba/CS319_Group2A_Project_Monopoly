@@ -2,6 +2,7 @@ package model.player;
 
 import model.AuctionModel;
 import model.TradeModel;
+import model.tiles.JailTile;
 import model.tiles.Tile;
 import model.tiles.card.Card;
 import model.tiles.property.TitleDeedCard;
@@ -28,7 +29,19 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     TradeModel tradeModel;
     TitleDeedCard selectedTitleDeed;
     Card drawnCard;
+    AbstractPlayer() {
+        titleDeeds = new ArrayList<>();
+        bailOutOfJailCards = new ArrayList<>();
+        bankrupt = false;
+        consecutiveDoubleCount = 0;
+        numberOfTurnsSpentInJail = 0;
+        isInJail = false;
+        totalWorth = 0;
+        liquidTotalWorth = 0;
+        getOutOfJailChoice = BailOutChoice.WAIT;
+        taxOption = TaxOption.UNDETERMINED;
 
+    }
     @Override
     public String toString() {
         //String titleDeedInfo = "{ ";
@@ -50,8 +63,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 ", \ntotalWorth=" + totalWorth +
                 ", \nliquidTotalWorth=" + liquidTotalWorth +
                 ", \ncanBailOut=" + canBailOut +
-                ", \nselectedTitleDeed=" + selectedTitleDeed.getPropertyName() +
-                ", \ndrawnCard=" + drawnCard.getInstruction() +
+                ", \nselectedTitleDeed=" + ((selectedTitleDeed == null ) ? "" : selectedTitleDeed.getPropertyName()) +
+                ", \ndrawnCard=" + ((drawnCard == null ) ? "" : drawnCard.getInstruction()) +
                 ", \nplayersDice=" + playersDice.getDiceResultSum() +
                 "}";
     }

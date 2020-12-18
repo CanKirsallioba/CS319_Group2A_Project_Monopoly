@@ -15,6 +15,7 @@ public class HumanPlayer extends AbstractPlayer {
      */
     @Override
     public void playTurn(){
+
         if( isInJail() == false){
             rollDice();
             if( getConsecutiveDoubleCount() == 3){
@@ -22,6 +23,7 @@ public class HumanPlayer extends AbstractPlayer {
             }
             moveToken( playersDice.getDiceResultSum());
         }
+        updatePlayerWorth();
         setChanged();
         notifyObservers();
     }

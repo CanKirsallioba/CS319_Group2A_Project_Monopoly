@@ -11,7 +11,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.player.Player;
-import model.player.PlayerFactory;
 import model.session.GameSession;
 
 import java.io.IOException;
@@ -40,18 +39,18 @@ public class GameBoardController implements Initializable {
 
 
         Label[] arr = {lightBlueLabel1, lightBlueLabel2, lightBlueLabel3};
-        ButtonObserver buttonObserver = new ButtonObserver(button1, 0);
-        ButtonObserver buttonObserver1 = new ButtonObserver(button2, 1);
-        ButtonObserver buttonObserver2 = new ButtonObserver(button3, 2);
-        ButtonObserver buttonObserver3 = new ButtonObserver(button4, 3);
+        GameActionButtonObserver gameActionButtonObserver = new GameActionButtonObserver(button1, 0);
+        GameActionButtonObserver gameActionButtonObserver1 = new GameActionButtonObserver(button2, 1);
+        GameActionButtonObserver gameActionButtonObserver2 = new GameActionButtonObserver(button3, 2);
+        GameActionButtonObserver gameActionButtonObserver3 = new GameActionButtonObserver(button4, 3);
         ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
         System.out.println(players.size());
         for (Player player : players) {
             Observable observable = (Observable) player;
-            observable.addObserver(buttonObserver);
-            observable.addObserver(buttonObserver1);
-            observable.addObserver(buttonObserver2);
-            observable.addObserver(buttonObserver3);
+            observable.addObserver(gameActionButtonObserver);
+            observable.addObserver(gameActionButtonObserver1);
+            observable.addObserver(gameActionButtonObserver2);
+            observable.addObserver(gameActionButtonObserver3);
 
         }
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
@@ -63,10 +62,10 @@ public class GameBoardController implements Initializable {
 
     }
 
-    private class ButtonObserver implements Observer {
+    private class GameActionButtonObserver implements Observer {
         Button button;
         int buttonNumber;
-        ButtonObserver(Button button, int buttonNumber) {
+        GameActionButtonObserver(Button button, int buttonNumber) {
             this.button = button;
             this.buttonNumber = buttonNumber;
         }
