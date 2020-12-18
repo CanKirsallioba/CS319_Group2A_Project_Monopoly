@@ -2,6 +2,7 @@ package com.monopoly.model.tiles.property;
 
 import com.monopoly.model.player.Player;
 import com.monopoly.model.tiles.GameAction;
+import com.monopoly.model.tiles.PropertyTile;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class TitleDeedCard implements Serializable {
     ArrayList<GameAction> propertyActions;
 
     String propertyName;
-    int levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
+    int levelZeroRent, levelOneRent, levelTwoRent, levelThreeRent, levelFourRent, levelFiveRent;
     boolean isOwned;
     boolean isMortgaged;
     int upgradeLevel;
@@ -246,12 +247,24 @@ public class TitleDeedCard implements Serializable {
     }
 
     public String getPropertyName() {
-        return "";
+        return propertyName;
 
     }
 
     public void setPropertyName(String propertyName) {
         this.propertyName = propertyName;
+    }
+
+    /**
+     * @return level zero rent of the property
+     */
+    public int getLevelZeroRent() {
+        return levelZeroRent;
+
+    }
+
+    public void setLevelZeroRent(int levelZeroRent) {
+        this.levelZeroRent = levelZeroRent;
     }
 
     /**
@@ -271,6 +284,7 @@ public class TitleDeedCard implements Serializable {
      */
     public int getLevelTwoRent() {
         return levelTwoRent;
+
     }
 
     /**
@@ -349,5 +363,38 @@ public class TitleDeedCard implements Serializable {
     public int removeMortgage() {
         isMortgaged = false;
         return (int)(mortgageValue * mortgageRemovalMultiplier);
+    }
+
+
+    /**
+     *
+     * @return the current rent based on upgrade level
+     */
+    public int getCurrentRent(){
+        int upgradeLevel = 0;
+        int rent = 0;
+
+        upgradeLevel = getUpgradeLevel();
+
+        if( upgradeLevel == 0){
+                rent = getLevelZeroRent();
+        }
+        else if( upgradeLevel == 1){
+            rent = getLevelOneRent();
+
+        }
+        else if( upgradeLevel == 2){
+            rent = getLevelTwoRent();
+        }
+        else if( upgradeLevel == 3){
+            rent = getLevelThreeRent();
+        }
+        else if( upgradeLevel == 4){
+            rent = getLevelFourRent();
+        }
+        else if( upgradeLevel == 5){
+            rent = getLevelFiveRent();
+        }
+        return rent;
     }
 }
