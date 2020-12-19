@@ -217,7 +217,7 @@ public class NewGameController implements Initializable {
 //        filename = "templateConfig.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
-        sessionManager.setFileName("templateConfig.json");  //delete this when test is over
+        sessionManager.setFileName("debug1.json");  //delete this when test is over
         //uncomment this when test is over
         //sessionManager.setFileName(configFileName);
         sessionManager.newGame(humanPlayerTestConfiguration);
