@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,6 +18,8 @@ import model.player.Dice;
 import model.player.Player;
 import model.session.GameSession;
 import model.session.TurnManager;
+import model.tiles.property.Color;
+import sun.security.krb5.internal.PAData;
 
 import java.io.IOException;
 import java.net.URL;
@@ -77,7 +80,7 @@ public class GameBoardController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        paintPane(propertyColorPane, "RED");
     }
     private class DiceObserver implements Observer {
 
@@ -267,6 +270,21 @@ public class GameBoardController implements Initializable {
     @FXML
     private ImageView p1TokenImage, p2TokenImage, p3TokenImage, p4TokenImage, p5TokenImage, p6TokenImage;
 
+    @FXML
+    private Pane propertyColorPane;
+
+    @FXML
+    private Label rentSiteOnlyValueLabel, rentWith1HouseValueLabel, rentWith2HousesValueLabel;
+
+    @FXML
+    private Label rentWith3HousesValueLabel, rentWith4HousesValueLabel, rentWithHotelValueLabel;
+
+    @FXML
+    private Label costOfHousesValueLabel, costOfHotelsValueLabel, mortgageValueLabel, costLabel;
+
+    @FXML
+    private Label communityOrChanceCardLabel, cardAction;
+
     /*
     Game Buttons
      */
@@ -432,5 +450,27 @@ public class GameBoardController implements Initializable {
 
     public void setPlayerList(ArrayList<Player> playerList) {
         this.playerList = playerList;
+    }
+
+    public void paintPane(Pane pane, String color) {
+        if (color.equals("RED")) {
+            pane.setStyle("-fx-background-color:  #FF0900;");
+        } else if (color.equals("YELLOW")) {
+            pane.setStyle("-fx-background-color:  #FDED00");
+        } else if (color.equals("GREEN")) {
+            pane.setStyle("-fx-background-color:  #00AC57");
+        } else if (color.equals("BLUE")) {
+            pane.setStyle("-fx-background-color:  #2744A7");
+        } else if (color.equals("BROWN")) {
+            pane.setStyle("-fx-background-color:  #610037");
+        } else if (color.equals("LIGHT_BLUE")) {
+            pane.setStyle("-fx-background-color:  #84A2DA");
+        } else if (color.equals("PINK")) {
+            pane.setStyle("-fx-background-color:  #FF0072");
+        } else if (color.equals("ORANGE")) {
+            pane.setStyle("-fx-background-color:  #FF7900");
+        } else {
+            System.out.println("Something wrong with color input (Check if input is String)");
+        }
     }
 }
