@@ -59,7 +59,7 @@ public class BalancedAIStrategy extends AIStrategy {
                     }
                     if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
                         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
-                            if (titleDeedCard.isMortgaged() == false
+                            if (!titleDeedCard.isMortgaged ()
                                     && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
 
                                 getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
@@ -221,7 +221,7 @@ public class BalancedAIStrategy extends AIStrategy {
                     }
                     if (aiPlayer.getBalance() < moneyToPay) {
                         for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
-                            if (titleDeedCard.isMortgaged() == false
+                            if (!titleDeedCard.isMortgaged ()
                                     && aiPlayer.getBalance() < moneyToPay) {
 
                              getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
