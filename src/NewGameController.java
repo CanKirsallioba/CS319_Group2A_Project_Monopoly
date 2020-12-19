@@ -1,3 +1,5 @@
+import data.ConfigHandler;
+import data.FileManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,9 +20,11 @@ import model.GamePace;
 import model.player.AICharacteristic;
 import model.session.GameSession;
 import model.session.GameSessionManager;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NewGameController implements Initializable {
@@ -41,6 +45,9 @@ public class NewGameController implements Initializable {
     private int maxBotPlayers = 5;
 
     private int numOfPlayers;
+    private ConfigHandler configHandler = new ConfigHandler();
+    String configFileName = "";
+    ArrayList<String> boardNames = new ArrayList<>();
 
     //change String into Board when Board Model class is implemented
     @FXML
@@ -80,11 +87,14 @@ public class NewGameController implements Initializable {
             maxHumanPlayers = MAX_NUM_PLAYERS - botPlayers;
             spinnerValueFactoryHuman.setMax(maxHumanPlayers);});
 
-        //combobox for board initialization, dummy initialization since no Board model class at the moment
+        //combobox for board initialization
         //fill this from stored board templates
-        comboBoardData.add("CLASSIC");
-        comboBoardData.add("BILKENT");
-        comboBoardData.add("HALLOWEEN");
+        for(String board: FileManager.getBoardConfigNames()){
+            JSONObject config = configHandler.getConfig(board);
+            JSONObject boardConfig = (JSONObject) config.get("boardConfig");
+            comboBoardData.add((String) boardConfig.get("boardName"));
+            boardNames.add((String) boardConfig.get("boardName"));
+        }
 
         //set the data
         comboBoard.setItems(comboBoardData);
@@ -97,10 +107,11 @@ public class NewGameController implements Initializable {
         //set the data
         comboPace.setItems(comboPaceData);
 
-        //combobox for ai characteristic initialization, this will be replaced by reading available ai characteristics list
-        //or by declaring ai characteristic objects here with "new" keyword
-        comboAIData.add("ADVENTUROUS CAPITALIST");
-        comboAIData.add("EBENEZER SCROOGE");
+        //combobox for ai characteristic initialization
+        AICharacteristic characteristics[] = AICharacteristic.values();
+        for(AICharacteristic charac: characteristics) {
+            comboAIData.add(String.valueOf(charac));
+        }
 
         //set the data
         comboAI.setItems(comboAIData);
@@ -130,6 +141,16 @@ public class NewGameController implements Initializable {
     //strings will be changed to Board objects
     private void handleComboBoardAction() {
         String selectedBoard = comboBoard.getSelectionModel().getSelectedItem();
+        boolean found = false;
+        int index = 0;
+        ArrayList<String> configFiles = FileManager.getBoardConfigNames();
+
+        while(!found){
+            if(selectedBoard.equals(boardNames.get(index))){
+                found = true;
+                configFileName = configFiles.get( index);
+            }
+        }
     }
 
     @FXML
@@ -141,6 +162,7 @@ public class NewGameController implements Initializable {
     //Strings will be changed to AIChar objects
     private void handleComboAIAction() {
         String selectedAIChar = comboAI.getSelectionModel().getSelectedItem();
+
     }
 
     @FXML
@@ -153,15 +175,47 @@ public class NewGameController implements Initializable {
         Parent root = (Parent)fxmlLoader.load();
 
         GameBoardController controller = fxmlLoader.<GameBoardController>getController();
+        String filename;
 
-        BoardConfiguration boardConfiguration = new BoardConfiguration();
-        boardConfiguration.setGamePace(GamePace.MEDIUM);
-        boardConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
-        boardConfiguration.setHumanPlayerCount(2);
-        boardConfiguration.setMaxPlayerCount(2);
+        // Two Human Player.
+        BoardConfiguration humanPlayerTestConfiguration = new BoardConfiguration();
+        humanPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
+        humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
+        //uncomment this when test is over
+        //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);
+        humanPlayerTestConfiguration.setHumanPlayerCount(2);
+        humanPlayerTestConfiguration.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
+        // Two AI player
+        BoardConfiguration AIPlayerTestConfiguration = new BoardConfiguration();
+        AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
+        AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
+        AIPlayerTestConfiguration.setHumanPlayerCount(0);
+        AIPlayerTestConfiguration.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
+        // TileDebug_Team1
+        BoardConfiguration tileDebug1Configution = new BoardConfiguration();
+        tileDebug1Configution.setGamePace(GamePace.MEDIUM);
+        tileDebug1Configution.setAiCharacteristic(AICharacteristic.BALANCED);
+        tileDebug1Configution.setHumanPlayerCount(2);
+        tileDebug1Configution.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
+        // TileDebug_Team2
+        BoardConfiguration tileDebug2Configution = new BoardConfiguration();
+        tileDebug2Configution.setGamePace(GamePace.MEDIUM);
+        tileDebug2Configution.setAiCharacteristic(AICharacteristic.BALANCED);
+        tileDebug2Configution.setHumanPlayerCount(2);
+        tileDebug2Configution.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
         GameSessionManager sessionManager = new GameSessionManager();
-        sessionManager.setFileName("templateConfig.json");
-        sessionManager.newGame(boardConfiguration);
+        sessionManager.setFileName("templateConfig.json");  //delete this when test is over
+        //uncomment this when test is over
+        //sessionManager.setFileName(configFileName);
+        sessionManager.newGame(humanPlayerTestConfiguration);
         GameSession session = sessionManager.getGame();
 //        System.out.println(session);
         numOfPlayers = humanPlayers + botPlayers;

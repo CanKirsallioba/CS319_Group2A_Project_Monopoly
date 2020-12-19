@@ -3,10 +3,8 @@ package model.session;
 import model.BoardConfiguration;
 import model.board.Board;
 import model.board.BoardFactory;
-import model.player.Dice;
-import model.player.Player;
-import model.player.PlayerFactory;
-import model.player.PlayerToken;
+import model.player.*;
+import model.player.strategy.GameStatistics;
 import org.json.simple.JSONObject;
 
 public class GameSessionBuilder {
@@ -56,6 +54,14 @@ public class GameSessionBuilder {
         gameSession.setDice(dice);
         gameSession.setBoard(board);
         gameSession.setTurnManager(turnManager);
+
+        // set the game statistics for AIPlayers
+        GameStatistics gameStatistics = new GameStatistics( board, turnManager.players);
+        for (Player player : turnManager.getPlayers()) {
+            if( player instanceof AIPlayer){
+                ((AIPlayer) player).getAiStrategy().setGameStatistics(gameStatistics);
+            }
+        }
 
         return gameSession;
     }

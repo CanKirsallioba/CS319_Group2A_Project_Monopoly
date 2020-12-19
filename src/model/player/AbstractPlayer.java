@@ -341,9 +341,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         } else {
             setConsecutiveDoubleCount ( 0 );
         }
-
-        setChanged();
-        notifyObservers();
         return playersDice;
     }
 
@@ -428,8 +425,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setConsecutiveDoubleCount(int consecutiveDoubleCount) {
         this.consecutiveDoubleCount = consecutiveDoubleCount;
-        setChanged();
-        notifyObservers();
     }
 
     /**
@@ -628,8 +623,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     public void setSelectedTitleDeed( TitleDeedCard selectedTitleDeed){
         this.selectedTitleDeed = selectedTitleDeed;
-        setChanged();
-        notifyObservers();
     }
 
     /**
@@ -646,8 +639,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     public void setCurrentlyDrawnCard(Card drawnCard) {
         this.drawnCard = drawnCard;
-        setChanged();
-        notifyObservers();
     }
 
     /**
@@ -664,8 +655,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     public void setInJail(boolean inJail) {
         isInJail = inJail;
-        setChanged();
-        notifyObservers();
     }
 
 

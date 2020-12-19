@@ -55,6 +55,23 @@ public class TitleDeedCard implements Serializable {
         }
     }
 
+    public void setOwned(boolean owned) {
+        isOwned = owned;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    public HashMap<String, GameAction> getActionNames() {
+        return actionNames;
+    }
+
+    public void setActionNames(HashMap<String, GameAction> actionNames) {
+        this.actionNames = actionNames;
+    }
+
+
     public ArrayList<GameAction> getPropertyActions() {
         return propertyActions;
     }

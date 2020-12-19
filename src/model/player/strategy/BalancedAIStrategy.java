@@ -12,8 +12,20 @@ import model.tiles.GameAction;
 
 import java.util.ArrayList;
 
+/**
+ * Strategy for the balanced AI.
+ * For the most part, behaves like what a rational person would behave.
+ * Tries to avoid situations that it would be in danger of bankruptcy, and tries to accumulate properties when it makes sense.
+ */
 public class BalancedAIStrategy extends AIStrategy {
 
+    /**
+     *  Is invoked when the player lands on a PropertyTile.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     *  If it fits the AI's conditions, i.e. does not leave him in danger of bankruptcy, he buys the property.
+     * @param player is the player subject to the decision
+     */
     @Override
     public void makeAndExecutePropertyDecision(AIPlayer player) {
         PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
@@ -80,6 +92,13 @@ public class BalancedAIStrategy extends AIStrategy {
         }
     }
 
+    /**
+     *  Is invoked when the player is made a trade offer.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     *  If both players are giving the same amount, or the subject player is receiving more, the trade offer is accepted.
+     * @param player is the player subject to the decision
+     */
     @Override
     public void makeAndExecuteTradeDecision(AIPlayer player) {
         TradeModel tradeModel = player.getTradeModel();
@@ -128,6 +147,12 @@ public class BalancedAIStrategy extends AIStrategy {
         }
     }
 
+    /**
+     *  Is invoked when the player is involved in an auction.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     * @param player is the player subject to the decision
+     */
     @Override
     public void makeAndExecuteAuctionDecision(AIPlayer player) {
         AuctionModel auctionModel = player.getAuctionModel();
@@ -138,9 +163,15 @@ public class BalancedAIStrategy extends AIStrategy {
         }
     }
 
+    /**
+     *  Is invoked when the player lands on an IncomeTaxTile.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     * @param aiPlayer is the player subject to the decision
+     */
     @Override
     public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer) {
-        if (aiPlayer.getTaxOption() == null) {
+        if (aiPlayer.getTaxOption() == null || aiPlayer.getTaxOption() == TaxOption.UNDETERMINED) {
             aiPlayer.setTaxOption(TaxOption.TAX_WITH_RATIO);
         }
 
@@ -148,6 +179,14 @@ public class BalancedAIStrategy extends AIStrategy {
         getGameAction(((IncomeTaxTile) aiPlayer.getCurrentTile()).getPossibleActions(aiPlayer), "Pay Tax").execute();
     }
 
+    /**
+     *  Is invoked when the player lands on a CardTile.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     *  If the drawn card involves paying money, and the player cannot afford it, player either sells property or
+     *  downgrades property to pay, or declares bankruptcy.
+     * @param aiPlayer is the player subject to the decision
+     */
     @Override
     public void makeAndExecuteCardDecision(AIPlayer aiPlayer) {
         ArrayList<GameAction> gameActions = aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);

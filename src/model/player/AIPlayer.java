@@ -122,6 +122,14 @@ public class AIPlayer extends AbstractPlayer implements Observer {
         }
     }
 
+    public AIStrategy getAiStrategy() {
+        return aiStrategy;
+    }
+
+    public void setAiStrategy(AIStrategy aiStrategy) {
+        this.aiStrategy = aiStrategy;
+    }
+
 
     @Override
     public void update(Observable o, Object arg) {
