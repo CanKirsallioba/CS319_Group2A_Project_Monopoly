@@ -40,6 +40,7 @@ public class PlayerToken {
      * Sends the token to jail.
      */
     void goToJail() {
+        currentTile = board.getTiles().get(board.getJailTileIndex());
         currentTileIndex = board.getJailTileIndex();
     }
 

@@ -15,7 +15,7 @@ public class JailTile extends Tile {
                 if (player.getBailOutOfJailCards().size() != 0) {
                     setActive(actions, "Use Bail Out Of Jail Card", true);
                 }
-                if (player.getLiquidTotalWorth() > 0) { // TODO: Fix the bail out price
+                if (player.getLiquidTotalWorth() > player.getPlayerToken().getBoard().getBoardSalary() / 4) {
                     setActive(actions, "Pay Bail Bond", true);
                 }
                 setActive(actions, "Roll Dice", true);
