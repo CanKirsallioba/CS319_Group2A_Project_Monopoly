@@ -552,7 +552,7 @@ public class GameBoardController implements Initializable {
         } else if (color.equals("BLUE")) {
             pane.setStyle("-fx-background-color:  #2744A7");
         } else if (color.equals("BROWN")) {
-            pane.setStyle("-fx-background-color:  #610037");
+            pane.setStyle("-fx-background-color: #A0522D");
         } else if (color.equals("LIGHT_BLUE")) {
             pane.setStyle("-fx-background-color:  #84A2DA");
         } else if (color.equals("PINK")) {
