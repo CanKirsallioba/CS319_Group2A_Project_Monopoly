@@ -82,20 +82,34 @@ public class PlayerToken {
         return currentTileIndex < lastDiceRoll;
     }
 
-    // newly added
+    /**
+     * getter method for lastDiceRoll
+     * @return the lastDiceRoll
+     */
     public int getLastDiceRoll() {
         return lastDiceRoll;
     }
 
+    /**
+     * setter method for lastDiceRoll
+     * @param lastDiceRoll is the new value of the lastDiceRoll
+     */
     public void setLastDiceRoll(int lastDiceRoll) {
         this.lastDiceRoll = lastDiceRoll;
     }
 
-
+    /**
+     * Getter method for board reference
+     * @return the board
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     * Setter method for the board
+     * @param board is the new board
+     */
     public void setBoard(Board board) {
         this.board = board;
     }
