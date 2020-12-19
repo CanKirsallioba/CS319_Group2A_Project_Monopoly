@@ -7,6 +7,12 @@ import java.util.ArrayList;
 
 public class JailTile extends Tile {
 
+    /**
+     * TThis method activates and deactivates bail out actions based on the choice of the player
+     * @param player the player who landed on the tile
+     * @param actions the actions associated with the tile
+     * @return
+     */
     @Override
     protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
 
