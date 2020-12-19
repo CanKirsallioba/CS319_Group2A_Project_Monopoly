@@ -1527,7 +1527,7 @@
                               <Image url="@./boot.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player3Tile34TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player3Tile34TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./hat.png" />
                            </image>
@@ -1580,7 +1580,7 @@
                               <Image url="@./dog.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player3Tile35TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player3Tile35TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./hat.png" />
                            </image>
@@ -1603,7 +1603,7 @@
                               <Image url="@./towerToken.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player3Tile36TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="62.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player3Tile36TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="62.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./hat.png" />
                            </image>
@@ -1675,7 +1675,7 @@
                               <Image url="@./towerToken.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player3Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player3Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./hat.png" />
                            </image>
@@ -1713,7 +1713,7 @@
                               <Image url="@./car.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player3Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player3Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./hat.png" />
                            </image>

@@ -104,6 +104,8 @@ public interface Player extends Serializable {
 
     void payBailOutMoney();
 
+    boolean isInJail();
+
     public Dice getPlayersDice();
     public void setPlayersDice(Dice playersDice);
 }

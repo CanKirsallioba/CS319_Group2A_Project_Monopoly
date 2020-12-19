@@ -18,6 +18,7 @@ public class TeleportTileActionStrategy extends ActionStrategy {
         int index = tile.getIndex();
         int counterpart = tile.getCounterpartIndex();
         player.moveToken(counterpart-index + 1);
+        System.out.println("Player teleported from " + index + " to " + (counterpart + 1));
 
     }
 
