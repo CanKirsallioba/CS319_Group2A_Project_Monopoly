@@ -56,7 +56,7 @@ public class CardTileActionStrategy extends ActionStrategy {
             player.moveToken(-drawnCard.getCardDetails().get("BACKWARD"));
         } else if(drawnCard.getCardDetails().containsKey("MOVE_TO")){
             //Move token to a specific tile
-            player.moveToken(drawnCard.getCardDetails().get("MOVE_TO"));
+            player.moveToken((drawnCard.getCardDetails().get("MOVE_TO") - player.getCurrentTile().getIndex()) % 40);
         }
         System.out.println("BEFORE CARD __ \n: " + player);
         player.setCurrentlyDrawnCard(null);
