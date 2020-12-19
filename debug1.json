@@ -1,0 +1,172 @@
+{
+  "boardConfig":{
+    "boardName": "Bilkent",
+    "tileCount": 40,
+    "salary": 2000,
+    "jailTileIndex": 10
+  },
+  "tiles": [
+    {"tile":{
+      "tileType": "GoTile",
+      "tileIndex": 0
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 1
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 2
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 3
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 4
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 5
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 6
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 7
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 8
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 9
+    }},
+    {"tile":{
+      "tileType": "JailTile",
+      "tileIndex": 10
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 11
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 12
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 13
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 14
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 15
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 16
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 17
+
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 18
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 19
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 20
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 21
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 22
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 23
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 24
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 25
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 26
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 27
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 28
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 29
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 30
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 31
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 32
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 33
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 34
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 35
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 36
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 37
+
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 38
+    }},
+    {"tile":{
+      "tileType": "GoToJailTile",
+      "tileIndex": 39
+    }}
+  ]
+}
