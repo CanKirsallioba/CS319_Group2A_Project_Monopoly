@@ -2,7 +2,9 @@ package model.tiles.actionStrategy;
 
 import model.player.Player;
 
-public abstract class ActionStrategy {
+import java.io.Serializable;
+
+public abstract class ActionStrategy implements Serializable {
 
     public abstract void button1Strategy(Player player);
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class FileManager {
     final static int MAX_SIZE = 0;
     private static ArrayList<String> configList = new ArrayList<>();
-    private static ArrayList<String> sessionNames;
+    private static ArrayList<String> sessionNames = new ArrayList<>();
 
     public static int getMaxSize() {
 
@@ -15,6 +15,22 @@ public class FileManager {
     }
 
     public static ArrayList<String> getSavedSessionNames(){
+        if(sessionNames.size() == 0){
+            File dir = new File(System.getProperty("user.dir"));
+            FilenameFilter filter = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.startsWith("saveFile_");
+                }
+            };
+            String[] pathnames = dir.list(filter);
+
+            for (String name : pathnames) {
+                sessionNames.add( name);
+                System.out.println(name);
+            }
+        }
+
         return sessionNames;
     }
 
@@ -47,4 +63,8 @@ public class FileManager {
     public static void addBoardConfigName(String fileName) {
         configList.add( fileName);
     }
+    public static void addGameSaveFile(String fileName) {
+        sessionNames.add( fileName);
+    }
+
 }

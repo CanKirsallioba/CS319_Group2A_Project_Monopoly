@@ -3,7 +3,9 @@ package model.player;
 import model.board.Board;
 import model.tiles.Tile;
 
-public class PlayerToken {
+import java.io.Serializable;
+
+public class PlayerToken implements Serializable {
     int currentTileIndex;
     Tile currentTile;
     String type;

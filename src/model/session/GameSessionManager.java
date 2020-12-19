@@ -5,13 +5,14 @@ import data.FileManager;
 import data.SerializationHandler;
 import model.BoardConfiguration;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class GameSessionManager {
     private GameSession game;
     private Path fileLocation;
-    private String fileName;
+    private String configFileName;
     private ArrayList<String> boardNames;
     private SerializationHandler serializationHandler;
     private ConfigHandler configHandler;
@@ -24,14 +25,16 @@ public class GameSessionManager {
     }
 
 
-    void loadGame() {
+    public void loadGame( String gameSessionName) throws IOException, ClassNotFoundException {
+        setSelectedGameSessionName( gameSessionName);
         GameSession session = serializationHandler.load(getSelectedGameSessionName());
         setGame(session);
-        setFileName(getSelectedGameSessionName());
+        setConfigFileName(getSelectedGameSessionName());
     }
 
-    void saveGame(GameSession gameSession) {
-        serializationHandler.save(gameSession, getFileName());
+    public void saveGame(GameSession gameSession) throws IOException {
+        serializationHandler.save(gameSession, selectedGameSessionName);
+        FileManager.addGameSaveFile( gameSession.getGameSessionName());
     }
 
 
@@ -40,8 +43,9 @@ public class GameSessionManager {
     }
 
     public void newGame(BoardConfiguration config) {
-        GameSessionBuilder gameSessionBuilder = new GameSessionBuilder(config, configHandler.getConfig(getFileName()));
+        GameSessionBuilder gameSessionBuilder = new GameSessionBuilder(config, configHandler.getConfig(getConfigFileName()));
         game = gameSessionBuilder.build();
+        setSelectedGameSessionName(game.getGameSessionName());
     }
     public String getSelectedGameSessionName() {
         return selectedGameSessionName;
@@ -66,14 +70,13 @@ public class GameSessionManager {
         this.fileLocation = fileLocation;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getConfigFileName() {
+        return configFileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setConfigFileName(String configFileName) {
+        this.configFileName = configFileName;
     }
-
 
 
 }
