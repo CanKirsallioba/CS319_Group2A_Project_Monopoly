@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.AuctionModel;
@@ -418,7 +420,22 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleMenuButton() throws IOException {
-        openPopUp("GameBoardMenu.fxml", "Menu");
+//        openPopUp("GameBoardMenu.fxml", "Menu");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        GameBoardMenuController controller = fxmlLoader.<GameBoardMenuController>getController();
+        controller.setGameSession(getGameSession());
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("Pause Menu");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+        stage.show();
+
     }
 
     @FXML
