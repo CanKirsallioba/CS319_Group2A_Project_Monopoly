@@ -10,9 +10,7 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      * @param player is the player that the action is inflicted on.
      */
     @Override
-    public void button1Strategy(Player player) {
-        player.setTaxOption(TaxOption.FIXED_TAX_AMOUNT);
-    }
+    public void button1Strategy(Player player) {player.setTaxOption(TaxOption.TAX_WITH_RATIO); }
 
     /**
      * This method allows the player to set the tax option to percentage-wise payment.
@@ -20,9 +18,7 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      * @param player is the player that the action is inflicted on.
      */
     @Override
-    public void button2Strategy(Player player) {
-        player.setTaxOption(TaxOption.TAX_WITH_RATIO);
-    }
+    public void button2Strategy(Player player) {player.setTaxOption(TaxOption.FIXED_TAX_AMOUNT);}
 
     /**
      * This method allows the player to pay the tax.
@@ -35,12 +31,15 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
         // TODO player.payTax();
         int taxAmount;
         if (player.getTaxOption() == TaxOption.TAX_WITH_RATIO) {
-            taxAmount = (int) (player.getBalance() * (1 - 0.2));
+            taxAmount = (int) (player.getBalance() * (0.2));
         } else {
             taxAmount = player.getPlayerToken().getBoard().getBoardSalary() / 4;
         }
-        if (player.getBalance() >= player.getBalance()) {
+        if (player.getBalance() >= taxAmount) {
             player.changeBalance(-taxAmount);
+        }
+        else{
+            player.declareBankruptcy();
         }
     }
 
