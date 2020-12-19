@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,18 +36,8 @@ public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
 
-    public GameBoardMenuController getMenuController() {
-        return menuController;
-    }
-
-    public void setMenuController(GameBoardMenuController menuController) {
-        this.menuController = menuController;
-    }
-
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
 //    Image image1 = new Image(file.toURI().toString());};
-    GameBoardMenuController menuController;
-
     TurnManager turnManager;
     Board board;
     Dice dice;
@@ -66,10 +57,7 @@ public class GameBoardController implements Initializable {
 
     public void init() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
-        GameBoardMenuController menuController = fxmlLoader.<GameBoardMenuController>getController();
-        setMenuController(menuController);
-        menuController.setGameSession(getGameSession());
+
         Label[] nameLabels = {brownLabel1, brownLabel2, lightBlueLabel1, lightBlueLabel2, lightBlueLabel3,
                 pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
                 redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
@@ -101,6 +89,7 @@ public class GameBoardController implements Initializable {
 
 
         playerList = getGameSession().getTurnManager().getPlayers();
+
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
