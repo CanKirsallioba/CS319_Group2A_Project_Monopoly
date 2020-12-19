@@ -88,6 +88,11 @@ public class GameBoardMenuController implements Initializable {
 
     }
 
+    @FXML
+    public void handleSave(ActionEvent event) throws IOException {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

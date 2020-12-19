@@ -11,7 +11,7 @@ public abstract class Tile implements Serializable {
     
     public String tileName;
     public String name = this.getClass().getSimpleName();
-    protected AbstractActionFactory actionFactory;
+    protected transient AbstractActionFactory actionFactory;
     boolean hasCustomizedFunctionality;
     ArrayList<GameAction> actions;
 

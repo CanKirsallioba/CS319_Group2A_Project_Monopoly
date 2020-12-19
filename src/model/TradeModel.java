@@ -3,10 +3,11 @@ package model;
 import model.player.Player;
 import model.tiles.property.TitleDeedCard;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class TradeModel extends Observable {
+public class TradeModel extends Observable implements Serializable {
     Player player1;
     Player player2;
     ArrayList<TitleDeedCard> titleDeedCardsPlayer1;

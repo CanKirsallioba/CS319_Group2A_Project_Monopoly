@@ -7,6 +7,9 @@ import model.player.*;
 import model.player.strategy.GameStatistics;
 import org.json.simple.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class GameSessionBuilder {
     BoardConfiguration boardConfiguration;
     JSONObject config;
@@ -51,6 +54,8 @@ public class GameSessionBuilder {
         }
 
         GameSession gameSession = new GameSession();
+        String gameSessionName = "saveFile_" + new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+        gameSession.setGameSessionName( gameSessionName);
         gameSession.setDice(dice);
         gameSession.setBoard(board);
         gameSession.setTurnManager(turnManager);

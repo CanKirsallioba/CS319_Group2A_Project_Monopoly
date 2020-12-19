@@ -2,9 +2,10 @@ package model;
 
 import model.player.AICharacteristic;
 
+import java.io.Serializable;
 import java.util.Observable;
 
-public class BoardConfiguration extends Observable {
+public class BoardConfiguration extends Observable implements Serializable {
     GamePace gamePace;
     int maxPlayerCount;
     int humanPlayerCount;

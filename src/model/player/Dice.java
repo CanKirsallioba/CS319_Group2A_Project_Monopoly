@@ -1,7 +1,9 @@
 package model.player;
 
+import java.io.Serializable;
+
 // Dice class is completed according to the original design.
-public class Dice {
+public class Dice implements Serializable {
     int dice1;
     int dice2;
 

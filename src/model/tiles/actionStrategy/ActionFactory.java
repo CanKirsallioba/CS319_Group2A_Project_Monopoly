@@ -2,6 +2,7 @@ package model.tiles.actionStrategy;
 
 import model.tiles.GameAction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ActionFactory extends AbstractActionFactory {

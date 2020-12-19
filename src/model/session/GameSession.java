@@ -7,6 +7,7 @@ import model.player.Dice;
 import java.io.Serializable;
 
 public class GameSession implements Serializable {
+
     String gameSessionName;
     BoardConfiguration boardConfiguration;
     Board board;
@@ -36,5 +37,13 @@ public class GameSession implements Serializable {
 
     public void setDice(Dice dice) {
         this.dice = dice;
+    }
+
+    public String getGameSessionName() {
+        return gameSessionName;
+    }
+
+    public void setGameSessionName(String gameSessionName) {
+        this.gameSessionName = gameSessionName;
     }
 }

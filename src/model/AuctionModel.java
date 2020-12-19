@@ -3,10 +3,11 @@ package model;
 import model.player.Player;
 import model.tiles.property.TitleDeedCard;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class AuctionModel extends Observable {
+public class AuctionModel extends Observable implements Serializable {
 
     boolean active;
     Player highestBiddingPlayer;

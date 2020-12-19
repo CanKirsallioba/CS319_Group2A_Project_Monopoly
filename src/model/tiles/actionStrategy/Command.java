@@ -2,6 +2,8 @@ package model.tiles.actionStrategy;
 
 import model.player.Player;
 
-public interface Command {
+import java.io.Serializable;
+
+public interface Command extends Serializable {
     void execute(Player player);
 }
