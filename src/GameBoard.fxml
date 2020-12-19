@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="sceneBackground" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@GameBoardStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameBoardController">
    <children>
@@ -507,10 +501,42 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
                      <children>
-                        <AnchorPane prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #2744A7;" />
+                        <AnchorPane prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #2744A7;">
+                           <children>
+                              <ImageView fx:id="player2Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="4.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/towerToken.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="player4Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/car.png" />
+                                 </image>
+                              </ImageView>
+                           </children></AnchorPane>
                         <Label fx:id="blueLabel1" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
                         <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
                         <Label fx:id="bluePrice1" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <ImageView fx:id="player5Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="31.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/boot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player6Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/dog.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player1Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="33.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/wheelbarrow.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player3Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/hat.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
@@ -520,6 +546,36 @@
                            <image>
                               <Image url="@tax-right.png" />
                            </image></ImageView>
+                        <ImageView fx:id="player2Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="4.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/towerToken.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player3Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/hat.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player4Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="-2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/car.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player1Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/wheelbarrow.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player6Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/dog.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/boot.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="83.333" prefWidth="150.0">
@@ -528,6 +584,36 @@
                         <Label fx:id="blueLabel2" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
                         <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
                         <Label fx:id="bluePrice2" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <ImageView fx:id="player4Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/car.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player3Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="64.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/hat.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player2Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="3.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/towerToken.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player5Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/boot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player6Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/dog.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player1Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="31.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/wheelbarrow.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
