@@ -58,7 +58,7 @@ public class CardTileActionStrategy extends ActionStrategy {
             //Move token to a specific tile
             player.moveToken((drawnCard.getCardDetails().get("MOVE_TO") - player.getCurrentTile().getIndex()) % 40);
         }
-        System.out.println("BEFORE CARD __ \n: " + player);
+        System.out.println("END CARD __ \n: " + player);
         player.setCurrentlyDrawnCard(null);
     }
 

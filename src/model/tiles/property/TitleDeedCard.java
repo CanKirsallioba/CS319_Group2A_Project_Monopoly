@@ -45,12 +45,14 @@ public class TitleDeedCard implements Serializable {
 
 
         ActionFactory actionFactory = new ActionFactory();
-        propertyActions = actionFactory.getActionList("PropertyTile");
+        propertyActions = actionFactory.getActionList(getClass().getSimpleName());
 
         actionNames = new HashMap<>();
         for(GameAction action: propertyActions){
             actionNames.put(action.getName(), action);
+            System.out.println(action);
         }
+        updateActions();
     }
 
     public void setOwned(boolean owned) {

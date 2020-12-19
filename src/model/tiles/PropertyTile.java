@@ -24,6 +24,7 @@ public class PropertyTile extends Tile {
         } else if(titleDeedCard.getOwner() == player){
             setActive ( actions, "Buy Property", false );
             setActive ( actions, "Pay Rent", false );
+            return titleDeedCard.getPropertyActions();
         } else {
             throw new RuntimeException();
         }

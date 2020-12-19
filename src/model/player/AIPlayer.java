@@ -1,10 +1,7 @@
 package model.player;
 
 import model.player.strategy.AIStrategy;
-import model.tiles.CardTile;
-import model.tiles.IncomeTaxTile;
-import model.tiles.PropertyTile;
-import model.tiles.Tile;
+import model.tiles.*;
 import model.tiles.property.TitleDeedCard;
 import org.omg.Messaging.SyncScopeHelper;
 
@@ -65,7 +62,8 @@ public class AIPlayer extends AbstractPlayer implements Observer {
      */
     @Override
     public void playTurn(){
-        System.out.println("debug: AIPlayer: playTurn chkpt--1");
+        System.out.println("debug: AIPlayer: playTurn chkpt--1\n" + this.toString() );
+        updatePlayerWorth();
         // if player is in jail, tries to bail out of jail
         if( isInJail()){
             if( getBailOutOfJailCards().size() > 0){
@@ -112,6 +110,7 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                 moveToken( playersDice.getDiceResultSum());
                 Tile currentlyLandedTile = getCurrentTile();
                 if( currentlyLandedTile instanceof PropertyTile){
+//                    setSelectedTitleDeed(((ile) currentlyLandedTile).getTitleDeedCard());
                     makeAndExecutePropertyDecision();
                 }
                 else if( currentlyLandedTile instanceof CardTile){
@@ -123,7 +122,9 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                 // if not on a tile that requires a specific action, do not do anything
             }
         }
-        System.out.println("debug: AIPlayer: playTurn chkpt--2");
+        updatePlayerWorth();
+
+        System.out.println("debug: AIPlayer: playTurn chkpt--2 \n" + this.toString() );
 
     }
 

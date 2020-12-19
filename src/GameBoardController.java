@@ -108,8 +108,8 @@ public class GameBoardController implements Initializable {
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
         DiceObserver diceObserver = new DiceObserver();
         playerCardAnchorPanes = new AnchorPane[]{player1Card, player4Card, player2Card, player5Card, player3Card, player6Card};
-        playerMoneyLabels = new Label[]{p1moneyLabel, p4moneyLabel,p2moneyLabel, p5moneyLabel,p3moneyLabel, p6moneyLabel};
-        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel,p4NumOfPropLabel, p2NumOfPropLabel, p5moneyLabel, p3moneyLabel, p6NameLabel};
+        playerMoneyLabels = new Label[]{p1moneyLabel, p4moneyLabel, p2moneyLabel, p5moneyLabel, p3moneyLabel, p6moneyLabel};
+        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p4NumOfPropLabel, p2NumOfPropLabel, p5moneyLabel, p3moneyLabel, p6NameLabel};
 
         playerList = getGameSession().getTurnManager().getPlayers();
 
@@ -196,6 +196,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     private ImageView dice1, dice2;
+
     private void diceObserverUpdate(Observable o) {
         if (o instanceof Player) {
             Player player = (Player) o;
@@ -205,6 +206,7 @@ public class GameBoardController implements Initializable {
             dice2.setImage(new Image(name2));
         }
     }
+
     private class DiceObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
@@ -215,12 +217,12 @@ public class GameBoardController implements Initializable {
     private void tileObserverUpdate(Observable o, int index) {
         if (o instanceof Player) {
             Player player = (Player) o;
-            System.out.println(index);
 //            System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
             playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
 
         }
     }
+
     private class TileObserver implements Observer {
         int index;
 
@@ -240,13 +242,13 @@ public class GameBoardController implements Initializable {
             if (card == null) {
                 titleDeedCard1.setVisible(false);
             } else {
-//                    paintPane(propertyColorPane, );
                 communityOrChanceCardLabel.setText(card.getType());
                 cardAction.setText(card.getInstruction());
                 titleDeedCard1.setVisible(true);
             }
         }
     }
+
     private class CurrentlyDrawnCardObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
@@ -266,7 +268,6 @@ public class GameBoardController implements Initializable {
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
-                System.out.println("UPDATE: " + lastExecutedActionName);
 //                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
                 if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive() && !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName)) {
 //                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
@@ -293,6 +294,7 @@ public class GameBoardController implements Initializable {
             playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
         }
     }
+
     private class PlayerCardObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
@@ -314,11 +316,6 @@ public class GameBoardController implements Initializable {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());
-//                    if(card.getColorGroup().getColor() == Color.BROWN) {
-//                        propertyNameLabel.setTextFill(Color.("#ff0000"));;
-//                    } else {
-//
-//                    }
                     propertyNameLabel.setText(card.getPropertyName());
                     rentSiteOnlyValueLabel.setText("" + card.getLevelZeroRent());
                     rentWith1HouseValueLabel.setText("" + card.getLevelOneRent());
@@ -335,6 +332,23 @@ public class GameBoardController implements Initializable {
         }
     }
 
+    public void handleseeProperties(Player player) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InformationCard.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        InformationCardController controller = fxmlLoader.<InformationCardController>getController();
+        controller.setPlayer(player);
+        Stage stage = new Stage(StageStyle.DECORATED);
+
+        stage.setTitle("Information Card");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+        stage.show();
+    }
 
     @FXML
     public void handleMenuButton() throws IOException {

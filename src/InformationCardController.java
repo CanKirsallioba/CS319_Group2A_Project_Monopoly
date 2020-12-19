@@ -3,11 +3,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import model.player.Player;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InformationCardController implements Initializable {
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    Player player;
 
     @FXML
     public Label informationLabel;
