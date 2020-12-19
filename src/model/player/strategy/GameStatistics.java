@@ -14,7 +14,7 @@ public class GameStatistics {
     /**
      * Default constructor.
      */
-    GameStatistics(){
+    public GameStatistics(){
         board = null;
         players = null;
     }
@@ -24,7 +24,7 @@ public class GameStatistics {
      * @param board is the board of the game
      * @param players are the players in the game
      */
-    GameStatistics( Board board, ArrayList<Player> players){
+    public GameStatistics( Board board, ArrayList<Player> players){
         this.board = board;
         this.players = players;
     }
