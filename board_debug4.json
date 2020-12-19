@@ -1,6 +1,6 @@
 {
   "boardConfig":{
-    "boardName": "Classic",
+    "boardName": "debug4",
     "tileCount": 40,
     "salary": 20000000,
     "jailTileIndex": 10
@@ -28,7 +28,7 @@
       "tileIndex": 2,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "pay",
           "command": "PAY",
           "parameter": 560
         }}
@@ -88,7 +88,7 @@
       "tileIndex": 7,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "receive",
           "command": "RECEIVE",
           "parameter": 560
         }}
@@ -99,7 +99,7 @@
       "tileIndex": 8,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "pay",
           "command": "PAY",
           "parameter": 560
         }}
@@ -110,7 +110,7 @@
       "tileIndex": 9,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "receive",
           "command": "RECEIVE",
           "parameter": 560
         }}
@@ -155,7 +155,7 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 13,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
           "instruction": "pay",
           "command": "PAY",
@@ -199,7 +199,7 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 17,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
           "instruction": "pay",
           "command": "PAY",
@@ -232,7 +232,7 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 20,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
           "instruction": "receive",
           "command": "RECEIVE",
@@ -279,7 +279,7 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 24,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
           "instruction": "receive",
           "command": "RECEIVE",
@@ -305,8 +305,8 @@
       "tileIndex": 26,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "receive",
-          "command": "RECEIVE",
+          "instruction": "go to jail",
+          "command": "GO_TO_JAIL",
           "parameter": 560
         }}
       ]
@@ -314,10 +314,10 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 27,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "pay",
-          "command": "PAY",
+          "instruction": "go to jail",
+          "command": "GO_TO_JAIL",
           "parameter": 560
         }}
       ]
@@ -347,10 +347,10 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 30,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "receive",
-          "command": "RECEIVE",
+          "instruction": "go to jail",
+          "command": "GO_TO_JAIL",
           "parameter": 560
         }}
       ]
@@ -383,8 +383,8 @@
       "tileIndex": 33,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "receive",
-          "command": "RECEIVE",
+          "instruction": "go to jail",
+          "command": "GO_TO_JAIL",
           "parameter": 560
         }}
       ]
@@ -393,7 +393,7 @@
       "tileType": "CardTile",
       "associatedDeck": "CommunityChestCardDeck",
       "tileIndex": 34,
-      "ChanceCardDeck": [
+      "CommunityChestCardDeck": [
         {"card":{
           "instruction": "pay",
           "command": "PAY",
