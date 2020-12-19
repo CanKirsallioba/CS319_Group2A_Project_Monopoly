@@ -23,8 +23,9 @@ public abstract class AIStrategy {
         for(GameAction action: gameAction) {
             if (action.getName().equals(gameActionName))
                 return action;
+
         }
-        return null;
+        throw new RuntimeException("Given Action Name is not found in the action list. Action Name: " + gameActionName);
     }
 
     public GameStatistics getGameStatistics() {

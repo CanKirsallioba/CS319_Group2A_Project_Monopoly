@@ -64,6 +64,8 @@ public class AIPlayer extends AbstractPlayer implements Observer {
     public void playTurn(){
         System.out.println("debug: AIPlayer: playTurn chkpt--1\n" + this.toString() );
         updatePlayerWorth();
+        setChanged();
+        notifyObservers();
         // if player is in jail, tries to bail out of jail
         if( isInJail()){
             if( getBailOutOfJailCards().size() > 0){
@@ -104,26 +106,44 @@ public class AIPlayer extends AbstractPlayer implements Observer {
             rollDice();
             if( getConsecutiveDoubleCount() == 3){
                 goToJail();
+                setChanged();
+                notifyObservers();
             }
+
             // if the AI player did not throw 3 double dice
             else {
                 moveToken( playersDice.getDiceResultSum());
+                setChanged();
+                notifyObservers();
                 Tile currentlyLandedTile = getCurrentTile();
                 if( currentlyLandedTile instanceof PropertyTile){
 //                    setSelectedTitleDeed(((ile) currentlyLandedTile).getTitleDeedCard());
                     makeAndExecutePropertyDecision();
+                    setCurrentlyDrawnCard(null);
+                } else {
+                    setSelectedTitleDeed(null);
                 }
-                else if( currentlyLandedTile instanceof CardTile){
+                setChanged();
+                notifyObservers();
+                if( currentlyLandedTile instanceof CardTile){
                     makeAndExecuteCardDecision();
                 }
-                else if( currentlyLandedTile instanceof IncomeTaxTile){
-                    makeAndExecuteIncomeTaxDecision();
+                else {
+                    setCurrentlyDrawnCard(null);
                 }
+                setChanged();
+                notifyObservers();
+                if( currentlyLandedTile instanceof IncomeTaxTile){
+                        makeAndExecuteIncomeTaxDecision();
+                    }
+
                 // if not on a tile that requires a specific action, do not do anything
             }
+
         }
         updatePlayerWorth();
-
+        setChanged();
+        notifyObservers();
         System.out.println("debug: AIPlayer: playTurn chkpt--2 \n" + this.toString() );
 
     }

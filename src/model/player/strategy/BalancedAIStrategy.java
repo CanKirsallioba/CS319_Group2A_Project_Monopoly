@@ -76,7 +76,10 @@ public class BalancedAIStrategy extends AIStrategy {
                 }
 
                 // pay the rent
-                getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
+                if (currentPropertyTile.getTitleDeedCard().getOwner() != player) {
+                    getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
+
+                }
             }
         }
         // decision path for unowned property

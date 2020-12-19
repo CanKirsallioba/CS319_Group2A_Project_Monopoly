@@ -483,7 +483,9 @@ public class TitleDeedCard implements Serializable {
      */
     public boolean isUpgradeable(){
         //return actionNames.get("Upgrade Property").isActive();
-
+        if (owner == null) {
+            return false;
+        }
         if(!colorGroup.allOwnedByPlayer(owner))
             return false;
 
