@@ -20,6 +20,7 @@ import model.session.GameSession;
 import model.session.TurnManager;
 import model.tiles.GameAction;
 import model.tiles.Tile;
+import model.tiles.card.Card;
 import model.tiles.property.TitleDeedCard;
 
 import java.io.IOException;
@@ -62,6 +63,7 @@ public class GameBoardController implements Initializable {
         GameActionButtonObserver gameActionButtonObserver3 = new GameActionButtonObserver(button4, 3);
         ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
         TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
+        CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
 
         playerList = getGameSession().getTurnManager().getPlayers();
         board = getGameSession().getBoard();
@@ -74,6 +76,7 @@ public class GameBoardController implements Initializable {
             observable.addObserver(gameActionButtonObserver2);
             observable.addObserver(gameActionButtonObserver3);
             observable.addObserver(titleDeedCardObserver);
+            observable.addObserver(currentlyDrawnCardObserver);
         }
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
 
@@ -97,13 +100,15 @@ public class GameBoardController implements Initializable {
 
         @Override
         public void update(Observable o, Object arg) {
-
             if (o instanceof Player) {
-                Player player = (Player) o;
-                if (player.getCurrentlyDrawnCard() != null) {
-                    // todo card view will be set visible.
+                Card card = getCurrentPlayer().getCurrentlyDrawnCard();
+                if(card == null) {
+                    titleDeedCard1.setVisible(false);
                 } else {
-                    // todo card view will be set invisible.
+//                    paintPane(propertyColorPane, );
+                    communityOrChanceCardLabel.setText(card.getType());
+                    cardAction.setText(card.getInstruction());
+                    titleDeedCard1.setVisible(true);
                 }
             }
         }
@@ -324,6 +329,8 @@ public class GameBoardController implements Initializable {
 
     @FXML
     private Label communityOrChanceCardLabel, cardAction;
+    @FXML
+    private AnchorPane titleDeedCard1;
 
     /*
     Game Buttons
