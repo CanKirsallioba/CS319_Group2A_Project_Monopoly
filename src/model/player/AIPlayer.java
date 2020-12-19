@@ -6,7 +6,9 @@ import model.tiles.IncomeTaxTile;
 import model.tiles.PropertyTile;
 import model.tiles.Tile;
 import model.tiles.property.TitleDeedCard;
+import org.omg.Messaging.SyncScopeHelper;
 
+import java.sql.SQLOutput;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -63,6 +65,7 @@ public class AIPlayer extends AbstractPlayer implements Observer {
      */
     @Override
     public void playTurn(){
+        System.out.println("debug: AIPlayer: playTurn chkpt--1");
         // if player is in jail, tries to bail out of jail
         if( isInJail()){
             if( getBailOutOfJailCards().size() > 0){
@@ -120,6 +123,8 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                 // if not on a tile that requires a specific action, do not do anything
             }
         }
+        System.out.println("debug: AIPlayer: playTurn chkpt--2");
+
     }
 
     public AIStrategy getAiStrategy() {

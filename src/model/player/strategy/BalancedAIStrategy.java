@@ -12,6 +12,8 @@ import model.tiles.GameAction;
 
 import java.util.ArrayList;
 
+import static model.tiles.GameActionConstants.*;
+
 /**
  * Strategy for the balanced AI.
  * For the most part, behaves like what a rational person would behave.
@@ -28,6 +30,7 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecutePropertyDecision(AIPlayer player) {
+        System.out.println( "Balanced AI Strategy: Property Decision");
         PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
 
         // decision path for owned property
@@ -39,6 +42,7 @@ public class BalancedAIStrategy extends AIStrategy {
             }
             // if player can pay the rent, pay the rent
             else {
+                System.out.println( "BAI Owned Prop");
 
                 // if player does not have the balance to pay rent &&
                 // but liquid total worth > rent
@@ -50,7 +54,7 @@ public class BalancedAIStrategy extends AIStrategy {
                         if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                 && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
 
-                            getGameAction(titleDeedCard.getPossibleActions(), "Downgrade").execute();
+                            getGameAction(titleDeedCard.getPossibleActions(), DOWNGRADE_PROPERTY_ACTION).execute();
                         }
                     }
                     if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
@@ -58,7 +62,7 @@ public class BalancedAIStrategy extends AIStrategy {
                             if (titleDeedCard.isMortgaged() == false
                                     && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
 
-                                getGameAction(titleDeedCard.getPossibleActions(), "Mortgage").execute();
+                                getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
                             }
                         }
                     }
@@ -72,22 +76,25 @@ public class BalancedAIStrategy extends AIStrategy {
                 }
 
                 // pay the rent
-                getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Pay Rent").execute();
+                getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
             }
         }
         // decision path for unowned property
         else {
+            System.out.println( "Balanced AI Strategy: Unowned Prop");
             // if player has more than twice the money required to buy the property
             if (player.getBalance() >= 2 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
-                if (player.getBalance() - gameStatistics.getMaximumRent() < 0) {
-                    getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Buy Property").execute();
+                if (player.getBalance() - gameStatistics.getMaximumRent() > 0) {
+                    System.out.println( "Decided to buy property balance:" + player.getBalance());
+                    getGameAction(currentPropertyTile.getPossibleActions( player), BUY_PROPERTY_ACTION).execute();
+                    System.out.println( "Bought property balance:" + player.getBalance());
                 }
             }
             // if does not fit the criteria do not buy
             else {
-                getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), "Dont Buy Property").execute();
+                // do not buy
             }
         }
     }
@@ -171,12 +178,14 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer) {
+        System.out.println( "Balanced AI Strategy: Income Tax");
+
         if (aiPlayer.getTaxOption() == null || aiPlayer.getTaxOption() == TaxOption.UNDETERMINED) {
             aiPlayer.setTaxOption(TaxOption.TAX_WITH_RATIO);
         }
 
         // pay the tax
-        getGameAction(aiPlayer.getCurrentTile().getPossibleActions(aiPlayer), "Pay Tax").execute();
+        getGameAction(aiPlayer.getCurrentTile().getPossibleActions(aiPlayer), PAY_TAX_ACTION).execute();
     }
 
     /**
@@ -189,13 +198,15 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecuteCardDecision(AIPlayer aiPlayer) {
+        System.out.println( "Balanced AI Strategy: Card");
+
         ArrayList<GameAction> gameActions = aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
         Card currentCard = aiPlayer.getCurrentlyDrawnCard();
 
         if( currentCard.getCardDetails().containsKey("PAY") ){
             int moneyToPay = currentCard.getCardDetails().get( "PAY");
             if( aiPlayer.getBalance() > moneyToPay){
-                getGameAction(gameActions, "Apply").execute();
+                getGameAction(gameActions, APPLY_ACTION).execute();
             }
             else if( aiPlayer.getLiquidTotalWorth() >= moneyToPay){
 
@@ -205,7 +216,7 @@ public class BalancedAIStrategy extends AIStrategy {
                         if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                 && aiPlayer.getBalance() < moneyToPay) {
 
-                           getGameAction(titleDeedCard.getPossibleActions(), "Downgrade").execute();
+                           getGameAction(titleDeedCard.getPossibleActions(), DOWNGRADE_PROPERTY_ACTION).execute();
                         }
                     }
                     if (aiPlayer.getBalance() < moneyToPay) {
@@ -213,14 +224,14 @@ public class BalancedAIStrategy extends AIStrategy {
                             if (titleDeedCard.isMortgaged() == false
                                     && aiPlayer.getBalance() < moneyToPay) {
 
-                             getGameAction(titleDeedCard.getPossibleActions(), "Mortgage").execute();
+                             getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
                             }
                         }
                     }
                 }
 
                 // now he has acquired the money
-                getGameAction(gameActions, "Apply").execute();
+                getGameAction(gameActions, APPLY_ACTION).execute();
             }
             else if( aiPlayer.getLiquidTotalWorth() < moneyToPay){
                 aiPlayer.declareBankruptcy();
@@ -228,7 +239,7 @@ public class BalancedAIStrategy extends AIStrategy {
 
         }
         else{
-            getGameAction(gameActions, "Apply").execute();
+            getGameAction(gameActions, APPLY_ACTION).execute();
         }
     }
 }
