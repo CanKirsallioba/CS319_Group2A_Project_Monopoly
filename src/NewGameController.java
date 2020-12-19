@@ -22,6 +22,7 @@ import model.session.GameSession;
 import model.session.GameSessionManager;
 import org.json.simple.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -165,7 +166,6 @@ public class NewGameController implements Initializable {
     //Strings will be changed to AIChar objects
     private void handleComboAIAction() {
         String selectedAIChar = comboAI.getSelectionModel().getSelectedItem();
-
     }
 
     @FXML
@@ -190,7 +190,7 @@ public class NewGameController implements Initializable {
         //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);
         humanPlayerTestConfiguration.setHumanPlayerCount(2);
         humanPlayerTestConfiguration.setMaxPlayerCount(2);
-//        filename = "templateConfig.json";
+//        filename = "board_template.json";
 
         // Two AI player
         BoardConfiguration AIPlayerTestConfiguration = new BoardConfiguration();
@@ -198,7 +198,7 @@ public class NewGameController implements Initializable {
         AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
         AIPlayerTestConfiguration.setHumanPlayerCount(0);
         AIPlayerTestConfiguration.setMaxPlayerCount(2);
-//        filename = "templateConfig.json";
+//        filename = "board_template.json";
 
         // TileDebug_Team1
         BoardConfiguration tileDebug1Configution = new BoardConfiguration();
@@ -206,7 +206,7 @@ public class NewGameController implements Initializable {
         tileDebug1Configution.setAiCharacteristic(AICharacteristic.BALANCED);
         tileDebug1Configution.setHumanPlayerCount(2);
         tileDebug1Configution.setMaxPlayerCount(2);
-//        filename = "templateConfig.json";
+//        filename = "board_template.json";
 
         // TileDebug_Team2
         BoardConfiguration tileDebug2Configution = new BoardConfiguration();
@@ -214,10 +214,10 @@ public class NewGameController implements Initializable {
         tileDebug2Configution.setAiCharacteristic(AICharacteristic.BALANCED);
         tileDebug2Configution.setHumanPlayerCount(2);
         tileDebug2Configution.setMaxPlayerCount(2);
-//        filename = "templateConfig.json";
+//        filename = "board_template.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
-        sessionManager.setFileName("templateConfig.json");  //delete this when test is over
+        sessionManager.setFileName("board_template.json");  //delete this when test is over
         //uncomment this when test is over
         //sessionManager.setFileName(configFileName);
         sessionManager.newGame(humanPlayerTestConfiguration);
