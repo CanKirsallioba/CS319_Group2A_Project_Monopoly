@@ -1751,14 +1751,14 @@
                      <children>
                         <Pane fx:id="propertyColorPane" layoutX="20.0" layoutY="21.0" prefHeight="95.0" prefWidth="340.0">
                            <children>
-                              <Label layoutX="122.0" layoutY="14.0" text="TITLE DEED">
+                              <Label layoutX="122.0" layoutY="14.0" text="TITLE DEED" wrapText="true">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="propertyNameLabel" alignment="CENTER" layoutX="40.0" layoutY="48.0" prefHeight="35.0" prefWidth="260.0" text="PROPERTY NAME">
+                              <Label fx:id="propertyNameLabel" alignment="CENTER" layoutX="40.0" layoutY="48.0" prefHeight="35.0" prefWidth="260.0" text="PROPERTY NAME" wrapText="true">
                                  <font>
-                                    <Font name="Arial Bold" size="19.0" />
+                                    <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -1878,7 +1878,7 @@
                      <children>
                         <Pane fx:id="propertyColorPane1" layoutX="20.0" layoutY="21.0" prefHeight="95.0" prefWidth="340.0">
                            <children>
-                              <Label fx:id="communityOrChanceCardLabel" alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="65.0" prefWidth="231.0" text="Community Card">
+                              <Label fx:id="communityOrChanceCardLabel" alignment="CENTER" layoutX="20.0" layoutY="14.0" prefHeight="65.0" prefWidth="300.0" text="Community Card" wrapText="true">
                                  <font>
                                     <Font size="21.0" />
                                  </font>
