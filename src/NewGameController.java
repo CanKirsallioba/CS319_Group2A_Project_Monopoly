@@ -217,9 +217,9 @@ public class NewGameController implements Initializable {
 //        filename = "board_template.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
-        sessionManager.setFileName("board_template.json");  //delete this when test is over
-        //uncomment this when test is over
-        //sessionManager.setFileName(configFileName);
+//        sessionManager.setFileName("board_template.json");  //delete this when test is over
+//        uncomment this when test is over
+        sessionManager.setFileName(configFileName);
         sessionManager.newGame(humanPlayerTestConfiguration);
         GameSession session = sessionManager.getGame();
 //        System.out.println(session);

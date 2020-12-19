@@ -1,6 +1,6 @@
 {
   "boardConfig":{
-    "boardName": "Bilkent",
+    "boardName": "debug1",
     "tileCount": 40,
     "salary": 2000,
     "jailTileIndex": 10

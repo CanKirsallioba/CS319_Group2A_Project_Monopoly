@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,10 +22,8 @@ import model.session.TurnManager;
 import model.tiles.GameAction;
 import model.tiles.Tile;
 import model.tiles.card.Card;
-import model.tiles.property.Color;
 import model.tiles.property.TitleDeedCard;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,7 +34,7 @@ import java.util.ResourceBundle;
 public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
-//    Image[] diceImages = {File file = new File("src/Box13.jpg");
+    //    Image[] diceImages = {File file = new File("src/Box13.jpg");
 //    Image image1 = new Image(file.toURI().toString());};
     TurnManager turnManager;
     Board board;
@@ -75,6 +72,7 @@ public class GameBoardController implements Initializable {
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
+        int i = 0;
         for (Player player : players) {
             Observable observable = (Observable) player;
             observable.addObserver(gameActionButtonObserver);
@@ -106,20 +104,37 @@ public class GameBoardController implements Initializable {
                 Player player = (Player) o;
                 String name1 = "dice" + player.getPlayersDice().getDice1() + ".png";
                 String name2 = "dice" + player.getPlayersDice().getDice2() + ".png";
-                dice1.setImage(new Image (name1));
-                dice2.setImage(new Image (name2));
+                dice1.setImage(new Image(name1));
+                dice2.setImage(new Image(name2));
             }
 
         }
     }
 
+    private class TileObserver implements Observer {
+        int index;
+
+        public TileObserver(int index) {
+            this.index = index;
+        }
+
+        @Override
+        public void update(Observable o, Object arg) {
+            if (o instanceof Player) {
+                Player player = (Player) o;
+                if (index == player.getCurrentTile().getIndex()) {
+
+                }
+            }
+        }
+    }
     private class CurrentlyDrawnCardObserver implements Observer {
 
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 Card card = getCurrentPlayer().getCurrentlyDrawnCard();
-                if(card == null) {
+                if (card == null) {
                     titleDeedCard1.setVisible(false);
                 } else {
 //                    paintPane(propertyColorPane, );
@@ -252,7 +267,7 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 TitleDeedCard card = getCurrentPlayer().getSelectedTitleDeed();
-                if(card == null) {
+                if (card == null) {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());
@@ -585,4 +600,25 @@ public class GameBoardController implements Initializable {
             throw new RuntimeException("Something wrong with color input (Check if input is String): " + color);
         }
     }
+
+    @FXML
+    ImageView player1Tile0TokenImage, player1Tile1TokenImage, player1Tile2TokenImage, player1Tile3TokenImage, player1Tile4TokenImage, player1Tile5TokenImage, player1Tile6TokenImage, player1Tile7TokenImage, player1Tile8TokenImage, player1Tile9TokenImage, player1Tile10TokenImage, player1Tile11TokenImage, player1Tile12TokenImage, player1Tile13TokenImage, player1Tile14TokenImage, player1Tile15TokenImage, player1Tile16TokenImage, player1Tile17TokenImage, player1Tile18TokenImage, player1Tile19TokenImage, player1Tile20TokenImage, player1Tile21TokenImage, player1Tile22TokenImage, player1Tile23TokenImage, player1Tile24TokenImage, player1Tile25TokenImage, player1Tile26TokenImage, player1Tile27TokenImage, player1Tile28TokenImage, player1Tile29TokenImage, player1Tile30TokenImage, player1Tile31TokenImage, player1Tile32TokenImage, player1Tile33TokenImage, player1Tile34TokenImage, player1Tile35TokenImage, player1Tile36TokenImage, player1Tile37TokenImage, player1Tile38TokenImage, player1Tile39TokenImage;
+    @FXML
+    ImageView player2Tile0TokenImage, player2Tile1TokenImage, player2Tile2TokenImage, player2Tile3TokenImage, player2Tile4TokenImage, player2Tile5TokenImage, player2Tile6TokenImage, player2Tile7TokenImage, player2Tile8TokenImage, player2Tile9TokenImage, player2Tile10TokenImage, player2Tile11TokenImage, player2Tile12TokenImage, player2Tile13TokenImage, player2Tile14TokenImage, player2Tile15TokenImage, player2Tile16TokenImage, player2Tile17TokenImage, player2Tile18TokenImage, player2Tile19TokenImage, player2Tile20TokenImage, player2Tile21TokenImage, player2Tile22TokenImage, player2Tile23TokenImage, player2Tile24TokenImage, player2Tile25TokenImage, player2Tile26TokenImage, player2Tile27TokenImage, player2Tile28TokenImage, player2Tile29TokenImage, player2Tile30TokenImage, player2Tile31TokenImage, player2Tile32TokenImage, player2Tile33TokenImage, player2Tile34TokenImage, player2Tile35TokenImage, player2Tile36TokenImage, player2Tile37TokenImage, player2Tile38TokenImage, player2Tile39TokenImage;
+    @FXML
+    ImageView player3Tile0TokenImage, player3Tile1TokenImage, player3Tile2TokenImage, player3Tile3TokenImage, player3Tile4TokenImage, player3Tile5TokenImage, player3Tile6TokenImage, player3Tile7TokenImage, player3Tile8TokenImage, player3Tile9TokenImage, player3Tile10TokenImage, player3Tile11TokenImage, player3Tile12TokenImage, player3Tile13TokenImage, player3Tile14TokenImage, player3Tile15TokenImage, player3Tile16TokenImage, player3Tile17TokenImage, player3Tile18TokenImage, player3Tile19TokenImage, player3Tile20TokenImage, player3Tile21TokenImage, player3Tile22TokenImage, player3Tile23TokenImage, player3Tile24TokenImage, player3Tile25TokenImage, player3Tile26TokenImage, player3Tile27TokenImage, player3Tile28TokenImage, player3Tile29TokenImage, player3Tile30TokenImage, player3Tile31TokenImage, player3Tile32TokenImage, player3Tile33TokenImage, player3Tile34TokenImage, player3Tile35TokenImage, player3Tile36TokenImage, player3Tile37TokenImage, player3Tile38TokenImage, player3Tile39TokenImage;
+    @FXML
+    ImageView player4Tile0TokenImage, player4Tile1TokenImage, player4Tile2TokenImage, player4Tile3TokenImage, player4Tile4TokenImage, player4Tile5TokenImage, player4Tile6TokenImage, player4Tile7TokenImage, player4Tile8TokenImage, player4Tile9TokenImage, player4Tile10TokenImage, player4Tile11TokenImage, player4Tile12TokenImage, player4Tile13TokenImage, player4Tile14TokenImage, player4Tile15TokenImage, player4Tile16TokenImage, player4Tile17TokenImage, player4Tile18TokenImage, player4Tile19TokenImage, player4Tile20TokenImage, player4Tile21TokenImage, player4Tile22TokenImage, player4Tile23TokenImage, player4Tile24TokenImage, player4Tile25TokenImage, player4Tile26TokenImage, player4Tile27TokenImage, player4Tile28TokenImage, player4Tile29TokenImage, player4Tile30TokenImage, player4Tile31TokenImage, player4Tile32TokenImage, player4Tile33TokenImage, player4Tile34TokenImage, player4Tile35TokenImage, player4Tile36TokenImage, player4Tile37TokenImage, player4Tile38TokenImage, player4Tile39TokenImage;
+    @FXML
+    ImageView player5Tile0TokenImage, player5Tile1TokenImage, player5Tile2TokenImage, player5Tile3TokenImage, player5Tile4TokenImage, player5Tile5TokenImage, player5Tile6TokenImage, player5Tile7TokenImage, player5Tile8TokenImage, player5Tile9TokenImage, player5Tile10TokenImage, player5Tile11TokenImage, player5Tile12TokenImage, player5Tile13TokenImage, player5Tile14TokenImage, player5Tile15TokenImage, player5Tile16TokenImage, player5Tile17TokenImage, player5Tile18TokenImage, player5Tile19TokenImage, player5Tile20TokenImage, player5Tile21TokenImage, player5Tile22TokenImage, player5Tile23TokenImage, player5Tile24TokenImage, player5Tile25TokenImage, player5Tile26TokenImage, player5Tile27TokenImage, player5Tile28TokenImage, player5Tile29TokenImage, player5Tile30TokenImage, player5Tile31TokenImage, player5Tile32TokenImage, player5Tile33TokenImage, player5Tile34TokenImage, player5Tile35TokenImage, player5Tile36TokenImage, player5Tile37TokenImage, player5Tile38TokenImage, player5Tile39TokenImage;
+    @FXML
+    ImageView player6Tile0TokenImage, player6Tile1TokenImage, player6Tile2TokenImage, player6Tile3TokenImage, player6Tile4TokenImage, player6Tile5TokenImage, player6Tile6TokenImage, player6Tile7TokenImage, player6Tile8TokenImage, player6Tile9TokenImage, player6Tile10TokenImage, player6Tile11TokenImage, player6Tile12TokenImage, player6Tile13TokenImage, player6Tile14TokenImage, player6Tile15TokenImage, player6Tile16TokenImage, player6Tile17TokenImage, player6Tile18TokenImage, player6Tile19TokenImage, player6Tile20TokenImage, player6Tile21TokenImage, player6Tile22TokenImage, player6Tile23TokenImage, player6Tile24TokenImage, player6Tile25TokenImage, player6Tile26TokenImage, player6Tile27TokenImage, player6Tile28TokenImage, player6Tile29TokenImage, player6Tile30TokenImage, player6Tile31TokenImage, player6Tile32TokenImage, player6Tile33TokenImage, player6Tile34TokenImage, player6Tile35TokenImage, player6Tile36TokenImage, player6Tile37TokenImage, player6Tile38TokenImage, player6Tile39TokenImage;
+
+    ImageView[] player1TokenImages = {player1Tile0TokenImage, player1Tile1TokenImage, player1Tile2TokenImage, player1Tile3TokenImage, player1Tile4TokenImage, player1Tile5TokenImage, player1Tile6TokenImage, player1Tile7TokenImage, player1Tile8TokenImage, player1Tile9TokenImage, player1Tile10TokenImage, player1Tile11TokenImage, player1Tile12TokenImage, player1Tile13TokenImage, player1Tile14TokenImage, player1Tile15TokenImage, player1Tile16TokenImage, player1Tile17TokenImage, player1Tile18TokenImage, player1Tile19TokenImage, player1Tile20TokenImage, player1Tile21TokenImage, player1Tile22TokenImage, player1Tile23TokenImage, player1Tile24TokenImage, player1Tile25TokenImage, player1Tile26TokenImage, player1Tile27TokenImage, player1Tile28TokenImage, player1Tile29TokenImage, player1Tile30TokenImage, player1Tile31TokenImage, player1Tile32TokenImage, player1Tile33TokenImage, player1Tile34TokenImage, player1Tile35TokenImage, player1Tile36TokenImage, player1Tile37TokenImage, player1Tile38TokenImage, player1Tile39TokenImage};
+    ImageView[] player2TokenImages = {player2Tile0TokenImage, player2Tile1TokenImage, player2Tile2TokenImage, player2Tile3TokenImage, player2Tile4TokenImage, player2Tile5TokenImage, player2Tile6TokenImage, player2Tile7TokenImage, player2Tile8TokenImage, player2Tile9TokenImage, player2Tile10TokenImage, player2Tile11TokenImage, player2Tile12TokenImage, player2Tile13TokenImage, player2Tile14TokenImage, player2Tile15TokenImage, player2Tile16TokenImage, player2Tile17TokenImage, player2Tile18TokenImage, player2Tile19TokenImage, player2Tile20TokenImage, player2Tile21TokenImage, player2Tile22TokenImage, player2Tile23TokenImage, player2Tile24TokenImage, player2Tile25TokenImage, player2Tile26TokenImage, player2Tile27TokenImage, player2Tile28TokenImage, player2Tile29TokenImage, player2Tile30TokenImage, player2Tile31TokenImage, player2Tile32TokenImage, player2Tile33TokenImage, player2Tile34TokenImage, player2Tile35TokenImage, player2Tile36TokenImage, player2Tile37TokenImage, player2Tile38TokenImage, player2Tile39TokenImage};
+    ImageView[] player3TokenImages = {player3Tile0TokenImage, player3Tile1TokenImage, player3Tile2TokenImage, player3Tile3TokenImage, player3Tile4TokenImage, player3Tile5TokenImage, player3Tile6TokenImage, player3Tile7TokenImage, player3Tile8TokenImage, player3Tile9TokenImage, player3Tile10TokenImage, player3Tile11TokenImage, player3Tile12TokenImage, player3Tile13TokenImage, player3Tile14TokenImage, player3Tile15TokenImage, player3Tile16TokenImage, player3Tile17TokenImage, player3Tile18TokenImage, player3Tile19TokenImage, player3Tile20TokenImage, player3Tile21TokenImage, player3Tile22TokenImage, player3Tile23TokenImage, player3Tile24TokenImage, player3Tile25TokenImage, player3Tile26TokenImage, player3Tile27TokenImage, player3Tile28TokenImage, player3Tile29TokenImage, player3Tile30TokenImage, player3Tile31TokenImage, player3Tile32TokenImage, player3Tile33TokenImage, player3Tile34TokenImage, player3Tile35TokenImage, player3Tile36TokenImage, player3Tile37TokenImage, player3Tile38TokenImage, player3Tile39TokenImage};
+    ImageView[] player4TokenImages = {player4Tile0TokenImage, player4Tile1TokenImage, player4Tile2TokenImage, player4Tile3TokenImage, player4Tile4TokenImage, player4Tile5TokenImage, player4Tile6TokenImage, player4Tile7TokenImage, player4Tile8TokenImage, player4Tile9TokenImage, player4Tile10TokenImage, player4Tile11TokenImage, player4Tile12TokenImage, player4Tile13TokenImage, player4Tile14TokenImage, player4Tile15TokenImage, player4Tile16TokenImage, player4Tile17TokenImage, player4Tile18TokenImage, player4Tile19TokenImage, player4Tile20TokenImage, player4Tile21TokenImage, player4Tile22TokenImage, player4Tile23TokenImage, player4Tile24TokenImage, player4Tile25TokenImage, player4Tile26TokenImage, player4Tile27TokenImage, player4Tile28TokenImage, player4Tile29TokenImage, player4Tile30TokenImage, player4Tile31TokenImage, player4Tile32TokenImage, player4Tile33TokenImage, player4Tile34TokenImage, player4Tile35TokenImage, player4Tile36TokenImage, player4Tile37TokenImage, player4Tile38TokenImage, player4Tile39TokenImage};
+    ImageView[] player5TokenImages = {player5Tile0TokenImage, player5Tile1TokenImage, player5Tile2TokenImage, player5Tile3TokenImage, player5Tile4TokenImage, player5Tile5TokenImage, player5Tile6TokenImage, player5Tile7TokenImage, player5Tile8TokenImage, player5Tile9TokenImage, player5Tile10TokenImage, player5Tile11TokenImage, player5Tile12TokenImage, player5Tile13TokenImage, player5Tile14TokenImage, player5Tile15TokenImage, player5Tile16TokenImage, player5Tile17TokenImage, player5Tile18TokenImage, player5Tile19TokenImage, player5Tile20TokenImage, player5Tile21TokenImage, player5Tile22TokenImage, player5Tile23TokenImage, player5Tile24TokenImage, player5Tile25TokenImage, player5Tile26TokenImage, player5Tile27TokenImage, player5Tile28TokenImage, player5Tile29TokenImage, player5Tile30TokenImage, player5Tile31TokenImage, player5Tile32TokenImage, player5Tile33TokenImage, player5Tile34TokenImage, player5Tile35TokenImage, player5Tile36TokenImage, player5Tile37TokenImage, player5Tile38TokenImage, player5Tile39TokenImage};
+    ImageView[] player6TokenImages = {player6Tile0TokenImage, player6Tile1TokenImage, player6Tile2TokenImage, player6Tile3TokenImage, player6Tile4TokenImage, player6Tile5TokenImage, player6Tile6TokenImage, player6Tile7TokenImage, player6Tile8TokenImage, player6Tile9TokenImage, player6Tile10TokenImage, player6Tile11TokenImage, player6Tile12TokenImage, player6Tile13TokenImage, player6Tile14TokenImage, player6Tile15TokenImage, player6Tile16TokenImage, player6Tile17TokenImage, player6Tile18TokenImage, player6Tile19TokenImage, player6Tile20TokenImage, player6Tile21TokenImage, player6Tile22TokenImage, player6Tile23TokenImage, player6Tile24TokenImage, player6Tile25TokenImage, player6Tile26TokenImage, player6Tile27TokenImage, player6Tile28TokenImage, player6Tile29TokenImage, player6Tile30TokenImage, player6Tile31TokenImage, player6Tile32TokenImage, player6Tile33TokenImage, player6Tile34TokenImage, player6Tile35TokenImage, player6Tile36TokenImage, player6Tile37TokenImage, player6Tile38TokenImage, player6Tile39TokenImage};
+//    ImageView[][] playerList= {player1TokenImages, player2TokenImages, player3TokenImages, player4TokenImages, player5TokenImages, player6TokenImages};
 }
