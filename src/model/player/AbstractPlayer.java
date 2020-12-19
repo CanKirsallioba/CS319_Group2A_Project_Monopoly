@@ -40,7 +40,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         liquidTotalWorth = 0;
         getOutOfJailChoice = BailOutChoice.WAIT;
         taxOption = TaxOption.UNDETERMINED;
-
+        setChanged();
+        notifyObservers();
     }
     @Override
     public String toString() {
@@ -50,7 +51,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         //}
         //titleDeedInfo = titleDeedInfo + " }";
 
-        return "AbstractPlayer{" +
+        return "\n\nAbstractPlayer{" +
                 //"\ntaxOption=" + taxOption.name() +
                 ", \ntitleDeeds=" + titleDeeds.size() +
                 ", \nbailOutOfJailCards=" + bailOutOfJailCards.size() +
@@ -77,6 +78,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setPlayersDice(Dice playersDice) {
         this.playersDice = playersDice;
+        setChanged();
+        notifyObservers();
     }
 
     Dice playersDice;
@@ -102,11 +105,14 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     public boolean waitInJail() {
         if( numberOfTurnsSpentInJail < 3){
             numberOfTurnsSpentInJail++;
+            setChanged();
+            notifyObservers();
             return true;
         }
-        else{
-            return false;
-        }
+        setChanged();
+        notifyObservers();
+        return false;
+
     }
 
     /**

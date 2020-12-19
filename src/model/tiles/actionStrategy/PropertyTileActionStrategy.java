@@ -75,12 +75,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void buyProperty(Player player) {
-        PropertyTile tile;
-        if (!(player.getCurrentTile () instanceof PropertyTile)) {
-            throw new RuntimeException ( "Wrong tile type" );
-        }
-        tile = (PropertyTile) player.getCurrentTile ();
-        TitleDeedCard card = tile.getTitleDeedCard ();
+        TitleDeedCard card = player.getSelectedTitleDeed();
         if ((player.getBalance () >= card.getPropertyValue()) && !card.isOwned ()) {
             player.changeBalance ( -card.getPropertyValue() );
             player.addTitleDeedCard ( card );

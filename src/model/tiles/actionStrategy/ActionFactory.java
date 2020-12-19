@@ -13,10 +13,13 @@ public class ActionFactory extends AbstractActionFactory {
             case "PropertyTile":
                 // todo title deed e set etsin mi?
                 ActionStrategy propertyTile = new PropertyActionsStrategy();
-                ActionStrategy propertyAction = new PropertyActionsStrategy();
                 actions.add(new GameAction("Buy Property", propertyTile::button1Strategy, false, true));
                 actions.add(new GameAction("Pay Rent", propertyTile::button2Strategy, true, false));
                 actions.add(new GameAction("Start Auction", propertyTile::button3Strategy, false, false));
+                break;
+            case "TitleDeedCard":
+                ActionStrategy propertyAction = new PropertyActionsStrategy();
+
                 actions.add(new GameAction("Upgrade Property", propertyAction::button3Strategy, false, false));
                 actions.add(new GameAction("Downgrade Property", propertyAction::button3Strategy, false, false));
                 actions.add(new GameAction("Mortgage Property", propertyAction::button3Strategy, false, false));
