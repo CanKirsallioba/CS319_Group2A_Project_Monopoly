@@ -6,11 +6,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class SerializationHandler {
-    public void save(GameSession data, String gameSessionName) throws IOException {
+    public String save(GameSession data) throws IOException {
 
         try {
-            System.out.println( gameSessionName);
-            String fileName = gameSessionName + ".bin";
+            System.out.println( data.getGameSessionName());
+            String fileName = data.getGameSessionName() + ".bin";
             File parent = new File(System.getProperty("user.dir"));
             File saveFile = new File(parent, fileName);
             FileOutputStream f = new FileOutputStream(saveFile);
@@ -20,6 +20,8 @@ public class SerializationHandler {
             o.writeObject(data);
             o.close();
             f.close();
+
+            return fileName;
 
         } catch (FileNotFoundException e) {
             throw e;
