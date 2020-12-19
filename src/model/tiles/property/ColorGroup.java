@@ -11,19 +11,35 @@ public class ColorGroup implements Serializable {
     ArrayList<Tile> group;
     Color color;
 
+    /**
+     * Constructor for the color group
+     * @param group is the list of the group with the same color of tiles.
+     */
     public ColorGroup(ArrayList<Tile> group) {
         this.group = group;
     }
 
+    /**
+     * Getter method for the list of the tiles.
+     * @return a list of the group of tiles.
+     */
     public ArrayList<Tile> getGroup() {
         return group;
     }
 
+    /**
+     * Setter method for the group of tiles.
+     * @param group is the list of the group with the same color of tiles.
+     */
     public void setGroup(ArrayList<Tile> group) {
         this.group = group;
     }
 
-    //this method checks whether the specified player owns all properties in this color group
+    /**
+     * This method checks whether the specified player owns all properties in this color group
+     * @param player is the player that the inquiry will be done on.
+     * @return a boolean value that is if the player owns all the tiles in that color group
+     */
     public boolean allOwnedByPlayer(Player player){
         for(int i = 0; i < group.size(); i++)
         {
@@ -34,10 +50,18 @@ public class ColorGroup implements Serializable {
         return true;
     }
 
+    /**
+     * Getter method for the color attribute.
+     * @return color
+     */
     public Color getColor(){
         return color;
     }
 
+    /**
+     * Setter method for the color attribute
+     * @param color is the color of the tiles.
+     */
     public void setColor( Color color){
         this.color = color;
     }
