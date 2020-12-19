@@ -104,15 +104,15 @@
                   <AnchorPane layoutX="150.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black; -fx-background-color: #FF0900;" />
-                        <Label fx:id="redLabel1" alignment="TOP_CENTER" layoutX="12.5" layoutY="80.0" prefWidth="75.0" text="Label" wrapText="true" />
+                        <Label fx:id="redLabel1" alignment="CENTER" layoutX="5.0" layoutY="80.0" prefHeight="17.0" prefWidth="90.0" text="Label" wrapText="true" />
                         <Label layoutX="5.0" layoutY="5.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="redPrice1" layoutX="57.0" layoutY="6.0" text="Label">
+                        <Label fx:id="redPrice1" layoutX="46.0" layoutY="5.0" prefWidth="50.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile21TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -191,15 +191,15 @@
                            </image>
                         </ImageView>
                         <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black; -fx-background-color: #FF0900;" />
-                        <Label fx:id="redLabel2" alignment="TOP_CENTER" layoutX="12.5" layoutY="80.0" prefWidth="75.0" text="Label" wrapText="true" />
+                        <Label fx:id="redLabel2" alignment="CENTER" layoutX="5.0" layoutY="80.0" prefWidth="90.0" text="Label" wrapText="true" />
                         <Label layoutX="5.0" layoutY="5.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="redPrice2" layoutX="57.0" layoutY="6.0" text="Label">
+                        <Label fx:id="redPrice2" layoutX="46.0" layoutY="5.0" prefWidth="50.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile23TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -231,15 +231,15 @@
                   <AnchorPane layoutX="450.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black; -fx-background-color: #FF0900;" />
-                        <Label fx:id="redLabel3" alignment="TOP_CENTER" layoutX="12.5" layoutY="80.0" prefWidth="75.0" text="Label" wrapText="true" />
+                        <Label fx:id="redLabel3" alignment="CENTER" layoutX="5.0" layoutY="80.0" prefWidth="90.0" text="Label" wrapText="true" />
                         <Label layoutX="5.0" layoutY="5.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="redPrice3" layoutX="57.0" layoutY="6.0" text="Label">
+                        <Label fx:id="redPrice3" layoutX="46.0" layoutY="5.0" prefWidth="50.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile24TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -314,15 +314,15 @@
                   <AnchorPane layoutX="650.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black; -fx-background-color: #FDED00;" />
-                        <Label fx:id="yellowLabel1" alignment="TOP_CENTER" layoutX="12.5" layoutY="80.0" prefWidth="75.0" text="Label" wrapText="true" />
+                        <Label fx:id="yellowLabel1" alignment="CENTER" layoutX="5.0" layoutY="80.0" prefWidth="90.0" text="Label" wrapText="true" />
                         <Label layoutX="5.0" layoutY="5.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="yellowPrice1" layoutX="57.0" layoutY="6.0" text="Label">
+                        <Label fx:id="yellowPrice1" layoutX="46.0" layoutY="5.0" prefWidth="50.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile26TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -359,15 +359,15 @@
                   <AnchorPane layoutX="750.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black; -fx-background-color: #FDED00;" />
-                        <Label fx:id="yellowLabel2" alignment="TOP_CENTER" layoutX="12.5" layoutY="80.0" prefWidth="75.0" text="Label" wrapText="true" />
+                        <Label fx:id="yellowLabel2" alignment="CENTER" layoutX="5.0" layoutY="80.0" prefWidth="90.0" text="Label" wrapText="true" />
                         <Label layoutX="5.0" layoutY="5.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="yellowPrice2" layoutX="57.0" layoutY="6.0" text="Label">
+                        <Label fx:id="yellowPrice2" layoutX="46.0" layoutY="5.0" prefWidth="50.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile27TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -441,15 +441,15 @@
                   <AnchorPane layoutX="950.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="30.0" prefWidth="99.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black; -fx-background-color: #FDED00;" />
-                        <Label fx:id="yellowLabel3" alignment="TOP_CENTER" layoutX="12.5" layoutY="80.0" prefWidth="75.0" text="Label" wrapText="true" />
+                        <Label fx:id="yellowLabel3" alignment="CENTER" layoutX="5.0" layoutY="80.0" prefWidth="90.0" text="Label" wrapText="true" />
                         <Label layoutX="5.0" layoutY="5.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="yellowPrice3" layoutX="57.0" layoutY="6.0" text="Label">
+                        <Label fx:id="yellowPrice3" layoutX="46.0" layoutY="5.0" prefWidth="50.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player4Tile29TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="60.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -573,15 +573,15 @@
                   <AnchorPane layoutX="150.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #84A2DA;" AnchorPane.topAnchor="0.0" />
-                        <Label fx:id="lightBlueLabel3" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="120.0" text="Price $">
+                        <Label fx:id="lightBlueLabel3" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lightBluePrice3" layoutX="60.0" layoutY="121.0" text="Label">
+                        <Label fx:id="lightBluePrice3" layoutX="50.0" layoutY="130.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile9TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -625,15 +625,15 @@
                               <Insets top="2.0" />
                            </padding>
                         </AnchorPane>
-                        <Label fx:id="lightBlueLabel2" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="120.0" text="Price $">
+                        <Label fx:id="lightBlueLabel2" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lightBluePrice2" layoutX="60.0" layoutY="121.0" text="Label">
+                        <Label fx:id="lightBluePrice2" layoutX="50.0" layoutY="130.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile8TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -714,15 +714,15 @@
                   <AnchorPane layoutX="450.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane layoutX="1.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #84A2DA;" AnchorPane.topAnchor="0.0" />
-                        <Label fx:id="lightBlueLabel1" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="120.0" text="Price $">
+                        <Label fx:id="lightBlueLabel1" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lightBluePrice1" layoutX="60.0" layoutY="121.0" text="Label">
+                        <Label fx:id="lightBluePrice1" layoutX="50.0" layoutY="130.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile6TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -844,15 +844,15 @@
                   <AnchorPane layoutX="750.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #A0522D#A0522D;" />
-                        <Label fx:id="brownLabel2" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="120.0" text="Price $">
+                        <Label fx:id="brownLabel2" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="brownPrice2" layoutX="60.0" layoutY="121.0" text="Label">
+                        <Label fx:id="brownPrice2" layoutX="50.0" layoutY="130.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile3TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -933,15 +933,15 @@
                   <AnchorPane layoutX="950.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;">
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #A0522D;" />
-                        <Label fx:id="brownLabel1" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="120.0" text="Price $">
+                        <Label fx:id="brownLabel1" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="brownPrice1" layoutX="60.0" layoutY="121.0" text="Label">
+                        <Label fx:id="brownPrice1" layoutX="50.0" layoutY="130.0" text="Label">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="player1Tile1TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -1008,7 +1008,10 @@
                <children>
                   <AnchorPane prefHeight="83.33333" prefWidth="148.0">
                      <children>
-                        <Label fx:id="orangeLabel3" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="60.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="orangeLabel3" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="75.0" rotate="90.0" text="Mecidiyekoy" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <AnchorPane layoutX="119.0" layoutY="2.0" prefHeight="81.333" prefWidth="30.0" style="-fx-border-width: 0 0 0 1; -fx-background-color: #FF7900; -fx-border-color: black;" />
                         <Label layoutY="20.0" rotate="90.0" text="Price $" />
                         <Label fx:id="orangePrice3" layoutX="7.0" layoutY="60.0" rotate="90.0" text="Label">
@@ -1053,7 +1056,10 @@
                   <AnchorPane prefHeight="81.333" prefWidth="148.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane layoutX="119.0" layoutY="1.0" prefHeight="80.3333" prefWidth="30.0" style="-fx-border-width: 0 0 0 1; -fx-background-color: #FF7900; -fx-border-color: black;" />
-                        <Label fx:id="orangeLabel2" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="60.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="orangeLabel2" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="75.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <Label layoutY="20.0" rotate="90.0" text="Price $" />
                         <Label fx:id="orangePrice2" layoutX="7.0" layoutY="60.0" rotate="90.0" text="Label">
                            <font>
@@ -1138,7 +1144,10 @@
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane layoutX="119.0" prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 0 0 1; -fx-background-color: #FF7900; -fx-border-color: black;" />
-                        <Label fx:id="orangeLabel1" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="60.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="orangeLabel1" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="75.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <Label layoutY="20.0" rotate="90.0" text="Price $" />
                         <Label fx:id="orangePrice1" layoutX="7.0" layoutY="60.0" rotate="90.0" text="Label">
                            <font>
@@ -1223,7 +1232,10 @@
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane layoutX="119.0" prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 0 0 1; -fx-border-color: black; -fx-background-color: #FF0072;" />
-                        <Label fx:id="pinkLabel3" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="60.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="pinkLabel3" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="75.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <Label layoutY="20.0" rotate="90.0" text="Price $" />
                         <Label fx:id="pinkPrice3" layoutX="7.0" layoutY="60.0" rotate="90.0" text="Label">
                            <font>
@@ -1267,7 +1279,10 @@
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane layoutX="119.0" prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 0 0 1; -fx-border-color: black; -fx-background-color: #FF0072;" />
-                        <Label fx:id="pinkLabel2" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="60.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="pinkLabel2" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="75.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <Label layoutY="20.0" rotate="90.0" text="Price $" />
                         <Label fx:id="pinkPrice2" layoutX="7.0" layoutY="60.0" rotate="90.0" text="Label">
                            <font>
@@ -1352,7 +1367,10 @@
                   <AnchorPane prefHeight="83.333" prefWidth="150.0">
                      <children>
                         <AnchorPane layoutX="119.0" prefHeight="83.333" prefWidth="30.0" style="-fx-border-width: 0 0 0 1; -fx-border-color: black; -fx-background-color: #FF0072;" />
-                        <Label fx:id="pinkLabel1" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="60.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="pinkLabel1" alignment="CENTER" layoutX="65.0" layoutY="35.0" prefWidth="75.0" rotate="90.0" text="Label" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <Label layoutY="20.0" rotate="90.0" text="Price $" />
                         <Label fx:id="pinkPrice1" layoutX="7.0" layoutY="60.0" rotate="90.0" text="Label">
                            <font>
@@ -1400,9 +1418,15 @@
                   <AnchorPane prefHeight="83.33333" prefWidth="148.0">
                      <children>
                         <AnchorPane layoutY="2.0" prefHeight="81.333" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #00AC57;" />
-                        <Label fx:id="greenLabel1" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
-                        <Label fx:id="greenPrice1" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <Label fx:id="greenLabel1" alignment="CENTER" layoutX="15.0" layoutY="33.0" prefWidth="75.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="110.0" layoutY="53.0" rotate="-90.0" text="Price $">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
+                        <Label fx:id="greenPrice1" layoutX="110.0" layoutY="14.0" rotate="-90.0" text="2000">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <ImageView fx:id="player1Tile31TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="31.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./wheelbarrow.png" />
@@ -1438,9 +1462,15 @@
                   <AnchorPane prefHeight="81.333" prefWidth="148.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane layoutY="1.0" prefHeight="81.3333" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #00AC57;" />
-                        <Label fx:id="greenLabel2" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
-                        <Label fx:id="greenPrice2" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <Label fx:id="greenLabel2" alignment="CENTER" layoutX="15.0" layoutY="33.0" prefWidth="75.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="110.0" layoutY="53.0" rotate="-90.0" text="Price $">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
+                        <Label fx:id="greenPrice2" layoutX="110.0" layoutY="14.0" rotate="-90.0" text="Label">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <ImageView fx:id="player1Tile32TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="31.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./wheelbarrow.png" />
@@ -1514,9 +1544,15 @@
                   <AnchorPane prefHeight="81.333" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane layoutY="1.0" prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #00AC57;" />
-                        <Label fx:id="greenLabel3" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
-                        <Label fx:id="greenPrice3" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <Label fx:id="greenLabel3" alignment="CENTER" layoutX="15.0" layoutY="33.0" prefWidth="75.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="110.0" layoutY="53.0" rotate="-90.0" text="Price $">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
+                        <Label fx:id="greenPrice3" layoutX="110.0" layoutY="14.0" rotate="-90.0" text="Label">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <ImageView fx:id="player1Tile34TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="31.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./wheelbarrow.png" />
@@ -1628,9 +1664,15 @@
                   <AnchorPane prefHeight="83.0" prefWidth="148.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;">
                      <children>
                         <AnchorPane prefHeight="81.0" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #2744A7;" />
-                        <Label fx:id="blueLabel1" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
-                        <Label fx:id="bluePrice1" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <Label fx:id="blueLabel1" alignment="CENTER" layoutX="15.0" layoutY="33.0" prefWidth="75.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="110.0" layoutY="53.0" rotate="-90.0" text="Price $">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
+                        <Label fx:id="bluePrice1" layoutX="110.0" layoutY="14.0" rotate="-90.0" text="Label">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <ImageView fx:id="player5Tile37TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="31.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./boot.png" />
@@ -1705,9 +1747,15 @@
                   <AnchorPane prefHeight="83.333" prefWidth="150.0">
                      <children>
                         <AnchorPane prefHeight="82.333" prefWidth="30.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: black; -fx-background-color: #2744A7;" />
-                        <Label fx:id="blueLabel2" alignment="CENTER" layoutX="25.0" layoutY="30.0" prefWidth="60.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="105.0" layoutY="50.0" rotate="-90.0" text="Price $" />
-                        <Label fx:id="bluePrice2" layoutX="110.0" layoutY="10.0" rotate="-90.0" text="Label" />
+                        <Label fx:id="blueLabel2" alignment="CENTER" layoutX="15.0" layoutY="33.0" prefWidth="75.0" rotate="-90.0" text="Label" textAlignment="CENTER" wrapText="true" />
+                        <Label layoutX="110.0" layoutY="53.0" rotate="-90.0" text="Price $">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
+                        <Label fx:id="bluePrice2" layoutX="110.0" layoutY="14.0" rotate="-90.0" text="Label">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Label>
                         <ImageView fx:id="player4Tile39TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./car.png" />

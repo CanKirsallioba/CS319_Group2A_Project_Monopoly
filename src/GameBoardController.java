@@ -22,6 +22,7 @@ import model.player.Player;
 import model.session.GameSession;
 import model.session.TurnManager;
 import model.tiles.GameAction;
+import model.tiles.PropertyTile;
 import model.tiles.Tile;
 import model.tiles.card.Card;
 import model.tiles.property.TitleDeedCard;
@@ -84,7 +85,7 @@ public class GameBoardController implements Initializable {
                 greenLabel1, greenLabel2, greenLabel3, blueLabel1, blueLabel2};
 
         Label[] priceLabels = {brownPrice1, brownPrice2, lightBluePrice1, lightBluePrice2, lightBluePrice3,
-                pinkPrice1, pinkPrice2, pinkLabel3, orangePrice1, orangePrice2, orangePrice3,
+                pinkPrice1, pinkPrice2, pinkPrice3, orangePrice1, orangePrice2, orangePrice3,
                 redPrice1, redPrice2, redPrice3, yellowPrice1, yellowPrice2, yellowPrice3,
                 greenPrice1, greenPrice2, greenPrice3, bluePrice1, bluePrice2};
 
@@ -113,6 +114,16 @@ public class GameBoardController implements Initializable {
         playerList = getGameSession().getTurnManager().getPlayers();
 
         board = getGameSession().getBoard();
+
+        int counter = 0;
+        for (Tile tile: board.getTiles()) {
+            if (tile instanceof PropertyTile) {
+                nameLabels[counter].setText( ((PropertyTile) tile).getTitleDeedCard().getPropertyName() );
+                priceLabels[counter].setText( String.valueOf(((PropertyTile) tile).getTitleDeedCard().getPropertyValue()));
+                counter++;
+            }
+        }
+
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
         int playerCount = 0;
@@ -171,6 +182,8 @@ public class GameBoardController implements Initializable {
             player.setCurrentTile(player.getPlayerToken().getBoard().getTiles().get(player.getPlayerToken().getCurrentTileIndex()));
             tileObserverUpdate(observable, player.getCurrentTile().getIndex());
         }
+
+
 
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
     }
