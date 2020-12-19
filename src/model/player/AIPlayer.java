@@ -137,7 +137,9 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                         makeAndExecuteIncomeTaxDecision();
                 }
                 if( currentlyLandedTile instanceof TeleportTile){
-                    getPlayerToken().teleport( (currentTile.getIndex() + 20) % 40 );
+                    getCurrentTile().getPossibleActions(this).get(0).execute();
+                    setChanged();
+                    notifyObservers();
                 }
                 if( currentlyLandedTile instanceof GoToJailTile){
                     goToJail();

@@ -34,52 +34,55 @@ public class BalancedAIStrategy extends AIStrategy {
         PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
 
         // decision path for owned property
-        if (currentPropertyTile.getTitleDeedCard().isOwned() && currentPropertyTile.getTitleDeedCard().getOwner() != player ) {
+        if (currentPropertyTile.getTitleDeedCard().isOwned()){
+            if ( currentPropertyTile.getTitleDeedCard().getOwner() != player ) {
 
-            // if the player cannot pay the rent even if he/she sold everything of value, declare bankruptcy
-            if (player.getLiquidTotalWorth() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-                player.declareBankruptcy();
-            }
-            // if player can pay the rent, pay the rent
-            else {
-                System.out.println( "BAI Owned Prop");
+                // if the player cannot pay the rent even if he/she sold everything of value, declare bankruptcy
+                if (player.getLiquidTotalWorth() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+                    player.declareBankruptcy();
+                }
+                // if player can pay the rent, pay the rent
+                else {
+                    System.out.println( "BAI Owned Prop");
 
-                // if player does not have the balance to pay rent &&
-                // but liquid total worth > rent
-                // mortgage & downgrade to pay rent
-                if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()
-                        && player.getLiquidTotalWorth() >= currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+                    // if player does not have the balance to pay rent &&
+                    // but liquid total worth > rent
+                    // mortgage & downgrade to pay rent
+                    if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()
+                            && player.getLiquidTotalWorth() >= currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
 
-                    for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
-                        if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
-                                && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-
-                            getGameAction(titleDeedCard.getPossibleActions(), DOWNGRADE_PROPERTY_ACTION).execute();
-                        }
-                    }
-                    if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
                         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
-                            if (!titleDeedCard.isMortgaged ()
+                            if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                     && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
 
-                                getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                getGameAction(titleDeedCard.getPossibleActions(), DOWNGRADE_PROPERTY_ACTION).execute();
+                            }
+                        }
+                        if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+                            for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
+                                if (!titleDeedCard.isMortgaged ()
+                                        && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+
+                                    getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                }
                             }
                         }
                     }
-                }
-                // if after selling everything player cannot pay, declare bankruptcy
-                // which should have not happened in this decision path
-                if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-                    System.out.println("Error: Liquid total worth calculations wrong.");
-                    player.declareBankruptcy();
-                    return;
-                }
+                    // if after selling everything player cannot pay, declare bankruptcy
+                    // which should have not happened in this decision path
+                    if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+                        System.out.println("Error: Liquid total worth calculations wrong.");
+                        player.declareBankruptcy();
+                        return;
+                    }
 
-                getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
+                    getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
+                }
             }
         }
         // decision path for unowned property
         else {
+            boolean notBought = true;
             System.out.println( "Balanced AI Strategy: Unowned Prop");
             // if player has more than twice the money required to buy the property
             if (player.getBalance() >= 2 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
@@ -88,11 +91,12 @@ public class BalancedAIStrategy extends AIStrategy {
                 if (player.getBalance() - gameStatistics.getMaximumRent() > 0) {
                     System.out.println( "Decided to buy property balance:" + player.getBalance());
                     getGameAction(currentPropertyTile.getPossibleActions( player), BUY_PROPERTY_ACTION).execute();
+                    notBought = false;
                     System.out.println( "Bought property balance:" + player.getBalance());
                 }
             }
             // if does not fit the criteria do not buy
-            else {
+            if( notBought) {
                 System.out.println( "Debug: AiStrategy: Decided to not buy the property. Starting auction...");
 
                 // do not buy
