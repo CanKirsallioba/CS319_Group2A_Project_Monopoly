@@ -79,7 +79,6 @@ public class TitleDeedCard implements Serializable {
     /**
      * Finds the action with the specified name and activates it
      * @param actionName the name of action
-     * @return true if deactivation is successful
      */
     public void deactivateAction(String actionName){
 
@@ -95,7 +94,6 @@ public class TitleDeedCard implements Serializable {
     /**
      * Finds the action with the specified name and deactivates it
      * @param actionName the name of action
-     * @return true if activation is successful
      */
     public void activateAction(String actionName){
         GameAction selectedAction = actionNames.get(actionName);
@@ -381,7 +379,7 @@ public class TitleDeedCard implements Serializable {
      * @return upgrade cost if the property is upgraded and 0 otherwise.
      */
     public int upgrade(){
-        if(!colorGroup.allOwnedByPlayer(owner)) //if the player
+        if(!colorGroup.allOwnedByPlayer(owner))
             return 0;
 
         upgradeLevel++;
