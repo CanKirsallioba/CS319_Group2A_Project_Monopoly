@@ -6,6 +6,11 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList;
 
 public class CardDeckBuilder {
+    /**
+     * This method builds the card deck object.
+     * @param config is the JSON config object.
+     * @return the card deck that is built.
+     */
     public CardDeck build(JSONObject config) {
         String associatedDeck = (String) config.get("associatedDeck");
         AbstractCardFactory cardFactory = new CardFactory();
