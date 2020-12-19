@@ -18,6 +18,8 @@ import model.player.Dice;
 import model.player.Player;
 import model.session.GameSession;
 import model.session.TurnManager;
+import model.tiles.GameAction;
+import model.tiles.Tile;
 import model.tiles.property.Color;
 import sun.security.krb5.internal.PAData;
 
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class GameBoardController implements Initializable {
 
@@ -116,9 +119,9 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 Player player = (Player) o;
-                if (buttonNumber < player.getCurrentTile().getActions().size()) {
+                if (buttonNumber < getPossibleActions().size()) {
                     button.setVisible(true);
-                    button.setText(player.getCurrentTile().getActions().get(buttonNumber).getName());
+                    button.setText(getPossibleActions().get(buttonNumber).getName());
                 } else {
                     button.setVisible(false);
 
@@ -342,29 +345,60 @@ public class GameBoardController implements Initializable {
     @FXML
     public void handleEndTurnButton() {
         getGameSession().getTurnManager().endTurn();
-        System.out.println("Player: " + getGameSession().getTurnManager().getCurrentPlayerIndex() + "\n"
-                + "TileIndex: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getIndex() + "\n"
-                + "Tile: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getTileName());
+//        System.out.println("Player: " + getGameSession().getTurnManager().getCurrentPlayerIndex() + "\n"
+//                + "TileIndex: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getIndex() + "\n"
+//                + "Tile: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getTileName());
+//
+//        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
+    }
 
+    public ArrayList<GameAction> getPossibleActions() {
+        return getTurnManager().getCurrentPlayer().getCurrentTile().getPossibleActions(getTurnManager().getCurrentPlayer());
+    }
+
+    public Player getCurrentPlayer() {
+        return getTurnManager().getCurrentPlayer();
+    }
+
+    public Tile getCurrentTile() {
+        return getCurrentPlayer().getCurrentTile();
+    }
+
+
+    public void handleActionButton(int index) {
+        int i = 0;
+        for (GameAction possibleAction : getPossibleActions()) {
+            if (possibleAction.isActive() ) {
+                if(i == index) {
+                    possibleAction.execute();
+                }
+                i++;
+
+            }
+
+        }
         System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
     }
 
-
     @FXML
-    public void handleButton1() throws IOException {
-        openAuction();
+    public void handleButton1(){
+        handleActionButton(0);
     }
 
     @FXML
-    public void handleButton2() throws IOException {
-        openTitleDeedCard();
+    public void handleButton2(){
+        handleActionButton(1);
     }
 
     @FXML
-    public void handleButton3() {}
+    public void handleButton3() {
+        handleActionButton(2);
+    }
 
     @FXML
-    public void handleButton4() {}
+    public void handleButton4() {
+        handleActionButton(3);
+    }
 
     @FXML
     public void openAuction() throws IOException {
