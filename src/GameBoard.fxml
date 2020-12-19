@@ -843,7 +843,7 @@
                      </children></AnchorPane>
                   <AnchorPane layoutX="750.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black;" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
-                        <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #610037;" />
+                        <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #A0522D#A0522D;" />
                         <Label fx:id="brownLabel2" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
                         <Label layoutX="5.0" layoutY="120.0" text="Price $">
                            <font>
@@ -932,7 +932,7 @@
                      </children></AnchorPane>
                   <AnchorPane layoutX="950.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;">
                      <children>
-                        <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #610037;" />
+                        <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #A0522D;" />
                         <Label fx:id="brownLabel1" alignment="CENTER" layoutX="12.5" layoutY="45.0" prefWidth="75.0" text="Label" textAlignment="CENTER" wrapText="true" />
                         <Label layoutX="5.0" layoutY="120.0" text="Price $">
                            <font>
