@@ -3,12 +3,16 @@ package data;
 import model.session.GameSession;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SerializationHandler {
     public String save(GameSession data) throws IOException {
 
         try {
+            String gameSessionName = "saveFile_" + new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+            data.setGameSessionName( gameSessionName);
             System.out.println( data.getGameSessionName());
             String fileName = data.getGameSessionName() + ".bin";
             File parent = new File(System.getProperty("user.dir"));
