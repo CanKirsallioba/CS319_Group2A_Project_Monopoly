@@ -13,7 +13,8 @@ public class GameAction implements Serializable {
     Player player;
 
     public void execute() {
-        command.execute(player);
+        if (isActive) command.execute(player);
+        else throw new RuntimeException("An deactivated action is executed. Action name: " + name);
     }
 
 
@@ -61,5 +62,16 @@ public class GameAction implements Serializable {
         this.command = command;
         this.isMandatory = isMandatory;
         this.isActive = isActive;
+    }
+
+    @Override
+    public String toString() {
+        return "GameAction{" +
+                "name='" + name + '\'' +
+                ", command=" + command +
+                ", isMandatory=" + isMandatory +
+                ", isActive=" + isActive +
+                ", player on tile=" +
+                '}';
     }
 }

@@ -7,11 +7,6 @@ import model.tiles.property.TitleDeedCard;
 import java.util.ArrayList;
 
 public class PropertyTileActionStrategy extends ActionStrategy {
-    String[] actionNames;
-
-    public PropertyTileActionStrategy(String[] actionNames) {
-        this.actionNames = actionNames;
-    }
 
     /**
      * This strategy is related to the buy operation.
@@ -76,10 +71,17 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      */
     private void buyProperty(Player player) {
         TitleDeedCard card = player.getSelectedTitleDeed();
+//        System.out.println("Property Value: " + card.getPropertyValue());
         if ((player.getBalance () >= card.getPropertyValue()) && !card.isOwned ()) {
+            card.setOwner(player);
+            card.setOwned(true);
             player.changeBalance ( -card.getPropertyValue() );
             player.addTitleDeedCard ( card );
+
         }
+//        for (TitleDeedCard titleDeed : player.getTitleDeeds()) {
+//            System.out.println("TitleDeedName: " + titleDeed.getPropertyName());
+//        }
     }
 
     /**
@@ -94,7 +96,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
         tile = (PropertyTile) player.getCurrentTile ();
         TitleDeedCard card = tile.getTitleDeedCard ();
 
-        int totalRent = card.getPropertyValue ();
+        int totalRent = card.getCurrentRent ();
 
         if (player.getBalance () >= totalRent) {
             player.changeBalance ( -totalRent );
@@ -122,9 +124,5 @@ public class PropertyTileActionStrategy extends ActionStrategy {
             titleDeedCards.add ( card );
             player.startAuction ( titleDeedCards );
         }
-    }
-
-    public String[] getActionNames() {
-        return actionNames;
     }
 }

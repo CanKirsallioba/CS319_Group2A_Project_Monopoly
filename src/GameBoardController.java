@@ -20,8 +20,7 @@ import model.session.GameSession;
 import model.session.TurnManager;
 import model.tiles.GameAction;
 import model.tiles.Tile;
-import model.tiles.property.Color;
-import sun.security.krb5.internal.PAData;
+import model.tiles.property.TitleDeedCard;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +28,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class GameBoardController implements Initializable {
 
@@ -47,16 +45,14 @@ public class GameBoardController implements Initializable {
 
     public void init() {
         Label[] nameLabels = {brownLabel1, brownLabel2, lightBlueLabel1, lightBlueLabel2, lightBlueLabel3,
-                        pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
-                        redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
-                        greenLabel1, greenLabel2, greenLabel3, blueLabel1, blueLabel2};
+                pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
+                redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
+                greenLabel1, greenLabel2, greenLabel3, blueLabel1, blueLabel2};
 
         Label[] priceLabels = {brownPrice1, brownPrice2, lightBluePrice1, lightBluePrice2, lightBluePrice3,
-                        pinkPrice1, pinkPrice2, pinkLabel3, orangePrice1, orangePrice2, orangePrice3,
-                        redPrice1, redPrice2, redPrice3, yellowPrice1, yellowPrice2, yellowPrice3,
-                        greenPrice1, greenPrice2, greenPrice3, bluePrice1, bluePrice2};
-
-
+                pinkPrice1, pinkPrice2, pinkLabel3, orangePrice1, orangePrice2, orangePrice3,
+                redPrice1, redPrice2, redPrice3, yellowPrice1, yellowPrice2, yellowPrice3,
+                greenPrice1, greenPrice2, greenPrice3, bluePrice1, bluePrice2};
 
 
         Label[] arr = {lightBlueLabel1, lightBlueLabel2, lightBlueLabel3};
@@ -65,26 +61,30 @@ public class GameBoardController implements Initializable {
         GameActionButtonObserver gameActionButtonObserver2 = new GameActionButtonObserver(button3, 2);
         GameActionButtonObserver gameActionButtonObserver3 = new GameActionButtonObserver(button4, 3);
         ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
+        TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
+
         playerList = getGameSession().getTurnManager().getPlayers();
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
-        System.out.println(players.size());
+//        System.out.println(players.size());
         for (Player player : players) {
             Observable observable = (Observable) player;
             observable.addObserver(gameActionButtonObserver);
             observable.addObserver(gameActionButtonObserver1);
             observable.addObserver(gameActionButtonObserver2);
             observable.addObserver(gameActionButtonObserver3);
-
+            observable.addObserver(titleDeedCardObserver);
         }
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
 
 
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         paintPane(propertyColorPane, "RED");
     }
+
     private class DiceObserver implements Observer {
 
         @Override
@@ -108,18 +108,24 @@ public class GameBoardController implements Initializable {
             }
         }
     }
+
     private class GameActionButtonObserver implements Observer {
         Button button;
         int buttonNumber;
+
         GameActionButtonObserver(Button button, int buttonNumber) {
             this.button = button;
             this.buttonNumber = buttonNumber;
         }
+
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
-                Player player = (Player) o;
-                if (buttonNumber < getPossibleActions().size()) {
+//                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
+                if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive()) {
+//                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
+
+//                    System.out.println(buttonNumber + " " + getPossibleActions().get(buttonNumber));
                     button.setVisible(true);
                     button.setText(getPossibleActions().get(buttonNumber).getName());
                 } else {
@@ -130,7 +136,7 @@ public class GameBoardController implements Initializable {
         }
     }
 
-    private class PlayerCardObserver implements Observer{
+    private class PlayerCardObserver implements Observer {
         Player player;
         Label playerMoney, numberOfProperties;
         Button seeProperties, tradeButton;
@@ -184,38 +190,65 @@ public class GameBoardController implements Initializable {
             this.tradeButton = tradeButton;
         }
 
-        PlayerCardObserver(Player player){
+        PlayerCardObserver(Player player) {
             this.player = player;
         }
 
         @Override
         public void update(Observable o, Object arg) {
 
-                ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
-                int playerIndex = -1;
-                for(int i = 0; i < players.size(); i++){
-                    if(player == players.get(i))
-                    {
-                        playerIndex = i + 1;
-                        break;
-                    }
+            ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
+            int playerIndex = -1;
+            for (int i = 0; i < players.size(); i++) {
+                if (player == players.get(i)) {
+                    playerIndex = i + 1;
+                    break;
                 }
+            }
 
-                playerMoney.setText(player.getBalance() + "");
-                numberOfProperties.setText(player.getTitleDeeds().size() + "");
+            playerMoney.setText(player.getBalance() + "");
+            numberOfProperties.setText(player.getTitleDeeds().size() + "");
 
-                //if the blayer is bankrupt, the buttons are inactive
-                if(player.isBankrupt()) {
-                    seeProperties.setVisible(false);
-                    tradeButton.setVisible(false);
-                }
-                else {
-                    seeProperties.setVisible(true);
-                    tradeButton.setVisible(true);
+            //if the blayer is bankrupt, the buttons are inactive
+            if (player.isBankrupt()) {
+                seeProperties.setVisible(false);
+                tradeButton.setVisible(false);
+            } else {
+                seeProperties.setVisible(true);
+                tradeButton.setVisible(true);
+            }
+        }
+    }
+
+    private class TitleDeedCardObserver implements Observer {
+//        AnchorPane titleDeedCard;
+//        Label propertyName, rent, level0Price, level1Price, level2Price, level3Price, level4Price, level5Price;
+//        Label upgradeCost, hotelCost;
+//        Label mortgageValue;
+
+        @Override
+        public void update(Observable o, Object arg) {
+            if (o instanceof Player) {
+                TitleDeedCard card = getCurrentPlayer().getSelectedTitleDeed();
+                if(card == null) {
+                    titleDeedCard.setVisible(false);
+                } else {
+                    paintPane(propertyColorPane, card.getColorGroup().getColor().name());
+                    propertyNameLabel.setText(card.getPropertyName());
+                    rentSiteOnlyValueLabel.setText("" + card.getLevelZeroRent());
+                    rentWith1HouseValueLabel.setText("" + card.getLevelOneRent());
+                    rentWith2HousesValueLabel.setText("" + card.getLevelTwoRent());
+                    rentWith3HousesValueLabel.setText("" + card.getLevelThreeRent());
+                    rentWith4HousesValueLabel.setText("" + card.getLevelFourRent());
+                    rentWithHotelValueLabel.setText("" + card.getLevelFiveRent());
+                    costOfHousesValueLabel.setText("" + card.getUpgradeCost());
+                    costOfHotelsValueLabel.setText("" + card.getUpgradeCost());
+                    mortgageValueLabel.setText("" + card.getMortgageValue());
+                    titleDeedCard.setVisible(true);
                 }
             }
         }
-
+    }
 
     /*
         Player Cards
@@ -282,8 +315,12 @@ public class GameBoardController implements Initializable {
     @FXML
     private Label rentWith3HousesValueLabel, rentWith4HousesValueLabel, rentWithHotelValueLabel;
 
+    // TitleDeedCardLabels.
     @FXML
-    private Label costOfHousesValueLabel, costOfHotelsValueLabel, mortgageValueLabel, costLabel;
+    private Label propertyNameLabel, costOfHousesValueLabel, costOfHotelsValueLabel, mortgageValueLabel, costLabel;
+
+    @FXML
+    private AnchorPane titleDeedCard;
 
     @FXML
     private Label communityOrChanceCardLabel, cardAction;
@@ -333,8 +370,8 @@ public class GameBoardController implements Initializable {
     public void setGameSession(GameSession gameSession) {
 
         this.gameSession = gameSession;
-        System.out.println(gameSession);
-        System.out.println(getGameSession());
+//        System.out.println(gameSession);
+//        System.out.println(getGameSession());
     }
 
     @FXML
@@ -344,6 +381,8 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleEndTurnButton() {
+        getCurrentPlayer().setSelectedTitleDeed(null);
+        getCurrentPlayer().setCurrentlyDrawnCard(null);
         getGameSession().getTurnManager().endTurn();
 //        System.out.println("Player: " + getGameSession().getTurnManager().getCurrentPlayerIndex() + "\n"
 //                + "TileIndex: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getIndex() + "\n"
@@ -368,8 +407,8 @@ public class GameBoardController implements Initializable {
     public void handleActionButton(int index) {
         int i = 0;
         for (GameAction possibleAction : getPossibleActions()) {
-            if (possibleAction.isActive() ) {
-                if(i == index) {
+            if (possibleAction.isActive()) {
+                if (i == index) {
                     possibleAction.execute();
                 }
                 i++;
@@ -377,16 +416,16 @@ public class GameBoardController implements Initializable {
             }
 
         }
-        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
+//        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
     }
 
     @FXML
-    public void handleButton1(){
+    public void handleButton1() {
         handleActionButton(0);
     }
 
     @FXML
-    public void handleButton2(){
+    public void handleButton2() {
         handleActionButton(1);
     }
 
@@ -423,18 +462,23 @@ public class GameBoardController implements Initializable {
     public void tradeWithPlayer1() throws IOException {
         openPopUp("Trade.fxml", "Trade between Player A and 1");
     }
+
     public void tradeWithPlayer2() throws IOException {
         openPopUp("Trade.fxml", "Trade between Player A and 2");
     }
+
     public void tradeWithPlayer3() throws IOException {
         openPopUp("Trade.fxml", "Trade between Player A and 3");
     }
+
     public void tradeWithPlayer4() throws IOException {
         openPopUp("Trade.fxml", "Trade between Player A and 4");
     }
+
     public void tradeWithPlayer5() throws IOException {
         openPopUp("Trade.fxml", "Trade between Player A and 5");
     }
+
     public void tradeWithPlayer6() throws IOException {
         openPopUp("Trade.fxml", "Trade between Player A and 6");
     }
@@ -442,18 +486,23 @@ public class GameBoardController implements Initializable {
     public void seeInformationCardPlayer1() throws IOException {
         openInformationCard("Player 1");
     }
+
     public void seeInformationCardPlayer2() throws IOException {
         openInformationCard("Player 2");
     }
+
     public void seeInformationCardPlayer3() throws IOException {
         openInformationCard("Player 3");
     }
+
     public void seeInformationCardPlayer4() throws IOException {
         openInformationCard("Player 4");
     }
+
     public void seeInformationCardPlayer5() throws IOException {
         openInformationCard("Player 5");
     }
+
     public void seeInformationCardPlayer6() throws IOException {
         openInformationCard("Player 6");
     }
