@@ -405,7 +405,7 @@
                      <children>
                         <ImageView fitHeight="140.0" fitWidth="85.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@water-up.png" />
+                              <Image url="@./community-chest.png" />
                            </image></ImageView>
                         <ImageView fx:id="player1Tile28TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -1313,7 +1313,7 @@
                         <AnchorPane layoutX="119.0" prefHeight="81.0" prefWidth="30.0" />
                         <ImageView fitHeight="76.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@electric-left.png" />
+                              <Image url="@./change-left.png" />
                            </image></ImageView>
                         <ImageView fx:id="player1Tile12TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="40.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -1668,7 +1668,7 @@
                         <AnchorPane prefHeight="81.0" prefWidth="30.0" />
                         <ImageView fitHeight="75.0" fitWidth="140.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@tax-right.png" />
+                              <Image url="@./income-tax-right.png" />
                            </image></ImageView>
                         <ImageView fx:id="player2Tile38TokenImage" fitHeight="35.0" fitWidth="35.0" layoutX="4.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
