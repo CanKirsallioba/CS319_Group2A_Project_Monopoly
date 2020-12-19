@@ -5,6 +5,8 @@ import model.session.GameSession;
 public class SerializationHandler {
     public void save(GameSession data, String fileName) {
 
+
+
     }
 
     public GameSession load(String fileName) {
