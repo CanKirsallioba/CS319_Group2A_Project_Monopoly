@@ -1,5 +1,6 @@
 package model.player.strategy;
 
+import model.AuctionModel;
 import model.TradeModel;
 import model.player.AIPlayer;
 import model.player.TaxOption;
@@ -129,6 +130,8 @@ public class BalancedAIStrategy extends AIStrategy {
 
     @Override
     public void makeAndExecuteAuctionDecision(AIPlayer player) {
+        AuctionModel auctionModel = player.getAuctionModel();
+
 
     }
 

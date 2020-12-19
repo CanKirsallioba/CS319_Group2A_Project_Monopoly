@@ -12,16 +12,18 @@ public class AuctionModel extends Observable {
     Player highestBiddingPlayer;
     int highestBid;
     int remainingTime;
+    ArrayList<TitleDeedCard> auctionedTitleDeeds;
 
     AuctionModel() {
         active = true;
         highestBid = 0;
         remainingTime = 60;
         highestBiddingPlayer = null;
-
+        auctionedTitleDeeds = null;
     }
 
     public void startAuction(ArrayList<TitleDeedCard> titleDeedCards) {
+        auctionedTitleDeeds = titleDeedCards;
         active = true;
     }
     public boolean isActive() {
