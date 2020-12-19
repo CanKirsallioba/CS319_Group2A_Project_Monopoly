@@ -34,7 +34,7 @@ public class ConfigHandler {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = df.format(new Date());
         JSONObject boardConfig = (JSONObject) config.get("boardConfig");
-        fileName = boardConfig.get("boardName") + "_" + formatted + ".json";
+        fileName = "board_" + boardConfig.get("boardName") + "_" + formatted + ".json";
 
         //Write JSON file with given configurations
         try (FileWriter file = new FileWriter(fileName)) {
@@ -49,7 +49,7 @@ public class ConfigHandler {
     }
 
     public JSONObject getConfigTemplate(){
-        return getConfig("templateConfig.json");
+        return getConfig("board_template.json");
     }
 }
 
