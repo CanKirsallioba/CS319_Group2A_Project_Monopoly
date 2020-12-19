@@ -64,6 +64,36 @@
                               <Image url="@go-to-jail.png" />
                            </image>
                         </ImageView>
+                        <ImageView fx:id="player1Tile30TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/wheelbarrow.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player3Tile30TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="56.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/hat.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player2Tile30TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="111.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/towerToken.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player4Tile30TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="104.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/car.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player6Tile30TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="57.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/dog.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player5Tile30TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="9.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/boot.png" />
+                           </image>
+                        </ImageView>
                      </children></AnchorPane>
                   <AnchorPane layoutX="150.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" stylesheets="@GameBoardStyle.css">
                      <children>
