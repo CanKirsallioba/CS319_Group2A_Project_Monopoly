@@ -29,6 +29,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     TradeModel tradeModel;
     TitleDeedCard selectedTitleDeed;
     Card drawnCard;
+    Dice playersDice;
+    Tile currentTile;
     AbstractPlayer() {
         titleDeeds = new ArrayList<>();
         bailOutOfJailCards = new ArrayList<>();
@@ -82,10 +84,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
-    Dice playersDice;
 
-    // attributes not in the design
-    Tile currentTile;
 
     // abstract methods
 
@@ -131,6 +130,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
+            setChanged();
+            notifyObservers();
             return;
 
         // if bail out choice is by money && player has more money than the fine
@@ -139,6 +140,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
+            setChanged();
+            notifyObservers();
             return;
 
         // if bail out choice is by dice && player threw a double dice
@@ -148,6 +151,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             if( consecutiveDoubleCount == 1){
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
+                setChanged();
+                notifyObservers();
                 return;
             }
         }
@@ -158,6 +163,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             if( liquidTotalWorth < bailOutCost){
                 // force bankruptcy
                 declareBankruptcy();
+                setChanged();
+                notifyObservers();
             }
             else{
                 changeBalance( bailOutCost);
@@ -165,6 +172,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
                 canBailOut = false;
+                setChanged();
+                notifyObservers();
             }
         }
     }
@@ -183,6 +192,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         currentTile = playerToken.getCurrentTile();
         currentTileIndex = currentTile.getIndex();
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -192,6 +203,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void changeBalance(int amount) {
         balance += amount;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -201,6 +214,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void declareBankruptcy() {
         bankrupt = true;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -218,16 +233,22 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         if (playerToken.passedGoInTheLastMove()) {
             changeBalance(playerToken.getBoard().getBoardSalary() );
         }
+        setChanged();
+        notifyObservers();
     }
 
     @Override
     public void startAuction(ArrayList<TitleDeedCard> titleDeeds){
         auctionModel.startAuction(titleDeeds);
+        setChanged();
+        notifyObservers();
     }
 
     @Override
     public void startTrade( Player otherPlayer){
         tradeModel.startTrade(this, otherPlayer);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -237,6 +258,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void addBailOutFromJailCard(Card card) {
         bailOutOfJailCards.add( card);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -245,6 +268,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void removeBailOutFromJailCard() {
         bailOutOfJailCards.remove( bailOutOfJailCards.size()-1);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -254,6 +279,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void addTitleDeedCard(TitleDeedCard card) {
         titleDeeds.add( card);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -263,6 +290,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void removeTitleDeedCard(TitleDeedCard card) {
         titleDeeds.remove( card);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -271,6 +300,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setGetOutOfJailChoice(BailOutChoice getOutOfJailChoice) {
         this.getOutOfJailChoice = getOutOfJailChoice;
+        setChanged();
+        notifyObservers();
+
+        // check bail out notifies the observers and sets to changed on its own
         checkBailOut();
     }
 
@@ -284,12 +317,16 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             setConsecutiveDoubleCount ( 0 );
         }
 
+        setChanged();
+        notifyObservers();
         return playersDice;
     }
 
     @Override
     public void payBailOutMoney() {
         changeBalance(-(playerToken.getBoard().getBoardSalary() / 4));
+        setChanged();
+        notifyObservers();
     }
 
     // getter and setter methods in the design
@@ -319,6 +356,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         totalWorth = newTotalWorth;
         liquidTotalWorth = newLiquidTotalWorth;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -328,6 +367,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setTaxOption( TaxOption selectedOption) {
         this.taxOption = selectedOption;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -341,6 +382,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setBalance(int balance) {
         this.balance = balance;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -353,6 +396,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setConsecutiveDoubleCount(int consecutiveDoubleCount) {
         this.consecutiveDoubleCount = consecutiveDoubleCount;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -363,6 +408,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setCurrentTile( Tile currentTile){
         this.currentTile = currentTile;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -373,6 +420,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setPlayerToken( PlayerToken playerToken){
         this.playerToken = playerToken;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -388,6 +437,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setTotalWorth(int totalWorth) {
         this.totalWorth = totalWorth;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -398,6 +449,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setLiquidTotalWorth(int liquidTotalWorth) {
         this.liquidTotalWorth = liquidTotalWorth;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -408,6 +461,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setAuctionModel(AuctionModel auctionModel) {
         this.auctionModel = auctionModel;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -418,6 +473,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setTradeModel(TradeModel tradeModel) {
         this.tradeModel = tradeModel;
+        setChanged();
+        notifyObservers();
     }
 
     public boolean isBankrupt() {
@@ -433,6 +490,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setTitleDeeds(ArrayList<TitleDeedCard> titleDeeds) {
         this.titleDeeds = titleDeeds;
+        setChanged();
+        notifyObservers();
     }
 
     public ArrayList<Card> getBailOutOfJailCards() {
@@ -441,10 +500,14 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setBailOutOfJailCards(ArrayList<Card> bailOutOfJailCards) {
         this.bailOutOfJailCards = bailOutOfJailCards;
+        setChanged();
+        notifyObservers();
     }
 
     public void setBankrupt(boolean bankrupt) {
         this.bankrupt = bankrupt;
+        setChanged();
+        notifyObservers();
     }
 
     @Override
@@ -454,6 +517,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setSelectedTitleDeed( TitleDeedCard selectedTitleDeed){
         this.selectedTitleDeed = selectedTitleDeed;
+        setChanged();
+        notifyObservers();
     }
 
 
@@ -463,6 +528,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setCurrentlyDrawnCard(Card drawnCard) {
         this.drawnCard = drawnCard;
+        setChanged();
+        notifyObservers();
     }
 
     public boolean isInJail() {
@@ -471,6 +538,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
     public void setInJail(boolean inJail) {
         isInJail = inJail;
+        setChanged();
+        notifyObservers();
     }
 
 
