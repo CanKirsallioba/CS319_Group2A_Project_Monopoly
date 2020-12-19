@@ -26,4 +26,13 @@ public abstract class AIStrategy {
         }
         return null;
     }
+
+    public GameStatistics getGameStatistics() {
+        return gameStatistics;
+    }
+
+    public void setGameStatistics(GameStatistics gameStatistics) {
+        this.gameStatistics = gameStatistics;
+    }
+
 }
