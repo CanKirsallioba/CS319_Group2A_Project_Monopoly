@@ -9,12 +9,25 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Class implementing the abstract factory design pattern. It builds players.
+ */
 public class PlayerFactory extends AbstractPlayerFactory {
+    /**
+     * Default constructor.
+     */
     // todo
     public PlayerFactory() {
 
     }
 
+    /**
+     * Creates an array of players and returns them.
+     * Used for creating and initializing the Players used in the game.
+     * @param boardConfiguration is the board configuration used for getting/holding values such as player count, etc. (User customised values)
+     * @param config comes from the JSON file that holds the relevant data for other properties related to initialization of the Players.
+     * @return the newly created players ArrayList.
+     */
     @Override
     public ArrayList<Player> get(BoardConfiguration boardConfiguration, JSONObject config) {
         ArrayList<Player> players = new ArrayList<>();
@@ -46,13 +59,4 @@ public class PlayerFactory extends AbstractPlayerFactory {
         return players;
     }
 
-    @Override
-    public Player createAIPLayer(int balance, AICharacteristic aiCharacteristic, String playerTokenType) {
-        return null;
-    }
-
-    @Override
-    public Player createHumanPLayer(int balance, String playerTokenType) {
-        return null;
-    }
 }
