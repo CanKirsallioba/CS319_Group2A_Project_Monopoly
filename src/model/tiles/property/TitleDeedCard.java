@@ -2,6 +2,8 @@ package model.tiles.property;
 
 import model.player.Player;
 import model.tiles.GameAction;
+import model.tiles.PropertyTile;
+import model.tiles.Tile;
 import model.tiles.actionStrategy.ActionFactory;
 
 import java.io.Serializable;
@@ -9,10 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TitleDeedCard implements Serializable {
-    // TODO state si olacak
-    // TODO Her state icin farkli action arraylistleri olacak
-    // TODO Kendi state ini handle edecek hem owned hem de levellari icin state i olacak.
-    // TODO reset methodu
     final double mortgageRemovalMultiplier = 1.1;
     ArrayList<GameAction> propertyActions;
     String propertyName;
@@ -83,33 +81,29 @@ public class TitleDeedCard implements Serializable {
     /**
      * Finds the action with the specified name and activates it
      * @param actionName the name of action
-     * @return true if deactivation is successful
      */
-    public boolean deactivateAction(String actionName){
+    public void deactivateAction(String actionName){
 
         GameAction selectedAction = actionNames.get(actionName);
 
         if(selectedAction != null){
             selectedAction.setActive(false);
-            return true;
         }else{
-            return false;
+            throw new RuntimeException();
         }
     }
 
     /**
      * Finds the action with the specified name and deactivates it
      * @param actionName the name of action
-     * @return true if activation is successful
      */
-    public boolean activateAction(String actionName){
+    public void activateAction(String actionName){
         GameAction selectedAction = actionNames.get(actionName);
 
         if(selectedAction != null){
             selectedAction.setActive(true);
-            return true;
         }else{
-            return false;
+            throw new RuntimeException();
         }
     }
 
@@ -387,8 +381,6 @@ public class TitleDeedCard implements Serializable {
      * @return upgrade cost if the property is upgraded and 0 otherwise.
      */
     public int upgrade(){
-        if(!colorGroup.allOwnedByPlayer(owner)) //if the player
-            return 0;
 
         upgradeLevel++;
         updateActions();
@@ -400,8 +392,7 @@ public class TitleDeedCard implements Serializable {
      * @return the gain after downgrading the property.
      */
     public int downgrade() {
-        if(upgradeLevel == 0)
-            return 0;
+
         upgradeLevel--;
         updateActions();
         return upgradeCost/2;
@@ -479,6 +470,19 @@ public class TitleDeedCard implements Serializable {
      * @return true if the property is downgradable
      */
     public boolean isDowngradeable(){
-        return actionNames.get("Downgrade Property").isActive();
+        //return actionNames.get("Downgrade Property").isActive();
+
+        for (Tile tile: colorGroup.getGroup ()) {
+            int otherUpgradeLevel = ((PropertyTile) tile).getTitleDeedCard ().getUpgradeLevel();
+
+            if (otherUpgradeLevel - getUpgradeLevel()  > 0)
+                return false;
+        }
+
+        // If the upgrade level is zero cannot downgrade
+        if(upgradeLevel == 0)
+            return false;
+
+        return true;
     }
 }

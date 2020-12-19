@@ -15,8 +15,8 @@ public class ColorGroup implements Serializable {
         this.group = group;
     }
 
-    public ArrayList<Player> getGroup() {
-        return null;
+    public ArrayList<Tile> getGroup() {
+        return group;
     }
 
     public void setGroup(ArrayList<Tile> group) {

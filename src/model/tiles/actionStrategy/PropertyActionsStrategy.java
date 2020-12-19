@@ -47,7 +47,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     private void upgradeProperty(Player player) {
 
-        TitleDeedCard card = player.getSelectedTitleDeed ();
+        TitleDeedCard card = player.getSelectedTitleDeed();
         int upgradeLevel = card.getUpgradeLevel();
         int upgradeCost = card.getUpgradeCost();
 
