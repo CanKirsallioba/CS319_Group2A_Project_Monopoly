@@ -27,9 +27,7 @@ public class PropertyTile extends Tile {
         } else {
             throw new RuntimeException();
         }
-        for (GameAction action : actions) {
-            System.out.println("Action " + action);
-        }
+
         return actions;
     }
 

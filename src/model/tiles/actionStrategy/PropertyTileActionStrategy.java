@@ -96,7 +96,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
         tile = (PropertyTile) player.getCurrentTile ();
         TitleDeedCard card = tile.getTitleDeedCard ();
 
-        int totalRent = card.getPropertyValue ();
+        int totalRent = card.getCurrentRent ();
 
         if (player.getBalance () >= totalRent) {
             player.changeBalance ( -totalRent );
