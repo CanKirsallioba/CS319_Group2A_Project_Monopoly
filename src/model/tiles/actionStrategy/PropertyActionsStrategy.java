@@ -63,11 +63,9 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     private void downgradeProperty(Player player) {
         TitleDeedCard card = player.getSelectedTitleDeed();
-        int upgradeLevel = card.getUpgradeLevel();
 
-        if (upgradeLevel > 0) {
-            int downgradeMoney = card.downgrade();
-            player.changeBalance(downgradeMoney);
+        if (card.isDowngradeable()) {
+            player.changeBalance(card.downgrade());
         }
     }
 
