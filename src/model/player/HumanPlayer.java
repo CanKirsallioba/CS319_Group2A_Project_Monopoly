@@ -21,8 +21,11 @@ public class HumanPlayer extends AbstractPlayer {
             rollDice();
             if( getConsecutiveDoubleCount() == 3){
                 goToJail();
+            } else {
+                moveToken( playersDice.getDiceResultSum());
             }
-            moveToken( playersDice.getDiceResultSum());
+
+
         }
         updatePlayerWorth();
         setChanged();

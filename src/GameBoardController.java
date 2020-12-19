@@ -36,7 +36,7 @@ import java.util.ResourceBundle;
 public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
-
+    public String lastExecutedActionName = "";
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
 //    Image image1 = new Image(file.toURI().toString());};
     @FXML
@@ -253,8 +253,9 @@ public class GameBoardController implements Initializable {
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
+                System.out.println("UPDATE: " + lastExecutedActionName);
 //                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
-                if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive()) {
+                if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive() && !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName)) {
 //                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
 
 //                    System.out.println(buttonNumber + " " + getPossibleActions().get(buttonNumber));
@@ -344,6 +345,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleEndTurnButton() {
+        lastExecutedActionName = "";
         getCurrentPlayer().setSelectedTitleDeed(null);
         getCurrentPlayer().setCurrentlyDrawnCard(null);
         getGameSession().getTurnManager().endTurn();
@@ -372,6 +374,7 @@ public class GameBoardController implements Initializable {
         for (GameAction possibleAction : getPossibleActions()) {
             if (possibleAction.isActive()) {
                 if (i == index) {
+                    lastExecutedActionName = possibleAction.getName();
                     possibleAction.execute();
                 }
                 i++;

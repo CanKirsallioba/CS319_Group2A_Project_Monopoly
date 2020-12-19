@@ -10,11 +10,23 @@ public class GameAction implements Serializable {
     Command command;
     boolean isMandatory;
     boolean isActive;
+
+    public boolean isExecuted() {
+        return executed;
+    }
+
+    public void setExecuted(boolean executed) {
+        this.executed = executed;
+    }
+
+    boolean executed;
     Player player;
 
     public void execute() {
-        if (isActive) command.execute(player);
-        else throw new RuntimeException("An deactivated action is executed. Action name: " + name);
+        if (isActive) {
+            setExecuted(true);
+            command.execute(player);
+        } else throw new RuntimeException("An deactivated action is executed. Action name: " + name);
     }
 
 
@@ -23,6 +35,7 @@ public class GameAction implements Serializable {
     }
 
     public void setPlayer(Player player) {
+        setExecuted(false);
         this.player = player;
     }
     public String getName() {
