@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TitleDeedCard implements Serializable {
-    // TODO state si olacak
-    // TODO Her state icin farkli action arraylistleri olacak
-    // TODO Kendi state ini handle edecek hem owned hem de levellari icin state i olacak.
-    // TODO reset methodu
     final double mortgageRemovalMultiplier = 1.1;
     ArrayList<GameAction> propertyActions;
     String propertyName;
@@ -85,15 +81,14 @@ public class TitleDeedCard implements Serializable {
      * @param actionName the name of action
      * @return true if deactivation is successful
      */
-    public boolean deactivateAction(String actionName){
+    public void deactivateAction(String actionName){
 
         GameAction selectedAction = actionNames.get(actionName);
 
         if(selectedAction != null){
             selectedAction.setActive(false);
-            return true;
         }else{
-            return false;
+            throw new RuntimeException();
         }
     }
 
@@ -102,14 +97,13 @@ public class TitleDeedCard implements Serializable {
      * @param actionName the name of action
      * @return true if activation is successful
      */
-    public boolean activateAction(String actionName){
+    public void activateAction(String actionName){
         GameAction selectedAction = actionNames.get(actionName);
 
         if(selectedAction != null){
             selectedAction.setActive(true);
-            return true;
         }else{
-            return false;
+            throw new RuntimeException();
         }
     }
 
