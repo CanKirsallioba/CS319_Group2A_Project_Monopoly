@@ -7,10 +7,14 @@ public class Dice implements Serializable {
     int dice1;
     int dice2;
 
+    public Dice() {
+        rollDice();
+    }
     /**
      * Randomly sets dice1 and dice2 to integers with the range [1,6]
      */
     public void rollDice(){
+        System.out.println("Dice is called!!!!!!!!!!!!!!!!!!!!!");
         dice1 = (int) ( (Math.random() * 5) + 1 );
         dice2 = (int) ( (Math.random() * 5) + 1 );
     }

@@ -188,8 +188,8 @@ public class NewGameController implements Initializable {
         humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
         //uncomment this when test is over
         //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);
-        humanPlayerTestConfiguration.setHumanPlayerCount(2);
-        humanPlayerTestConfiguration.setMaxPlayerCount(2);
+        humanPlayerTestConfiguration.setHumanPlayerCount(1);
+        humanPlayerTestConfiguration.setMaxPlayerCount(1);
 //        filename = "board_template.json";
 
         // Two AI player
@@ -212,8 +212,8 @@ public class NewGameController implements Initializable {
         BoardConfiguration tileDebug2Configution = new BoardConfiguration();
         tileDebug2Configution.setGamePace(GamePace.MEDIUM);
         tileDebug2Configution.setAiCharacteristic(AICharacteristic.BALANCED);
-        tileDebug2Configution.setHumanPlayerCount(2);
-        tileDebug2Configution.setMaxPlayerCount(2);
+        tileDebug2Configution.setHumanPlayerCount(1);
+        tileDebug2Configution.setMaxPlayerCount(1);
 //        filename = "board_template.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
@@ -225,7 +225,6 @@ public class NewGameController implements Initializable {
 //        System.out.println(session);
         numOfPlayers = humanPlayers + botPlayers;
         controller.setGameSession(session);
-        sessionManager.saveGame( session);
         controller.init();
 
 

@@ -5,9 +5,11 @@ import model.TradeModel;
 import model.tiles.JailTile;
 import model.tiles.Tile;
 import model.tiles.card.Card;
+import model.tiles.card.CardFactory;
 import model.tiles.property.TitleDeedCard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 
 public abstract class AbstractPlayer extends Observable implements Player  {
@@ -48,6 +50,9 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         taxOption = TaxOption.UNDETERMINED;
         setChanged();
         notifyObservers();
+        // todo delete this line
+        addBailOutFromJailCard(new Card("aa", "aa", new HashMap<>()));
+
     }
 
     /**
@@ -115,7 +120,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public boolean waitInJail() {
-        if( numberOfTurnsSpentInJail < 3){
+        if( numberOfTurnsSpentInJail < 2){
             numberOfTurnsSpentInJail++;
             setChanged();
             notifyObservers();
@@ -143,7 +148,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
-
+            this.getOutOfJailChoice = BailOutChoice.WAIT;
             System.out.println( "DEBUG: check bail out, get out of jail choice: card");
             setChanged();
             notifyObservers();
@@ -151,13 +156,13 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         // if bail out choice is by money && player has more money than the fine
         }
-        else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {
+        else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {// todo hatali check?
             payBailOutMoney();
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
             System.out.println( "DEBUG: check bail out, get out of jail choice: money");
-
+            this.getOutOfJailChoice = BailOutChoice.WAIT;
             setChanged();
             notifyObservers();
             return;
@@ -171,7 +176,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
                 System.out.println( "DEBUG: check bail out, get out of jail choice: double dice");
-
+                this.getOutOfJailChoice = BailOutChoice.WAIT;
                 setChanged();
                 notifyObservers();
                 return;
@@ -239,6 +244,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void declareBankruptcy() {
         bankrupt = true;
+        System.out.println( "DEBUG: player bankrupted");
         setChanged();
         notifyObservers();
     }
@@ -349,7 +355,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public Dice rollDice() {
-        playersDice.rollDice();
+        if (!isInJail || getOutOfJailChoice == BailOutChoice.DOUBLE_DICE)
+            playersDice.rollDice();
 
         if(playersDice.getDice1() == playersDice.getDice2()){
             setConsecutiveDoubleCount( getConsecutiveDoubleCount() + 1);

@@ -15,7 +15,9 @@ public class HumanPlayer extends AbstractPlayer {
      */
     @Override
     public void playTurn(){
-        if( isInJail() == false){
+        this.getOutOfJailChoice = BailOutChoice.WAIT;
+
+        if(!isInJail()){
             rollDice();
             if( getConsecutiveDoubleCount() == 3){
                 goToJail();

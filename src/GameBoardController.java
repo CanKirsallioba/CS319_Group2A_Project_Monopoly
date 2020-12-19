@@ -155,8 +155,8 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 Player player = (Player) o;
-                String name1 = "dice" + player.getPlayersDice().getDice1() + ".png";
-                String name2 = "dice" + player.getPlayersDice().getDice2() + ".png";
+                String name1 = "dice" + getGameSession().getDice().getDice1() + ".png";
+                String name2 = "dice" + getGameSession().getDice().getDice2() + ".png";
                 dice1.setImage(new Image(name1));
                 dice2.setImage(new Image(name2));
             }
