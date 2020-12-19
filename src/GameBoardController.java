@@ -34,8 +34,19 @@ import java.util.ResourceBundle;
 public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
+
+    public GameBoardMenuController getMenuController() {
+        return menuController;
+    }
+
+    public void setMenuController(GameBoardMenuController menuController) {
+        this.menuController = menuController;
+    }
+
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
 //    Image image1 = new Image(file.toURI().toString());};
+    GameBoardMenuController menuController;
+
     TurnManager turnManager;
     Board board;
     Dice dice;
@@ -54,6 +65,11 @@ public class GameBoardController implements Initializable {
     ImageView[] player2TokenImages;
 
     public void init() {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
+        GameBoardMenuController menuController = fxmlLoader.<GameBoardMenuController>getController();
+        setMenuController(menuController);
+        menuController.setGameSession(getGameSession());
         Label[] nameLabels = {brownLabel1, brownLabel2, lightBlueLabel1, lightBlueLabel2, lightBlueLabel3,
                 pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
                 redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
@@ -98,9 +114,11 @@ public class GameBoardController implements Initializable {
             observable.addObserver(gameActionButtonObserver3);
             observable.addObserver(titleDeedCardObserver);
             observable.addObserver(currentlyDrawnCardObserver);
+
             observable.addObserver(diceObserver);
             int i = 0;
             for (Tile tile : getBoard().getTiles()) {
+                observable.addObserver(new PlayerCardObserver(i));
                 observable.addObserver(new TileObserver(i));
                 i++;
             }
@@ -174,10 +192,6 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 Player player = (Player) o;
-               // System.out.println(playerTokenList);
-                //System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
-                //System.out.println(player.getCurrentTile());
-                //System.out.println(((Player) o).getCurrentTile().getIndex());
                 playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
 
             }
@@ -185,7 +199,6 @@ public class GameBoardController implements Initializable {
     }
 
     private class CurrentlyDrawnCardObserver implements Observer {
-
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
@@ -230,86 +243,26 @@ public class GameBoardController implements Initializable {
     }
 
     private class PlayerCardObserver implements Observer {
-        Player player;
-        Label playerMoney, numberOfProperties;
-        Button seeProperties, tradeButton;
+        int index;
 
         // todo player card container object will be added as parameter
-        public PlayerCardObserver(Player player, Label playerMoney, Label numberOfProperties, Button seeProperties, Button tradeButton) {
-            this.player = player;
-            this.playerMoney = playerMoney;
-            this.numberOfProperties = numberOfProperties;
-            this.seeProperties = seeProperties;
-            this.tradeButton = tradeButton;
+        public PlayerCardObserver(int index) {
+            this.index = index;
         }
-
-        public Player getPlayer() {
-            return player;
-        }
-
-        public void setPlayer(Player player) {
-            this.player = player;
-        }
-
-        public Label getPlayerMoney() {
-            return playerMoney;
-        }
-
-        public void setPlayerMoney(Label playerMoney) {
-            this.playerMoney = playerMoney;
-        }
-
-        public Label getNumberOfProperties() {
-            return numberOfProperties;
-        }
-
-        public void setNumberOfProperties(Label numberOfProperties) {
-            this.numberOfProperties = numberOfProperties;
-        }
-
-        public Button getSeeProperties() {
-            return seeProperties;
-        }
-
-        public void setSeeProperties(Button seeProperties) {
-            this.seeProperties = seeProperties;
-        }
-
-        public Button getTradeButton() {
-            return tradeButton;
-        }
-
-        public void setTradeButton(Button tradeButton) {
-            this.tradeButton = tradeButton;
-        }
-
-        PlayerCardObserver(Player player) {
-            this.player = player;
-        }
-
         @Override
         public void update(Observable o, Object arg) {
-
-            ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
-            int playerIndex = -1;
-            for (int i = 0; i < players.size(); i++) {
-                if (player == players.get(i)) {
-                    playerIndex = i + 1;
-                    break;
-                }
-            }
-
-            playerMoney.setText(player.getBalance() + "");
-            numberOfProperties.setText(player.getTitleDeeds().size() + "");
-
-            //if the blayer is bankrupt, the buttons are inactive
-            if (player.isBankrupt()) {
-                seeProperties.setVisible(false);
-                tradeButton.setVisible(false);
-            } else {
-                seeProperties.setVisible(true);
-                tradeButton.setVisible(true);
-            }
+//
+//            playerMoney.setText(player.getBalance() + "");
+//            numberOfProperties.setText(player.getTitleDeeds().size() + "");
+//
+//            //if the blayer is bankrupt, the buttons are inactive
+//            if (player.isBankrupt()) {
+//                seeProperties.setVisible(false);
+//                tradeButton.setVisible(false);
+//            } else {
+//                seeProperties.setVisible(true);
+//                tradeButton.setVisible(true);
+//            }
         }
     }
 
