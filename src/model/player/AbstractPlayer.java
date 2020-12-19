@@ -48,6 +48,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         liquidTotalWorth = 0;
         getOutOfJailChoice = BailOutChoice.WAIT;
         taxOption = TaxOption.UNDETERMINED;
+
         setChanged();
         notifyObservers();
         // todo delete this line

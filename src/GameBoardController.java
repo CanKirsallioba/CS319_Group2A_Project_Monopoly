@@ -2,7 +2,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,22 +39,41 @@ public class GameBoardController implements Initializable {
 
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
 //    Image image1 = new Image(file.toURI().toString());};
+    @FXML
     TurnManager turnManager;
+    @FXML
     Board board;
+    @FXML
     Dice dice;
+    @FXML
     ArrayList<Player> playerList;
     // trade controllera bu modeli aktarmak gerekli.
+    @FXML
     TradeModel model;
 
     // auction controllera bu modeli aktarmak gerekli.
+    @FXML
     AuctionModel auctionModel;
+    @FXML
     ImageView[] player6TokenImages;
+    @FXML
     ImageView[][] playerTokenList;
+    @FXML
     ImageView[] player5TokenImages;
+    @FXML
     ImageView[] player4TokenImages;
+    @FXML
     ImageView[] player3TokenImages;
+    @FXML
     ImageView[] player1TokenImages;
+    @FXML
     ImageView[] player2TokenImages;
+    @FXML
+    AnchorPane[] playerCardAnchorPanes;
+    @FXML
+    Label[] playerMoneyLabels;
+    @FXML
+    Label[] playerNumberOfPropertiesLabels;
 
     public void init() {
 
@@ -88,15 +106,49 @@ public class GameBoardController implements Initializable {
         TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
         DiceObserver diceObserver = new DiceObserver();
-
+        playerCardAnchorPanes = new AnchorPane[]{player1Card, player4Card, player2Card, player5Card, player3Card, player6Card};
+        playerMoneyLabels = new Label[]{p1moneyLabel, p4moneyLabel,p2moneyLabel, p5moneyLabel,p3moneyLabel, p6moneyLabel};
+        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel,p4NumOfPropLabel, p2NumOfPropLabel, p5moneyLabel, p3moneyLabel, p6NameLabel};
 
         playerList = getGameSession().getTurnManager().getPlayers();
 
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
-        System.out.println("ADSAF\n");
-        System.out.println(player1Tile0TokenImage);
+        int playerCount = 0;
+
+        for (AnchorPane playerCardAnchorPane : playerCardAnchorPanes) {
+            if (playerCount < players.size()) {
+                playerCardAnchorPane.setVisible(true);
+            } else {
+                playerCardAnchorPane.setVisible(false);
+            }
+            playerCount++;
+        }
+        for (ImageView view : player1TokenImages) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player2TokenImages) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player3TokenImages) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player4TokenImages) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player5TokenImages) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player6TokenImages) {
+            view.setVisible(false);
+        }
+
         for (Player player : players) {
             Observable observable = (Observable) player;
             observable.addObserver(gameActionButtonObserver);
@@ -105,47 +157,20 @@ public class GameBoardController implements Initializable {
             observable.addObserver(gameActionButtonObserver3);
             observable.addObserver(titleDeedCardObserver);
             observable.addObserver(currentlyDrawnCardObserver);
-
+            observable.addObserver(new PlayerCardObserver());
             observable.addObserver(diceObserver);
             int i = 0;
             for (Tile tile : getBoard().getTiles()) {
-                observable.addObserver(new PlayerCardObserver(i));
                 observable.addObserver(new TileObserver(i));
                 i++;
             }
+            playerCardObserverUpdate(observable);
+            currentlyDrawnCardObserverUpdate(observable);
+            playerCardObserverUpdate(observable);
+            diceObserverUpdate(observable);
+            player.setCurrentTile(player.getPlayerToken().getBoard().getTiles().get(player.getPlayerToken().getCurrentTileIndex()));
+            tileObserverUpdate(observable, player.getCurrentTile().getIndex());
         }
-
-        for (ImageView view : player1TokenImages ) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player2TokenImages ) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player3TokenImages ) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player4TokenImages ) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player5TokenImages ) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player6TokenImages ) {
-            view.setVisible(false);
-        }
-
-        player1Tile0TokenImage.setVisible(true);
-        player2Tile0TokenImage.setVisible(true);
-        player3Tile0TokenImage.setVisible(true);
-        player4Tile0TokenImage.setVisible(true);
-        player5Tile0TokenImage.setVisible(true);
-        player6Tile0TokenImage.setVisible(true);
-
 
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
     }
@@ -158,20 +183,31 @@ public class GameBoardController implements Initializable {
 
     @FXML
     private ImageView dice1, dice2;
-
+    private void diceObserverUpdate(Observable o) {
+        if (o instanceof Player) {
+            Player player = (Player) o;
+            String name1 = "dice" + getGameSession().getDice().getDice1() + ".png";
+            String name2 = "dice" + getGameSession().getDice().getDice2() + ".png";
+            dice1.setImage(new Image(name1));
+            dice2.setImage(new Image(name2));
+        }
+    }
     private class DiceObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
-            if (o instanceof Player) {
-                Player player = (Player) o;
-                String name1 = "dice" + getGameSession().getDice().getDice1() + ".png";
-                String name2 = "dice" + getGameSession().getDice().getDice2() + ".png";
-                dice1.setImage(new Image(name1));
-                dice2.setImage(new Image(name2));
-            }
+            diceObserverUpdate(o);
         }
     }
 
+    private void tileObserverUpdate(Observable o, int index) {
+        if (o instanceof Player) {
+            Player player = (Player) o;
+            System.out.println(index);
+//            System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
+            playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
+
+        }
+    }
     private class TileObserver implements Observer {
         int index;
 
@@ -181,28 +217,27 @@ public class GameBoardController implements Initializable {
 
         @Override
         public void update(Observable o, Object arg) {
-            if (o instanceof Player) {
-                Player player = (Player) o;
-                playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
-
-            }
+            tileObserverUpdate(o, index);
         }
     }
 
+    private void currentlyDrawnCardObserverUpdate(Observable o) {
+        if (o instanceof Player) {
+            Card card = getCurrentPlayer().getCurrentlyDrawnCard();
+            if (card == null) {
+                titleDeedCard1.setVisible(false);
+            } else {
+//                    paintPane(propertyColorPane, );
+                communityOrChanceCardLabel.setText(card.getType());
+                cardAction.setText(card.getInstruction());
+                titleDeedCard1.setVisible(true);
+            }
+        }
+    }
     private class CurrentlyDrawnCardObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
-            if (o instanceof Player) {
-                Card card = getCurrentPlayer().getCurrentlyDrawnCard();
-                if (card == null) {
-                    titleDeedCard1.setVisible(false);
-                } else {
-//                    paintPane(propertyColorPane, );
-                    communityOrChanceCardLabel.setText(card.getType());
-                    cardAction.setText(card.getInstruction());
-                    titleDeedCard1.setVisible(true);
-                }
-            }
+            currentlyDrawnCardObserverUpdate(o);
         }
     }
 
@@ -233,27 +268,21 @@ public class GameBoardController implements Initializable {
         }
     }
 
-    private class PlayerCardObserver implements Observer {
-        int index;
+    private void playerCardObserverUpdate(Observable o) {
+        Player player = (Player) o;
+        int index = getPlayerList().indexOf(player);
+        if (player.isBankrupt()) {
+            playerCardAnchorPanes[index].setVisible(false);
 
-        // todo player card container object will be added as parameter
-        public PlayerCardObserver(int index) {
-            this.index = index;
+        } else {
+            playerMoneyLabels[index].setText("" + player.getBalance());
+            playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
         }
+    }
+    private class PlayerCardObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
-//
-//            playerMoney.setText(player.getBalance() + "");
-//            numberOfProperties.setText(player.getTitleDeeds().size() + "");
-//
-//            //if the blayer is bankrupt, the buttons are inactive
-//            if (player.isBankrupt()) {
-//                seeProperties.setVisible(false);
-//                tradeButton.setVisible(false);
-//            } else {
-//                seeProperties.setVisible(true);
-//                tradeButton.setVisible(true);
-//            }
+            playerCardObserverUpdate(o);
         }
     }
 
@@ -292,137 +321,12 @@ public class GameBoardController implements Initializable {
         }
     }
 
-    /*
-        Player Cards
-         */
-
-    @FXML
-    private Button button1, button2, button3, button4;
-    @FXML
-    private AnchorPane player1Card, player2Card, player3Card, player4Card, player5Card, player6Card;
-
-    /*
-    Player Name Labels
-     */
-    @FXML
-    private Label p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel, p5NameLabel, p6NameLabel;
-
-    /*
-    Players' money amount labels
-     */
-
-    @FXML
-    private Label p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel, p6moneyLabel;
-
-    /*
-    Players' number of property labels
-     */
-
-    @FXML
-    private Label p1NumOfPropLabel, p2NumOfPropLabel, p3NumOfPropLabel, p4NumOfPropLabel, p5NumOfPropLabel, p6NumOfPropLabel;
-
-    /*
-    Players' see properties buttons
-     */
-
-    @FXML
-    private Button p1SeePropertiesButton, p2SeePropertiesButton, p3SeePropertiesButton, p4SeePropertiesButton, p5SeePropertiesButton, p6SeePropertiesButton;
-
-    /*
-    Players' trade buttons
-     */
-    @FXML
-    private Button p1TradeButton, p2TradeButton, p3TradeButton, p4TradeButton, p5TradeButton, p6TradeButton;
-
-    /*
-    Player's token labels
-     */
-
-    @FXML
-    private Label p1TokenLabel, p2TokenLabel, p3TokenLabel, p4TakenLabel, p5TokenLabel, p6TokenLabel;
-
-    /*
-    Players' token images
-     */
-
-    @FXML
-    private ImageView p1TokenImage, p2TokenImage, p3TokenImage, p4TokenImage, p5TokenImage, p6TokenImage;
-
-    @FXML
-    private Pane propertyColorPane;
-
-    @FXML
-    private Label rentSiteOnlyValueLabel, rentWith1HouseValueLabel, rentWith2HousesValueLabel;
-
-    @FXML
-    private Label rentWith3HousesValueLabel, rentWith4HousesValueLabel, rentWithHotelValueLabel;
-
-    // TitleDeedCardLabels.
-    @FXML
-    private Label propertyNameLabel, costOfHousesValueLabel, costOfHotelsValueLabel, mortgageValueLabel, costLabel;
-
-    @FXML
-    private AnchorPane titleDeedCard;
-
-    @FXML
-    private Label communityOrChanceCardLabel, cardAction;
-    @FXML
-    private AnchorPane titleDeedCard1;
-
-    /*
-    Game Buttons
-     */
-
-
-    @FXML
-    private Button menuButton, rollDiceButton, endTurnButton;
-
-    @FXML
-    private ImageView goTileImage;
-
-    @FXML
-    private Label brownLabel1, brownPrice1, brownLabel2, brownPrice2;
-
-    @FXML
-    private Label lightBlueLabel1, lightBluePrice1, lightBlueLabel2, lightBluePrice2, lightBlueLabel3, lightBluePrice3;
-
-    @FXML
-    private Label pinkLabel1, pinkPrice1, pinkLabel2, pinkPrice2, pinkLabel3, pinkPrice3;
-
-    @FXML
-    private Label orangeLabel1, orangePrice1, orangeLabel2, orangePrice2, orangeLabel3, orangePrice3;
-
-    @FXML
-    private Label redLabel1, redPrice1, redLabel2, redPrice2, redLabel3, redPrice3;
-
-    @FXML
-    private Label yellowLabel1, yellowPrice1, yellowLabel2, yellowPrice2, yellowLabel3, yellowPrice3;
-
-    @FXML
-    private Label greenLabel1, greenPrice1, greenLabel2, greenPrice2, greenLabel3, greenPrice3;
-
-    @FXML
-    private Label blueLabel1, bluePrice1, blueLabel2, bluePrice2;
-
-    @FXML
-    private GameSession gameSession;
-
-    public GameSession getGameSession() {
-        return gameSession;
-    }
-
-    public void setGameSession(GameSession gameSession) {
-
-        this.gameSession = gameSession;
-//        System.out.println(gameSession);
-//        System.out.println(getGameSession());
-    }
 
     @FXML
     public void handleMenuButton() throws IOException {
 //        openPopUp("GameBoardMenu.fxml", "Menu");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
-        Parent root = (Parent)fxmlLoader.load();
+        Parent root = (Parent) fxmlLoader.load();
         GameBoardMenuController controller = fxmlLoader.<GameBoardMenuController>getController();
         controller.setGameSession(getGameSession());
         Stage stage = new Stage(StageStyle.DECORATED);
@@ -1116,4 +1020,129 @@ public class GameBoardController implements Initializable {
     ImageView player6Tile39TokenImage;
 
 
+    /*
+        Player Cards
+         */
+
+    @FXML
+    private Button button1, button2, button3, button4;
+    @FXML
+    private AnchorPane player1Card, player2Card, player3Card, player4Card, player5Card, player6Card;
+
+    /*
+    Player Name Labels
+     */
+    @FXML
+    private Label p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel, p5NameLabel, p6NameLabel;
+
+    /*
+    Players' money amount labels
+     */
+
+    @FXML
+    private Label p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel, p6moneyLabel;
+
+    /*
+    Players' number of property labels
+     */
+
+    @FXML
+    private Label p1NumOfPropLabel, p2NumOfPropLabel, p3NumOfPropLabel, p4NumOfPropLabel, p5NumOfPropLabel, p6NumOfPropLabel;
+
+    /*
+    Players' see properties buttons
+     */
+
+    @FXML
+    private Button p1SeePropertiesButton, p2SeePropertiesButton, p3SeePropertiesButton, p4SeePropertiesButton, p5SeePropertiesButton, p6SeePropertiesButton;
+
+    /*
+    Players' trade buttons
+     */
+    @FXML
+    private Button p1TradeButton, p2TradeButton, p3TradeButton, p4TradeButton, p5TradeButton, p6TradeButton;
+
+    /*
+    Player's token labels
+     */
+
+    @FXML
+    private Label p1TokenLabel, p2TokenLabel, p3TokenLabel, p4TakenLabel, p5TokenLabel, p6TokenLabel;
+
+    /*
+    Players' token images
+     */
+
+    @FXML
+    private ImageView p1TokenImage, p2TokenImage, p3TokenImage, p4TokenImage, p5TokenImage, p6TokenImage;
+
+    @FXML
+    private Pane propertyColorPane;
+
+    @FXML
+    private Label rentSiteOnlyValueLabel, rentWith1HouseValueLabel, rentWith2HousesValueLabel;
+
+    @FXML
+    private Label rentWith3HousesValueLabel, rentWith4HousesValueLabel, rentWithHotelValueLabel;
+
+    // TitleDeedCardLabels.
+    @FXML
+    private Label propertyNameLabel, costOfHousesValueLabel, costOfHotelsValueLabel, mortgageValueLabel, costLabel;
+
+    @FXML
+    private AnchorPane titleDeedCard;
+
+    @FXML
+    private Label communityOrChanceCardLabel, cardAction;
+    @FXML
+    private AnchorPane titleDeedCard1;
+
+    /*
+    Game Buttons
+     */
+
+
+    @FXML
+    private Button menuButton, rollDiceButton, endTurnButton;
+
+    @FXML
+    private ImageView goTileImage;
+
+    @FXML
+    private Label brownLabel1, brownPrice1, brownLabel2, brownPrice2;
+
+    @FXML
+    private Label lightBlueLabel1, lightBluePrice1, lightBlueLabel2, lightBluePrice2, lightBlueLabel3, lightBluePrice3;
+
+    @FXML
+    private Label pinkLabel1, pinkPrice1, pinkLabel2, pinkPrice2, pinkLabel3, pinkPrice3;
+
+    @FXML
+    private Label orangeLabel1, orangePrice1, orangeLabel2, orangePrice2, orangeLabel3, orangePrice3;
+
+    @FXML
+    private Label redLabel1, redPrice1, redLabel2, redPrice2, redLabel3, redPrice3;
+
+    @FXML
+    private Label yellowLabel1, yellowPrice1, yellowLabel2, yellowPrice2, yellowLabel3, yellowPrice3;
+
+    @FXML
+    private Label greenLabel1, greenPrice1, greenLabel2, greenPrice2, greenLabel3, greenPrice3;
+
+    @FXML
+    private Label blueLabel1, bluePrice1, blueLabel2, bluePrice2;
+
+    @FXML
+    private GameSession gameSession;
+
+    public GameSession getGameSession() {
+        return gameSession;
+    }
+
+    public void setGameSession(GameSession gameSession) {
+
+        this.gameSession = gameSession;
+//        System.out.println(gameSession);
+//        System.out.println(getGameSession());
+    }
 }

@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class PlayerToken implements Serializable {
     int currentTileIndex;
+
     Tile currentTile;
     String type;
     Board board;
@@ -116,6 +117,19 @@ public class PlayerToken implements Serializable {
     public void setBoard(Board board) {
         this.board = board;
     }
+
+    public int getCurrentTileIndex() {
+        return currentTileIndex;
+    }
+
+    public void setCurrentTileIndex(int currentTileIndex) {
+        this.currentTileIndex = currentTileIndex;
+    }
+
+    public void setCurrentTile(Tile currentTile) {
+        this.currentTile = currentTile;
+    }
+
 
 
 }
