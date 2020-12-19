@@ -178,6 +178,7 @@ public class NewGameController implements Initializable {
         Parent root = (Parent)fxmlLoader.load();
 
         GameBoardController controller = fxmlLoader.<GameBoardController>getController();
+
         String filename;
 
         // Two Human Player.
