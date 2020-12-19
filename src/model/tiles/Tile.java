@@ -68,10 +68,18 @@ public abstract class Tile implements Serializable {
 
     public ArrayList<GameAction> getPossibleActions(Player player) {
         ArrayList<GameAction> actionsToBeReturned = hook(player, getActions());
+
+
+        ArrayList<GameAction> activeActions = new ArrayList<>();
+
         for(GameAction action : actionsToBeReturned) {
             action.setPlayer(player);
+            if(action.isActive()) {
+                activeActions.add(action);
+            }
         }
-        return actionsToBeReturned;
+
+        return activeActions;
     }
 
     public void setIndex( int index){
