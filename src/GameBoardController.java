@@ -173,12 +173,12 @@ public class GameBoardController implements Initializable {
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
-               // Player player = (Player) o;
+                Player player = (Player) o;
                // System.out.println(playerTokenList);
                 //System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
                 //System.out.println(player.getCurrentTile());
                 //System.out.println(((Player) o).getCurrentTile().getIndex());
-                //playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
+                playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
 
             }
         }
