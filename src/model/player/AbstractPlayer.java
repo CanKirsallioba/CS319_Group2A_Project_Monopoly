@@ -31,6 +31,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     Card drawnCard;
     Dice playersDice;
     Tile currentTile;
+
+    /**
+     * Default constructor for AbstractPlayer.
+     */
     AbstractPlayer() {
         titleDeeds = new ArrayList<>();
         bailOutOfJailCards = new ArrayList<>();
@@ -45,6 +49,11 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         setChanged();
         notifyObservers();
     }
+
+    /**
+     * Basic method for displaying the state of the player.
+     * @return the state of the player.
+     */
     @Override
     public String toString() {
         //String titleDeedInfo = "{ ";
@@ -72,19 +81,23 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 "}";
     }
 
+    /**
+     * @return player's Dice
+     */
     @Override
     public Dice getPlayersDice() {
         return playersDice;
     }
 
+    /**
+     * setter method for player's Dice
+     */
     @Override
     public void setPlayersDice(Dice playersDice) {
         this.playersDice = playersDice;
         setChanged();
         notifyObservers();
     }
-
-
 
     // abstract methods
 
@@ -237,6 +250,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * Delegates the starting of auction to its model.
+     * @param titleDeeds is the properties to be auctioned.
+     */
     @Override
     public void startAuction(ArrayList<TitleDeedCard> titleDeeds){
         auctionModel.startAuction(titleDeeds);
@@ -244,6 +261,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * Delegates the starting of trade to its model.
+     * @param otherPlayer is the second player in the trade.
+     */
     @Override
     public void startTrade( Player otherPlayer){
         tradeModel.startTrade(this, otherPlayer);
@@ -307,6 +328,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         checkBailOut();
     }
 
+    /**
+     * Updates the state of the dice by rolling it again.
+     * @return the Dice in its new state.
+     */
     @Override
     public Dice rollDice() {
         playersDice.rollDice();
@@ -322,6 +347,9 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         return playersDice;
     }
 
+    /**
+     * Pays the amount of money required to bail out of jail.
+     */
     @Override
     public void payBailOutMoney() {
         changeBalance(-(playerToken.getBoard().getBoardSalary() / 4));
