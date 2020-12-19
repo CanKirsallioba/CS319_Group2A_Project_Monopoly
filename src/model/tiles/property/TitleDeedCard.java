@@ -115,6 +115,7 @@ public class TitleDeedCard implements Serializable {
      */
     public void updateActions() {
 
+        /*
         switch (upgradeLevel){
             case 0:
                 deactivateAction("Downgrade Property");
@@ -153,6 +154,23 @@ public class TitleDeedCard implements Serializable {
                 }
                 break;
         }
+        */
+
+
+        if(isMortgaged()) {
+            activateAction("Remove Mortgage");
+            deactivateAction("Mortgage Property");
+        }
+        else{
+            deactivateAction("Remove Mortgage");
+            activateAction("Mortgage Property");
+        }
+
+        if(isUpgradeable ())
+            activateAction ( "Upgrade Property" );
+        else
+            deactivateAction ( "Upgrade Property" );
+
     }
 
     /**
@@ -464,7 +482,27 @@ public class TitleDeedCard implements Serializable {
      * @return true if the property is upgradable
      */
     public boolean isUpgradeable(){
-        return actionNames.get("Upgrade Property").isActive();
+        //return actionNames.get("Upgrade Property").isActive();
+
+        if(!colorGroup.allOwnedByPlayer(owner))
+            return false;
+
+        // Calculate upgrade level differences for each pair of properties in a color group.
+        // If this property has at least one level more upgrade than any other property, the upgrade is not allowed
+        // Also, if any other property in color group is mortgaged, the upgrade is not allowed
+        for (Tile tile: colorGroup.getGroup ()) {
+            int otherUpgradeLevel = ((PropertyTile) tile).getTitleDeedCard ().getUpgradeLevel();
+
+            if (getUpgradeLevel() - otherUpgradeLevel > 0 || ((PropertyTile) tile).getTitleDeedCard ().isMortgaged())
+                return false;
+        }
+
+        // If the upgrade level is five cannot upgrade
+        if(upgradeLevel == 5){
+            return false;
+        }
+
+        return true;
     }
 
     /**
