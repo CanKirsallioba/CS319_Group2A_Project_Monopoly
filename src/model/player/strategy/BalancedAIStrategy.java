@@ -34,7 +34,7 @@ public class BalancedAIStrategy extends AIStrategy {
         PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
 
         // decision path for owned property
-        if (currentPropertyTile.getTitleDeedCard().isOwned()) {
+        if (currentPropertyTile.getTitleDeedCard().isOwned() && currentPropertyTile.getTitleDeedCard().getOwner() != player ) {
 
             // if the player cannot pay the rent even if he/she sold everything of value, declare bankruptcy
             if (player.getLiquidTotalWorth() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
@@ -75,11 +75,7 @@ public class BalancedAIStrategy extends AIStrategy {
                     return;
                 }
 
-                // pay the rent
-                if (currentPropertyTile.getTitleDeedCard().getOwner() != player) {
-                    getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
-
-                }
+                getGameAction(currentPropertyTile.getTitleDeedCard().getPossibleActions(), PAY_RENT_ACTION).execute();
             }
         }
         // decision path for unowned property
@@ -97,7 +93,14 @@ public class BalancedAIStrategy extends AIStrategy {
             }
             // if does not fit the criteria do not buy
             else {
+                System.out.println( "Debug: AiStrategy: Decided to not buy the property. Starting auction...");
+
                 // do not buy
+                // start auction
+                // TODO code review
+                ArrayList<TitleDeedCard> titleDeedOfCurrentProperty = new ArrayList<TitleDeedCard>();
+                titleDeedOfCurrentProperty.add( currentPropertyTile.getTitleDeedCard());
+                player.startAuction(titleDeedOfCurrentProperty );
             }
         }
     }
@@ -115,7 +118,7 @@ public class BalancedAIStrategy extends AIStrategy {
         int thisPlayerOfferings = 0;
         int otherPlayerOfferings = 0;
 
-        int thisPlayer = 0;
+        int thisPlayer;
         if( tradeModel.getPlayer1() == player){
             thisPlayer = 1;
         }
