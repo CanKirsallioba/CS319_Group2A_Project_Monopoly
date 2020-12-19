@@ -178,6 +178,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 numberOfTurnsSpentInJail = 0;
                 System.out.println( "DEBUG: check bail out, get out of jail choice: double dice");
                 this.getOutOfJailChoice = BailOutChoice.WAIT;
+                consecutiveDoubleCount = 0;
                 setChanged();
                 notifyObservers();
                 return;
