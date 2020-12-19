@@ -1,3 +1,8 @@
+import data.FileManager;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,16 +11,22 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoadGameController implements Initializable {
 
-    //filemanagerdan datafile lar çekilecek.
+    @FXML
+    private ListView<String> listView = new ListView<String>();
+    private ObservableList<String> listViewData = FXCollections.observableArrayList ();
+
+    private String selectedSaveFileName;
 
     @FXML
     public void goToMainMenu(ActionEvent event) throws IOException {
@@ -62,6 +73,20 @@ public class LoadGameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ArrayList<String> saveFiles = FileManager.getSavedSessionNames();
 
+        for(String save: saveFiles){
+            listViewData.add(save.substring(0, save.length() - 4));
+        }
+        listView.setItems(listViewData);
+
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                selectedSaveFileName = newValue;
+                System.out.println(selectedSaveFileName);
+            }
+        });
     }
 }

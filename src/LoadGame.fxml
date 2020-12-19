@@ -12,17 +12,6 @@
             <font>
                 <Font name="Calibri" size="58.0" />
             </font></Label>
-        <ScrollPane layoutX="571.0" layoutY="200.0" prefHeight="467.0" prefWidth="779.0">
-            <content>
-                <AnchorPane prefHeight="800.0" prefWidth="300.0">
-                    <children>
-                        <Button id="1" mnemonicParsing="false" onAction="#selectLoadGame" prefHeight="50.0" prefWidth="779.0" stylesheets="@ButtonStyle.css" text="SaveGame1" />
-                        <Button id="2" layoutY="50.0" mnemonicParsing="false" onAction="#selectLoadGame" prefHeight="50.0" prefWidth="779.0" stylesheets="@ButtonStyle.css" text="SaveGame2" />
-                        <Button id="3" layoutY="100.0" mnemonicParsing="false" onAction="#selectLoadGame" prefHeight="50.0" prefWidth="779.0" stylesheets="@ButtonStyle.css" text="SaveGame3" />
-                        <Button id="4" layoutY="150.0" mnemonicParsing="false" onAction="#selectLoadGame" prefHeight="50.0" prefWidth="779.0" stylesheets="@ButtonStyle.css" text="SaveGame4" />
-                        <Button id="5" layoutY="200.0" mnemonicParsing="false" onAction="#selectLoadGame" prefHeight="50.0" prefWidth="779.0" stylesheets="@ButtonStyle.css" text="SaveGame5" />
-                    </children></AnchorPane>
-            </content>
-        </ScrollPane>
+      <ListView  fx:id="listView" layoutX="519.0" layoutY="153.0" prefHeight="436.0" prefWidth="883.0" />
     </children>
 </Pane>
