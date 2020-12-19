@@ -11,6 +11,8 @@ public class JailTile extends Tile {
     protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
 
         if(player.getCurrentTile() instanceof JailTile){
+            System.out.println( "DEBUG: JailTile -> hook: if");
+
             if(player.getGetOutOfJailChoice() != BailOutChoice.WAIT) {
                 if (player.getBailOutOfJailCards().size() != 0) {
                     setActive(actions, "Use Bail Out Of Jail Card", true);
@@ -28,6 +30,8 @@ public class JailTile extends Tile {
             setActive(actions, "Pay Bail Bond", false);
             setActive(actions, "Roll Dice", false);
             setActive(actions, "Wait", false);
+            System.out.println( "DEBUG: JailTile -> hook: else");
+
         }
 
         return actions;

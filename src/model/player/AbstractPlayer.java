@@ -144,10 +144,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
 
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Use Bail Out of Jail Card", false);
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Pay Bail Bond", false);
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Roll Dice", false);
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Wait", false);
+            System.out.println( "DEBUG: check bail out, get out of jail choice: card");
             setChanged();
             notifyObservers();
             return;
@@ -159,10 +156,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Use Bail Out of Jail Card", false);
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Pay Bail Bond", false);
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Roll Dice", false);
-            ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Wait", false);
+            System.out.println( "DEBUG: check bail out, get out of jail choice: money");
+
             setChanged();
             notifyObservers();
             return;
@@ -175,10 +170,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             if( consecutiveDoubleCount == 1){
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Use Bail Out of Jail Card", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Pay Bail Bond", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Roll Dice", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Wait", false);
+                System.out.println( "DEBUG: check bail out, get out of jail choice: double dice");
+
                 setChanged();
                 notifyObservers();
                 return;
@@ -191,10 +184,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             if( liquidTotalWorth < bailOutCost){
                 // force bankruptcy
                 declareBankruptcy();
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Use Bail Out of Jail Card", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Pay Bail Bond", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Roll Dice", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Wait", false);
+                System.out.println( "DEBUG: check bail out, get out of jail choice: waitInJail = false, first half");
+
                 setChanged();
                 notifyObservers();
             }
@@ -204,10 +195,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
                 canBailOut = false;
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Use Bail Out of Jail Card", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Pay Bail Bond", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Roll Dice", false);
-                ((JailTile) getCurrentTile()).setActive( (((JailTile) getCurrentTile()).getPossibleActions( this)), "Wait", false);
+                System.out.println( "DEBUG: check bail out, get out of jail choice: waitInJail = false, second half");
+
                 setChanged();
                 notifyObservers();
             }
@@ -311,9 +300,15 @@ public abstract class AbstractPlayer extends Observable implements Player  {
      */
     @Override
     public void removeBailOutFromJailCard() {
-        bailOutOfJailCards.remove( bailOutOfJailCards.size()-1);
-        setChanged();
-        notifyObservers();
+        if( bailOutOfJailCards.size()>0){
+
+            bailOutOfJailCards.remove( bailOutOfJailCards.size()-1);
+            setChanged();
+            notifyObservers();
+        }
+        else{
+            System.out.println( " DEBUG: Error in Abstract Player, removeBailOutFromJailCard is invoked when there are no bail out cards!");
+        }
     }
 
     /**
