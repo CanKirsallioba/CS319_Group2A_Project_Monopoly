@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.session.GameSession;
+import model.session.GameSessionManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -98,7 +99,8 @@ public class GameBoardMenuController implements Initializable {
 
     @FXML
     public void handleSave(ActionEvent event) throws IOException {
-
+        GameSessionManager sessionManager = new GameSessionManager();
+        sessionManager.saveGame( getGameSession());
     }
 
     @Override

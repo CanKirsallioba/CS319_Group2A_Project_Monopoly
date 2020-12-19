@@ -26,7 +26,7 @@
                   <Insets top="40.0" />
                </VBox.margin>
             </Button>
-            <Button id="saveButton" fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" stylesheets="@GameBoardStyle.css" text="Save Game" textAlignment="CENTER">
+            <Button id="saveButton" fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSave" prefHeight="75.0" prefWidth="300.0" stylesheets="@GameBoardStyle.css" text="Save Game" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
