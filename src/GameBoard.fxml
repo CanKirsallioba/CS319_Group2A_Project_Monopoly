@@ -1894,8 +1894,8 @@
                   </Pane>
                </children>
             </AnchorPane>
-            <ImageView fx:id="dice1" fitHeight="100.0" fitWidth="100.0" layoutX="556.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="dice2" fitHeight="100.0" fitWidth="100.0" layoutX="560.0" layoutY="752.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dice1" fitHeight="100.0" fitWidth="100.0" layoutX="555.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dice2" fitHeight="100.0" fitWidth="100.0" layoutX="555.0" layoutY="750.0" pickOnBounds="true" preserveRatio="true" />
          </children></AnchorPane>
       <AnchorPane fx:id="player1Card" layoutX="20.0" layoutY="50.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
