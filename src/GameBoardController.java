@@ -83,6 +83,7 @@ public class GameBoardController implements Initializable {
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
         DiceObserver diceObserver = new DiceObserver();
 
+
         playerList = getGameSession().getTurnManager().getPlayers();
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
@@ -104,21 +105,52 @@ public class GameBoardController implements Initializable {
                 i++;
             }
         }
+
+        for (ImageView view : player1TokenImages ) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player2TokenImages ) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player3TokenImages ) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player4TokenImages ) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player5TokenImages ) {
+            view.setVisible(false);
+        }
+
+        for (ImageView view : player6TokenImages ) {
+            view.setVisible(false);
+        }
+
+        player1Tile0TokenImage.setVisible(true);
+        player2Tile0TokenImage.setVisible(true);
+        player3Tile0TokenImage.setVisible(true);
+        player4Tile0TokenImage.setVisible(true);
+        player5Tile0TokenImage.setVisible(true);
+        player6Tile0TokenImage.setVisible(true);
+
+
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
-
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        paintPane(propertyColorPane, "RED");
+
+
     }
 
     @FXML
     private ImageView dice1, dice2;
 
     private class DiceObserver implements Observer {
-
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
@@ -128,7 +160,6 @@ public class GameBoardController implements Initializable {
                 dice1.setImage(new Image(name1));
                 dice2.setImage(new Image(name2));
             }
-
         }
     }
 
@@ -141,15 +172,15 @@ public class GameBoardController implements Initializable {
 
         @Override
         public void update(Observable o, Object arg) {
-//            if (o instanceof Player) {
-//                Player player = (Player) o;
-//                System.out.println(playerTokenList);
-//                System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
-//                System.out.println(player.getCurrentTile());
-//                System.out.println(((Player) o).getCurrentTile().getIndex());
-//                playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
-//
-//            }
+            if (o instanceof Player) {
+               // Player player = (Player) o;
+               // System.out.println(playerTokenList);
+                //System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
+                //System.out.println(player.getCurrentTile());
+                //System.out.println(((Player) o).getCurrentTile().getIndex());
+                //playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
+
+            }
         }
     }
 
