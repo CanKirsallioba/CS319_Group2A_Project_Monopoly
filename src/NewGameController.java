@@ -31,6 +31,8 @@ public class NewGameController implements Initializable {
     @FXML
     private final int MAX_NUM_PLAYERS = 6;
     @FXML
+    private final int MIN_NUM_PLAYERS = 2;
+    @FXML
     private Spinner<Integer> botSpinner;
     @FXML
     private Spinner<Integer> humanSpinner;
@@ -100,10 +102,10 @@ public class NewGameController implements Initializable {
         comboBoard.setItems(comboBoardData);
 
         //combobox for pace initialization with string representations
-        comboPaceData.add("EASY");
-        comboPaceData.add("MEDIUM");
-        comboPaceData.add("HARD");
-
+        GamePace paces[] = GamePace.values();
+        for(GamePace pace: paces) {
+            comboPaceData.add(String.valueOf(pace));
+        }
         //set the data
         comboPace.setItems(comboPaceData);
 
@@ -150,6 +152,7 @@ public class NewGameController implements Initializable {
                 found = true;
                 configFileName = configFiles.get( index);
             }
+            index++;
         }
     }
 
@@ -179,7 +182,9 @@ public class NewGameController implements Initializable {
 
         // Two Human Player.
         BoardConfiguration humanPlayerTestConfiguration = new BoardConfiguration();
-        humanPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
+        humanPlayerTestConfiguration.setGamePace(GamePace.MEDIUM); //delete this when test is over
+        //uncomment this
+        //humanPlayerTestConfiguration.setGamePace( selectedPace);
         humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
         //uncomment this when test is over
         //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);

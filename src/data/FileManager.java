@@ -7,6 +7,7 @@ public class FileManager {
     private static ArrayList<String> configList = new ArrayList<String>() {
         {
             add("templateConfig.json");
+            add("templateConfig2.json");
         }
     };
     private static ArrayList<String> sessionNames;
