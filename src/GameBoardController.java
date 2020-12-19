@@ -107,9 +107,9 @@ public class GameBoardController implements Initializable {
         TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
         DiceObserver diceObserver = new DiceObserver();
-        playerCardAnchorPanes = new AnchorPane[]{player1Card, player4Card, player2Card, player5Card, player3Card, player6Card};
-        playerMoneyLabels = new Label[]{p1moneyLabel, p4moneyLabel, p2moneyLabel, p5moneyLabel, p3moneyLabel, p6moneyLabel};
-        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p4NumOfPropLabel, p2NumOfPropLabel, p5moneyLabel, p3moneyLabel, p6NameLabel};
+        playerCardAnchorPanes = new AnchorPane[]{player1Card, player2Card, player3Card, player4Card, player5Card,  player6Card};
+        playerMoneyLabels = new Label[]{p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel,  p6moneyLabel};
+        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3moneyLabel, p4NumOfPropLabel,  p5moneyLabel,  p6NameLabel};
 
         playerList = getGameSession().getTurnManager().getPlayers();
 
@@ -332,11 +332,13 @@ public class GameBoardController implements Initializable {
         }
     }
 
-    public void handleseeProperties(Player player) throws IOException {
+    public void handleSeeProperties(Player player, Player currentPlayer) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InformationCard.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         InformationCardController controller = fxmlLoader.<InformationCardController>getController();
         controller.setPlayer(player);
+        controller.setCurrentPlayer(currentPlayer);
+        controller.init();
         Stage stage = new Stage(StageStyle.DECORATED);
 
         stage.setTitle("Information Card");
@@ -477,27 +479,27 @@ public class GameBoardController implements Initializable {
     }
 
     public void seeInformationCardPlayer1() throws IOException {
-        openInformationCard("Player 1");
+        handleSeeProperties( playerList.get(0), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer2() throws IOException {
-        openInformationCard("Player 2");
+        handleSeeProperties( playerList.get(1), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer3() throws IOException {
-        openInformationCard("Player 3");
+        handleSeeProperties( playerList.get(2), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer4() throws IOException {
-        openInformationCard("Player 4");
+        handleSeeProperties( playerList.get(3), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer5() throws IOException {
-        openInformationCard("Player 5");
+        handleSeeProperties( playerList.get(4), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer6() throws IOException {
-        openInformationCard("Player 6");
+        handleSeeProperties( playerList.get(5), getCurrentPlayer());
     }
 
     public void openTitleDeedCard() throws IOException {

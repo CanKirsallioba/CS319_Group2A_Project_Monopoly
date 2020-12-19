@@ -4,8 +4,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import model.player.Player;
+import model.tiles.property.TitleDeedCard;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InformationCardController implements Initializable {
@@ -18,7 +20,17 @@ public class InformationCardController implements Initializable {
         this.player = player;
     }
 
-    Player player;
+    private Player player;
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    private Player currentPlayer;
 
     @FXML
     public Label informationLabel;
@@ -32,7 +44,6 @@ public class InformationCardController implements Initializable {
     public Button button3;
     public Button button4;
     public Button button5;
-    public Button button6;
 
     public void handleButton1() {}
 
@@ -44,22 +55,37 @@ public class InformationCardController implements Initializable {
 
     public void handleButton5() {}
 
-    public void handleButton6() {}
+    public void init() {
+        System.out.println(player.toString());
+        String informationOfPlayer = "";
+        String informationOfProperty;
+        int index = 1;
+        ArrayList<TitleDeedCard> deedCards = player.getTitleDeeds();
+        for (TitleDeedCard deedCard: deedCards){
 
+            informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
+                    "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
+                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n");
+            informationOfPlayer = informationOfPlayer + informationOfProperty;
+            index++;
+        }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        informationLabel.setText("The main objective of the game is obtaining wealth by selling and buying properties, and being the only player standing by forcing other players to declare bankruptcy. \n\n" +
-                "The game is played with 2 to 6 players. For multiplayer, every player will be playing the game on the same computer in turns. Players will be able to choose the board they will be playing the game on, and this includes user created custom boards as well. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" +
-                "Every turn players will roll the dice, and move their pieces according to the sum of the dice. After rolling dice and moving accordingly, players will perform the task related to the tile they landed on, such as drawing a chance card or a community chest card, or buying the property they landed on (If the player lands on an unowned property and is not willing to buy that property, auction takes place in that turn.) Players may propose trade offers to other players during their turn. After that, by selecting “End Turn”,  the turn for that player will be over, and the game will continue with the next player. If a player rolls a double dice in their turn, after playing that round they will roll again. However, throwing double dice three turns in a row results in jail. \n\n" );
+        if(player != currentPlayer){
+            button1.setVisible(false);
+            button2.setVisible(false);
+            button3.setVisible(false);
+            button4.setVisible(false);
+            button5.setVisible(false);
+        }
 
+        informationLabel.setText( informationOfPlayer);
         informationCardScrollPane.setContent(informationLabel);
         informationLabel.setStyle("-fx-text-fill: #000000");
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+
 }
