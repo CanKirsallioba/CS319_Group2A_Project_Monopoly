@@ -153,15 +153,43 @@ public class NewGameController implements Initializable {
         Parent root = (Parent)fxmlLoader.load();
 
         GameBoardController controller = fxmlLoader.<GameBoardController>getController();
+        String filename;
 
-        BoardConfiguration boardConfiguration = new BoardConfiguration();
-        boardConfiguration.setGamePace(GamePace.MEDIUM);
-        boardConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
-        boardConfiguration.setHumanPlayerCount(2);
-        boardConfiguration.setMaxPlayerCount(2);
+        // Two Human Player.
+        BoardConfiguration humanPlayerTestConfiguration = new BoardConfiguration();
+        humanPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
+        humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
+        humanPlayerTestConfiguration.setHumanPlayerCount(2);
+        humanPlayerTestConfiguration.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
+        // Two AI player
+        BoardConfiguration AIPlayerTestConfiguration = new BoardConfiguration();
+        AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
+        AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
+        AIPlayerTestConfiguration.setHumanPlayerCount(0);
+        AIPlayerTestConfiguration.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
+        // TileDebug_Team1
+        BoardConfiguration tileDebug1Configution = new BoardConfiguration();
+        tileDebug1Configution.setGamePace(GamePace.MEDIUM);
+        tileDebug1Configution.setAiCharacteristic(AICharacteristic.BALANCED);
+        tileDebug1Configution.setHumanPlayerCount(2);
+        tileDebug1Configution.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
+        // TileDebug_Team2
+        BoardConfiguration tileDebug2Configution = new BoardConfiguration();
+        tileDebug2Configution.setGamePace(GamePace.MEDIUM);
+        tileDebug2Configution.setAiCharacteristic(AICharacteristic.BALANCED);
+        tileDebug2Configution.setHumanPlayerCount(2);
+        tileDebug2Configution.setMaxPlayerCount(2);
+//        filename = "templateConfig.json";
+
         GameSessionManager sessionManager = new GameSessionManager();
         sessionManager.setFileName("templateConfig.json");
-        sessionManager.newGame(boardConfiguration);
+        sessionManager.newGame(humanPlayerTestConfiguration);
         GameSession session = sessionManager.getGame();
 //        System.out.println(session);
         numOfPlayers = humanPlayers + botPlayers;
