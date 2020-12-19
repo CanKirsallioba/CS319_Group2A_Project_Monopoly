@@ -339,9 +339,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setGetOutOfJailChoice(BailOutChoice getOutOfJailChoice) {
         this.getOutOfJailChoice = getOutOfJailChoice;
-        setChanged();
-        notifyObservers();
-
         // check bail out notifies the observers and sets to changed on its own
         checkBailOut();
     }

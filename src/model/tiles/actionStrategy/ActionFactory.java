@@ -43,8 +43,8 @@ public class ActionFactory extends AbstractActionFactory {
                 break;
             case "JailTile":
                 ActionStrategy jailTile = new JailTileActionStrategy();
-                actions.add(new GameAction("Roll Dice", jailTile::button3Strategy, false, true));
                 actions.add(new GameAction("Pay Bail Bond", jailTile::button2Strategy, false, true));
+                actions.add(new GameAction("Roll Dice", jailTile::button3Strategy, false, true));
                 actions.add(new GameAction("Use Bail Out Of Jail Card", jailTile::button4Strategy, false, true));
 
                 break;
