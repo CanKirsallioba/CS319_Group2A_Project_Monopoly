@@ -1,3 +1,5 @@
+import data.ConfigHandler;
+import data.FileManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,9 +20,11 @@ import model.GamePace;
 import model.player.AICharacteristic;
 import model.session.GameSession;
 import model.session.GameSessionManager;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NewGameController implements Initializable {
@@ -41,6 +45,9 @@ public class NewGameController implements Initializable {
     private int maxBotPlayers = 5;
 
     private int numOfPlayers;
+    private ConfigHandler configHandler = new ConfigHandler();
+    String configFileName = "";
+    ArrayList<String> boardNames = new ArrayList<>();
 
     //change String into Board when Board Model class is implemented
     @FXML
@@ -80,11 +87,14 @@ public class NewGameController implements Initializable {
             maxHumanPlayers = MAX_NUM_PLAYERS - botPlayers;
             spinnerValueFactoryHuman.setMax(maxHumanPlayers);});
 
-        //combobox for board initialization, dummy initialization since no Board model class at the moment
+        //combobox for board initialization
         //fill this from stored board templates
-        comboBoardData.add("CLASSIC");
-        comboBoardData.add("BILKENT");
-        comboBoardData.add("HALLOWEEN");
+        for(String board: FileManager.getBoardConfigNames()){
+            JSONObject config = configHandler.getConfig(board);
+            JSONObject boardConfig = (JSONObject) config.get("boardConfig");
+            comboBoardData.add((String) boardConfig.get("boardName"));
+            boardNames.add((String) boardConfig.get("boardName"));
+        }
 
         //set the data
         comboBoard.setItems(comboBoardData);
@@ -97,10 +107,11 @@ public class NewGameController implements Initializable {
         //set the data
         comboPace.setItems(comboPaceData);
 
-        //combobox for ai characteristic initialization, this will be replaced by reading available ai characteristics list
-        //or by declaring ai characteristic objects here with "new" keyword
-        comboAIData.add("ADVENTUROUS CAPITALIST");
-        comboAIData.add("EBENEZER SCROOGE");
+        //combobox for ai characteristic initialization
+        AICharacteristic characteristics[] = AICharacteristic.values();
+        for(AICharacteristic charac: characteristics) {
+            comboAIData.add(String.valueOf(charac));
+        }
 
         //set the data
         comboAI.setItems(comboAIData);
@@ -130,6 +141,16 @@ public class NewGameController implements Initializable {
     //strings will be changed to Board objects
     private void handleComboBoardAction() {
         String selectedBoard = comboBoard.getSelectionModel().getSelectedItem();
+        boolean found = false;
+        int index = 0;
+        ArrayList<String> configFiles = FileManager.getBoardConfigNames();
+
+        while(!found){
+            if(selectedBoard.equals(boardNames.get(index))){
+                found = true;
+                configFileName = configFiles.get( index);
+            }
+        }
     }
 
     @FXML
@@ -188,7 +209,9 @@ public class NewGameController implements Initializable {
 //        filename = "templateConfig.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
-        sessionManager.setFileName("templateConfig.json");
+        sessionManager.setFileName("templateConfig.json");  //delete this when test is over
+        //uncomment this when test is over
+        //sessionManager.setFileName(configFileName);
         sessionManager.newGame(humanPlayerTestConfiguration);
         GameSession session = sessionManager.getGame();
 //        System.out.println(session);
