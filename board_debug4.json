@@ -65,8 +65,8 @@
       "ChanceCardDeck": [
         {"card":{
           "instruction": "receive",
-          "command": "GO",
-          "parameter": 6
+          "command": "RECEIVE",
+          "parameter": 560
         }}
       ]
     }},
@@ -146,8 +146,8 @@
       "ChanceCardDeck": [
         {"card":{
           "instruction": "goto",
-          "command": "GO_TO",
-          "parameter": 12
+          "command": "MOVE_TO",
+          "parameter": 1
         }}
       ]
     }},
@@ -191,8 +191,8 @@
       "ChanceCardDeck": [
         {"card":{
           "instruction": "goto",
-          "command": "GO_TO",
-          "parameter": 22
+          "command": "MOVE_TO",
+          "parameter": 39
         }}
       ]
     }},{"tile":{
@@ -224,8 +224,8 @@
       "ChanceCardDeck": [
         {"card":{
           "instruction": "goto",
-          "command": "GO_TO",
-          "parameter": 11
+          "command": "MOVE_TO",
+          "parameter": 39
         }}
       ]
     }},{"tile":{
