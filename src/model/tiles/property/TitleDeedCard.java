@@ -2,6 +2,8 @@ package model.tiles.property;
 
 import model.player.Player;
 import model.tiles.GameAction;
+import model.tiles.PropertyTile;
+import model.tiles.Tile;
 import model.tiles.actionStrategy.ActionFactory;
 
 import java.io.Serializable;
@@ -379,8 +381,6 @@ public class TitleDeedCard implements Serializable {
      * @return upgrade cost if the property is upgraded and 0 otherwise.
      */
     public int upgrade(){
-        if(!colorGroup.allOwnedByPlayer(owner))
-            return 0;
 
         upgradeLevel++;
         updateActions();
@@ -392,8 +392,7 @@ public class TitleDeedCard implements Serializable {
      * @return the gain after downgrading the property.
      */
     public int downgrade() {
-        if(upgradeLevel == 0)
-            return 0;
+
         upgradeLevel--;
         updateActions();
         return upgradeCost/2;
@@ -471,6 +470,19 @@ public class TitleDeedCard implements Serializable {
      * @return true if the property is downgradable
      */
     public boolean isDowngradeable(){
-        return actionNames.get("Downgrade Property").isActive();
+        //return actionNames.get("Downgrade Property").isActive();
+
+        for (Tile tile: colorGroup.getGroup ()) {
+            int otherUpgradeLevel = ((PropertyTile) tile).getTitleDeedCard ().getUpgradeLevel();
+
+            if (otherUpgradeLevel - getUpgradeLevel()  > 0)
+                return false;
+        }
+
+        // If the upgrade level is zero cannot downgrade
+        if(upgradeLevel == 0)
+            return false;
+
+        return true;
     }
 }
