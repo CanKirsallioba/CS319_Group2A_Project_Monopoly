@@ -68,7 +68,7 @@ public class GameBoardController implements Initializable {
         playerList = getGameSession().getTurnManager().getPlayers();
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
-        System.out.println(players.size());
+//        System.out.println(players.size());
         for (Player player : players) {
             Observable observable = (Observable) player;
             observable.addObserver(gameActionButtonObserver);
@@ -118,8 +118,11 @@ public class GameBoardController implements Initializable {
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
-                Player player = (Player) o;
-                if (buttonNumber < getPossibleActions().size()) {
+//                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
+                if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive()) {
+//                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
+
+//                    System.out.println(buttonNumber + " " + getPossibleActions().get(buttonNumber));
                     button.setVisible(true);
                     button.setText(getPossibleActions().get(buttonNumber).getName());
                 } else {
@@ -333,8 +336,8 @@ public class GameBoardController implements Initializable {
     public void setGameSession(GameSession gameSession) {
 
         this.gameSession = gameSession;
-        System.out.println(gameSession);
-        System.out.println(getGameSession());
+//        System.out.println(gameSession);
+//        System.out.println(getGameSession());
     }
 
     @FXML
@@ -377,7 +380,7 @@ public class GameBoardController implements Initializable {
             }
 
         }
-        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
+//        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
     }
 
     @FXML
