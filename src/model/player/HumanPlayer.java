@@ -27,5 +27,6 @@ public class HumanPlayer extends AbstractPlayer {
         updatePlayerWorth();
         setChanged();
         notifyObservers();
+        System.out.println(toString());
     }
 }

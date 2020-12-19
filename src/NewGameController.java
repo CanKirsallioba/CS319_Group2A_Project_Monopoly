@@ -49,8 +49,10 @@ public class NewGameController implements Initializable {
 
     private int numOfPlayers;
     private ConfigHandler configHandler = new ConfigHandler();
-    String configFileName = "";
+    String configFileName = "board_template.json";
     ArrayList<String> boardNames = new ArrayList<>();
+    private String selectedAIChar = "BALANCED";
+    private String selectedPace = "MEDIUM";
 
     //change String into Board when Board Model class is implemented
     @FXML
@@ -101,6 +103,7 @@ public class NewGameController implements Initializable {
 
         //set the data
         comboBoard.setItems(comboBoardData);
+        comboBoard.setValue("Classic");
 
         //combobox for pace initialization with string representations
         GamePace paces[] = GamePace.values();
@@ -109,6 +112,7 @@ public class NewGameController implements Initializable {
         }
         //set the data
         comboPace.setItems(comboPaceData);
+        comboPace.setValue("MEDIUM");
 
         //combobox for ai characteristic initialization
         AICharacteristic characteristics[] = AICharacteristic.values();
@@ -118,6 +122,7 @@ public class NewGameController implements Initializable {
 
         //set the data
         comboAI.setItems(comboAIData);
+        comboAI.setValue("BALANCED");
 
     }
 
@@ -159,13 +164,13 @@ public class NewGameController implements Initializable {
 
     @FXML
     private void handleComboPaceAction() {
-        String selectedPace = comboPace.getSelectionModel().getSelectedItem();
+        selectedPace = comboPace.getSelectionModel().getSelectedItem();
     }
 
     @FXML
     //Strings will be changed to AIChar objects
     private void handleComboAIAction() {
-        String selectedAIChar = comboAI.getSelectionModel().getSelectedItem();
+        selectedAIChar = comboAI.getSelectionModel().getSelectedItem();
     }
 
     @FXML
@@ -173,11 +178,12 @@ public class NewGameController implements Initializable {
     private void handleStartGame(ActionEvent event) throws IOException {
         // User ID acquired from a textbox called txtUserId
 //        int userId = Integer.parseInt(this.txtUserId.getText());
-
+        System.out.println( selectedAIChar + selectedPace + configFileName);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
         Parent root = (Parent)fxmlLoader.load();
 
         GameBoardController controller = fxmlLoader.<GameBoardController>getController();
+
         String filename;
 
         // Two Human Player.
@@ -188,8 +194,8 @@ public class NewGameController implements Initializable {
         humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
         //uncomment this when test is over
         //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);
-        humanPlayerTestConfiguration.setHumanPlayerCount(1);
-        humanPlayerTestConfiguration.setMaxPlayerCount(1);
+        humanPlayerTestConfiguration.setHumanPlayerCount(2);
+        humanPlayerTestConfiguration.setMaxPlayerCount(2);
 //        filename = "board_template.json";
 
         // Two AI player
@@ -225,6 +231,7 @@ public class NewGameController implements Initializable {
 //        System.out.println(session);
         numOfPlayers = humanPlayers + botPlayers;
         controller.setGameSession(session);
+        //sessionManager.saveGame(session); //for test purpse
         controller.init();
 
 
@@ -244,6 +251,8 @@ public class NewGameController implements Initializable {
         window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
         window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
         window.show();
+
+
 
 
     }

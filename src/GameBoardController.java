@@ -1,6 +1,8 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.AuctionModel;
@@ -34,6 +37,7 @@ import java.util.ResourceBundle;
 public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
+
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
 //    Image image1 = new Image(file.toURI().toString());};
     TurnManager turnManager;
@@ -54,6 +58,8 @@ public class GameBoardController implements Initializable {
     ImageView[] player2TokenImages;
 
     public void init() {
+
+
         Label[] nameLabels = {brownLabel1, brownLabel2, lightBlueLabel1, lightBlueLabel2, lightBlueLabel3,
                 pinkLabel1, pinkLabel2, pinkLabel3, orangeLabel1, orangeLabel2, orangeLabel3,
                 redLabel1, redLabel2, redLabel3, yellowLabel1, yellowLabel2, yellowLabel3,
@@ -85,6 +91,7 @@ public class GameBoardController implements Initializable {
 
 
         playerList = getGameSession().getTurnManager().getPlayers();
+
         board = getGameSession().getBoard();
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
@@ -98,9 +105,11 @@ public class GameBoardController implements Initializable {
             observable.addObserver(gameActionButtonObserver3);
             observable.addObserver(titleDeedCardObserver);
             observable.addObserver(currentlyDrawnCardObserver);
+
             observable.addObserver(diceObserver);
             int i = 0;
             for (Tile tile : getBoard().getTiles()) {
+                observable.addObserver(new PlayerCardObserver(i));
                 observable.addObserver(new TileObserver(i));
                 i++;
             }
@@ -174,10 +183,6 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 Player player = (Player) o;
-               // System.out.println(playerTokenList);
-                //System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
-                //System.out.println(player.getCurrentTile());
-                //System.out.println(((Player) o).getCurrentTile().getIndex());
                 playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
 
             }
@@ -185,7 +190,6 @@ public class GameBoardController implements Initializable {
     }
 
     private class CurrentlyDrawnCardObserver implements Observer {
-
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
@@ -230,86 +234,26 @@ public class GameBoardController implements Initializable {
     }
 
     private class PlayerCardObserver implements Observer {
-        Player player;
-        Label playerMoney, numberOfProperties;
-        Button seeProperties, tradeButton;
+        int index;
 
         // todo player card container object will be added as parameter
-        public PlayerCardObserver(Player player, Label playerMoney, Label numberOfProperties, Button seeProperties, Button tradeButton) {
-            this.player = player;
-            this.playerMoney = playerMoney;
-            this.numberOfProperties = numberOfProperties;
-            this.seeProperties = seeProperties;
-            this.tradeButton = tradeButton;
+        public PlayerCardObserver(int index) {
+            this.index = index;
         }
-
-        public Player getPlayer() {
-            return player;
-        }
-
-        public void setPlayer(Player player) {
-            this.player = player;
-        }
-
-        public Label getPlayerMoney() {
-            return playerMoney;
-        }
-
-        public void setPlayerMoney(Label playerMoney) {
-            this.playerMoney = playerMoney;
-        }
-
-        public Label getNumberOfProperties() {
-            return numberOfProperties;
-        }
-
-        public void setNumberOfProperties(Label numberOfProperties) {
-            this.numberOfProperties = numberOfProperties;
-        }
-
-        public Button getSeeProperties() {
-            return seeProperties;
-        }
-
-        public void setSeeProperties(Button seeProperties) {
-            this.seeProperties = seeProperties;
-        }
-
-        public Button getTradeButton() {
-            return tradeButton;
-        }
-
-        public void setTradeButton(Button tradeButton) {
-            this.tradeButton = tradeButton;
-        }
-
-        PlayerCardObserver(Player player) {
-            this.player = player;
-        }
-
         @Override
         public void update(Observable o, Object arg) {
-
-            ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
-            int playerIndex = -1;
-            for (int i = 0; i < players.size(); i++) {
-                if (player == players.get(i)) {
-                    playerIndex = i + 1;
-                    break;
-                }
-            }
-
-            playerMoney.setText(player.getBalance() + "");
-            numberOfProperties.setText(player.getTitleDeeds().size() + "");
-
-            //if the blayer is bankrupt, the buttons are inactive
-            if (player.isBankrupt()) {
-                seeProperties.setVisible(false);
-                tradeButton.setVisible(false);
-            } else {
-                seeProperties.setVisible(true);
-                tradeButton.setVisible(true);
-            }
+//
+//            playerMoney.setText(player.getBalance() + "");
+//            numberOfProperties.setText(player.getTitleDeeds().size() + "");
+//
+//            //if the blayer is bankrupt, the buttons are inactive
+//            if (player.isBankrupt()) {
+//                seeProperties.setVisible(false);
+//                tradeButton.setVisible(false);
+//            } else {
+//                seeProperties.setVisible(true);
+//                tradeButton.setVisible(true);
+//            }
         }
     }
 
@@ -476,7 +420,22 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleMenuButton() throws IOException {
-        openPopUp("GameBoardMenu.fxml", "Menu");
+//        openPopUp("GameBoardMenu.fxml", "Menu");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardMenu.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        GameBoardMenuController controller = fxmlLoader.<GameBoardMenuController>getController();
+        controller.setGameSession(getGameSession());
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("Pause Menu");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+        stage.show();
+
     }
 
     @FXML

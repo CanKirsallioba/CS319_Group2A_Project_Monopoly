@@ -33,8 +33,8 @@ public class GameSessionManager {
     }
 
     public void saveGame(GameSession gameSession) throws IOException {
-        serializationHandler.save(gameSession, selectedGameSessionName);
-        FileManager.addGameSaveFile( gameSession.getGameSessionName());
+        String fileName = serializationHandler.save(gameSession);
+        FileManager.addGameSaveFile( fileName);
     }
 
 

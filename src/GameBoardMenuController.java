@@ -31,6 +31,14 @@ public class GameBoardMenuController implements Initializable {
     @FXML
     private Button returnButton;
 
+    public GameSession getGameSession() {
+        return gameSession;
+    }
+
+    public void setGameSession(GameSession gameSession) {
+        this.gameSession = gameSession;
+    }
+
     @FXML
     private GameSession gameSession;
 

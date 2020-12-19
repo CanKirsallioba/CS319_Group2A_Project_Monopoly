@@ -14,6 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import model.BoardConfiguration;
+import model.GamePace;
+import model.player.AICharacteristic;
+import model.session.GameSession;
+import model.session.GameSessionManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,15 +54,32 @@ public class LoadGameController implements Initializable {
 
     @FXML
     //where we give/save these settings to boardconfig object (model)
-    private void handleStartGame(ActionEvent event) throws IOException {
+    private void handleStartGame(ActionEvent event) throws IOException, ClassNotFoundException {
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
 
+        GameBoardController controller = fxmlLoader.<GameBoardController>getController();
+
+        GameSessionManager sessionManager = new GameSessionManager();
+//        sessionManager.setFileName("board_template.json");  //delete this when test is over
+//        uncomment this when test is over
+        sessionManager.loadGame( selectedSaveFileName);
+        GameSession session = sessionManager.getGame();
+//        System.out.println(session);
+        controller.setGameSession(session);
+        controller.init();
+
+
+        Scene scene = new Scene(root);
+
+//        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+//        Scene tableViewScene = new Scene(tableViewParent);
+//        BoardConfiguration boardConfiguration;
         // Stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-        window.setScene(tableViewScene);
+        window.setScene(scene);
 
         //primaryStage.setMaximized(true);
         //primaryStage.setFullScreen(true);
@@ -65,18 +87,17 @@ public class LoadGameController implements Initializable {
         window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
         window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
         window.show();
+
+
     }
 
-    @FXML
-    public void selectLoadGame(ActionEvent event) throws IOException {
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<String> saveFiles = FileManager.getSavedSessionNames();
 
         for(String save: saveFiles){
-            listViewData.add(save.substring(0, save.length() - 4));
+            listViewData.add(save.substring(0,save.lastIndexOf(".")));
         }
         listView.setItems(listViewData);
 
