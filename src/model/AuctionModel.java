@@ -12,16 +12,18 @@ public class AuctionModel extends Observable {
     Player highestBiddingPlayer;
     int highestBid;
     int remainingTime;
+    ArrayList<TitleDeedCard> auctionedTitleDeeds;
 
     AuctionModel() {
         active = true;
         highestBid = 0;
         remainingTime = 60;
         highestBiddingPlayer = null;
-
+        auctionedTitleDeeds = null;
     }
 
     public void startAuction(ArrayList<TitleDeedCard> titleDeedCards) {
+        auctionedTitleDeeds = titleDeedCards;
         active = true;
     }
     public boolean isActive() {
@@ -70,6 +72,16 @@ public class AuctionModel extends Observable {
         } else {
 
         }
+        setChanged();
+        notifyObservers();
+    }
+
+    public ArrayList<TitleDeedCard> getAuctionedTitleDeeds() {
+        return auctionedTitleDeeds;
+    }
+
+    public void setAuctionedTitleDeeds(ArrayList<TitleDeedCard> auctionedTitleDeeds) {
+        this.auctionedTitleDeeds = auctionedTitleDeeds;
         setChanged();
         notifyObservers();
     }

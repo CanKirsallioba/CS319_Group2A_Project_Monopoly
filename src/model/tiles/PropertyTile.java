@@ -14,6 +14,7 @@ public class PropertyTile extends Tile {
     @Override
     protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
         player.setSelectedTitleDeed(titleDeedCard);
+        // todo auction?
         if(!(titleDeedCard.isOwned())){
             setActive ( actions, "Buy Property", true );
             setActive ( actions, "Pay Rent", false );
