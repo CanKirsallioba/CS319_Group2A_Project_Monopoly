@@ -75,4 +75,14 @@ public class AuctionModel extends Observable {
         setChanged();
         notifyObservers();
     }
+
+    public ArrayList<TitleDeedCard> getAuctionedTitleDeeds() {
+        return auctionedTitleDeeds;
+    }
+
+    public void setAuctionedTitleDeeds(ArrayList<TitleDeedCard> auctionedTitleDeeds) {
+        this.auctionedTitleDeeds = auctionedTitleDeeds;
+        setChanged();
+        notifyObservers();
+    }
 }

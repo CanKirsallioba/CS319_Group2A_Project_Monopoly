@@ -31,6 +31,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     Card drawnCard;
     Dice playersDice;
     Tile currentTile;
+
+    /**
+     * Default constructor for AbstractPlayer.
+     */
     AbstractPlayer() {
         titleDeeds = new ArrayList<>();
         bailOutOfJailCards = new ArrayList<>();
@@ -45,6 +49,11 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         setChanged();
         notifyObservers();
     }
+
+    /**
+     * Basic method for displaying the state of the player.
+     * @return the state of the player.
+     */
     @Override
     public String toString() {
         //String titleDeedInfo = "{ ";
@@ -72,19 +81,23 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 "}";
     }
 
+    /**
+     * @return player's Dice
+     */
     @Override
     public Dice getPlayersDice() {
         return playersDice;
     }
 
+    /**
+     * setter method for player's Dice
+     */
     @Override
     public void setPlayersDice(Dice playersDice) {
         this.playersDice = playersDice;
         setChanged();
         notifyObservers();
     }
-
-
 
     // abstract methods
 
@@ -237,6 +250,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * Delegates the starting of auction to its model.
+     * @param titleDeeds is the properties to be auctioned.
+     */
     @Override
     public void startAuction(ArrayList<TitleDeedCard> titleDeeds){
         auctionModel.startAuction(titleDeeds);
@@ -244,6 +261,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * Delegates the starting of trade to its model.
+     * @param otherPlayer is the second player in the trade.
+     */
     @Override
     public void startTrade( Player otherPlayer){
         tradeModel.startTrade(this, otherPlayer);
@@ -307,6 +328,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         checkBailOut();
     }
 
+    /**
+     * Updates the state of the dice by rolling it again.
+     * @return the Dice in its new state.
+     */
     @Override
     public Dice rollDice() {
         playersDice.rollDice();
@@ -319,6 +344,9 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         return playersDice;
     }
 
+    /**
+     * Pays the amount of money required to bail out of jail.
+     */
     @Override
     public void payBailOutMoney() {
         changeBalance(-(playerToken.getBoard().getBoardSalary() / 4));
@@ -376,6 +404,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         return balance;
     }
 
+    /**
+     * setter method for the balance
+     * @param balance is the value of balance.
+     */
     @Override
     public void setBalance(int balance) {
         this.balance = balance;
@@ -395,11 +427,18 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         this.consecutiveDoubleCount = consecutiveDoubleCount;
     }
 
+    /**
+     * @return the current tile
+     */
     @Override
     public Tile getCurrentTile() {
         return currentTile;
     }
 
+    /**
+     * setter method for the current tile
+     * @param currentTile is the new tile player has landed on.
+     */
     @Override
     public void setCurrentTile( Tile currentTile){
         this.currentTile = currentTile;
@@ -407,11 +446,18 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * @return the player's token
+     */
     @Override
     public PlayerToken getPlayerToken() {
         return playerToken;
     }
 
+    /**
+     * setter method for playerToken
+     * @param playerToken is the new token
+     */
     @Override
     public void setPlayerToken( PlayerToken playerToken){
         this.playerToken = playerToken;
@@ -419,16 +465,28 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * getter method for getOutOfJailChoice
+     * @return the getOutOfJailChoice
+     */
     @Override
     public BailOutChoice getGetOutOfJailChoice() {
         return getOutOfJailChoice;
     }
 
+    /**
+     * getter method for totalWorth
+     * @return the totalWorth
+     */
     @Override
     public int getTotalWorth() {
         return totalWorth;
     }
 
+    /**
+     * setter method for totalWorth
+     * @param totalWorth is the new totalWorth
+     */
     @Override
     public void setTotalWorth(int totalWorth) {
         this.totalWorth = totalWorth;
@@ -436,11 +494,19 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * getter method for liquidTotalWorth
+     * @return the liquidTotalWorth
+     */
     @Override
     public int getLiquidTotalWorth() {
         return liquidTotalWorth;
     }
 
+    /**
+     * setter method for liquidTotalWorth
+     * @param liquidTotalWorth is the new liquidTotalWorth
+     */
     @Override
     public void setLiquidTotalWorth(int liquidTotalWorth) {
         this.liquidTotalWorth = liquidTotalWorth;
@@ -448,11 +514,19 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * getter method for auctionModel
+     * @return the auctionModel
+     */
     @Override
     public AuctionModel getAuctionModel() {
         return auctionModel;
     }
 
+    /**
+     * setter method for auctionModel
+     * @param auctionModel is the new auctionModel
+     */
     @Override
     public void setAuctionModel(AuctionModel auctionModel) {
         this.auctionModel = auctionModel;
@@ -460,11 +534,19 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * getter method for tradeModel
+     * @return the tradeModel
+     */
     @Override
     public TradeModel getTradeModel() {
         return tradeModel;
     }
 
+    /**
+     * setter method for tradeModel
+     * @param tradeModel is the new tradeModel
+     */
     @Override
     public void setTradeModel(TradeModel tradeModel) {
         this.tradeModel = tradeModel;
@@ -472,61 +554,105 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         notifyObservers();
     }
 
+    /**
+     * getter method for bankrupt
+     * @return bankrupt
+     */
     public boolean isBankrupt() {
         return bankrupt;
     }
 
-    // end of getter & setters in the design
-
-    // setters and getters not in the design
+    /**
+     * getter method for titleDeeds
+     * @return titleDeeds
+     */
     public ArrayList<TitleDeedCard> getTitleDeeds() {
         return titleDeeds;
     }
 
+    /**
+     * setter method for titleDeeds
+     * @param titleDeeds is the new titleDeeds
+     */
     public void setTitleDeeds(ArrayList<TitleDeedCard> titleDeeds) {
         this.titleDeeds = titleDeeds;
         setChanged();
         notifyObservers();
     }
 
+    /**
+     * getter method for bailOutOfJailCards
+     * @return bailOutOfJailCards
+     */
     public ArrayList<Card> getBailOutOfJailCards() {
         return bailOutOfJailCards;
     }
 
+    /**
+     * setter method for bailOutOfJailCards
+     * @param bailOutOfJailCards is the new bailOutOfJailCards
+     */
     public void setBailOutOfJailCards(ArrayList<Card> bailOutOfJailCards) {
         this.bailOutOfJailCards = bailOutOfJailCards;
         setChanged();
         notifyObservers();
     }
 
+    /**
+     * setter method for bankrupt
+     * @param bankrupt is the new value of bankrupt
+     */
     public void setBankrupt(boolean bankrupt) {
         this.bankrupt = bankrupt;
         setChanged();
         notifyObservers();
     }
 
+    /**
+     * getter method for selectedTitleDeed
+     * @return selectedTitleDeed
+     */
     @Override
     public TitleDeedCard getSelectedTitleDeed(){
         return selectedTitleDeed;
     }
 
+    /**
+     * setter method for selectedTitleDeed
+     * @param selectedTitleDeed is the new selectedTitleDeed
+     */
     public void setSelectedTitleDeed( TitleDeedCard selectedTitleDeed){
         this.selectedTitleDeed = selectedTitleDeed;
     }
 
-
+    /**
+     * getter method for drawnCard
+     * @return drawnCard
+     */
     public Card getCurrentlyDrawnCard() {
         return drawnCard;
     }
 
+    /**
+     * setter method for drawnCard
+     * @param drawnCard is the new drawnCard
+     */
     public void setCurrentlyDrawnCard(Card drawnCard) {
         this.drawnCard = drawnCard;
     }
 
+    /**
+     * getter method for isInJail
+     * @return isInJail
+     */
     public boolean isInJail() {
         return isInJail;
     }
 
+    /**
+     * setter method for isInJail
+     * @param inJail is the new value of isInJail
+     */
     public void setInJail(boolean inJail) {
         isInJail = inJail;
     }

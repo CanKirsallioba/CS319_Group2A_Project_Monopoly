@@ -132,7 +132,10 @@ public class BalancedAIStrategy extends AIStrategy {
     public void makeAndExecuteAuctionDecision(AIPlayer player) {
         AuctionModel auctionModel = player.getAuctionModel();
 
-
+        if( auctionModel.getHighestBid() <= auctionModel.getAuctionedTitleDeeds().get(1).getPropertyValue()
+            && player.getBalance() > 3 * auctionModel.getHighestBid()){
+            // TODO bid
+        }
     }
 
     @Override
