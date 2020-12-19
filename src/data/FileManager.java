@@ -25,19 +25,22 @@ public class FileManager {
 
     public static ArrayList<String> getBoardConfigNames(){
 
-        File dir = new File(System.getProperty("user.dir"));
-        FilenameFilter filter = new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.startsWith("board_");
-            }
-        };
-        String[] pathnames = dir.list(filter);
+        if(configList.size() == 0){
+            File dir = new File(System.getProperty("user.dir"));
+            FilenameFilter filter = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.startsWith("board_");
+                }
+            };
+            String[] pathnames = dir.list(filter);
 
-        for (String name : pathnames) {
-            configList.add( name);
-            System.out.println(name);
+            for (String name : pathnames) {
+                configList.add( name);
+                System.out.println(name);
+            }
         }
+
         return configList;
     }
 
