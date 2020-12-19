@@ -9,7 +9,9 @@ import model.tiles.property.TitleDeedCard;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+/**
+ * Interface that outlines the methods implementing Player classes must have.
+ */
 public interface Player extends Serializable {
 
     // in the order written in the design report
