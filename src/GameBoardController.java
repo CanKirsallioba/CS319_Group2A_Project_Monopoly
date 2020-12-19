@@ -5,9 +5,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -21,8 +23,10 @@ import model.session.TurnManager;
 import model.tiles.GameAction;
 import model.tiles.Tile;
 import model.tiles.card.Card;
+import model.tiles.property.Color;
 import model.tiles.property.TitleDeedCard;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,7 +37,8 @@ import java.util.ResourceBundle;
 public class GameBoardController implements Initializable {
 
     public AnchorPane gameBoard;
-
+//    Image[] diceImages = {File file = new File("src/Box13.jpg");
+//    Image image1 = new Image(file.toURI().toString());};
     TurnManager turnManager;
     Board board;
     Dice dice;
@@ -64,6 +69,7 @@ public class GameBoardController implements Initializable {
         ArrayList<Player> players = getGameSession().getTurnManager().getPlayers();
         TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
+        DiceObserver diceObserver = new DiceObserver();
 
         playerList = getGameSession().getTurnManager().getPlayers();
         board = getGameSession().getBoard();
@@ -77,6 +83,7 @@ public class GameBoardController implements Initializable {
             observable.addObserver(gameActionButtonObserver3);
             observable.addObserver(titleDeedCardObserver);
             observable.addObserver(currentlyDrawnCardObserver);
+            observable.addObserver(diceObserver);
         }
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
 
@@ -88,11 +95,21 @@ public class GameBoardController implements Initializable {
         paintPane(propertyColorPane, "RED");
     }
 
+    @FXML
+    private ImageView dice1, dice2;
+
     private class DiceObserver implements Observer {
 
         @Override
         public void update(Observable o, Object arg) {
-            // todo update dice view.
+            if (o instanceof Player) {
+                Player player = (Player) o;
+                String name1 = "dice" + player.getPlayersDice().getDice1() + ".png";
+                String name2 = "dice" + player.getPlayersDice().getDice2() + ".png";
+                dice1.setImage(new Image (name1));
+                dice2.setImage(new Image (name2));
+            }
+
         }
     }
 
@@ -239,6 +256,11 @@ public class GameBoardController implements Initializable {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());
+//                    if(card.getColorGroup().getColor() == Color.BROWN) {
+//                        propertyNameLabel.setTextFill(Color.("#ff0000"));;
+//                    } else {
+//
+//                    }
                     propertyNameLabel.setText(card.getPropertyName());
                     rentSiteOnlyValueLabel.setText("" + card.getLevelZeroRent());
                     rentWith1HouseValueLabel.setText("" + card.getLevelOneRent());
@@ -560,7 +582,7 @@ public class GameBoardController implements Initializable {
         } else if (color.equals("ORANGE")) {
             pane.setStyle("-fx-background-color:  #FF7900");
         } else {
-            System.out.println("Something wrong with color input (Check if input is String)");
+            throw new RuntimeException("Something wrong with color input (Check if input is String): " + color);
         }
     }
 }
