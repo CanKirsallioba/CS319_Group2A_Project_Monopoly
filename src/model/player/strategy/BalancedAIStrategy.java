@@ -176,7 +176,7 @@ public class BalancedAIStrategy extends AIStrategy {
         }
 
         // pay the tax
-        getGameAction(((IncomeTaxTile) aiPlayer.getCurrentTile()).getPossibleActions(aiPlayer), "Pay Tax").execute();
+        getGameAction(aiPlayer.getCurrentTile().getPossibleActions(aiPlayer), "Pay Tax").execute();
     }
 
     /**

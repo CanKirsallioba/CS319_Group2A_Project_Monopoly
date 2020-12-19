@@ -15,7 +15,7 @@ public class CardTile extends Tile {
         Card card = cardDeck.drawCard();
         player.setCurrentlyDrawnCard(card);
 
-        setActive(actions, "Perform Instruction", true);
+        setActive(actions, "Apply", true);
 
         return actions;
     }
