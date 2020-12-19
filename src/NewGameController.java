@@ -201,23 +201,23 @@ public class NewGameController implements Initializable {
 //        filename = "templateConfig.json";
 
         // TileDebug_Team1
-        BoardConfiguration tileDebug1Configution = new BoardConfiguration();
-        tileDebug1Configution.setGamePace(GamePace.MEDIUM);
-        tileDebug1Configution.setAiCharacteristic(AICharacteristic.BALANCED);
-        tileDebug1Configution.setHumanPlayerCount(2);
-        tileDebug1Configution.setMaxPlayerCount(2);
+        BoardConfiguration tileDebug1Configuration = new BoardConfiguration();
+        tileDebug1Configuration.setGamePace(GamePace.MEDIUM);
+        tileDebug1Configuration.setAiCharacteristic(AICharacteristic.BALANCED);
+        tileDebug1Configuration.setHumanPlayerCount(2);
+        tileDebug1Configuration.setMaxPlayerCount(2);
 //        filename = "templateConfig.json";
 
         // TileDebug_Team2
-        BoardConfiguration tileDebug2Configution = new BoardConfiguration();
-        tileDebug2Configution.setGamePace(GamePace.MEDIUM);
-        tileDebug2Configution.setAiCharacteristic(AICharacteristic.BALANCED);
-        tileDebug2Configution.setHumanPlayerCount(2);
-        tileDebug2Configution.setMaxPlayerCount(2);
+        BoardConfiguration tileDebug2Configuration = new BoardConfiguration();
+        tileDebug2Configuration.setGamePace(GamePace.MEDIUM);
+        tileDebug2Configuration.setAiCharacteristic(AICharacteristic.BALANCED);
+        tileDebug2Configuration.setHumanPlayerCount(2);
+        tileDebug2Configuration.setMaxPlayerCount(2);
 //        filename = "templateConfig.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
-        sessionManager.setFileName("templateConfig.json");  //delete this when test is over
+        sessionManager.setFileName("debug1.json");  //delete this when test is over
         //uncomment this when test is over
         //sessionManager.setFileName(configFileName);
         sessionManager.newGame(humanPlayerTestConfiguration);
