@@ -24,7 +24,7 @@ public class PropertyTile extends Tile {
         if(!(titleDeedCard.isOwned())){
             setActive ( actions, "Buy Property", player.getBalance () >= getTitleDeedCard().getPropertyValue());
             setActive ( actions, "Pay Rent", false );
-            setActive ( actions, "Start Auction", true );
+            setActive ( actions, "Start Auction", false );
         } else if(titleDeedCard.getOwner() != player){
             setActive ( actions, "Buy Property", false );
             setActive(actions, "Pay Rent", player.getLiquidTotalWorth() >= player.getSelectedTitleDeed().getCurrentRent());

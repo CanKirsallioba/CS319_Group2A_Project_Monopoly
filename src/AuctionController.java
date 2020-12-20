@@ -22,6 +22,7 @@ public class AuctionController implements Initializable {
     }
 
     AuctionModel auctionModel;
+    Button[] buttons;
 
     private Timeline animation;
     private int totalAuctionTime = 180;
@@ -40,6 +41,7 @@ public class AuctionController implements Initializable {
             totalAuctionTime--;
         }
         timeLabel.setText(totalAuctionTime + "");
+        buttons = new Button[]{auctionButton1, auctionButton2, auctionButton3, auctionButton4, auctionButton5, auctionButton6};
     }
 
     @FXML
