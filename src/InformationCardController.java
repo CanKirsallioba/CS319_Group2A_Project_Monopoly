@@ -117,6 +117,7 @@ public class InformationCardController implements Initializable {
         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
             if (titleDeedCard.getPropertyName().equals(selectedTitleDeedCardName)) {
                 selectedTitleDeedCard = titleDeedCard;
+                player.setSelectedTitleDeed(selectedTitleDeedCard);
             }
         }
         // todo set labels.

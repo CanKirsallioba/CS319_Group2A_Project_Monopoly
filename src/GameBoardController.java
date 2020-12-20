@@ -352,11 +352,6 @@ public class GameBoardController implements Initializable {
     }
 
     private class TitleDeedCardObserver implements Observer {
-//        AnchorPane titleDeedCard;
-//        Label propertyName, rent, level0Price, level1Price, level2Price, level3Price, level4Price, level5Price;
-//        Label upgradeCost, hotelCost;
-//        Label mortgageValue;
-
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
@@ -417,6 +412,7 @@ public class GameBoardController implements Initializable {
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Trade Screen");
         Scene scene = new Scene(root);
+        stage.setScene(scene);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
         stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
@@ -528,27 +524,27 @@ public class GameBoardController implements Initializable {
     }
 
     public void tradeWithPlayer1() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 1");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(0));
     }
 
     public void tradeWithPlayer2() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 2");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(1));
     }
 
     public void tradeWithPlayer3() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 3");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(2));
     }
 
     public void tradeWithPlayer4() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 4");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(3));
     }
 
     public void tradeWithPlayer5() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 5");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(4));
     }
 
     public void tradeWithPlayer6() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 6");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(5));
     }
 
     public void seeInformationCardPlayer1() throws IOException {
