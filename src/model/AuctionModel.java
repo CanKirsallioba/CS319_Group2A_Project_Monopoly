@@ -61,7 +61,6 @@ public class AuctionModel extends Observable implements Serializable {
 
     public void bid(Player player) {
         // todo check if has enough money.
-
         setChanged();
         notifyObservers();
     }

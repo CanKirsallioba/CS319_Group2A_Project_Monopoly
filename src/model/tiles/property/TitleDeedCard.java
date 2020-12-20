@@ -332,7 +332,7 @@ public class TitleDeedCard implements Serializable {
      * @return the penalty of removing the mortgage of the property
      */
     public int mortgageRemovalPenalty() {
-        return (int)(mortgageValue * getMortgageRemovalMultiplier()); //TODO penalty or multiplier?
+        return (int)(mortgageValue * getMortgageRemovalMultiplier());
     }
 
     public String getPropertyName() {

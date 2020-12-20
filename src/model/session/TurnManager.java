@@ -54,7 +54,6 @@ public class TurnManager implements Serializable {
     }
 
     public Dice getDice() {
-        // todo all players must have same dice object. and this dice object should be set to turnmanager
         return this.dice;
     }
 

@@ -80,9 +80,6 @@ public class PropertyTileActionStrategy extends ActionStrategy {
             player.changeBalance(-totalRent);
             Player otherPlayer = card.getOwner();
             otherPlayer.changeBalance(totalRent);
-        } else {
-            // todo here must change
-//            player.startTrade(otherPlayer);
         }
         card.updateActions();
     }
