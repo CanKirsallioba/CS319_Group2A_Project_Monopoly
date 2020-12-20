@@ -275,14 +275,14 @@
                      </children></AnchorPane>
                   <AnchorPane layoutX="550.0" prefHeight="150.0" prefWidth="100.0" styleClass="tile-left" stylesheets="@GameBoardStyle.css">
                      <children>
-                        <ImageView fx:id="player5Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@./boot.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fitHeight="140.0" fitWidth="85.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@plane-up.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player5Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@./boot.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="player2Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
