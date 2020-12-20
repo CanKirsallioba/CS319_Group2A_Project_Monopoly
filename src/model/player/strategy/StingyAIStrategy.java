@@ -221,7 +221,51 @@ public class StingyAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecuteTradeDecision(AIPlayer player, TradeModel model){
+        TradeModel tradeModel = model;
+        int thisPlayerOfferings = 0;
+        int otherPlayerOfferings = 0;
 
+        int thisPlayer;
+        if( tradeModel.getPlayer1() == player){
+            thisPlayer = 1;
+        }
+        else{
+            thisPlayer = 2;
+        }
+
+        // determine how much this player is putting
+        // and how much the other player is putting
+        if( thisPlayer == 1){
+            thisPlayerOfferings += tradeModel.getMoneyPlayer1();
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer1()){
+                thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+
+            otherPlayerOfferings += tradeModel.getMoneyPlayer2();
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
+                otherPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+        }
+        else{
+            thisPlayerOfferings += tradeModel.getMoneyPlayer2();
+
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
+                thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+
+            otherPlayerOfferings += tradeModel.getMoneyPlayer1();
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer1()){
+                otherPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+        }
+
+        // evaluate the offer
+        if( thisPlayerOfferings * 1.4 <= otherPlayerOfferings){
+            tradeModel.setAIAccepts(true);
+        }
+        else{
+            tradeModel.setAIAccepts(false);
+        }
     }
 
     /**
