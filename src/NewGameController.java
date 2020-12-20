@@ -189,13 +189,13 @@ public class NewGameController implements Initializable {
         // Two Human Player.
         BoardConfiguration humanPlayerTestConfiguration = new BoardConfiguration();
         humanPlayerTestConfiguration.setGamePace(GamePace.MEDIUM); //delete this when test is over
-        //uncomment this
-        //humanPlayerTestConfiguration.setGamePace( selectedPace);
-        humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
+//        uncomment this
+//        humanPlayerTestConfiguration.setGamePace( GamePace.valueOf(selectedPace));
+//        humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
         //uncomment this when test is over
         //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);
-        humanPlayerTestConfiguration.setHumanPlayerCount(1);
-        humanPlayerTestConfiguration.setMaxPlayerCount(1);
+//        humanPlayerTestConfiguration.setHumanPlayerCount(1);
+//        humanPlayerTestConfiguration.setMaxPlayerCount(1);
 //        filename = "board_template.json";
 
         // Two AI player

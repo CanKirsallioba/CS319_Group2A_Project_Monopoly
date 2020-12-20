@@ -13,10 +13,12 @@ public class AuctionModel extends Observable implements Serializable {
     Player highestBiddingPlayer;
     int highestBid;
     int remainingTime;
+
+
     ArrayList<TitleDeedCard> auctionedTitleDeeds;
 
-    AuctionModel() {
-        active = true;
+    public AuctionModel() {
+        active = false;
         highestBid = 0;
         remainingTime = 60;
         highestBiddingPlayer = null;
@@ -26,6 +28,8 @@ public class AuctionModel extends Observable implements Serializable {
     public void startAuction(ArrayList<TitleDeedCard> titleDeedCards) {
         auctionedTitleDeeds = titleDeedCards;
         active = true;
+        setChanged();
+        notifyObservers();
     }
     public boolean isActive() {
         return active;
@@ -85,4 +89,6 @@ public class AuctionModel extends Observable implements Serializable {
         setChanged();
         notifyObservers();
     }
+
+
 }

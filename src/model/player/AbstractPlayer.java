@@ -239,6 +239,10 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         bankrupt = true;
         selectedTitleDeed = null;
         drawnCard = null;
+        for (TitleDeedCard titleDeed : getTitleDeeds()) {
+            titleDeed.setOwner(null);
+            titleDeed.setOwned(false);
+        }
         setChanged();
         notifyObservers();
     }
@@ -547,8 +551,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void setAuctionModel(AuctionModel auctionModel) {
         this.auctionModel = auctionModel;
-        setChanged();
-        notifyObservers();
     }
 
     /**
