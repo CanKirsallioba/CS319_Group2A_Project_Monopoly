@@ -1,7 +1,10 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 import model.AuctionModel;
 
 import java.net.URL;
@@ -21,7 +24,23 @@ public class AuctionController implements Initializable {
     AuctionModel auctionModel;
     Button[] buttons;
 
+    private Timeline animation;
+    private int totalAuctionTime = 180;
+    private String str = "";
+
+
+
     public void init() {
+        animation = new Timeline(new KeyFrame(Duration.seconds(1), e->timelabel()));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
+    }
+
+    private void timelabel() {
+        if ( totalAuctionTime > 0 ) {
+            totalAuctionTime--;
+        }
+        timeLabel.setText(totalAuctionTime + "");
         buttons = new Button[]{auctionButton1, auctionButton2, auctionButton3, auctionButton4, auctionButton5, auctionButton6};
     }
 
@@ -39,7 +58,7 @@ public class AuctionController implements Initializable {
     public Button auctionButton6;
 
     @FXML
-    public Label timeLabel;
+    public Label timeLabel = new Label(totalAuctionTime + "");
     @FXML
     public Label currentPrice;
     @FXML

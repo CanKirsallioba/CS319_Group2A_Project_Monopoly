@@ -1,6 +1,7 @@
 package model.board;
 
 import model.BoardConfiguration;
+import model.GamePace;
 import model.tiles.PropertyTile;
 import model.tiles.Tile;
 import model.tiles.TileFactory;
@@ -21,8 +22,17 @@ public class BoardFactory {
      * @return the initialized board.
      */
     public Board get(BoardConfiguration boardConfiguration, JSONObject config) {
+
         Board board = new Board();
         TileFactory tileFactory = new TileFactory();
+        int gamePace;
+        if(boardConfiguration.getGamePace() == GamePace.FAST){
+            gamePace = 0;
+        } else if (boardConfiguration.getGamePace() == GamePace.MEDIUM){
+            gamePace = 1;
+        } else {
+            gamePace = 2;
+        }
 
         ArrayList<Tile> tiles = new ArrayList<>();
         JSONArray tileConfigs = (JSONArray) config.get("tiles");
@@ -30,7 +40,7 @@ public class BoardFactory {
         //set tiles from config file
         for (Object tileConfig : tileConfigs) {
             JSONObject tileObj = (JSONObject) ((JSONObject) tileConfig).get("tile");
-            tiles.add(tileFactory.getTile(tileObj));
+            tiles.add(tileFactory.getTile(tileObj, gamePace));
         }
         board.setTiles(tiles);
 
@@ -52,6 +62,9 @@ public class BoardFactory {
 
             }
         }
+
+        //set board pace
+
 
         //set jail index to board
         JSONObject boardConfig = (JSONObject) config.get("boardConfig");

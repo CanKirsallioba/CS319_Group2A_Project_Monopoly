@@ -1,3 +1,4 @@
+import data.FileManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,6 +101,7 @@ public class GameBoardMenuController implements Initializable {
     @FXML
     public void handleSave(ActionEvent event) throws IOException {
         GameSessionManager sessionManager = new GameSessionManager();
+        FileManager.getSavedSessionNames();
         sessionManager.saveGame( getGameSession());
     }
 
