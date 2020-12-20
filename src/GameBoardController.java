@@ -228,7 +228,7 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
 //                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
-                if (!((Player) o).isAIControlled() &&
+                if (!getCurrentPlayer().isAIControlled() &&
                         (buttonNumber < getPossibleActions().size() &&
                                 getPossibleActions().get(buttonNumber).isActive() &&
                                 !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName)) && !((Player) o).isBankrupt()) {
@@ -328,6 +328,7 @@ public class GameBoardController implements Initializable {
         Parent root = (Parent) fxmlLoader.load();
         TradeController tradeController = fxmlLoader.<TradeController>getController();
         tradeController.setTradeModel(tradeModel);
+        System.out.println("TRADE MODEL :" + tradeModel);
         tradeController.setProposingPlayer(proposingPlayer);
         tradeController.setProposedPlayer(proposedPlayer);
 

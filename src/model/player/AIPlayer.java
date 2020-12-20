@@ -51,7 +51,8 @@ public class AIPlayer extends AbstractPlayer implements Observer {
      * Is invoked when player is made a trade offer.
      */
     void makeAndExecuteTradeDecision(){
-        aiStrategy.makeAndExecuteTradeDecision( this);
+        System.out.println("MODEL 3" + tradeModel);
+        aiStrategy.makeAndExecuteTradeDecision( this, tradeModel);
     }
 
     /**
@@ -188,6 +189,7 @@ public class AIPlayer extends AbstractPlayer implements Observer {
         if (o instanceof TradeModel) {
             TradeModel model = (TradeModel) o;
             if (model.getPlayer2() == this) {
+                setTradeModel(model);
                 makeAndExecuteTradeDecision();
             }
         }

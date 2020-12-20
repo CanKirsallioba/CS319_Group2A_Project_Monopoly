@@ -1,5 +1,6 @@
 package model.player.strategy;
 
+import model.TradeModel;
 import model.player.AIPlayer;
 import model.player.TaxOption;
 import model.tiles.GameAction;
@@ -221,7 +222,7 @@ public class AdventurousAIStrategy extends AIStrategy{
      * @param player is the player subject to the decision
      */
     @Override
-    public void makeAndExecuteTradeDecision( AIPlayer player){
+    public void makeAndExecuteTradeDecision(AIPlayer player, TradeModel model){
 
     }
 

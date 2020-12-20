@@ -162,16 +162,14 @@ public class TradeController implements Initializable {
 
     public void handlePropose() {
         if (proposedPlayer.isAIControlled()) {
-            ArrayList<TitleDeedCard> lefts = new ArrayList<>();
-            ArrayList<TitleDeedCard> rights = new ArrayList<>();
-            lefts.addAll(playerLeftOffered.getItems());
-            rights.addAll(playerRightOffered.getItems());
-            tradeModel.startTrade(proposingPlayer, proposedPlayer);
+            ArrayList<TitleDeedCard> lefts = new ArrayList<>(playerLeftOffered.getItems());
+            ArrayList<TitleDeedCard> rights = new ArrayList<>(playerRightOffered.getItems());
             tradeModel.setTitleDeedCardsPlayer1(lefts);
-            tradeModel.setTitleDeedCardsPlayer1(rights);
+            tradeModel.setTitleDeedCardsPlayer2(rights);
             tradeModel.setMoneyPlayer1(playerAOfferedMoney);
             tradeModel.setMoneyPlayer1(playerBOfferedMoney);
             tradeModel.setAIAccepts(false);
+            tradeModel.startTrade(proposingPlayer, proposedPlayer);
         }
         Alert alert = null;
         ButtonType humanAnswer = ButtonType.YES;
@@ -205,8 +203,6 @@ public class TradeController implements Initializable {
 
             proposedPlayer.changeBalance(playerAOfferedMoney);
             proposedPlayer.changeBalance(-playerBOfferedMoney);
-
-            tradeModel.cancelTrade();
 
             Label label = proposingPlayerLabel;
             Stage stage = (Stage) label.getScene().getWindow();
