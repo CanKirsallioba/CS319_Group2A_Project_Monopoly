@@ -36,6 +36,8 @@ import java.util.ResourceBundle;
 
 public class GameBoardController implements Initializable {
 
+
+
     public AnchorPane gameBoard;
     public String lastExecutedActionName = "";
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
@@ -75,7 +77,10 @@ public class GameBoardController implements Initializable {
     Label[] playerMoneyLabels;
     @FXML
     Label[] playerNumberOfPropertiesLabels;
+    @FXML
+    Button[] playerTradeButtonList;
 
+    ArrayList<String> playerNames;
     public void init() {
 
 
@@ -96,7 +101,7 @@ public class GameBoardController implements Initializable {
         player5TokenImages = new ImageView[]{player5Tile0TokenImage, player5Tile1TokenImage, player5Tile2TokenImage, player5Tile3TokenImage, player5Tile4TokenImage, player5Tile5TokenImage, player5Tile6TokenImage, player5Tile7TokenImage, player5Tile8TokenImage, player5Tile9TokenImage, player5Tile10TokenImage, player5Tile11TokenImage, player5Tile12TokenImage, player5Tile13TokenImage, player5Tile14TokenImage, player5Tile15TokenImage, player5Tile16TokenImage, player5Tile17TokenImage, player5Tile18TokenImage, player5Tile19TokenImage, player5Tile20TokenImage, player5Tile21TokenImage, player5Tile22TokenImage, player5Tile23TokenImage, player5Tile24TokenImage, player5Tile25TokenImage, player5Tile26TokenImage, player5Tile27TokenImage, player5Tile28TokenImage, player5Tile29TokenImage, player5Tile30TokenImage, player5Tile31TokenImage, player5Tile32TokenImage, player5Tile33TokenImage, player5Tile34TokenImage, player5Tile35TokenImage, player5Tile36TokenImage, player5Tile37TokenImage, player5Tile38TokenImage, player5Tile39TokenImage};
         player6TokenImages = new ImageView[]{player6Tile0TokenImage, player6Tile1TokenImage, player6Tile2TokenImage, player6Tile3TokenImage, player6Tile4TokenImage, player6Tile5TokenImage, player6Tile6TokenImage, player6Tile7TokenImage, player6Tile8TokenImage, player6Tile9TokenImage, player6Tile10TokenImage, player6Tile11TokenImage, player6Tile12TokenImage, player6Tile13TokenImage, player6Tile14TokenImage, player6Tile15TokenImage, player6Tile16TokenImage, player6Tile17TokenImage, player6Tile18TokenImage, player6Tile19TokenImage, player6Tile20TokenImage, player6Tile21TokenImage, player6Tile22TokenImage, player6Tile23TokenImage, player6Tile24TokenImage, player6Tile25TokenImage, player6Tile26TokenImage, player6Tile27TokenImage, player6Tile28TokenImage, player6Tile29TokenImage, player6Tile30TokenImage, player6Tile31TokenImage, player6Tile32TokenImage, player6Tile33TokenImage, player6Tile34TokenImage, player6Tile35TokenImage, player6Tile36TokenImage, player6Tile37TokenImage, player6Tile38TokenImage, player6Tile39TokenImage};
         playerTokenList = new ImageView[][]{player1TokenImages, player2TokenImages, player3TokenImages, player4TokenImages, player5TokenImages, player6TokenImages};
-
+        playerTradeButtonList = new Button[]{p1TradeButton, p2TradeButton, p3TradeButton, p4TradeButton, p5TradeButton, p6TradeButton};
 
         Label[] arr = {lightBlueLabel1, lightBlueLabel2, lightBlueLabel3};
         GameActionButtonObserver gameActionButtonObserver = new GameActionButtonObserver(button1, 0);
@@ -107,22 +112,23 @@ public class GameBoardController implements Initializable {
         TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
         DiceObserver diceObserver = new DiceObserver();
-        playerCardAnchorPanes = new AnchorPane[]{player1Card, player2Card, player3Card, player4Card, player5Card,  player6Card};
-        playerMoneyLabels = new Label[]{p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel,  p6moneyLabel};
-        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3moneyLabel, p4NumOfPropLabel,  p5moneyLabel,  p6NameLabel};
+        playerCardAnchorPanes = new AnchorPane[]{player1Card, player2Card, player3Card, player4Card, player5Card, player6Card};
+        playerMoneyLabels = new Label[]{p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel, p6moneyLabel};
+        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3moneyLabel, p4NumOfPropLabel, p5moneyLabel, p6NameLabel};
 
         playerList = getGameSession().getTurnManager().getPlayers();
 
         board = getGameSession().getBoard();
 
         int counter = 0;
-        for (Tile tile: board.getTiles()) {
+        for (Tile tile : board.getTiles()) {
             if (tile instanceof PropertyTile) {
-                nameLabels[counter].setText( ((PropertyTile) tile).getTitleDeedCard().getPropertyName() );
-                priceLabels[counter].setText( String.valueOf(((PropertyTile) tile).getTitleDeedCard().getPropertyValue()));
+                nameLabels[counter].setText(((PropertyTile) tile).getTitleDeedCard().getPropertyName());
+                priceLabels[counter].setText(String.valueOf(((PropertyTile) tile).getTitleDeedCard().getPropertyValue()));
                 counter++;
             }
         }
+        Label[] playerNameLabels = {p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel,p5NameLabel, p6NameLabel};
 
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
@@ -159,6 +165,9 @@ public class GameBoardController implements Initializable {
         for (ImageView view : player6TokenImages) {
             view.setVisible(false);
         }
+        int aiPlayerCount = 1;
+        int humanPlayerCount = 1;
+        playerNames = new ArrayList<>();
 
         for (Player player : players) {
             Observable observable = (Observable) player;
@@ -170,11 +179,20 @@ public class GameBoardController implements Initializable {
             observable.addObserver(currentlyDrawnCardObserver);
             observable.addObserver(new PlayerCardObserver());
             observable.addObserver(diceObserver);
+            if (player.isAIControlled()) {
+                playerNames.add("AI Player " + aiPlayerCount);
+                aiPlayerCount++;
+            } else {
+                playerNames.add("Human Player " + humanPlayerCount);
+                humanPlayerCount++;
+            }
+
             int i = 0;
             for (Tile tile : getBoard().getTiles()) {
                 observable.addObserver(new TileObserver(i));
                 i++;
             }
+
             playerCardObserverUpdate(observable);
             currentlyDrawnCardObserverUpdate(observable);
             playerCardObserverUpdate(observable);
@@ -182,7 +200,9 @@ public class GameBoardController implements Initializable {
             player.setCurrentTile(player.getPlayerToken().getBoard().getTiles().get(player.getPlayerToken().getCurrentTileIndex()));
             tileObserverUpdate(observable, player.getCurrentTile().getIndex());
         }
-
+        for (int i = 0; i < getPlayerList().size(); i++) {
+            playerNameLabels[i].setText(playerNames.get(i));
+        }
 
 
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
@@ -239,7 +259,7 @@ public class GameBoardController implements Initializable {
     private void currentlyDrawnCardObserverUpdate(Observable o) {
         if (o instanceof Player) {
             Card card = getCurrentPlayer().getCurrentlyDrawnCard();
-            if (card == null) {
+            if (card == null || ((Player)o).isBankrupt()) {
                 titleDeedCard1.setVisible(false);
             } else {
                 communityOrChanceCardLabel.setText(card.getType());
@@ -269,7 +289,10 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
 //                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
-                if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive() && !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName)) {
+                if (!((Player) o).isAIControlled() &&
+                        (buttonNumber < getPossibleActions().size() &&
+                                getPossibleActions().get(buttonNumber).isActive() &&
+                                !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName))) {
 //                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
 
 //                    System.out.println(buttonNumber + " " + getPossibleActions().get(buttonNumber));
@@ -290,6 +313,16 @@ public class GameBoardController implements Initializable {
             playerCardAnchorPanes[index].setVisible(false);
 
         } else {
+            for (int i = 0; i < getPlayerList().size(); i++) {
+                if (player == getPlayerList().get(i)) {
+                    playerTradeButtonList[i].setDisable(true);
+                    playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(2,0,36,1) 0%, rgba(223,174,163,1) 0%, rgba(255,115,87,1) 79%);");
+                } else {
+                    playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,255,255,1) 0%, rgba(29,119,128,1) 100%);");
+                    playerTradeButtonList[i].setDisable(false);
+                }
+            }
+
             playerMoneyLabels[index].setText("" + player.getBalance());
             playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
         }
@@ -312,7 +345,7 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 TitleDeedCard card = getCurrentPlayer().getSelectedTitleDeed();
-                if (card == null) {
+                if (card == null || ((Player)o).isBankrupt()) {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());
@@ -326,6 +359,7 @@ public class GameBoardController implements Initializable {
                     costOfHousesValueLabel.setText("" + card.getUpgradeCost());
                     costOfHotelsValueLabel.setText("" + card.getUpgradeCost());
                     mortgageValueLabel.setText("" + card.getMortgageValue());
+                    costLabel.setText(card.getPropertyValue() + "");
                     titleDeedCard.setVisible(true);
                 }
             }
@@ -338,12 +372,35 @@ public class GameBoardController implements Initializable {
         InformationCardController controller = fxmlLoader.<InformationCardController>getController();
         controller.setPlayer(player);
         controller.setCurrentPlayer(currentPlayer);
+        controller.setTurnManager(getTurnManager());
         controller.init();
         Stage stage = new Stage(StageStyle.DECORATED);
 
         stage.setTitle("Information Card");
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void handleTrade(Player proposingPlayer, Player proposedPlayer) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Trade.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        TradeController tradeController = fxmlLoader.<TradeController>getController();
+        tradeController.setProposingPlayer(proposingPlayer);
+        tradeController.setProposedPlayer(proposedPlayer);
+
+        tradeController.setProposingPlayerName(playerNames.get(getPlayerList().indexOf(proposingPlayer)));
+        tradeController.setProposedPlayerName(playerNames.get(getPlayerList().indexOf(proposedPlayer)));
+        tradeController.init();
+
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("Trade Screen");
+        Scene scene = new Scene(root);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
         stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
@@ -479,27 +536,27 @@ public class GameBoardController implements Initializable {
     }
 
     public void seeInformationCardPlayer1() throws IOException {
-        handleSeeProperties( playerList.get(0), getCurrentPlayer());
+        handleSeeProperties(playerList.get(0), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer2() throws IOException {
-        handleSeeProperties( playerList.get(1), getCurrentPlayer());
+        handleSeeProperties(playerList.get(1), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer3() throws IOException {
-        handleSeeProperties( playerList.get(2), getCurrentPlayer());
+        handleSeeProperties(playerList.get(2), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer4() throws IOException {
-        handleSeeProperties( playerList.get(3), getCurrentPlayer());
+        handleSeeProperties(playerList.get(3), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer5() throws IOException {
-        handleSeeProperties( playerList.get(4), getCurrentPlayer());
+        handleSeeProperties(playerList.get(4), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer6() throws IOException {
-        handleSeeProperties( playerList.get(5), getCurrentPlayer());
+        handleSeeProperties(playerList.get(5), getCurrentPlayer());
     }
 
     public void openTitleDeedCard() throws IOException {
@@ -530,7 +587,7 @@ public class GameBoardController implements Initializable {
         this.playerList = playerList;
     }
 
-    public void paintPane(Pane pane, String color) {
+    public static void paintPane(Pane pane, String color) {
         if (color.equals("RED")) {
             pane.setStyle("-fx-background-color:  #FF0900;");
         } else if (color.equals("YELLOW")) {

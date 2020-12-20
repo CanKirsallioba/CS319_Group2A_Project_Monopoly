@@ -108,4 +108,5 @@ public interface Player extends Serializable {
 
     public Dice getPlayersDice();
     public void setPlayersDice(Dice playersDice);
+    public boolean isAIControlled();
 }

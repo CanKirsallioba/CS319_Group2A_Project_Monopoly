@@ -87,7 +87,13 @@ public class TitleDeedCard implements Serializable {
      * @return the game action objects associated with the property
      */
     public ArrayList<GameAction> getPropertyActions() {
-        return propertyActions;
+        ArrayList<GameAction> actions = new ArrayList<>() ;
+        for (GameAction propertyAction : propertyActions) {
+            if (propertyAction.isActive()) {
+                actions.add(propertyAction);
+            }
+        }
+        return actions;
     }
 
     /**
@@ -132,61 +138,28 @@ public class TitleDeedCard implements Serializable {
      */
     public void updateActions() {
 
-        /*
-        switch (upgradeLevel){
-            case 0:
-                deactivateAction("Downgrade Property");
-                activateAction("Upgrade Property");
-                if(isMortgaged()) {
-                    activateAction("Remove Mortgage");
-                    deactivateAction("Mortgage Property");
-                }
-                else{
-                    deactivateAction("Remove Mortgage");
-                    activateAction("Mortgage Property");
-                }
-                break;
-            case 5 :
-                activateAction("Downgrade Property");
-                deactivateAction("Upgrade Property");
-                if(isMortgaged()) {
-                    activateAction("Remove Mortgage");
-                    deactivateAction("Mortgage Property");
-                }
-                else{
-                    deactivateAction("Remove Mortgage");
-                    activateAction("Mortgage Property");
-                }
-                break;
-            default:
-                activateAction("Downgrade Property");
-                activateAction("Upgrade Property");
-                if(isMortgaged()) {
-                    activateAction("Remove Mortgage");
-                    deactivateAction("Mortgage Property");
-                }
-                else{
-                    deactivateAction("Remove Mortgage");
-                    activateAction("Mortgage Property");
-                }
-                break;
-        }
-        */
-
-
         if(isMortgaged()) {
             activateAction("Remove Mortgage");
             deactivateAction("Mortgage Property");
         }
-        else{
+        else if(upgradeLevel <= 0){
             deactivateAction("Remove Mortgage");
             activateAction("Mortgage Property");
+        }else{
+            deactivateAction("Mortgage Property");
+            deactivateAction("Remove Property");
         }
+
 
         if(isUpgradeable ())
             activateAction ( "Upgrade Property" );
         else
             deactivateAction ( "Upgrade Property" );
+
+        if(isDowngradeable())
+            activateAction("Downgrade Property");
+        else
+            deactivateAction("Downgrade Property");
 
     }
 

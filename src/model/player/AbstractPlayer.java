@@ -246,6 +246,8 @@ public abstract class AbstractPlayer extends Observable implements Player  {
     @Override
     public void declareBankruptcy() {
         bankrupt = true;
+        selectedTitleDeed = null;
+        drawnCard = null;
         System.out.println( "DEBUG: player bankrupted");
         setChanged();
         notifyObservers();

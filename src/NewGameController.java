@@ -203,24 +203,9 @@ public class NewGameController implements Initializable {
         AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
         AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
         AIPlayerTestConfiguration.setHumanPlayerCount(0);
-        AIPlayerTestConfiguration.setMaxPlayerCount(1);
+        AIPlayerTestConfiguration.setMaxPlayerCount(3);
 //        filename = "board_template.json";
 
-        // TileDebug_Team1
-        BoardConfiguration tileDebug1Configuration = new BoardConfiguration();
-        tileDebug1Configuration.setGamePace(GamePace.MEDIUM);
-        tileDebug1Configuration.setAiCharacteristic(AICharacteristic.BALANCED);
-        tileDebug1Configuration.setHumanPlayerCount(2);
-        tileDebug1Configuration.setMaxPlayerCount(2);
-//        filename = "board_template.json";
-
-        // TileDebug_Team2
-        BoardConfiguration tileDebug2Configuration = new BoardConfiguration();
-        tileDebug2Configuration.setGamePace(GamePace.MEDIUM);
-        tileDebug2Configuration.setAiCharacteristic(AICharacteristic.BALANCED);
-        tileDebug2Configuration.setHumanPlayerCount(1);
-        tileDebug2Configuration.setMaxPlayerCount(1);
-//        filename = "board_template.json";
 
         GameSessionManager sessionManager = new GameSessionManager();
 //        sessionManager.setFileName("board_template.json");  //delete this when test is over

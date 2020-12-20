@@ -24,22 +24,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button2Strategy(Player player) {
-        PropertyTile tile;
-        if (!(player.getCurrentTile () instanceof PropertyTile)) {
-            throw new RuntimeException ( "Wrong tile type" );
-        }
-        tile = (PropertyTile) player.getCurrentTile ();
-        TitleDeedCard card = tile.getTitleDeedCard();
-        int totalRent = card.getPropertyValue();
-
-        if (player.getBalance() >= totalRent) {
-            player.changeBalance(-totalRent);
-            Player otherPlayer = card.getOwner();
-            otherPlayer.changeBalance(totalRent);
-        } else {
-            // todo here must change
-//            player.startTrade(otherPlayer);
-        }
+        payRent(player);
     }
 
     /**
@@ -48,20 +33,19 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-        PropertyTile tile;
-        if (!(player.getCurrentTile () instanceof PropertyTile)) {
-            throw new RuntimeException ( "Wrong tile type" );
-        }
-        tile = (PropertyTile) player.getCurrentTile ();
-        TitleDeedCard card = tile.getTitleDeedCard ();
+        TitleDeedCard card = player.getSelectedTitleDeed();
         ArrayList<TitleDeedCard> titleDeedCards = new ArrayList<>();
         titleDeedCards.add(card);
         player.startAuction(titleDeedCards);
     }
 
+    /**
+     * This strategy is related to declaring bankruptcy when the player has insufficient money
+     * @param player is the player that the action is inflicted on.
+     */
     @Override
     public void button4Strategy(Player player) {
-        System.out.println("S4");
+        player.declareBankruptcy();
 
     }
 
@@ -89,22 +73,16 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void payRent(Player player) {
-        PropertyTile tile;
-        if (!(player.getCurrentTile () instanceof PropertyTile)) {
-            throw new RuntimeException ( "Wrong tile type" );
-        }
-        tile = (PropertyTile) player.getCurrentTile ();
-        TitleDeedCard card = tile.getTitleDeedCard ();
+        TitleDeedCard card = player.getSelectedTitleDeed();
+        int totalRent = card.getCurrentRent();
 
-        int totalRent = card.getCurrentRent ();
-
-        if (player.getBalance () >= totalRent) {
-            player.changeBalance ( -totalRent );
-            Player otherPlayer = card.getOwner ();
-            otherPlayer.changeBalance ( totalRent );
+        if (player.getBalance() >= totalRent) {
+            player.changeBalance(-totalRent);
+            Player otherPlayer = card.getOwner();
+            otherPlayer.changeBalance(totalRent);
         } else {
-//            player.startTrade ( otherPlayer );
-            // Todo
+            // todo here must change
+//            player.startTrade(otherPlayer);
         }
     }
 
@@ -113,12 +91,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
      * @param player the player that the action is inflicted on.
      */
     private void startAuction(Player player) {
-        PropertyTile propertyTile;
-        if (!(player.getCurrentTile () instanceof PropertyTile)) {
-            throw new RuntimeException ( "Wrong tile type" );
-        }
-        PropertyTile tile = (PropertyTile) player.getCurrentTile ();
-        TitleDeedCard card = tile.getTitleDeedCard ();
+        TitleDeedCard card = player.getSelectedTitleDeed();
         if (!card.isOwned ()) {
             ArrayList<TitleDeedCard> titleDeedCards = new ArrayList<>();
             titleDeedCards.add ( card );
