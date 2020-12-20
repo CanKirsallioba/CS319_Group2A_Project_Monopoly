@@ -17,24 +17,31 @@ public class TradeModel extends Observable implements Serializable {
     boolean AIAccepts;
 
     public void startTrade(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
         setChanged();
         notifyObservers();
     }
 
     public void completeTrade() {
-        // todo complete the trade.
         player1 = null;
+        titleDeedCardsPlayer1 = null;
+        titleDeedCardsPlayer2 = null;
+        moneyPlayer1 = 0;
+        moneyPlayer2 = 0;
+        AIAccepts = false;
         player2 = null;
-        setChanged();
-        notifyObservers();
     }
 
     public void cancelTrade() {
-        // todo clear everything
+
         player1 = null;
+        titleDeedCardsPlayer1 = null;
+        titleDeedCardsPlayer2 = null;
+        moneyPlayer1 = 0;
+        moneyPlayer2 = 0;
+        AIAccepts = false;
         player2 = null;
-        setChanged();
-        notifyObservers();
     }
 
     public Player getPlayer1() {
