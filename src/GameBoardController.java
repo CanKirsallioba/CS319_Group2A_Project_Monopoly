@@ -114,7 +114,7 @@ public class GameBoardController implements Initializable {
         DiceObserver diceObserver = new DiceObserver();
         playerCardAnchorPanes = new AnchorPane[]{player1Card, player2Card, player3Card, player4Card, player5Card, player6Card};
         playerMoneyLabels = new Label[]{p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel, p6moneyLabel};
-        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3moneyLabel, p4NumOfPropLabel, p5moneyLabel, p6NameLabel};
+        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3NumOfPropLabel, p4NumOfPropLabel, p5NumOfPropLabel, p6NumOfPropLabel};
 
         playerList = getGameSession().getTurnManager().getPlayers();
 
@@ -336,11 +336,8 @@ public class GameBoardController implements Initializable {
                 }
             }
         }
-
-
-
-        playerMoneyLabels[index].setText("" + player.getBalance());
-        playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
+        playerMoneyLabels[index].setText("Balance: " + player.getBalance());
+        playerNumberOfPropertiesLabels[index].setText("Property Count: " + player.getTitleDeeds().size());
 
     }
 
