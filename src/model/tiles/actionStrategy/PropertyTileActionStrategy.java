@@ -61,7 +61,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
             card.setOwned(true);
             player.changeBalance ( -card.getPropertyValue() );
             player.addTitleDeedCard ( card );
-
+            card.updateActions();
         }
 //        for (TitleDeedCard titleDeed : player.getTitleDeeds()) {
 //            System.out.println("TitleDeedName: " + titleDeed.getPropertyName());
@@ -84,6 +84,7 @@ public class PropertyTileActionStrategy extends ActionStrategy {
             // todo here must change
 //            player.startTrade(otherPlayer);
         }
+        card.updateActions();
     }
 
     /**

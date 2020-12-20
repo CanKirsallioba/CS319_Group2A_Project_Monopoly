@@ -120,7 +120,7 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                 notifyObservers();
                 Tile currentlyLandedTile = getCurrentTile();
                 if( currentlyLandedTile instanceof PropertyTile){
-//                    setSelectedTitleDeed(((ile) currentlyLandedTile).getTitleDeedCard());
+//                    setSelectedTitleDeed(((PropertyTile) currentlyLandedTile).getTitleDeedCard());
                     makeAndExecutePropertyDecision();
                     setCurrentlyDrawnCard(null);
                 } else {
