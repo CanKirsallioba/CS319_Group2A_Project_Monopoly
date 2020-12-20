@@ -47,10 +47,17 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     private void upgradeProperty(Player player) {
 
+        if(player == null){
+            System.out.println("Player is null");
+            return;
+        }
+
+
         TitleDeedCard card = player.getSelectedTitleDeed();
 
-        if (player.getBalance() <= card.getUpgradeCost() && card.isUpgradeable()) {
-            player.changeBalance(-card.upgrade());
+        if ((player.getBalance() >= card.getUpgradeCost()) && card.isUpgradeable()) {
+            System.out.println("Upgrade Successful");
+            player.changeBalance(-(card.upgrade()));
         }
     }
 

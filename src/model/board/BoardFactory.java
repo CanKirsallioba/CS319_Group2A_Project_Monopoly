@@ -38,7 +38,9 @@ public class BoardFactory {
                     }
                 }
                 ((PropertyTile) tileCheck).getTitleDeedCard().getColorGroup().setGroup( colorGroupOfTile);
-                colorGroupOfTile.clear();
+                colorGroupOfTile = new ArrayList<>();
+
+
             }
         }
 
