@@ -104,12 +104,12 @@ public class InformationCardController implements Initializable {
     }
 
     public void handleButton5() {
-        player.declareBankruptcy();
         listViewData.clear();
         updateButtons();
         updateTitleDeedCard();
         Stage stage = (Stage)button5.getScene().getWindow();
         stage.close();
+        player.declareBankruptcy();
         turnManager.endTurn();
     }
 

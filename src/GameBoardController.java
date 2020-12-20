@@ -37,7 +37,6 @@ import java.util.ResourceBundle;
 public class GameBoardController implements Initializable {
 
 
-
     public AnchorPane gameBoard;
     public String lastExecutedActionName = "";
     //    Image[] diceImages = {File file = new File("src/Box13.jpg");
@@ -81,6 +80,7 @@ public class GameBoardController implements Initializable {
     Button[] playerTradeButtonList;
 
     ArrayList<String> playerNames;
+
     public void init() {
 
 
@@ -128,7 +128,7 @@ public class GameBoardController implements Initializable {
                 counter++;
             }
         }
-        Label[] playerNameLabels = {p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel,p5NameLabel, p6NameLabel};
+        Label[] playerNameLabels = {p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel, p5NameLabel, p6NameLabel};
 
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
@@ -179,6 +179,7 @@ public class GameBoardController implements Initializable {
             observable.addObserver(currentlyDrawnCardObserver);
             observable.addObserver(new PlayerCardObserver());
             observable.addObserver(diceObserver);
+//            observable.addObserver(new PlayerObserver());
             if (player.isAIControlled()) {
                 playerNames.add("AI Player " + aiPlayerCount);
                 aiPlayerCount++;
@@ -217,9 +218,9 @@ public class GameBoardController implements Initializable {
     @FXML
     private ImageView dice1, dice2;
 
+
     private void diceObserverUpdate(Observable o) {
         if (o instanceof Player) {
-            Player player = (Player) o;
             String name1 = "dice" + getGameSession().getDice().getDice1() + ".png";
             String name2 = "dice" + getGameSession().getDice().getDice2() + ".png";
             dice1.setImage(new Image(name1));
@@ -238,7 +239,7 @@ public class GameBoardController implements Initializable {
         if (o instanceof Player) {
             Player player = (Player) o;
 //            System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
-            playerTokenList[getPlayerList().indexOf(player)][index].setVisible(index == ((Player) o).getCurrentTile().getIndex());
+            playerTokenList[getPlayerList().indexOf(player)][index].setVisible((index == ((Player) o).getCurrentTile().getIndex()) && !player.isBankrupt());
 
         }
     }
@@ -259,7 +260,7 @@ public class GameBoardController implements Initializable {
     private void currentlyDrawnCardObserverUpdate(Observable o) {
         if (o instanceof Player) {
             Card card = getCurrentPlayer().getCurrentlyDrawnCard();
-            if (card == null || ((Player)o).isBankrupt()) {
+            if (card == null || ((Player) o).isBankrupt()) {
                 titleDeedCard1.setVisible(false);
             } else {
                 communityOrChanceCardLabel.setText(card.getType());
@@ -275,6 +276,15 @@ public class GameBoardController implements Initializable {
             currentlyDrawnCardObserverUpdate(o);
         }
     }
+
+//    private class PlayerObserver implements Observer {
+//        @Override
+//        public void update(Observable o, Object arg) {
+//            if (o instanceof Player) {
+//                if (((Player) o).isBankrupt()) handleEndTurnButton();
+//            }
+//        }
+//    }
 
     private class GameActionButtonObserver implements Observer {
         Button button;
@@ -292,7 +302,7 @@ public class GameBoardController implements Initializable {
                 if (!((Player) o).isAIControlled() &&
                         (buttonNumber < getPossibleActions().size() &&
                                 getPossibleActions().get(buttonNumber).isActive() &&
-                                !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName))) {
+                                !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName)) && !((Player) o).isBankrupt()) {
 //                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
 
 //                    System.out.println(buttonNumber + " " + getPossibleActions().get(buttonNumber));
@@ -309,11 +319,14 @@ public class GameBoardController implements Initializable {
     private void playerCardObserverUpdate(Observable o) {
         Player player = (Player) o;
         int index = getPlayerList().indexOf(player);
-        if (player.isBankrupt()) {
-            playerCardAnchorPanes[index].setVisible(false);
-
-        } else {
+        if (getPlayerList().stream().allMatch(Player::isBankrupt)) {
+            for (AnchorPane playerCardAnchorPane : playerCardAnchorPanes) {
+                playerCardAnchorPane.setVisible(false);
+            }
+        }
+        else {
             for (int i = 0; i < getPlayerList().size(); i++) {
+                playerCardAnchorPanes[i].setVisible(!getPlayerList().get(i).isBankrupt());
                 if (player == getPlayerList().get(i)) {
                     playerTradeButtonList[i].setDisable(true);
                     playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(2,0,36,1) 0%, rgba(223,174,163,1) 0%, rgba(255,115,87,1) 79%);");
@@ -322,10 +335,13 @@ public class GameBoardController implements Initializable {
                     playerTradeButtonList[i].setDisable(false);
                 }
             }
-
-            playerMoneyLabels[index].setText("" + player.getBalance());
-            playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
         }
+
+
+
+        playerMoneyLabels[index].setText("" + player.getBalance());
+        playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
+
     }
 
     private class PlayerCardObserver implements Observer {
@@ -345,7 +361,7 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 TitleDeedCard card = getCurrentPlayer().getSelectedTitleDeed();
-                if (card == null || ((Player)o).isBankrupt()) {
+                if (card == null || ((Player) o).isBankrupt()) {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());
@@ -512,27 +528,27 @@ public class GameBoardController implements Initializable {
     }
 
     public void tradeWithPlayer1() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 1");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(0));
     }
 
     public void tradeWithPlayer2() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 2");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(1));
     }
 
     public void tradeWithPlayer3() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 3");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(2));
     }
 
     public void tradeWithPlayer4() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 4");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(3));
     }
 
     public void tradeWithPlayer5() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 5");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(4));
     }
 
     public void tradeWithPlayer6() throws IOException {
-        openPopUp("Trade.fxml", "Trade between Player A and 6");
+        handleTrade( getCurrentPlayer(), getPlayerList().get(5));
     }
 
     public void seeInformationCardPlayer1() throws IOException {
