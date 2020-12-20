@@ -62,10 +62,9 @@ public class InformationCardController implements Initializable {
         int index = 1;
         ArrayList<TitleDeedCard> deedCards = player.getTitleDeeds();
         for (TitleDeedCard deedCard: deedCards){
-
             informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
                     "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
-                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n");
+                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n\n");
             informationOfPlayer = informationOfPlayer + informationOfProperty;
             index++;
         }
