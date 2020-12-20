@@ -274,7 +274,7 @@ public class BalancedAIStrategy extends AIStrategy {
     public void liftMortgages(AIPlayer player){
         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
 
-            if (titleDeedCard.isMortgaged () && player.getBalance() > 3 * titleDeedCard.mortgageRemovalPenalty() ){
+            if (titleDeedCard.isMortgaged () && player.getBalance() > 2.40 * titleDeedCard.mortgageRemovalPenalty() ){
                 player.setSelectedTitleDeed( titleDeedCard);
                 getGameAction(titleDeedCard.getPropertyActions(), REMOVE_MORTGAGE_ACTION).execute();
                 player.setSelectedTitleDeed(null);

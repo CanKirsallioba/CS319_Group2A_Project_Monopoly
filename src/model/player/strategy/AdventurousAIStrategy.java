@@ -1,7 +1,10 @@
 package model.player.strategy;
 
 import model.player.AIPlayer;
+import model.player.TaxOption;
+import model.tiles.GameAction;
 import model.tiles.PropertyTile;
+import model.tiles.card.Card;
 import model.tiles.property.TitleDeedCard;
 
 import java.util.ArrayList;
@@ -139,11 +142,17 @@ public class AdventurousAIStrategy extends AIStrategy{
     /**
      *  Is invoked when the player lands on an IncomeTaxTile.
      *  Makes a decision and executes the corresponding game action according to the the strategy.
-     *  Because AdventurousAI thinks he will earn much money, if he can, he chooses to pay fixed amount.
      * @param aiPlayer is the player subject to the decision
      */
     @Override
     public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer){
+
+        if (aiPlayer.getTaxOption() == null || aiPlayer.getTaxOption() == TaxOption.UNDETERMINED) {
+            aiPlayer.setTaxOption(TaxOption.TAX_WITH_RATIO);
+        }
+
+        // pay the tax
+        getGameAction(aiPlayer.getCurrentTile().getPossibleActions(aiPlayer), PAY_TAX_ACTION).execute();
 
     }
 
@@ -157,6 +166,55 @@ public class AdventurousAIStrategy extends AIStrategy{
     @Override
     public void makeAndExecuteCardDecision(AIPlayer aiPlayer){
 
+        ArrayList<GameAction> gameActions = aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
+        Card currentCard = aiPlayer.getCurrentlyDrawnCard();
+
+        if( currentCard.getCardDetails().containsKey("PAY") ){
+            int moneyToPay = currentCard.getCardDetails().get( "PAY");
+            if( aiPlayer.getBalance() > moneyToPay){
+                getGameAction(gameActions, APPLY_ACTION).execute();
+            }
+            else if( aiPlayer.getLiquidTotalWorth() >= moneyToPay){
+
+                while( aiPlayer.getBalance() < moneyToPay){
+
+                    for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
+                        if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
+                                && aiPlayer.getBalance() < moneyToPay) {
+
+                            aiPlayer.setSelectedTitleDeed( titleDeedCard);
+                            getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
+                            aiPlayer.setSelectedTitleDeed(null);
+                            aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
+                        }
+                    }
+                    if (aiPlayer.getBalance() < moneyToPay) {
+                        for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
+
+                            if (!titleDeedCard.isMortgaged ()
+                                    && aiPlayer.getBalance() < moneyToPay) {
+
+                                aiPlayer.setSelectedTitleDeed( titleDeedCard);
+                                getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                aiPlayer.setSelectedTitleDeed(null);
+                                aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
+                                // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
+                            }
+                        }
+                    }
+                }
+
+                // now he has acquired the money
+                getGameAction(gameActions, APPLY_ACTION).execute();
+            }
+            else if( aiPlayer.getLiquidTotalWorth() < moneyToPay){
+                aiPlayer.declareBankruptcy();
+            }
+
+        }
+        else{
+            getGameAction(gameActions, APPLY_ACTION).execute();
+        }
     }
 
     /**
@@ -167,7 +225,15 @@ public class AdventurousAIStrategy extends AIStrategy{
      */
     @Override
     public void liftMortgages(AIPlayer player){
+        for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
 
+            if (titleDeedCard.isMortgaged () && player.getBalance() > 1.20 * titleDeedCard.mortgageRemovalPenalty() ){
+                player.setSelectedTitleDeed( titleDeedCard);
+                getGameAction(titleDeedCard.getPropertyActions(), REMOVE_MORTGAGE_ACTION).execute();
+                player.setSelectedTitleDeed(null);
+                player.getCurrentTile().getPossibleActions(player);
+            }
+        }
     }
 
 }
