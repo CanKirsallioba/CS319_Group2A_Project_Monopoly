@@ -49,10 +49,6 @@ public class SettingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setIcon("music-note.png", music);
-        setIcon("volume.png", sound);
-        setIcon("settings.png", settings);
-        setIcon("back.png", back);
 
         back.setOnMouseClicked(new EventHandler() {
             @Override
