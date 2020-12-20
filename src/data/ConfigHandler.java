@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * ConfigHandler handles the writing and reading of/to JSON files
+ */
 public class ConfigHandler {
 
     /**
