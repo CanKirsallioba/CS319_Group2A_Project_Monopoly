@@ -165,7 +165,7 @@ public class InformationCardController implements Initializable {
 
             }
             int actionCounter = 0;
-            for (int i = buttonCount; i <= 4; i++) {
+            for (int i = buttonCount; i < 4; i++) {
                 if (i < actions.size()) {
                     buttons[i].setVisible(!player.isAIControlled());
                     buttons[i].setText(actions.get(actionCounter).getName());
