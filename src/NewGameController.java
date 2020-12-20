@@ -202,7 +202,7 @@ public class NewGameController implements Initializable {
         BoardConfiguration AIPlayerTestConfiguration = new BoardConfiguration();
         AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
         AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
-        AIPlayerTestConfiguration.setHumanPlayerCount(3);
+        AIPlayerTestConfiguration.setHumanPlayerCount(0);
         AIPlayerTestConfiguration.setMaxPlayerCount(3);
 //        filename = "board_template.json";
 
