@@ -46,7 +46,9 @@ public class HowToPlayController implements Initializable {
                 "The Board Builder screen provides you with the functionality of creating and designing your own board. You can change the names, prices, rent prices, etc of the property tiles " +
                 "by clicking that property. You can set a name to the board and change the salary that every player gets when they pass the go tile. After clicking the property you want to change, " +
                 "the popup that is opened will direct you clearly." +
-                "\n\nYou can save your game while playing by clicking the menu button at the top left corner of the screen and save game button. Whenever you load the saved game, you will have the opportunity to continue your game where you left off. ");
+                "\n\nYou can save your game while playing by clicking the menu button at the top left corner of the screen and save game button. Whenever you load the saved game, you will have the opportunity to continue your game where you left off.\n\n" +
+                "Whenever you have every property tile in a specific color group, you can build houses and hotels to these properties when your turn comes by clicking see properties button of your player card and upgrade property. " +
+                "If you need money, downgrading a property or mortgaging a property might be a good choice, but, be careful and think twice when you are to do these operations.");
         howToPlayScrollPane.setContent(howToPlayLabel);
         howToPlayLabel.setStyle("-fx-text-fill: #000000");
 

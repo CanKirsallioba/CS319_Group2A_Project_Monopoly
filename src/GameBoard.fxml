@@ -771,7 +771,7 @@
                               <Image url="@./wheelbarrow.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player2Tile5TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player2Tile5TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./towerToken.png" />
                            </image>
