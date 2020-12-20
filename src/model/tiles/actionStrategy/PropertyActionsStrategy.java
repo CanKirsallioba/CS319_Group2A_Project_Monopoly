@@ -64,6 +64,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
         if ((player.getBalance() >= card.getUpgradeCost()) && card.isUpgradeable()) {
             System.out.println("Upgrade Successful");
             player.changeBalance(-(card.upgrade()));
+            card.updateActions();
         }
     }
 
