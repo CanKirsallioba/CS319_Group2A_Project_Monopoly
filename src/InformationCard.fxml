@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url(CreditsBackground.jpg);" stylesheets="@CreditsStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InformationCardController">
+   <children>
+      <ListView fx:id="listView" layoutX="20.0" layoutY="30.0" prefHeight="400.0" prefWidth="475.0" styleClass="list-cell" stylesheets="@GameBoardStyle.css" />
+      <Button fx:id="button1" layoutX="98.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleButton1" prefHeight="30.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Upgrade Property">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding></Button>
+      <Button fx:id="button2" layoutX="306.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleButton2" prefHeight="32.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Downgrade Property">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding></Button>
+      <Button fx:id="button3" layoutX="525.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleButton3" prefHeight="30.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Sell Property">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding></Button>
+      <Button fx:id="button4" layoutX="725.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleButton4" prefHeight="30.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Mortgage">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding></Button>
+      <Button fx:id="button5" layoutX="98.0" layoutY="701.0" mnemonicParsing="false" onAction="#handleButton5" prefHeight="32.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Declare Bankruptcy">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding></Button>
+      <AnchorPane fx:id="titleDeedCard" layoutX="500.0" prefHeight="350.0" prefWidth="350.0">
+         <children>
+            <Pane layoutX="20.0" layoutY="20.0" prefHeight="440.0" prefWidth="400.0" style="-fx-border-color: black; -fx-border-radius: 20;" />
+            <Pane layoutX="30.0" layoutY="30.0" prefHeight="420.0" prefWidth="380.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+               <children>
+                  <Pane fx:id="propertyColorPane" layoutX="20.0" layoutY="21.0" prefHeight="95.0" prefWidth="340.0">
+                     <children>
+                        <Label layoutX="122.0" layoutY="14.0" text="TITLE DEED" wrapText="true">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="propertyNameLabel" alignment="CENTER" layoutX="40.0" layoutY="48.0" prefHeight="35.0" prefWidth="260.0" text="PROPERTY NAME" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="20.0" layoutY="128.0" prefHeight="277.0" prefWidth="340.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="19.0" prefWidth="131.0" text="RENT - Site only">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="130.0" prefHeight="19.0" prefWidth="159.0" text="RENT - 4 Houses">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="40.0" prefHeight="19.0" prefWidth="166.0" text="RENT - With 1 House">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="70.0" prefHeight="19.0" prefWidth="159.0" text="RENT - With 2 Houses">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="100.0" prefHeight="19.0" prefWidth="172.0" text="RENT - 3 Houses">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="160.0" prefHeight="19.0" prefWidth="159.0" text="RENT - With Hotel">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rentSiteOnlyValueLabel" layoutX="270.0" layoutY="10.0" text="\$">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rentWith1HouseValueLabel" layoutX="270.0" layoutY="40.0" text="\$">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rentWith2HousesValueLabel" layoutX="270.0" layoutY="70.0" text="\$">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rentWith3HousesValueLabel" layoutX="270.0" layoutY="100.0" text="\$">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rentWith4HousesValueLabel" layoutX="270.0" layoutY="130.0" text="\$">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rentWithHotelValueLabel" layoutX="270.0" layoutY="160.0" text="\$">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="51.0" layoutY="190.0" prefHeight="19.0" prefWidth="131.0" text="COST of Houses">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="costOfHousesValueLabel" layoutX="187.0" layoutY="190.0" text="\$">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="51.0" layoutY="209.0" prefHeight="19.0" prefWidth="131.0" text="COST of Hotels">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="costOfHotelsValueLabel" layoutX="187.0" layoutY="209.0" text="\$">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="244.0" prefHeight="19.0" prefWidth="172.0" text="MORTGAGE Value of Site,">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="mortgageValueLabel" layoutX="222.0" layoutY="244.0" text="\$">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label fx:id="totalCostLabel" layoutX="100.0" layoutY="465.0" prefHeight="35.0" prefWidth="59.0" text="Cost:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="costLabel" layoutX="170.0" layoutY="465.0" prefHeight="35.0" prefWidth="107.0" text="\$">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

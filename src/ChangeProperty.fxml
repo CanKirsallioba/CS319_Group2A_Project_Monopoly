@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-image: url(CreditsBackground.jpg);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChangePropertyController">
+   <children>
+      <Label layoutX="94.0" layoutY="125.0" prefHeight="39.0" prefWidth="102.0" text="RENT">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="173.0" prefHeight="39.0" prefWidth="102.0" text="Site Only">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="212.0" prefHeight="39.0" prefWidth="124.0" text="With 1 House">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="251.0" prefHeight="39.0" prefWidth="150.0" text="With 2 Houses">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="290.0" prefHeight="39.0" prefWidth="150.0" text="With 3 Houses">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="329.0" prefHeight="39.0" prefWidth="150.0" text="With 4 Houses">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="368.0" prefHeight="39.0" prefWidth="150.0" text="With Hotel">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="407.0" prefHeight="39.0" prefWidth="102.0" text="PRICES">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="446.0" prefHeight="39.0" prefWidth="150.0" text="Land">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="485.0" prefHeight="39.0" prefWidth="150.0" text="Upgrading Price">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="567.0" prefHeight="39.0" prefWidth="165.0" text="Mortgage Value">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="104.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="39.0" prefWidth="102.0" text="Back" />
+      <Button fx:id="applyButton" layoutX="399.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleApply" prefHeight="39.0" prefWidth="102.0" text="Apply" />
+      <TextField fx:id= "propertyNameField" layoutX="145.0" layoutY="53.0" prefHeight="26.0" prefWidth="309.0" text="Property Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Spinner fx:id="rentLevel0Spinner" layoutX="380.0" layoutY="179.0" prefHeight="26.0" prefWidth="113.0" >
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="rentLevel1Spinner" layoutX="379.0" layoutY="218.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="rentLevel2Spinner" layoutX="379.0" layoutY="257.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="rentLevel3Spinner" layoutX="379.0" layoutY="296.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="rentLevel4Spinner" layoutX="380.0" layoutY="336.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="rentLevel5Spinner" layoutX="380.0" layoutY="375.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="propertyValueSpinner" layoutX="379.0" layoutY="452.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="upgradeSpinner" layoutX="380.0" layoutY="492.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+      <Spinner fx:id="mortgageValueSpinner" layoutX="379.0" layoutY="574.0" prefHeight="26.0" prefWidth="114.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory />
+         </valueFactory>
+      </Spinner>
+   </children>
+</AnchorPane>

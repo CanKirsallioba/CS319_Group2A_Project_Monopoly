@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
+   <children>
+      <ImageView fx:id="settings" fitHeight="450.0" fitWidth="600.0" layoutX="150.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@settings.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="music" fitHeight="100.0" fitWidth="100.0" layoutX="800.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@music-note.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="950.0" layoutY="250.0" prefHeight="100.0" prefWidth="250.0" text="Music">
+         <font>
+            <Font size="71.0" />
+         </font>
+      </Label>
+      <Slider fx:id="musicSlider" layoutX="800.0" layoutY="400.0" majorTickUnit="10.0" minorTickCount="10" onMouseReleased="#getValueMusicSlider" prefHeight="50.0" prefWidth="700.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Slider>
+      <ImageView fx:id="sound" fitHeight="100.0" fitWidth="100.0" layoutX="800.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@volume.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="950.0" layoutY="500.0" prefHeight="100.0" prefWidth="250.0" text="Sound">
+         <font>
+            <Font size="71.0" />
+         </font>
+      </Label>
+      <Slider fx:id="soundSlider" layoutX="800.0" layoutY="650.0" majorTickUnit="10.0" minorTickCount="10" onMouseReleased="#getValueSoundSlider" prefHeight="50.0" prefWidth="700.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Slider>
+      <ImageView fx:id="back" fitHeight="48.0" fitWidth="55.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" >
+         <image>
+            <Image url="@back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

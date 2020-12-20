@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoadGameController">
+    <children>
+        <Button layoutX="352.0" layoutY="736.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="BACK" />
+        <Button layoutX="1234.0" layoutY="736.0" mnemonicParsing="false" onAction="#handleStartGame" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="LOAD GAME" />
+        <Label alignment="CENTER" layoutY="38.0" prefHeight="80.0" prefWidth="1920.0" text="LOAD GAME" textAlignment="CENTER">
+            <font>
+                <Font name="Calibri" size="58.0" />
+            </font></Label>
+      <ListView  fx:id="listView" layoutX="519.0" layoutY="153.0" prefHeight="436.0" prefWidth="883.0" />
+    </children>
+</Pane>

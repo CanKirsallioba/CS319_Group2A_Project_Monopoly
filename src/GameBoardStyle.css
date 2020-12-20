@@ -1,0 +1,139 @@
+#sceneBackground {
+    -fx-background-color: linear-gradient(to top right, rgba(255, 0, 0, 1) 0%, rgba(180, 230, 230, 1) 100%); /* w3c */
+}
+
+#gameBoard {
+    -fx-background-color: #CBE8E0;
+}
+
+.card {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,255,255,1) 0%, rgba(29,119,128,1) 100%); /* w3c */
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+
+.label-card {
+    -fx-font-size: 18px;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.menuButtons {
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-size: 16px;
+    -fx-font-family: SansSerif;
+    -fx-text-fill: #000000;
+    -fx-background-color: #22cbff;
+}
+
+.menuButtons:hover {
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-cursor: hand;
+}
+
+.cardButtons {
+    -fx-font-family: SansSerif;
+    -fx-border-radius: 10;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+    -fx-background-color: #4CB44B;
+    -fx-text-fill: #FFF1FF;
+}
+
+.cardButtons:hover{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-cursor: hand;
+}
+
+.tile-left {
+    -fx-border-width: 0 0 0 1;
+    -fx-border-color: black;
+}
+
+.hbox-up{
+    -fx-border-color: black;
+}
+
+.vbox-left {
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: black;
+}
+
+.vbox-right {
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: black;
+}
+
+.hbox-bottom {
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: black;
+}
+
+.gameButtons {
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 20, 80, 1) 20%, rgba(180, 230, 230, 1) 100%); /* w3c */
+}
+
+#resumeButton {
+    -fx-background-image: url('resume.png');
+    -fx-background-size: 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10%;
+}
+
+#settingsButton {
+    -fx-background-image: url('settings.png');
+    -fx-background-size: 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10%;
+}
+
+#menuScreen {
+    -fx-background-image: url("CreditsBackground.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+#saveButton {
+    -fx-background-image: url('save.png');
+    -fx-background-size: 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10%;
+}
+
+#returnButton {
+    -fx-background-image: url('return.png');
+    -fx-background-size: 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10%;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#328BDB 0.0%, #207BCF 25.0%, #1973C9 75.0%, #0A65BF 100.0%);
+    -fx-text-fill: white;
+}
+
+.list-cell{
+    -fx-font-size:15.0;
+}
+
+.list-cell:even { /* <=== changed to even */
+    -fx-background-color: white;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #0093ff;
+    -fx-text-fill: white;
+}

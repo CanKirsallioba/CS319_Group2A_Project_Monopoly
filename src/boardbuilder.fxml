@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BoardBuilderController">
+    <children>
+        <Button layoutX="350.0" layoutY="850.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="BACK" />
+        <Label layoutX="69.0" layoutY="38.0" prefHeight="80.0" prefWidth="583.0" text="BOARD BUILDER">
+            <font>
+                <Font name="Calibri" size="58.0" />
+            </font></Label>
+        <Label layoutX="144.0" layoutY="218.0" prefHeight="48.0" prefWidth="300.0" text="CUSTOMIZE PROPERTY">
+            <font>
+                <Font size="24.0" />
+            </font></Label>
+        <Label layoutX="1300.0" layoutY="218.0" prefHeight="48.0" prefWidth="203.0" text="GO TILE INCOME">
+            <font>
+                <Font size="24.0" />
+            </font></Label>
+        <ScrollPane layoutX="150.0" layoutY="300.0" prefHeight="500.0" prefWidth="700.0">
+            <content>
+                <AnchorPane prefHeight="1000.0" prefWidth="300.0">
+                    <children>
+                        <Button id="1" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="3" layoutY="50.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="6" layoutY="100.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property3">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="8" layoutY="150.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property4">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="9" layoutY="200.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property5">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="11" layoutY="250.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property6">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="13" layoutY="300.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property7">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="14" layoutY="350.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property8">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="16" layoutY="400.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property9">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="18" layoutY="450.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property10">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="19" layoutY="500.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property11">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="21" layoutY="550.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property12">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="23" layoutY="600.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property13">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="24" layoutY="650.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property14">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="26" layoutY="700.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property15">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button id="27" layoutY="750.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property16">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button id="29" layoutY="800.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property17">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="31" layoutY="850.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property18">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="32" layoutY="900.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property19">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="34" layoutY="950.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property20">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="37" layoutY="1000.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property21">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="39" layoutY="1050.0" mnemonicParsing="false" onAction="#selectProperty" prefHeight="50.0" prefWidth="700.0" stylesheets="@ButtonStyle.css" text="Property22">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                    </children></AnchorPane>
+            </content>
+        </ScrollPane>
+        <Spinner fx:id="salarySpinner" layoutX="1300.0" layoutY="300.0" prefHeight="100.0" prefWidth="300.0">
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory />
+            </valueFactory>
+        </Spinner>
+      <Label layoutX="850.0" layoutY="144.0" text="BOARD NAME:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="boardNameField" layoutX="1024.0" layoutY="141.0" prefHeight="35.0" prefWidth="300.0" />
+      <Button layoutX="1300.0" layoutY="850.0" mnemonicParsing="false" onAction="#handleSaveBoard" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="Save Board" />
+    </children>
+</Pane>
