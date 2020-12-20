@@ -142,14 +142,13 @@ public class TitleDeedCard implements Serializable {
             activateAction("Remove Mortgage");
             deactivateAction("Mortgage Property");
         }
-        else if(upgradeLevel <= 0){
+        else if(upgradeLevel == 0){
             deactivateAction("Remove Mortgage");
             activateAction("Mortgage Property");
         }else{
             deactivateAction("Mortgage Property");
-            deactivateAction("Remove Property");
+            deactivateAction("Remove Mortgage");
         }
-
 
         if(isUpgradeable ())
             activateAction ( "Upgrade Property" );
@@ -414,6 +413,7 @@ public class TitleDeedCard implements Serializable {
     public void resetProperty(){
         while(upgradeLevel > 0)
             downgrade();
+        updateActions();
     }
 
 
@@ -422,6 +422,7 @@ public class TitleDeedCard implements Serializable {
      */
     public int mortgage() {
         isMortgaged = true;
+        updateActions();
         return mortgageValue;
     }
 
@@ -430,6 +431,7 @@ public class TitleDeedCard implements Serializable {
      */
     public int removeMortgage() {
         isMortgaged = false;
+        updateActions();
         return (int)(mortgageValue * mortgageRemovalMultiplier);
     }
 

@@ -28,16 +28,8 @@ public class PropertyTile extends Tile {
             setActive ( actions, "Start Auction", true );
         } else if(titleDeedCard.getOwner() != player){
             setActive ( actions, "Buy Property", false );
-
-            if(player.getLiquidTotalWorth() < player.getSelectedTitleDeed().getCurrentRent()) {
-                setActive ( actions, "Pay Rent", false );
-                setActive(actions, "Declare Bankruptcy", true);
-            }
-            else{
-                setActive ( actions, "Pay Rent", true );
-                setActive(actions, "Declare Bankruptcy", false);
-            }
-
+            setActive(actions, "Pay Rent", player.getLiquidTotalWorth() >= player.getSelectedTitleDeed().getCurrentRent());
+            setActive(actions, "Declare Bankruptcy", player.getLiquidTotalWorth() < player.getSelectedTitleDeed().getCurrentRent());
             setActive ( actions, "Start Auction", false );
         } else if(titleDeedCard.getOwner() == player){
             setActive ( actions, "Buy Property", false );
