@@ -280,7 +280,7 @@
                               <Image url="@./boot.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player2Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="player2Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@./towerToken.png" />
                            </image>
@@ -574,12 +574,12 @@
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #84A2DA;" AnchorPane.topAnchor="0.0" />
                         <Label fx:id="lightBlueLabel3" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
+                        <Label layoutX="5.0" layoutY="115.0" text="Price $">
                            <font>
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lightBluePrice3" layoutX="50.0" layoutY="130.0" text="Label">
+                        <Label fx:id="lightBluePrice3" layoutX="50.0" layoutY="115.0" text="Label">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -626,12 +626,12 @@
                            </padding>
                         </AnchorPane>
                         <Label fx:id="lightBlueLabel2" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
+                        <Label layoutX="5.0" layoutY="115.0" text="Price $">
                            <font>
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lightBluePrice2" layoutX="50.0" layoutY="130.0" text="Label">
+                        <Label fx:id="lightBluePrice2" layoutX="50.0" layoutY="115.0" text="Label">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -715,12 +715,12 @@
                      <children>
                         <AnchorPane layoutX="1.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #84A2DA;" AnchorPane.topAnchor="0.0" />
                         <Label fx:id="lightBlueLabel1" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
+                        <Label layoutX="5.0" layoutY="115.0" text="Price $">
                            <font>
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lightBluePrice1" layoutX="50.0" layoutY="130.0" text="Label">
+                        <Label fx:id="lightBluePrice1" layoutX="50.0" layoutY="115.0" text="Label">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -845,12 +845,12 @@
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #A0522D#A0522D;" />
                         <Label fx:id="brownLabel2" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
+                        <Label layoutX="5.0" layoutY="115.0" text="Price $">
                            <font>
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="brownPrice2" layoutX="50.0" layoutY="130.0" text="Label">
+                        <Label fx:id="brownPrice2" layoutX="50.0" layoutY="115.0" text="Label">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -934,12 +934,12 @@
                      <children>
                         <AnchorPane prefHeight="30.0" prefWidth="100.0" style="-fx-border-width: 1 0 1 0; -fx-border-color: black; -fx-background-color: #A0522D;" />
                         <Label fx:id="brownLabel1" alignment="CENTER" layoutX="5.0" layoutY="45.0" prefWidth="90.0" text="Label" textAlignment="CENTER" wrapText="true" />
-                        <Label layoutX="5.0" layoutY="130.0" text="Price $">
+                        <Label layoutX="5.0" layoutY="115.0" text="Price $">
                            <font>
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="brownPrice1" layoutX="50.0" layoutY="130.0" text="Label">
+                        <Label fx:id="brownPrice1" layoutX="50.0" layoutY="115.0" text="Label">
                            <font>
                               <Font size="12.0" />
                            </font>
