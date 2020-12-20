@@ -245,7 +245,7 @@ public class BalancedAIStrategy extends AIStrategy {
             }
             else if( aiPlayer.getLiquidTotalWorth() >= moneyToPay){
 
-                while( aiPlayer.getBalance() < moneyToPay){ //
+                while( aiPlayer.getBalance() < moneyToPay){
 
                     for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
                         if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
