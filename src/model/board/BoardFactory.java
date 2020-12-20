@@ -21,7 +21,6 @@ public class BoardFactory {
      * @return the initialized board.
      */
     public Board get(BoardConfiguration boardConfiguration, JSONObject config) {
-        // todo Tile Katsayilari degismiyor.
         Board board = new Board();
         TileFactory tileFactory = new TileFactory();
 

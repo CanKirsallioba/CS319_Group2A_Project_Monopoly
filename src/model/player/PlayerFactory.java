@@ -16,7 +16,6 @@ public class PlayerFactory extends AbstractPlayerFactory {
     /**
      * Default constructor.
      */
-    // todo
     public PlayerFactory() {
 
     }

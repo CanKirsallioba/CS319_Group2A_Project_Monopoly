@@ -154,7 +154,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         // if bail out choice is by money && player has more money than the fine
         }
-        else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {// todo hatali check?
+        else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {
             payBailOutMoney();
 
             isInJail = false;
