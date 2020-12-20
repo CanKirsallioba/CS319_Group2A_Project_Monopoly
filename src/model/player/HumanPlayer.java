@@ -3,14 +3,16 @@ package model.player;
 
 public class HumanPlayer extends AbstractPlayer {
 
+    /**
+     * Default constructor for HumanPlayer.
+     */
     public HumanPlayer(){
         setChanged();
         notifyObservers();
-        System.out.println("IN players ");
     }
 
     /**
-     * playTurn method for the human player, which does the standard and mandorty things each player must do
+     * playTurn method for the human player, which does the standard and mandatory things each player must do
      * if they are not in jail
      */
     @Override
@@ -33,6 +35,10 @@ public class HumanPlayer extends AbstractPlayer {
         System.out.println(toString());
     }
 
+    /**
+     * Used for determining whether this player is controlled by AI
+     * @return true, since this method is for an human player
+     */
     @Override
     public boolean isAIControlled() {
         return false;

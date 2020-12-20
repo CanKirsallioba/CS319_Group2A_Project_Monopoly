@@ -39,8 +39,6 @@ public class GameSessionBuilder {
     public GameSession build() {
         BoardFactory boardFactory = new BoardFactory();
         PlayerFactory playerFactory = new PlayerFactory();
-// todo game pace eklenecek.
-//        Board board = boardFactory.get(getBoardConfiguration(), (JSONObject) getConfig().get(boardConfiguration.getGamePace().name()));
         Board board = boardFactory.get(getBoardConfiguration(), getConfig());
 
         TurnManager turnManager = new TurnManager();

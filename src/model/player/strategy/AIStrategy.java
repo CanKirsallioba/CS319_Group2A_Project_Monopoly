@@ -1,5 +1,6 @@
 package model.player.strategy;
 
+import model.TradeModel;
 import model.player.AIPlayer;
 import model.tiles.GameAction;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public abstract class AIStrategy {
     GameStatistics gameStatistics;
     public abstract void makeAndExecutePropertyDecision( AIPlayer player);
-    public abstract void makeAndExecuteTradeDecision( AIPlayer player);
+    public abstract void makeAndExecuteTradeDecision( AIPlayer player, TradeModel model);
     public abstract void makeAndExecuteAuctionDecision( AIPlayer player);
     public abstract void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer);
     public abstract void makeAndExecuteCardDecision(AIPlayer aiPlayer);

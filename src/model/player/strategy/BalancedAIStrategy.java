@@ -93,7 +93,7 @@ public class BalancedAIStrategy extends AIStrategy {
         else {
             boolean notBought = true;
 
-            // if player has more than twice the money required to buy the property
+            // if player has more considerably money required to buy the property
             if (player.getBalance() >= 1.85 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
@@ -111,77 +111,6 @@ public class BalancedAIStrategy extends AIStrategy {
                 titleDeedOfCurrentProperty.add( currentPropertyTile.getTitleDeedCard());
               //  player.startAuction(titleDeedOfCurrentProperty );
             }
-        }
-    }
-
-    /**
-     *  Is invoked when the player is made a trade offer.
-     *  Makes a decision and executes the corresponding game action according to the the strategy.
-     *  Strategy now is playing balanced, so the AI player makes rational decisions.
-     *  If both players are giving the same amount, or the subject player is receiving more, the trade offer is accepted.
-     * @param player is the player subject to the decision
-     */
-    @Override
-    public void makeAndExecuteTradeDecision(AIPlayer player) {
-        TradeModel tradeModel = player.getTradeModel();
-        int thisPlayerOfferings = 0;
-        int otherPlayerOfferings = 0;
-
-        int thisPlayer;
-        if( tradeModel.getPlayer1() == player){
-            thisPlayer = 1;
-        }
-        else{
-            thisPlayer = 2;
-        }
-
-        // determine how much this player is putting
-        // and how much the other player is putting
-        if( thisPlayer == 1){
-            thisPlayerOfferings += tradeModel.getMoneyPlayer1();
-            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer1()){
-                thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
-            }
-
-            otherPlayerOfferings += tradeModel.getMoneyPlayer2();
-            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
-                otherPlayerOfferings  += currentTitleDeed.getPropertyValue();
-            }
-        }
-        else{
-            thisPlayerOfferings += tradeModel.getMoneyPlayer2();
-            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
-                thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
-            }
-
-            otherPlayerOfferings += tradeModel.getMoneyPlayer1();
-            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer1()){
-                otherPlayerOfferings  += currentTitleDeed.getPropertyValue();
-            }
-        }
-
-        // evaluate the offer
-        if( thisPlayerOfferings >= otherPlayerOfferings){
-            // TODO ACCEPT OFFER
-        }
-        else{
-            // TODO REJECT OFFER
-        }
-    }
-
-    /**
-     *  Is invoked when the player is involved in an auction.
-     *  Makes a decision and executes the corresponding game action according to the the strategy.
-     *  Strategy now is playing balanced, so the AI player makes rational decisions.
-     * @param player is the player subject to the decision
-     */
-    @Override
-    public void makeAndExecuteAuctionDecision(AIPlayer player) {
-        AuctionModel auctionModel = player.getAuctionModel();
-
-        if( auctionModel.getHighestBid() <= auctionModel.getAuctionedTitleDeeds().get(1).getPropertyValue()
-            && player.getBalance() > 3 * auctionModel.getHighestBid()){
-            // TODO bid
         }
     }
 
@@ -280,6 +209,79 @@ public class BalancedAIStrategy extends AIStrategy {
                 player.setSelectedTitleDeed(null);
                 player.getCurrentTile().getPossibleActions(player);
             }
+        }
+    }
+
+
+    /**
+     *  Is invoked when the player is made a trade offer.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     *  If both players are giving the same amount, or the subject player is receiving more, the trade offer is accepted.
+     * @param player is the player subject to the decision
+     */
+    @Override
+    public void makeAndExecuteTradeDecision(AIPlayer player, TradeModel model) {
+        TradeModel tradeModel = model;
+        int thisPlayerOfferings = 0;
+        int otherPlayerOfferings = 0;
+
+        int thisPlayer;
+        if( tradeModel.getPlayer1() == player){
+            thisPlayer = 1;
+        }
+        else{
+            thisPlayer = 2;
+        }
+
+        // determine how much this player is putting
+        // and how much the other player is putting
+        if( thisPlayer == 1){
+            thisPlayerOfferings += tradeModel.getMoneyPlayer1();
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer1()){
+                thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+
+            otherPlayerOfferings += tradeModel.getMoneyPlayer2();
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
+                otherPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+        }
+        else{
+            thisPlayerOfferings += tradeModel.getMoneyPlayer2();
+
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
+                thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+
+            otherPlayerOfferings += tradeModel.getMoneyPlayer1();
+            for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer1()){
+                otherPlayerOfferings  += currentTitleDeed.getPropertyValue();
+            }
+        }
+
+        // evaluate the offer
+        if( thisPlayerOfferings <= otherPlayerOfferings){
+            tradeModel.setAIAccepts(true);
+        }
+        else{
+            tradeModel.setAIAccepts(false);
+        }
+    }
+
+    /**
+     *  Is invoked when the player is involved in an auction.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing balanced, so the AI player makes rational decisions.
+     * @param player is the player subject to the decision
+     */
+    @Override
+    public void makeAndExecuteAuctionDecision(AIPlayer player) {
+        AuctionModel auctionModel = player.getAuctionModel();
+
+        if( auctionModel.getHighestBid() <= auctionModel.getAuctionedTitleDeeds().get(1).getPropertyValue()
+                && player.getBalance() > 3 * auctionModel.getHighestBid()){
+            // TODO bid
         }
     }
 }

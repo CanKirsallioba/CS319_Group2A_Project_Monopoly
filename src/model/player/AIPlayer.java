@@ -1,5 +1,6 @@
 package model.player;
 
+import model.TradeModel;
 import model.player.strategy.AIStrategy;
 import model.tiles.*;
 import model.tiles.property.TitleDeedCard;
@@ -50,7 +51,8 @@ public class AIPlayer extends AbstractPlayer implements Observer {
      * Is invoked when player is made a trade offer.
      */
     void makeAndExecuteTradeDecision(){
-        aiStrategy.makeAndExecuteTradeDecision( this);
+        System.out.println("MODEL 3" + tradeModel);
+        aiStrategy.makeAndExecuteTradeDecision( this, tradeModel);
     }
 
     /**
@@ -168,22 +170,44 @@ public class AIPlayer extends AbstractPlayer implements Observer {
         notifyObservers();
     }
 
+    /**
+     * Is used for determining whether this player is an AIPlayer or HumanPlayer. In AIPlayer, always returns true.
+     * @return true
+     */
     @Override
     public boolean isAIControlled() {
         return true;
     }
 
+    /**
+     * Getter method for aiStrategy.
+     * @return aiStrategy
+     */
     public AIStrategy getAiStrategy() {
         return aiStrategy;
     }
 
+    /**
+     * Setter method for aiStrategy
+     * @param aiStrategy is the new aiStrategy
+     */
     public void setAiStrategy(AIStrategy aiStrategy) {
         this.aiStrategy = aiStrategy;
     }
 
-
+    /**
+     * Updates AIPlayer's tradeModel.
+     * @param o is tradeModel
+     * @param arg is not used
+     */
     @Override
     public void update(Observable o, Object arg) {
-        // todo AuctionModel and trade...
+        if (o instanceof TradeModel) {
+            TradeModel model = (TradeModel) o;
+            if (model.getPlayer2() == this) {
+                setTradeModel(model);
+                makeAndExecuteTradeDecision();
+            }
+        }
     }
 }

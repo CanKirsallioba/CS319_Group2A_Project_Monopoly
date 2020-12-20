@@ -1,5 +1,6 @@
 package model.tiles;
 
+import model.GamePace;
 import model.tiles.card.*;
 import model.tiles.property.Color;
 import model.tiles.property.ColorGroup;
@@ -13,7 +14,6 @@ public class TileFactory extends AbstractTileFactory {
 
     public Tile getTile(JSONObject config, int gamePace) {
         String tileType = (String) config.get("tileType");
-
         int tileIndex = ((Long) config.get("tileIndex")).intValue();
         if (tileType.equals("PropertyTile")) {
             PropertyTile propertyTile = new PropertyTile();

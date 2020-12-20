@@ -51,8 +51,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
 
         setChanged();
         notifyObservers();
-        // todo delete this line
-        addBailOutFromJailCard(new Card("aa", "aa", new HashMap<>()));
 
     }
 
@@ -150,19 +148,17 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
             this.getOutOfJailChoice = BailOutChoice.WAIT;
-            System.out.println( "DEBUG: check bail out, get out of jail choice: card");
             setChanged();
             notifyObservers();
             return;
 
         // if bail out choice is by money && player has more money than the fine
         }
-        else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {// todo hatali check?
+        else if (getOutOfJailChoice == BailOutChoice.MONEY && balance >= bailOutCost) {
             payBailOutMoney();
 
             isInJail = false;
             numberOfTurnsSpentInJail = 0;
-            System.out.println( "DEBUG: check bail out, get out of jail choice: money");
             this.getOutOfJailChoice = BailOutChoice.WAIT;
             setChanged();
             notifyObservers();
@@ -176,7 +172,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             if( consecutiveDoubleCount == 1){
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
-                System.out.println( "DEBUG: check bail out, get out of jail choice: double dice");
                 this.getOutOfJailChoice = BailOutChoice.WAIT;
                 consecutiveDoubleCount = 0;
                 setChanged();
@@ -191,8 +186,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             if( liquidTotalWorth < bailOutCost){
                 // force bankruptcy
                 declareBankruptcy();
-                System.out.println( "DEBUG: check bail out, get out of jail choice: waitInJail = false, first half");
-
                 setChanged();
                 notifyObservers();
             }
@@ -202,8 +195,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
                 isInJail = false;
                 numberOfTurnsSpentInJail = 0;
                 canBailOut = false;
-                System.out.println( "DEBUG: check bail out, get out of jail choice: waitInJail = false, second half");
-
                 setChanged();
                 notifyObservers();
             }
@@ -248,7 +239,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         bankrupt = true;
         selectedTitleDeed = null;
         drawnCard = null;
-        System.out.println( "DEBUG: player bankrupted");
         setChanged();
         notifyObservers();
     }
@@ -264,7 +254,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         playerToken.move(amount);
         currentTile =  playerToken.getBoard().getTiles().get(playerToken.getCurrentTileIndex()); // also move player's token
         currentTileIndex = currentTile.getIndex();
-
+        //getPlayerToken().setLastDiceRoll(amount);
         // Update players balance
         if (playerToken.passedGoInTheLastMove()) {
             changeBalance(playerToken.getBoard().getBoardSalary() );
@@ -319,7 +309,6 @@ public abstract class AbstractPlayer extends Observable implements Player  {
             notifyObservers();
         }
         else{
-            System.out.println( " DEBUG: Error in Abstract Player, removeBailOutFromJailCard is invoked when there are no bail out cards!");
         }
     }
 

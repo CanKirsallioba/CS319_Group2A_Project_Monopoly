@@ -161,7 +161,7 @@ public class InformationCardController implements Initializable {
             ArrayList<GameAction> actions = selectedTitleDeedCard.getPropertyActions();
             int buttonCount = 0;
             for (GameAction action : actions) {
-                System.out.println("INFORMATION CARD" + action);
+//                System.out.println("INFORMATION CARD" + action);
 
             }
             int actionCounter = 0;
@@ -181,7 +181,7 @@ public class InformationCardController implements Initializable {
     }
 
     public void init() {
-        System.out.println(player.toString());
+//        System.out.println(player.toString());
         String informationOfPlayer = "";
         String informationOfProperty;
         int index = 1;
