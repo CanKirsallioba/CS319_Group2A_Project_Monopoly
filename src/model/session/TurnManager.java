@@ -33,7 +33,6 @@ public class TurnManager implements Serializable {
         playTurn();
     }
     public void addPlayer(Player player) {
-        // add player interface i degisti.
         players.add(player);
     }
 
