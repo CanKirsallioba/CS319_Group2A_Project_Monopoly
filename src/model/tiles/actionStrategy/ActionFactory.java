@@ -12,7 +12,6 @@ public class ActionFactory extends AbstractActionFactory {
         ArrayList<GameAction> actions = new ArrayList<>();
         switch (className) {
             case "PropertyTile":
-                // todo title deed e set etsin mi?
                 ActionStrategy propertyTile = new PropertyTileActionStrategy();
                 actions.add(new GameAction("Buy Property", propertyTile::button1Strategy, false, true));
                 actions.add(new GameAction("Pay Rent", propertyTile::button2Strategy, true, false));

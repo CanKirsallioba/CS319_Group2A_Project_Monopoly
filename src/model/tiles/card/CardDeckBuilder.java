@@ -21,8 +21,6 @@ public class CardDeckBuilder {
         for (Object card : cards) {
             JSONObject c = (JSONObject) ((JSONObject) card).get("card");
             createdCard = cardFactory.createCard(c);
-//                createdCard.setType(associatedDeck);
-            // todo card typelar
             createdCard.setType(associatedDeck);
             cardArrayList.add(createdCard);
         }

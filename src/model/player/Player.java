@@ -94,9 +94,6 @@ public interface Player extends Serializable {
 
     ArrayList<Card> getBailOutOfJailCards();
 
-
-    // methods that are not in the design report
-    // that should be added
     void addTitleDeedCard(TitleDeedCard card);
 
     void removeTitleDeedCard(TitleDeedCard card);

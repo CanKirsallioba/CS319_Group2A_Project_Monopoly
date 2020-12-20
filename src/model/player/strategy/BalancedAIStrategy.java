@@ -221,8 +221,8 @@ public class BalancedAIStrategy extends AIStrategy {
      * @param player is the player subject to the decision
      */
     @Override
-    public void makeAndExecuteTradeDecision(AIPlayer player) {
-        TradeModel tradeModel = player.getTradeModel();
+    public void makeAndExecuteTradeDecision(AIPlayer player, TradeModel model) {
+        TradeModel tradeModel = model;
         int thisPlayerOfferings = 0;
         int otherPlayerOfferings = 0;
 
@@ -249,6 +249,7 @@ public class BalancedAIStrategy extends AIStrategy {
         }
         else{
             thisPlayerOfferings += tradeModel.getMoneyPlayer2();
+
             for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
                 thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
             }

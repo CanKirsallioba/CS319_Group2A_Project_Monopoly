@@ -22,7 +22,6 @@ public class PropertyTile extends Tile {
     protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
         player.setSelectedTitleDeed(titleDeedCard);
         if(!(titleDeedCard.isOwned())){
-            // todo remove this if bugs arises in AI Player player.getBalance () >= card.getPropertyValue()
             setActive ( actions, "Buy Property", player.getBalance () >= getTitleDeedCard().getPropertyValue());
             setActive ( actions, "Pay Rent", false );
             setActive ( actions, "Start Auction", true );

@@ -36,7 +36,6 @@ public class CardTileActionStrategy extends ActionStrategy {
                 player.changeBalance(-amountToPay);
             } else if(player.getBalance() < amountToPay) {
                 if (player.getTotalWorth() > amountToPay) {
-                    //TODO player.payWithMortgage();
                 } else {
                     player.declareBankruptcy();
                 }
