@@ -1,5 +1,6 @@
 package model.player;
 
+import model.TradeModel;
 import model.player.strategy.AIStrategy;
 import model.tiles.*;
 import model.tiles.property.TitleDeedCard;
@@ -196,5 +197,11 @@ public class AIPlayer extends AbstractPlayer implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         // todo AuctionModel and trade...
+        if (o instanceof TradeModel) {
+            TradeModel model = (TradeModel) o;
+            if (model.getPlayer2() == this) {
+                System.out.println("HERE AI WILL DECIDE");
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ public class Main extends Application {
         primaryStage = stage;
 
         primaryStage.setTitle("Monopoly Game");
-        primaryStage.setScene(new Scene(root, 1920, 1080));
+        primaryStage.setScene(new Scene(root, 1920 , 1080));
 
         //primaryStage.setMaximized(true);
         //primaryStage.setFullScreen(true);
