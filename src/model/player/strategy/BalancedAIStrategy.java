@@ -260,11 +260,11 @@ public class BalancedAIStrategy extends AIStrategy {
         }
 
         // evaluate the offer
-        if( thisPlayerOfferings >= otherPlayerOfferings){
-            // TODO ACCEPT OFFER
+        if( thisPlayerOfferings <= otherPlayerOfferings){
+            tradeModel.setAIAccepts(true);
         }
         else{
-            // TODO REJECT OFFER
+            tradeModel.setAIAccepts(false);
         }
     }
 

@@ -13,7 +13,6 @@ public class TileFactory extends AbstractTileFactory {
 
     public Tile getTile(JSONObject config) {
         String tileType = (String) config.get("tileType");
-        int multiplier = ((Long) config.get("multiplier")).intValue();
         int tileIndex = ((Long) config.get("tileIndex")).intValue();
         if (tileType.equals("PropertyTile")) {
             PropertyTile propertyTile = new PropertyTile();
