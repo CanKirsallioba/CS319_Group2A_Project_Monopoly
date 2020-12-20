@@ -28,7 +28,11 @@ public class TurnManager implements Serializable {
 
     public void endTurn() {
         do {
-            setCurrentPlayerIndex((getCurrentPlayerIndex() + 1) % players.size());
+            if (getDice().getDice1() == getDice().getDice2()) {
+                setCurrentPlayerIndex((getCurrentPlayerIndex() ) % players.size());
+            } else {
+                setCurrentPlayerIndex((getCurrentPlayerIndex() + 1) % players.size());
+            }
         } while (getPlayers().get(getCurrentPlayerIndex()).isBankrupt() && !getPlayers().stream().allMatch(Player::isBankrupt));
         playTurn();
     }

@@ -147,7 +147,7 @@ public class GameBoardController implements Initializable {
         for (int i = 0; i < getPlayerList().size(); i++) {
             playerNameLabels[i].setText(playerNames.get(i));
         }
-        rollDiceButton.setText("Play Turn");
+        getGameSession().getTurnManager().playTurn();
     }
 
     @Override
@@ -412,15 +412,12 @@ public class GameBoardController implements Initializable {
 
     @FXML
     public void handleEndTurnButton() {
-        if (rollDiceButton.getText().equals("Play Turn")) {
-            rollDiceButton.setText("End Turn");
-            getGameSession().getTurnManager().playTurn();
-        } else {
+
             lastExecutedActionName = "";
             getCurrentPlayer().setSelectedTitleDeed(null);
             getCurrentPlayer().setCurrentlyDrawnCard(null);
             getGameSession().getTurnManager().endTurn();
-        }
+
 
 
     }
