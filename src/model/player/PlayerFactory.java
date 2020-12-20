@@ -52,7 +52,7 @@ public class PlayerFactory extends AbstractPlayerFactory {
                 throw new RuntimeException("AIChracteristics are not updated.");
             }
             AIPlayer player = new AIPlayer(aiStrategy);
-            player.setBalance(((Long) boardConfig.get("salary")).intValue());
+            player.setBalance(((Long) boardConfig.get("salary")).intValue() * 2);
             players.add(player);
         }
 
