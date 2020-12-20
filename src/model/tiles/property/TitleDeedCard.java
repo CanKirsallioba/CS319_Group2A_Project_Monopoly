@@ -135,6 +135,11 @@ public class TitleDeedCard implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return this.getPropertyName();
+    }
+
     /**
      * Updates the property's actions based according to the state of property (owned, mortgaged and upgradeLevel)
      */

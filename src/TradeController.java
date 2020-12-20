@@ -1,10 +1,13 @@
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.TradeModel;
 import model.player.Player;
+import model.tiles.property.TitleDeedCard;
 
 import java.net.URL;
 import java.util.Observable;
@@ -24,7 +27,7 @@ public class TradeController implements Initializable {
     private final int STEP_VALUE = 50;
 
     @FXML
-    public ListView playerLeftProperties, playerRightProperties, playerLeftOffered, playerRightOffered;
+    public ListView<TitleDeedCard> playerLeftProperties, playerRightProperties, playerLeftOffered, playerRightOffered;
 
     @FXML
     public Label playerLeftLabel, proposingPlayerLabel, playerRightLabel;
@@ -89,15 +92,15 @@ public class TradeController implements Initializable {
 
 
     public void init() {
-        System.out.println("CAPSLOCKINDICATORWUHU");
         int max_money_valueA = getProposingPlayer().getBalance();
         int max_money_valueB = getProposedPlayer().getBalance();
-        System.out.println( max_money_valueA);
-        System.out.println( max_money_valueB);
-        //playerLeftProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        //playerLeftOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        //playerRightProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        //playerRightOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerLeftLabel.setText(proposingPlayerName);
+        playerRightLabel.setText(proposedPlayerName);
+        proposingPlayerLabel.setText(proposingPlayerName + " Proposes");
+        playerLeftProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerLeftOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerRightProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerRightOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryA =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_MONEY_VALUE, max_money_valueA, DEFAULT_MONEY, STEP_VALUE);
@@ -108,29 +111,106 @@ public class TradeController implements Initializable {
         playerASpinner.setValueFactory( spinnerValueFactoryA);
         playerBSpinner.setValueFactory( spinnerValueFactoryB);
 
+
         playerASpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
             playerAOfferedMoney = newValue;
         });
         playerBSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
             playerBOfferedMoney = newValue;
         });
+
+        // proposingPlayer, proposedPlayer
+        // proposingPlayer.getTitleDeeds().get(i).getPropertyName();
+
+        for (TitleDeedCard deedCard: proposingPlayer.getTitleDeeds()) {
+            playerLeftProperties.getItems().add(deedCard);
+        }
+
+        for (TitleDeedCard deedCard: proposedPlayer.getTitleDeeds()) {
+            playerRightProperties.getItems().add(deedCard);
+        }
     }
 
 
     private class TradeObserver implements Observer {
-
         @Override
         public void update(Observable o, Object arg) {
 
         }
     }
 
-    public void handleAddPlayerB() {}
-    public void handleAddPlayerA() {}
-    public void handlePropose() {}
+    public void handleAddPlayerA() {
+        ObservableList<TitleDeedCard> list = playerLeftProperties.getSelectionModel().getSelectedItems();
+
+        for (TitleDeedCard card: list) {
+            if (!playerLeftOffered.getItems().contains(card))
+                playerLeftOffered.getItems().add(card);
+        }
+    }
+
+    public void handleAddPlayerB() {
+        ObservableList<TitleDeedCard> list = playerRightProperties.getSelectionModel().getSelectedItems();
+
+        for (TitleDeedCard card: list) {
+            if (!playerRightOffered.getItems().contains(card))
+                playerRightOffered.getItems().add(card);
+        }
+    }
+
+
+
+    public void handlePropose() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,  proposedPlayerName  + "\nDo you want to accept " + proposingPlayerName + "'s offer?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+
+            ObservableList<TitleDeedCard> deedCardsLeftPlayerOffered = playerLeftOffered.getItems();
+            ObservableList<TitleDeedCard> deedCardsRightPlayerOffered = playerRightOffered.getItems();
+
+            for ( TitleDeedCard card : deedCardsLeftPlayerOffered ) {
+                proposedPlayer.getTitleDeeds().add(card);
+                proposingPlayer.getTitleDeeds().remove(card);
+            }
+
+            for ( TitleDeedCard card : deedCardsRightPlayerOffered ) {
+                proposingPlayer.getTitleDeeds().add(card);
+                proposedPlayer.getTitleDeeds().remove(card);
+            }
+
+            /*
+            proposingPlayer.setBalance(proposingPlayer.getBalance() - playerAOfferedMoney);
+            proposedPlayer.setBalance(proposedPlayer.getBalance() - playerBOfferedMoney);
+
+            proposingPlayer.setBalance( proposingPlayer.getBalance() + playerBOfferedMoney );
+            proposedPlayer.setBalance( proposedPlayer.getBalance() + playerAOfferedMoney);
+            */
+
+            Label label = proposingPlayerLabel;
+            Stage stage = (Stage) label.getScene().getWindow();
+            stage.close();
+        }
+    }
+
     public void handleBack() {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void handleRemovePlayerA() {
+        ObservableList<TitleDeedCard> list = playerLeftOffered.getSelectionModel().getSelectedItems();
+
+        for (TitleDeedCard card: list) {
+            playerLeftOffered.getItems().remove(card);
+        }
+    }
+
+    public void handleRemovePlayerB() {
+        ObservableList<TitleDeedCard> list = playerRightOffered.getSelectionModel().getSelectedItems();
+
+        for (TitleDeedCard card: list) {
+            playerRightOffered.getItems().remove(card);
+        }
     }
 
     @Override
