@@ -254,7 +254,7 @@ public abstract class AbstractPlayer extends Observable implements Player  {
         playerToken.move(amount);
         currentTile =  playerToken.getBoard().getTiles().get(playerToken.getCurrentTileIndex()); // also move player's token
         currentTileIndex = currentTile.getIndex();
-
+        //getPlayerToken().setLastDiceRoll(amount);
         // Update players balance
         if (playerToken.passedGoInTheLastMove()) {
             changeBalance(playerToken.getBoard().getBoardSalary() );

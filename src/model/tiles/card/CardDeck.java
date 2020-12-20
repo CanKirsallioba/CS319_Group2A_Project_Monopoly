@@ -2,6 +2,8 @@ package model.tiles.card;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public abstract class CardDeck implements Serializable {
     ArrayList<Card> cardArrayList;
@@ -11,6 +13,7 @@ public abstract class CardDeck implements Serializable {
      * @param cardArrayList is the list that holds the cards.
      */
     public CardDeck(ArrayList<Card> cardArrayList) {
+        Collections.shuffle(cardArrayList);
         this.cardArrayList = cardArrayList;
     }
 
@@ -33,7 +36,9 @@ public abstract class CardDeck implements Serializable {
      * @param cardArrayList is the list that holds the cards.
      */
     public void setCardArrayList(ArrayList<Card> cardArrayList) {
+        Collections.shuffle(cardArrayList);
         this.cardArrayList = cardArrayList;
+
     }
 
 }
