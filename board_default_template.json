@@ -36,7 +36,7 @@
           "parameter": 200
         }},
         {"card":{
-          "instruction": "Advance to Go Tile.",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
@@ -51,7 +51,7 @@
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
@@ -130,17 +130,17 @@
       "tileIndex": 7,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "Advance to Go Tile",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Advance to Mecidiyekoy.",
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 19
         }},
         {"card":{
-          "instruction": "Advance to Yenikoy",
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 39
         }},
@@ -155,12 +155,12 @@
           "parameter": 4
         }},
         {"card":{
-          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 6
         }},
@@ -175,12 +175,7 @@
           "parameter": 100
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
-          "command": "MOVE_TO",
-          "parameter": 6
-        }},
-        {"card":{
-          "instruction": "Take a trip to Taksim. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 14
         }}
@@ -241,17 +236,17 @@
       "tileIndex": 12,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "Advance to Go Tile",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Advance to Mecidiyekoy.",
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 19
         }},
         {"card":{
-          "instruction": "Advance to Yenikoy",
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 39
         }},
@@ -266,12 +261,12 @@
           "parameter": 4
         }},
         {"card":{
-          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 6
         }},
@@ -286,12 +281,7 @@
           "parameter": 100
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
-          "command": "MOVE_TO",
-          "parameter": 6
-        }},
-        {"card":{
-          "instruction": "Take a trip to Taksim. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 14
         }}
@@ -358,7 +348,7 @@
           "parameter": 200
         }},
         {"card":{
-          "instruction": "Advance to Go Tile.",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
@@ -373,7 +363,7 @@
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
@@ -459,17 +449,17 @@
       "tileIndex": 22,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "Advance to Go Tile",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Advance to Mecidiyekoy.",
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 19
         }},
         {"card":{
-          "instruction": "Advance to Yenikoy",
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 39
         }},
@@ -484,12 +474,12 @@
           "parameter": 4
         }},
         {"card":{
-          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 6
         }},
@@ -504,12 +494,7 @@
           "parameter": 100
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
-          "command": "MOVE_TO",
-          "parameter": 6
-        }},
-        {"card":{
-          "instruction": "Take a trip to Taksim. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 14
         }}
@@ -591,7 +576,7 @@
           "parameter": 200
         }},
         {"card":{
-          "instruction": "Advance to Go Tile.",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
@@ -606,7 +591,7 @@
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
@@ -697,7 +682,7 @@
           "parameter": 200
         }},
         {"card":{
-          "instruction": "Advance to Go Tile.",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
@@ -712,7 +697,7 @@
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
@@ -769,17 +754,17 @@
       "tileIndex": 36,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "Advance to Go Tile",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Advance to Mecidiyekoy.",
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 19
         }},
         {"card":{
-          "instruction": "Advance to Yenikoy",
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 39
         }},
@@ -794,12 +779,12 @@
           "parameter": 4
         }},
         {"card":{
-          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
           "command": "GO_TO_JAIL",
           "parameter": 0
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 6
         }},
@@ -814,12 +799,7 @@
           "parameter": 100
         }},
         {"card":{
-          "instruction": "Take a trip to Sultanahmet. If you pass Go, collect $200.",
-          "command": "MOVE_TO",
-          "parameter": 6
-        }},
-        {"card":{
-          "instruction": "Take a trip to Taksim. If you pass Go, collect $200.",
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
           "command": "MOVE_TO",
           "parameter": 14
         }}

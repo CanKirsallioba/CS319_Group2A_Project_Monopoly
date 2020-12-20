@@ -22,7 +22,6 @@ public class CardTileActionStrategy extends ActionStrategy {
          */
 
         Card drawnCard = player.getCurrentlyDrawnCard();
-        System.out.println("BEFORE CARD __ \n: " + player);
         if (drawnCard.getCardDetails().containsKey("BAIL_OUT_OF_JAIL")) {
             //player adds a bail out of jail card to their hand
             player.addBailOutFromJailCard(drawnCard);
@@ -58,7 +57,6 @@ public class CardTileActionStrategy extends ActionStrategy {
             //Move token to a specific tile
             player.moveToken((drawnCard.getCardDetails().get("MOVE_TO") - player.getCurrentTile().getIndex()) % 40);
         }
-        System.out.println("END CARD __ \n: " + player);
         player.changeBalance(0);
     }
 

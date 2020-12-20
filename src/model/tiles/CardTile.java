@@ -5,6 +5,7 @@ import model.tiles.card.Card;
 import model.tiles.card.CardDeck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardTile extends Tile {
     CardDeck cardDeck;
