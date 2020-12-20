@@ -87,7 +87,13 @@ public class TitleDeedCard implements Serializable {
      * @return the game action objects associated with the property
      */
     public ArrayList<GameAction> getPropertyActions() {
-        return propertyActions;
+        ArrayList<GameAction> actions = new ArrayList<>() ;
+        for (GameAction propertyAction : propertyActions) {
+            if (propertyAction.isActive()) {
+                actions.add(propertyAction);
+            }
+        }
+        return actions;
     }
 
     /**

@@ -107,19 +107,19 @@ public class GameBoardController implements Initializable {
         TitleDeedCardObserver titleDeedCardObserver = new TitleDeedCardObserver();
         CurrentlyDrawnCardObserver currentlyDrawnCardObserver = new CurrentlyDrawnCardObserver();
         DiceObserver diceObserver = new DiceObserver();
-        playerCardAnchorPanes = new AnchorPane[]{player1Card, player2Card, player3Card, player4Card, player5Card,  player6Card};
-        playerMoneyLabels = new Label[]{p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel,  p6moneyLabel};
-        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3moneyLabel, p4NumOfPropLabel,  p5moneyLabel,  p6NameLabel};
+        playerCardAnchorPanes = new AnchorPane[]{player1Card, player2Card, player3Card, player4Card, player5Card, player6Card};
+        playerMoneyLabels = new Label[]{p1moneyLabel, p2moneyLabel, p3moneyLabel, p4moneyLabel, p5moneyLabel, p6moneyLabel};
+        playerNumberOfPropertiesLabels = new Label[]{p1NumOfPropLabel, p2NumOfPropLabel, p3moneyLabel, p4NumOfPropLabel, p5moneyLabel, p6NameLabel};
 
         playerList = getGameSession().getTurnManager().getPlayers();
 
         board = getGameSession().getBoard();
 
         int counter = 0;
-        for (Tile tile: board.getTiles()) {
+        for (Tile tile : board.getTiles()) {
             if (tile instanceof PropertyTile) {
-                nameLabels[counter].setText( ((PropertyTile) tile).getTitleDeedCard().getPropertyName() );
-                priceLabels[counter].setText( String.valueOf(((PropertyTile) tile).getTitleDeedCard().getPropertyValue()));
+                nameLabels[counter].setText(((PropertyTile) tile).getTitleDeedCard().getPropertyName());
+                priceLabels[counter].setText(String.valueOf(((PropertyTile) tile).getTitleDeedCard().getPropertyValue()));
                 counter++;
             }
         }
@@ -182,7 +182,6 @@ public class GameBoardController implements Initializable {
             player.setCurrentTile(player.getPlayerToken().getBoard().getTiles().get(player.getPlayerToken().getCurrentTileIndex()));
             tileObserverUpdate(observable, player.getCurrentTile().getIndex());
         }
-
 
 
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
@@ -326,6 +325,7 @@ public class GameBoardController implements Initializable {
                     costOfHousesValueLabel.setText("" + card.getUpgradeCost());
                     costOfHotelsValueLabel.setText("" + card.getUpgradeCost());
                     mortgageValueLabel.setText("" + card.getMortgageValue());
+                    costLabel.setText(card.getPropertyValue() + "");
                     titleDeedCard.setVisible(true);
                 }
             }
@@ -479,27 +479,27 @@ public class GameBoardController implements Initializable {
     }
 
     public void seeInformationCardPlayer1() throws IOException {
-        handleSeeProperties( playerList.get(0), getCurrentPlayer());
+        handleSeeProperties(playerList.get(0), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer2() throws IOException {
-        handleSeeProperties( playerList.get(1), getCurrentPlayer());
+        handleSeeProperties(playerList.get(1), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer3() throws IOException {
-        handleSeeProperties( playerList.get(2), getCurrentPlayer());
+        handleSeeProperties(playerList.get(2), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer4() throws IOException {
-        handleSeeProperties( playerList.get(3), getCurrentPlayer());
+        handleSeeProperties(playerList.get(3), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer5() throws IOException {
-        handleSeeProperties( playerList.get(4), getCurrentPlayer());
+        handleSeeProperties(playerList.get(4), getCurrentPlayer());
     }
 
     public void seeInformationCardPlayer6() throws IOException {
-        handleSeeProperties( playerList.get(5), getCurrentPlayer());
+        handleSeeProperties(playerList.get(5), getCurrentPlayer());
     }
 
     public void openTitleDeedCard() throws IOException {
@@ -530,7 +530,7 @@ public class GameBoardController implements Initializable {
         this.playerList = playerList;
     }
 
-    public void paintPane(Pane pane, String color) {
+    public static void paintPane(Pane pane, String color) {
         if (color.equals("RED")) {
             pane.setStyle("-fx-background-color:  #FF0900;");
         } else if (color.equals("YELLOW")) {

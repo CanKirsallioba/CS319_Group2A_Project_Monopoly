@@ -1,16 +1,31 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.player.Player;
+import model.tiles.GameAction;
 import model.tiles.property.TitleDeedCard;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InformationCardController implements Initializable {
+    @FXML
+    private ListView<String> listView = new ListView<String>();
+    private ObservableList<String> listViewData = FXCollections.observableArrayList();
+
+    private String selectedTitleDeedCardName = "";
+    private TitleDeedCard selectedTitleDeedCard = null;
 
     public Player getPlayer() {
         return player;
@@ -33,54 +48,157 @@ public class InformationCardController implements Initializable {
     private Player currentPlayer;
 
     @FXML
-    public Label informationLabel;
-
-    @FXML
-    public ScrollPane informationCardScrollPane;
-
-    @FXML
     public Button button1;
     public Button button2;
     public Button button3;
     public Button button4;
     public Button button5;
+    public AnchorPane titleDeedCard;
+    public Label propertyNameLabel, rentSiteOnlyValueLabel;
+    public Label rentWith1HouseValueLabel;
+    public Label rentWith2HousesValueLabel;
+    public Label rentWith3HousesValueLabel;
+    public Label rentWith4HousesValueLabel;
+    public Label rentWithHotelValueLabel;
+    public Label costOfHousesValueLabel;
+    public Label costOfHotelsValueLabel;
+    public Label mortgageValueLabel;
+    public Label costLabel;
+    public Pane propertyColorPane;
 
-    public void handleButton1() {}
+    Button[] buttons;
 
-    public void handleButton2() {}
 
-    public void handleButton3() {}
+    public void handleButton1() {
+        updateButtons();
+        updateTitleDeedCard();
+    }
 
-    public void handleButton4() {}
+    public void handleButton2() {
+        updateButtons();
+        updateTitleDeedCard();
+    }
 
-    public void handleButton5() {}
+    public void handleButton3() {
+        updateButtons();
+        updateTitleDeedCard();
+    }
+
+    public void handleButton4() {
+        updateButtons();
+        updateTitleDeedCard();
+    }
+
+    public void handleButton5() {
+        player.declareBankruptcy();
+        listViewData.clear();
+        updateButtons();
+        updateTitleDeedCard();
+        Stage stage = (Stage)button5.getScene().getWindow();
+        stage.close();
+    }
+
+    public void updateTitleDeedCard() {
+        for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
+            if (titleDeedCard.getPropertyName().equals(selectedTitleDeedCardName)) {
+                selectedTitleDeedCard = titleDeedCard;
+            }
+        }
+        // todo set labels.
+        if (selectedTitleDeedCard == null || player.isBankrupt()) {
+            titleDeedCard.setVisible(false);
+        } else {
+            propertyNameLabel.setText(selectedTitleDeedCard.getPropertyName());
+            rentSiteOnlyValueLabel.setText("" + selectedTitleDeedCard.getLevelZeroRent());
+            rentWith1HouseValueLabel.setText("" + selectedTitleDeedCard.getLevelOneRent());
+            rentWith2HousesValueLabel.setText("" + selectedTitleDeedCard.getLevelTwoRent());
+            rentWith3HousesValueLabel.setText("" + selectedTitleDeedCard.getLevelThreeRent());
+            rentWith4HousesValueLabel.setText("" + selectedTitleDeedCard.getLevelFourRent());
+            rentWithHotelValueLabel.setText("" + selectedTitleDeedCard.getLevelFiveRent());
+            costOfHousesValueLabel.setText("" + selectedTitleDeedCard.getUpgradeCost());
+            costOfHotelsValueLabel.setText("" + selectedTitleDeedCard.getUpgradeCost());
+            mortgageValueLabel.setText("" + selectedTitleDeedCard.getMortgageValue());
+            titleDeedCard.setVisible(true);
+            costLabel.setText(selectedTitleDeedCard.getPropertyValue() + "");
+            GameBoardController.paintPane(propertyColorPane, selectedTitleDeedCard.getColorGroup().getColor().name());
+        }
+    }
+
+
+    public void updateButtons() {
+//        System.out.println("Information card player 1" + player);
+//        System.out.println("Information card player 1" + player);
+        if (player != currentPlayer) {
+            button1.setVisible(false);
+            button2.setVisible(false);
+            button3.setVisible(false);
+            button4.setVisible(false);
+            button5.setVisible(false);
+        } else if (selectedTitleDeedCard == null) {
+            button1.setVisible(false);
+            button2.setVisible(false);
+            button3.setVisible(false);
+            button4.setVisible(false);
+            button5.setVisible(!player.isBankrupt());
+        } else {
+            ArrayList<GameAction> actions = selectedTitleDeedCard.getPropertyActions();
+            int buttonCount = 0;
+            for (GameAction action : actions) {
+                buttons[buttonCount].setVisible(buttonCount < actions.size());
+                buttons[buttonCount].setText(action.getName());
+                buttonCount++;
+            }
+            button5.setVisible(!player.isBankrupt());
+        }
+    }
 
     public void init() {
         System.out.println(player.toString());
         String informationOfPlayer = "";
         String informationOfProperty;
         int index = 1;
+
+        buttons = new Button[]{button1, button2, button3, button4};
+
         ArrayList<TitleDeedCard> deedCards = player.getTitleDeeds();
-        for (TitleDeedCard deedCard: deedCards){
-            informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
-                    "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
-                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n\n");
-            informationOfPlayer = informationOfPlayer + informationOfProperty;
-            index++;
-        }
+//        for (TitleDeedCard deedCard: deedCards){
+//            informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
+//                    "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
+//                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n\n");
+//            informationOfPlayer = informationOfPlayer + informationOfProperty;
+//            index++;
 
-        if(player != currentPlayer){
-            button1.setVisible(false);
-            button2.setVisible(false);
-            button3.setVisible(false);
-            button4.setVisible(false);
-            button5.setVisible(false);
-        }
+////            informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
+////                    "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
+////                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n");
+////            informationOfPlayer = informationOfPlayer + informationOfProperty;
+////            index++;
+//        }
 
-        informationLabel.setText( informationOfPlayer);
-        informationCardScrollPane.setContent(informationLabel);
-        informationLabel.setStyle("-fx-text-fill: #000000");
+        for (TitleDeedCard deedCard : deedCards) {
+            listViewData.add(deedCard.getPropertyName());
+        }
+        listView.setItems(listViewData);
+
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                selectedTitleDeedCardName = newValue;
+                updateTitleDeedCard();
+                updateButtons();
+//                System.out.println(selectedSaveFileName);
+            }
+        });
+        updateButtons();
+        updateTitleDeedCard();
+
+
+//        informationLabel.setText(informationOfPlayer);
+//        informationCardScrollPane.setContent(informationLabel);
+//        informationLabel.setStyle("-fx-text-fill: #000000");
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
