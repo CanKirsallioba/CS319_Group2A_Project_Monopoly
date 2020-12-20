@@ -27,8 +27,6 @@ public class IncomeTaxTileActionStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-        // TODO implement payTax() method in Player class
-        // TODO player.payTax();
         System.out.println("Balance before paying: " + player.getBalance());
         int taxAmount;
         if (player.getTaxOption() == TaxOption.TAX_WITH_RATIO) {

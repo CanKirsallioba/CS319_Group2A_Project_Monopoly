@@ -2,7 +2,7 @@
   "boardConfig":{
     "boardName": "Fast Gameplay",
     "tileCount": 40,
-    "salary": 20000,
+    "salary": 3000,
     "jailTileIndex": 10
   },
   "tiles": [
