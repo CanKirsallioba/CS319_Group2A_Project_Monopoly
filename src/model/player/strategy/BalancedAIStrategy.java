@@ -249,8 +249,7 @@ public class BalancedAIStrategy extends AIStrategy {
         }
         else{
             thisPlayerOfferings += tradeModel.getMoneyPlayer2();
-            System.out.println("MODELL" + tradeModel);
-            System.out.println("MODELL" + tradeModel.getTitleDeedCardsPlayer2());
+
             for( TitleDeedCard currentTitleDeed : tradeModel.getTitleDeedCardsPlayer2()){
                 thisPlayerOfferings  += currentTitleDeed.getPropertyValue();
             }
