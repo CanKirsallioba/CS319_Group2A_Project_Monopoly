@@ -83,7 +83,7 @@ public class PlayerToken implements Serializable {
     * @return true if player passed go in the last turn. false otherwise
      */
     boolean passedGoInTheLastMove() {
-        return (currentTileIndex < lastDiceRoll) || (currentTileIndex == 0);
+        return currentTileIndex < lastDiceRoll;
     }
 
     /**
