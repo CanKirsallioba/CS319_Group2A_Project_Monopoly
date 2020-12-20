@@ -21,10 +21,10 @@ public class ActionFactory extends AbstractActionFactory {
             case "TitleDeedCard":
                 ActionStrategy propertyAction = new PropertyActionsStrategy();
 
-                actions.add(new GameAction("Upgrade Property", propertyAction::button3Strategy, false, false));
-                actions.add(new GameAction("Downgrade Property", propertyAction::button3Strategy, false, false));
+                actions.add(new GameAction("Upgrade Property", propertyAction::button1Strategy, false, false));
+                actions.add(new GameAction("Downgrade Property", propertyAction::button2Strategy, false, false));
                 actions.add(new GameAction("Mortgage Property", propertyAction::button3Strategy, false, false));
-                actions.add(new GameAction("Remove Mortgage", propertyAction::button3Strategy, false, false));
+                actions.add(new GameAction("Remove Mortgage", propertyAction::button4Strategy, false, false));
                 break;
             case "CardTile":
                 ActionStrategy cardTile = new CardTileActionStrategy();

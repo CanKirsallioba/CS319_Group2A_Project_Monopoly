@@ -14,6 +14,24 @@ public class TradeController implements Initializable {
 
     private Player proposingPlayer, proposedPlayer;
 
+    public String getProposingPlayerName() {
+        return proposingPlayerName;
+    }
+
+    public void setProposingPlayerName(String proposingPlayerName) {
+        this.proposingPlayerName = proposingPlayerName;
+    }
+
+    public String getProposedPlayerName() {
+        return proposedPlayerName;
+    }
+
+    public void setProposedPlayerName(String proposedPlayerName) {
+        this.proposedPlayerName = proposedPlayerName;
+    }
+
+    private String proposingPlayerName, proposedPlayerName;
+
     public Player getProposingPlayer() {
         return proposingPlayer;
     }

@@ -80,6 +80,7 @@ public class GameBoardController implements Initializable {
     @FXML
     Button[] playerTradeButtonList;
 
+    ArrayList<String> playerNames;
     public void init() {
 
 
@@ -127,6 +128,7 @@ public class GameBoardController implements Initializable {
                 counter++;
             }
         }
+        Label[] playerNameLabels = {p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel,p5NameLabel, p6NameLabel};
 
         turnManager = getGameSession().getTurnManager();
 //        System.out.println(players.size());
@@ -163,6 +165,9 @@ public class GameBoardController implements Initializable {
         for (ImageView view : player6TokenImages) {
             view.setVisible(false);
         }
+        int aiPlayerCount = 1;
+        int humanPlayerCount = 1;
+        playerNames = new ArrayList<>();
 
         for (Player player : players) {
             Observable observable = (Observable) player;
@@ -174,17 +179,29 @@ public class GameBoardController implements Initializable {
             observable.addObserver(currentlyDrawnCardObserver);
             observable.addObserver(new PlayerCardObserver());
             observable.addObserver(diceObserver);
+            if (player.isAIControlled()) {
+                playerNames.add("AI Player " + aiPlayerCount);
+                aiPlayerCount++;
+            } else {
+                playerNames.add("Human Player " + humanPlayerCount);
+                humanPlayerCount++;
+            }
+
             int i = 0;
             for (Tile tile : getBoard().getTiles()) {
                 observable.addObserver(new TileObserver(i));
                 i++;
             }
+
             playerCardObserverUpdate(observable);
             currentlyDrawnCardObserverUpdate(observable);
             playerCardObserverUpdate(observable);
             diceObserverUpdate(observable);
             player.setCurrentTile(player.getPlayerToken().getBoard().getTiles().get(player.getPlayerToken().getCurrentTileIndex()));
             tileObserverUpdate(observable, player.getCurrentTile().getIndex());
+        }
+        for (int i = 0; i < getPlayerList().size(); i++) {
+            playerNameLabels[i].setText(playerNames.get(i));
         }
 
 
@@ -376,6 +393,9 @@ public class GameBoardController implements Initializable {
         TradeController tradeController = fxmlLoader.<TradeController>getController();
         tradeController.setProposingPlayer(proposingPlayer);
         tradeController.setProposedPlayer(proposedPlayer);
+
+        tradeController.setProposingPlayerName(playerNames.get(getPlayerList().indexOf(proposingPlayer)));
+        tradeController.setProposedPlayerName(playerNames.get(getPlayerList().indexOf(proposedPlayer)));
         tradeController.init();
 
         Stage stage = new Stage(StageStyle.DECORATED);

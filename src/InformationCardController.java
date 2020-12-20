@@ -80,21 +80,25 @@ public class InformationCardController implements Initializable {
 
 
     public void handleButton1() {
+        selectedTitleDeedCard.getPossibleActions().get(0).execute();
         updateButtons();
         updateTitleDeedCard();
     }
 
     public void handleButton2() {
+        selectedTitleDeedCard.getPossibleActions().get(1).execute();
         updateButtons();
         updateTitleDeedCard();
     }
 
     public void handleButton3() {
+        selectedTitleDeedCard.getPossibleActions().get(2).execute();
         updateButtons();
         updateTitleDeedCard();
     }
 
     public void handleButton4() {
+        selectedTitleDeedCard.getPossibleActions().get(3).execute();
         updateButtons();
         updateTitleDeedCard();
     }
@@ -150,7 +154,7 @@ public class InformationCardController implements Initializable {
             button2.setVisible(false);
             button3.setVisible(false);
             button4.setVisible(false);
-            button5.setVisible(!player.isBankrupt());
+            button5.setVisible(!player.isBankrupt() && !player.isAIControlled());
         } else {
             ArrayList<GameAction> actions = selectedTitleDeedCard.getPropertyActions();
             int buttonCount = 0;
@@ -159,7 +163,7 @@ public class InformationCardController implements Initializable {
                 buttons[buttonCount].setText(action.getName());
                 buttonCount++;
             }
-            button5.setVisible(!player.isBankrupt());
+            button5.setVisible(!player.isBankrupt() && !player.isAIControlled());
         }
     }
 
