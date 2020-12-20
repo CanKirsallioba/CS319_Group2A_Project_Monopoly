@@ -31,7 +31,7 @@
       "tileIndex": 2,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Receive 560 from the bank",
           "command": "RECEIVE",
           "parameter": 560
         }}
