@@ -100,6 +100,9 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                     }
                 }
             }
+            if( isInJail() == false){
+                moveToken(playersDice.getDiceResultSum());
+            }
         }
         // if player is not in jail, plays turn normally
         else{
