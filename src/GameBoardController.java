@@ -35,6 +35,12 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class GameBoardController implements Initializable {
+    /*
+
+        -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(2,0,36,1) 0%, rgba(255,46,0,1) 0%, rgba(255,115,87,1) 21%, rgba(255,255,255,1) 100%);
+     */
+
+
 
     public AnchorPane gameBoard;
     public String lastExecutedActionName = "";
