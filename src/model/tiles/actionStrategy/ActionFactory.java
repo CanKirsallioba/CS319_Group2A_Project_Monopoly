@@ -5,8 +5,16 @@ import model.tiles.GameAction;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Creates the actions performed on specifig tile
+ */
 public class ActionFactory extends AbstractActionFactory {
 
+    /**
+     *
+     * @param className the class that the actions are provided.
+     * @return
+     */
     @Override
     public ArrayList<GameAction> getActionList(String className) {
         ArrayList<GameAction> actions = new ArrayList<>();

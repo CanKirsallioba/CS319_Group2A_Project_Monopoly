@@ -14,28 +14,52 @@ public class GameSessionBuilder {
     BoardConfiguration boardConfiguration;
     JSONObject config;
 
+    /**
+     *
+     * @param boardConfiguration board configuration object
+     * @param config the config file object
+     */
     GameSessionBuilder(BoardConfiguration boardConfiguration, JSONObject config) {
         this.boardConfiguration = boardConfiguration;
         this.config = config;
     }
 
+    /**
+     *
+     * @return getter
+     */
     public BoardConfiguration getBoardConfiguration() {
         return boardConfiguration;
     }
 
+    /**
+     *
+     * @param boardConfiguration board configuration object
+     */
     public void setBoardConfiguration(BoardConfiguration boardConfiguration) {
         this.boardConfiguration = boardConfiguration;
     }
 
+    /**
+     *
+     * @return the config file object
+     */
     public JSONObject getConfig() {
         return config;
     }
 
+    /**
+     *
+     * @param config the config file object
+     */
     public void setConfig(JSONObject config) {
         this.config = config;
     }
 
-
+    /**
+     *
+     * @return GameSession a fully functional game session object
+     */
     public GameSession build() {
         BoardFactory boardFactory = new BoardFactory();
         PlayerFactory playerFactory = new PlayerFactory();
