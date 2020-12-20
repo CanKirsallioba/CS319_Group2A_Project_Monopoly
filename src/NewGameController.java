@@ -202,7 +202,7 @@ public class NewGameController implements Initializable {
         BoardConfiguration AIPlayerTestConfiguration = new BoardConfiguration();
         AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
         AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
-        AIPlayerTestConfiguration.setHumanPlayerCount(0);
+        AIPlayerTestConfiguration.setHumanPlayerCount(3);
         AIPlayerTestConfiguration.setMaxPlayerCount(3);
 //        filename = "board_template.json";
 
@@ -211,7 +211,7 @@ public class NewGameController implements Initializable {
 //        sessionManager.setFileName("board_template.json");  //delete this when test is over
 //        uncomment this when test is over
         sessionManager.setConfigFileName(configFileName);
-        sessionManager.newGame(humanPlayerTestConfiguration);
+        sessionManager.newGame(AIPlayerTestConfiguration);
         GameSession session = sessionManager.getGame();
 //        System.out.println(session);
         numOfPlayers = humanPlayers + botPlayers;

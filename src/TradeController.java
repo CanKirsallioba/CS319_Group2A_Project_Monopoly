@@ -178,13 +178,14 @@ public class TradeController implements Initializable {
                 proposedPlayer.getTitleDeeds().remove(card);
             }
 
-            /*
-            proposingPlayer.setBalance(proposingPlayer.getBalance() - playerAOfferedMoney);
-            proposedPlayer.setBalance(proposedPlayer.getBalance() - playerBOfferedMoney);
 
-            proposingPlayer.setBalance( proposingPlayer.getBalance() + playerBOfferedMoney );
-            proposedPlayer.setBalance( proposedPlayer.getBalance() + playerAOfferedMoney);
-            */
+            proposingPlayer.changeBalance(-playerAOfferedMoney);
+            proposingPlayer.changeBalance( playerBOfferedMoney);
+
+            proposedPlayer.changeBalance(playerAOfferedMoney);
+            proposedPlayer.changeBalance( -playerBOfferedMoney);
+
+
 
             Label label = proposingPlayerLabel;
             Stage stage = (Stage) label.getScene().getWindow();

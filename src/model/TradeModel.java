@@ -14,6 +14,7 @@ public class TradeModel extends Observable implements Serializable {
     ArrayList<TitleDeedCard> titleDeedCardsPlayer2;
     int moneyPlayer1;
     int moneyPlayer2;
+    boolean AIAccepts;
 
     public void startTrade(Player player1, Player player2) {
         setChanged();
@@ -83,4 +84,14 @@ public class TradeModel extends Observable implements Serializable {
     public void setMoneyPlayer2(int moneyPlayer2) {
         this.moneyPlayer2 = moneyPlayer2;
     }
+
+
+    public boolean isAIAccepts() {
+        return AIAccepts;
+    }
+
+    public void setAIAccepts(boolean AIAccepts) {
+        this.AIAccepts = AIAccepts;
+    }
+
 }

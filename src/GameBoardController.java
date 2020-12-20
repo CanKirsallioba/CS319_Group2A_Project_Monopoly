@@ -327,7 +327,7 @@ public class GameBoardController implements Initializable {
         else {
             for (int i = 0; i < getPlayerList().size(); i++) {
                 playerCardAnchorPanes[i].setVisible(!getPlayerList().get(i).isBankrupt());
-                if (player == getPlayerList().get(i)) {
+                if (getCurrentPlayer() == getPlayerList().get(i)) {
                     playerTradeButtonList[i].setDisable(true);
                     playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(2,0,36,1) 0%, rgba(223,174,163,1) 0%, rgba(255,115,87,1) 79%);");
                 } else {
