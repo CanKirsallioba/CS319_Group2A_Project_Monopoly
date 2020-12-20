@@ -3,6 +3,9 @@ package model.player;
 
 public class HumanPlayer extends AbstractPlayer {
 
+    /**
+     * Default constructor for HumanPlayer.
+     */
     public HumanPlayer(){
         setChanged();
         notifyObservers();
@@ -32,6 +35,10 @@ public class HumanPlayer extends AbstractPlayer {
         System.out.println(toString());
     }
 
+    /**
+     * Used for determining whether this player is controlled by AI
+     * @return true, since this method is for an human player
+     */
     @Override
     public boolean isAIControlled() {
         return false;
