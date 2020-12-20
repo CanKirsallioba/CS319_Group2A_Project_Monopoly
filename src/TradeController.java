@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.TradeModel;
 import model.player.Player;
@@ -12,6 +13,10 @@ import java.util.ResourceBundle;
 
 public class TradeController implements Initializable {
 
+    public Pane playerAPropertiesPane;
+    public Pane playerAOfferedPane;
+    public Pane playerBOfferedPane;
+    public Pane playerBPropertiesPane;
     private Player proposingPlayer, proposedPlayer;
 
     private final int MIN_MONEY_VALUE = 0;
@@ -37,7 +42,6 @@ public class TradeController implements Initializable {
     @FXML
     private Spinner<Integer> playerBSpinner;
     private int playerBOfferedMoney;
-
 
     public TradeModel getTradeModel() {
         return tradeModel;
@@ -90,10 +94,10 @@ public class TradeController implements Initializable {
         int max_money_valueB = getProposedPlayer().getBalance();
         System.out.println( max_money_valueA);
         System.out.println( max_money_valueB);
-        playerLeftProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        playerLeftOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        playerRightProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        playerRightOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        //playerLeftProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        //playerLeftOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        //playerRightProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        //playerRightOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryA =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_MONEY_VALUE, max_money_valueA, DEFAULT_MONEY, STEP_VALUE);

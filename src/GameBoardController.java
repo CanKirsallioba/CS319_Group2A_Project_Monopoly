@@ -417,9 +417,7 @@ public class GameBoardController implements Initializable {
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Trade Screen");
         Scene scene = new Scene(root);
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
-        stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+        stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
         stage.show();
@@ -442,7 +440,6 @@ public class GameBoardController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
         stage.show();
-
     }
 
     @FXML
