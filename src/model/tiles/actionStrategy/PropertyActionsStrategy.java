@@ -73,6 +73,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
     private void mortgageProperty(Player player){
         TitleDeedCard card = player.getSelectedTitleDeed();
         if(!card.isMortgaged()){
+            card.resetProperty();
             int mortgageMoney = card.mortgage();
             player.changeBalance(mortgageMoney);
         }

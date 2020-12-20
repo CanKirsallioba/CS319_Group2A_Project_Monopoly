@@ -1,8 +1,8 @@
 {
   "boardConfig":{
-    "boardName": "AI-LowMoney-Debug",
+    "boardName": "AI-Bankruptcy-Debug",
     "tileCount": 40,
-    "salary": 5000,
+    "salary": 5800,
     "jailTileIndex": 10
   },
   "tiles": [

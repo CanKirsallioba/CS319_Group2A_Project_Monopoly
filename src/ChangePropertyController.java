@@ -2,134 +2,182 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.BoardBuilder;
 import model.player.Player;
+import model.tiles.property.TitleDeedCard;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ChangePropertyController implements Initializable {
-    Player currentPlayer;
-    public void setPlayerPropertyCardPlayer(Player player) {
-        currentPlayer = player;
+    private final int MIN_PROPERTY_VAL = 50;
+    private final int MAX_PROPERTY_VAL = 100000;
+    private final int STEP_VALUE = 50;
+    @FXML
+    private TextField propertyNameField = new TextField();
+    private String propertyName;
+
+    @FXML
+    private Spinner<Integer> rentLevel0Spinner;
+    private int rentLevel0;
+    @FXML
+    private Spinner<Integer> rentLevel1Spinner;
+    private int rentLevel1;
+    @FXML
+    private Spinner<Integer> rentLevel2Spinner;
+    private int rentLevel2;
+    @FXML
+    private Spinner<Integer> rentLevel3Spinner;
+    private int rentLevel3;
+    @FXML
+    private Spinner<Integer> rentLevel4Spinner;
+    private int rentLevel4;
+    @FXML
+    private Spinner<Integer> rentLevel5Spinner;
+    private int rentLevel5;
+    @FXML
+    private Spinner<Integer> propertyValueSpinner;
+    private int propertyValue;
+    @FXML
+    private Spinner<Integer> upgradeSpinner;
+    private int upgradeValue;
+    @FXML
+    private Spinner<Integer> mortgageValueSpinner;
+    private int mortgageValue;
+
+
+    TitleDeedCard deedCard;
+
+    BoardBuilder builder;
+
+    int tileIndex;
+
+    public int getTileIndex() {
+        return tileIndex;
     }
 
-    public void init() {
-
-    }
-    @FXML /* Labels */
-    public Label propertyNameLabel;
-    public Label siteOnlyLabel;
-    public Label with1HouseLabel;
-    public Label with2HousesLabel;
-    public Label with3HousesLabel;
-    public Label with4HousesLabel;
-    public Label withHotelLabel;
-    public Label landPriceLabel;
-    public Label upgradingPriceLabel;
-    public Label mortgageValueLabel;
-
-    @FXML /* Decrease Buttons */
-    public Button decreaseSiteOnly;
-    public Button decreaseWith1House;
-    public Button decreaseWith2Houses;
-    public Button decreaseWith3Houses;
-    public Button decreaseWith4Houses;
-    public Button decreaseWithHotel;
-    public Button decreaseLand;
-    public Button decreaseUpgradingPrice;
-    public Button decreaseMortgageValue;
-
-    @FXML /* Increase Buttons */
-    public Button increaseSiteOnly;
-    public Button increaseWith1House;
-    public Button increaseWith2Houses;
-    public Button increaseWith3Houses;
-    public Button increaseWith4Houses;
-    public Button increaseWithHotel;
-    public Button increaseLand;
-    public Button increaseUpgradingPrice;
-    public Button increaseMortgageValue;
-
-    @FXML /* Decrease Listeners */
-    public void handleDecreaseSiteOnly() {
-        decreaseLabel(siteOnlyLabel);
-    }
-    public void handleDecreaseWith1House() {
-        decreaseLabel(with1HouseLabel);
-    }
-    public void handleDecreaseWith2Houses() {
-        decreaseLabel(with2HousesLabel);
-    }
-    public void handleDecreaseWith3Houses() {
-        decreaseLabel(with3HousesLabel);
-    }
-    public void handleDecreaseWith4Houses() {
-        decreaseLabel(with4HousesLabel);
-    }
-    public void handleDecreaseWithHotel() {
-        decreaseLabel(withHotelLabel);
-    }
-    public void handleDecreaseLand() {
-        decreaseLabel(landPriceLabel);
-    }
-    public void handleDecreaseUpgradingPrice() {
-        decreaseLabel(upgradingPriceLabel);
-    }
-    public void handleDecreaseMortgageValue() {
-        decreaseLabel(mortgageValueLabel);
+    public void setTileIndex(int tileIndex) {
+        this.tileIndex = tileIndex;
     }
 
-    private void decreaseLabel(Label label) {
-        int currentPrice = Integer.parseInt(label.getText());
-        currentPrice -= 25;
-        label.setText(String.valueOf(currentPrice));
+    public TitleDeedCard getDeedCard() {
+        return deedCard;
     }
 
-    private void increaseLabel(Label label) {
-        int currentPrice = Integer.parseInt(label.getText());
-        currentPrice += 25;
-        label.setText(String.valueOf(currentPrice));
+    public void setDeedCard(TitleDeedCard deedCard) {
+        this.deedCard = deedCard;
     }
 
-    @FXML /* Increase Listeners */
-    public void handleIncreaseSiteOnly() throws IOException {
-        increaseLabel(siteOnlyLabel);
+    public BoardBuilder getBuilder() {
+        return builder;
     }
-    public void handleIncreaseWith1House() {
-        increaseLabel(with1HouseLabel);
+
+    public void setBuilder(BoardBuilder builder) {
+        this.builder = builder;
     }
-    public void handleIncreaseWith2Houses() {
-        increaseLabel(with2HousesLabel);
+
+    public void init(){
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory0 =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelZeroRent(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory1 =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelOneRent(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory2 =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelTwoRent(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory3 =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelThreeRent(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory4 =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelFourRent(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory5 =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelFiveRent(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryProperty =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getPropertyValue(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryUpgrade =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getUpgradeCost(), STEP_VALUE);
+
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryMortgage =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getMortgageValue(), STEP_VALUE);
+
+        rentLevel0Spinner.setValueFactory(spinnerValueFactory0);
+        rentLevel1Spinner.setValueFactory(spinnerValueFactory1);
+        rentLevel2Spinner.setValueFactory(spinnerValueFactory2);
+        rentLevel3Spinner.setValueFactory(spinnerValueFactory3);
+        rentLevel4Spinner.setValueFactory(spinnerValueFactory4);
+        rentLevel5Spinner.setValueFactory(spinnerValueFactory5);
+        propertyValueSpinner.setValueFactory(spinnerValueFactoryProperty);
+        upgradeSpinner.setValueFactory( spinnerValueFactoryUpgrade);
+        mortgageValueSpinner.setValueFactory( spinnerValueFactoryMortgage);
+
+        rentLevel0 = getDeedCard().getLevelZeroRent();
+        rentLevel1 = getDeedCard().getLevelOneRent();
+        rentLevel2 = getDeedCard().getLevelTwoRent();
+        rentLevel3 = getDeedCard().getLevelThreeRent();
+        rentLevel4 = getDeedCard().getLevelFourRent();
+        rentLevel5 = getDeedCard().getLevelFiveRent();
+
+        propertyValue = getDeedCard().getPropertyValue();
+        upgradeValue = getDeedCard().getUpgradeCost();
+        mortgageValue = getDeedCard().getMortgageValue();
+
+        propertyNameField.setText(getDeedCard().getPropertyName());
+        propertyName = getDeedCard().getPropertyName();
+
+        //property name text field listener
+        propertyNameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            propertyName = newValue;
+        });
+
+        //spinner listeners
+        rentLevel0Spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            rentLevel0 = newValue;
+        });
+        rentLevel1Spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            rentLevel1 = newValue;
+        });
+        rentLevel2Spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            rentLevel2 = newValue;
+        });
+        rentLevel3Spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            rentLevel3 = newValue;
+        });
+        rentLevel4Spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            rentLevel4 = newValue;
+        });
+        rentLevel5Spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            rentLevel5 = newValue;
+        });
+        propertyValueSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            propertyValue = newValue;
+        });
+        upgradeSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            upgradeValue = newValue;
+        });
+        mortgageValueSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            mortgageValue = newValue;
+        });
+
     }
-    public void handleIncreaseWith3Houses() {
-        increaseLabel(with3HousesLabel);
-    }
-    public void handleIncreaseWith4Houses() {
-        increaseLabel(with4HousesLabel);
-    }
-    public void handleIncreaseWithHotel() {
-        increaseLabel(withHotelLabel);
-    }
-    public void handleIncreaseLand() {
-        increaseLabel(landPriceLabel);
-    }
-    public void handleIncreaseUpgradingPrice() {
-        increaseLabel(upgradingPriceLabel);
-    }
-    public void handleIncreaseMortgageValue() {
-        increaseLabel(mortgageValueLabel);
-    }
+
 
     public void handleBack(ActionEvent event) {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.close();
     }
-    public void handleApply() {
-
+    public void handleApply( ActionEvent event) {
+        getBuilder().changePropertyValues( tileIndex, propertyName, rentLevel0, rentLevel1, rentLevel2, rentLevel3,
+                rentLevel4, rentLevel5, upgradeValue, propertyValue, mortgageValue);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.close();
     }
 
     @Override

@@ -39,9 +39,13 @@ public class PropertyTileActionStrategy extends ActionStrategy {
         player.startAuction(titleDeedCards);
     }
 
+    /**
+     * This strategy is related to declaring bankruptcy when the player has insufficient money
+     * @param player is the player that the action is inflicted on.
+     */
     @Override
     public void button4Strategy(Player player) {
-        System.out.println("S4");
+        player.declareBankruptcy();
 
     }
 
