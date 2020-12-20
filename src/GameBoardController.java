@@ -36,7 +36,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.*;
 
 public class GameBoardController implements Initializable {
-
+    TradeModel tradeModel;
     public void init() {
 
 
@@ -49,7 +49,7 @@ public class GameBoardController implements Initializable {
                 pinkPrice1, pinkPrice2, pinkPrice3, orangePrice1, orangePrice2, orangePrice3,
                 redPrice1, redPrice2, redPrice3, yellowPrice1, yellowPrice2, yellowPrice3,
                 greenPrice1, greenPrice2, greenPrice3, bluePrice1, bluePrice2};
-
+        tradeModel = new TradeModel();
         player1TokenImages = new ImageView[]{player1Tile0TokenImage, player1Tile1TokenImage, player1Tile2TokenImage, player1Tile3TokenImage, player1Tile4TokenImage, player1Tile5TokenImage, player1Tile6TokenImage, player1Tile7TokenImage, player1Tile8TokenImage, player1Tile9TokenImage, player1Tile10TokenImage, player1Tile11TokenImage, player1Tile12TokenImage, player1Tile13TokenImage, player1Tile14TokenImage, player1Tile15TokenImage, player1Tile16TokenImage, player1Tile17TokenImage, player1Tile18TokenImage, player1Tile19TokenImage, player1Tile20TokenImage, player1Tile21TokenImage, player1Tile22TokenImage, player1Tile23TokenImage, player1Tile24TokenImage, player1Tile25TokenImage, player1Tile26TokenImage, player1Tile27TokenImage, player1Tile28TokenImage, player1Tile29TokenImage, player1Tile30TokenImage, player1Tile31TokenImage, player1Tile32TokenImage, player1Tile33TokenImage, player1Tile34TokenImage, player1Tile35TokenImage, player1Tile36TokenImage, player1Tile37TokenImage, player1Tile38TokenImage, player1Tile39TokenImage};
         player2TokenImages = new ImageView[]{player2Tile0TokenImage, player2Tile1TokenImage, player2Tile2TokenImage, player2Tile3TokenImage, player2Tile4TokenImage, player2Tile5TokenImage, player2Tile6TokenImage, player2Tile7TokenImage, player2Tile8TokenImage, player2Tile9TokenImage, player2Tile10TokenImage, player2Tile11TokenImage, player2Tile12TokenImage, player2Tile13TokenImage, player2Tile14TokenImage, player2Tile15TokenImage, player2Tile16TokenImage, player2Tile17TokenImage, player2Tile18TokenImage, player2Tile19TokenImage, player2Tile20TokenImage, player2Tile21TokenImage, player2Tile22TokenImage, player2Tile23TokenImage, player2Tile24TokenImage, player2Tile25TokenImage, player2Tile26TokenImage, player2Tile27TokenImage, player2Tile28TokenImage, player2Tile29TokenImage, player2Tile30TokenImage, player2Tile31TokenImage, player2Tile32TokenImage, player2Tile33TokenImage, player2Tile34TokenImage, player2Tile35TokenImage, player2Tile36TokenImage, player2Tile37TokenImage, player2Tile38TokenImage, player2Tile39TokenImage};
         player3TokenImages = new ImageView[]{player3Tile0TokenImage, player3Tile1TokenImage, player3Tile2TokenImage, player3Tile3TokenImage, player3Tile4TokenImage, player3Tile5TokenImage, player3Tile6TokenImage, player3Tile7TokenImage, player3Tile8TokenImage, player3Tile9TokenImage, player3Tile10TokenImage, player3Tile11TokenImage, player3Tile12TokenImage, player3Tile13TokenImage, player3Tile14TokenImage, player3Tile15TokenImage, player3Tile16TokenImage, player3Tile17TokenImage, player3Tile18TokenImage, player3Tile19TokenImage, player3Tile20TokenImage, player3Tile21TokenImage, player3Tile22TokenImage, player3Tile23TokenImage, player3Tile24TokenImage, player3Tile25TokenImage, player3Tile26TokenImage, player3Tile27TokenImage, player3Tile28TokenImage, player3Tile29TokenImage, player3Tile30TokenImage, player3Tile31TokenImage, player3Tile32TokenImage, player3Tile33TokenImage, player3Tile34TokenImage, player3Tile35TokenImage, player3Tile36TokenImage, player3Tile37TokenImage, player3Tile38TokenImage, player3Tile39TokenImage};
@@ -87,7 +87,6 @@ public class GameBoardController implements Initializable {
         Label[] playerNameLabels = {p1NameLabel, p2NameLabel, p3NameLabel, p4NameLabel, p5NameLabel, p6NameLabel};
 
         turnManager = getGameSession().getTurnManager();
-//        System.out.println(players.size());
         int playerCount = 0;
 
         for (AnchorPane playerCardAnchorPane : playerCardAnchorPanes) {
@@ -121,6 +120,7 @@ public class GameBoardController implements Initializable {
             if (player.isAIControlled()) {
                 playerNames.add("AI Player " + aiPlayerCount);
                 aiPlayerCount++;
+                tradeModel.addObserver((Observer) player);
             } else {
                 playerNames.add("Human Player " + humanPlayerCount);
                 humanPlayerCount++;
@@ -327,6 +327,7 @@ public class GameBoardController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Trade.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         TradeController tradeController = fxmlLoader.<TradeController>getController();
+        tradeController.setTradeModel(tradeModel);
         tradeController.setProposingPlayer(proposingPlayer);
         tradeController.setProposedPlayer(proposedPlayer);
 

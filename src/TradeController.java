@@ -10,6 +10,7 @@ import model.player.Player;
 import model.tiles.property.TitleDeedCard;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
@@ -160,37 +161,59 @@ public class TradeController implements Initializable {
 
 
     public void handlePropose() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,  proposedPlayerName  + "\nDo you want to accept " + proposingPlayerName + "'s offer?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
+        if (proposedPlayer.isAIControlled()) {
+            ArrayList<TitleDeedCard> lefts = new ArrayList<>();
+            ArrayList<TitleDeedCard> rights = new ArrayList<>();
+            lefts.addAll(playerLeftOffered.getItems());
+            rights.addAll(playerRightOffered.getItems());
+            tradeModel.startTrade(proposingPlayer, proposedPlayer);
+            tradeModel.setTitleDeedCardsPlayer1(lefts);
+            tradeModel.setTitleDeedCardsPlayer1(rights);
+            tradeModel.setMoneyPlayer1(playerAOfferedMoney);
+            tradeModel.setMoneyPlayer1(playerBOfferedMoney);
+            tradeModel.setAIAccepts(false);
+        }
+        Alert alert = null;
+        ButtonType humanAnswer = ButtonType.YES;
+        boolean aiAnswer = true;
+        if (!proposedPlayer.isAIControlled()) {
+            alert = new Alert(Alert.AlertType.CONFIRMATION, proposedPlayerName + "\nDo you want to accept " + proposingPlayerName + "'s offer?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            humanAnswer = alert.getResult();
+        } else {
+            aiAnswer = tradeModel.isAIAccepts();
+        }
 
-        if (alert.getResult() == ButtonType.YES) {
+        if (aiAnswer && humanAnswer== ButtonType.YES) {
 
             ObservableList<TitleDeedCard> deedCardsLeftPlayerOffered = playerLeftOffered.getItems();
             ObservableList<TitleDeedCard> deedCardsRightPlayerOffered = playerRightOffered.getItems();
 
-            for ( TitleDeedCard card : deedCardsLeftPlayerOffered ) {
+            for (TitleDeedCard card : deedCardsLeftPlayerOffered) {
                 proposedPlayer.getTitleDeeds().add(card);
                 proposingPlayer.getTitleDeeds().remove(card);
             }
 
-            for ( TitleDeedCard card : deedCardsRightPlayerOffered ) {
+            for (TitleDeedCard card : deedCardsRightPlayerOffered) {
                 proposingPlayer.getTitleDeeds().add(card);
                 proposedPlayer.getTitleDeeds().remove(card);
             }
 
 
             proposingPlayer.changeBalance(-playerAOfferedMoney);
-            proposingPlayer.changeBalance( playerBOfferedMoney);
+            proposingPlayer.changeBalance(playerBOfferedMoney);
 
             proposedPlayer.changeBalance(playerAOfferedMoney);
-            proposedPlayer.changeBalance( -playerBOfferedMoney);
+            proposedPlayer.changeBalance(-playerBOfferedMoney);
 
-
+            tradeModel.cancelTrade();
 
             Label label = proposingPlayerLabel;
             Stage stage = (Stage) label.getScene().getWindow();
             stage.close();
         }
+
+
     }
 
     public void handleBack() {
