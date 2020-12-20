@@ -1,6 +1,13 @@
 package model.player.strategy;
 
 import model.player.AIPlayer;
+import model.tiles.PropertyTile;
+import model.tiles.property.TitleDeedCard;
+
+import java.util.ArrayList;
+
+import static model.tiles.GameActionConstants.*;
+import static model.tiles.GameActionConstants.BUY_PROPERTY_ACTION;
 
 /**
  * Strategy for the adventurous AI.
@@ -20,7 +27,88 @@ public class AdventurousAIStrategy extends AIStrategy{
      */
     @Override
     public void makeAndExecutePropertyDecision( AIPlayer player){
+        PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
 
+        // decision path for owned property
+        if (currentPropertyTile.getTitleDeedCard().isOwned()){
+            if ( currentPropertyTile.getTitleDeedCard().getOwner() != player ) {
+
+                // if the player cannot pay the rent even if he/she sold everything of value, declare bankruptcy
+                if (player.getLiquidTotalWorth() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+
+                    player.declareBankruptcy();
+                }
+                // if player can pay the rent, pay the rent
+                else {
+
+                    // if player does not have the balance to pay rent &&
+                    // but liquid total worth > rent
+                    // mortgage & downgrade to pay rent
+                    if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()
+                            && player.getLiquidTotalWorth() >= currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+
+                        for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
+
+                            if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
+                                    && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+
+                                player.setSelectedTitleDeed( titleDeedCard);
+                                getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
+                                player.setSelectedTitleDeed(null);
+                                currentPropertyTile.getPossibleActions(player);
+                            }
+                        }
+                        if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+                            for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
+
+
+                                if (titleDeedCard.isMortgaged () == false
+                                        && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+
+                                    player.setSelectedTitleDeed( titleDeedCard);
+                                    getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                    player.setSelectedTitleDeed(null);
+                                    currentPropertyTile.getPossibleActions(player);
+                                    // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
+                                }
+                            }
+                        }
+                    }
+                    // if after selling everything player cannot pay, declare bankruptcy
+                    // which should have not happened in this decision path
+                    if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
+                        player.declareBankruptcy();
+                        return;
+                    }
+
+                    getGameAction(currentPropertyTile.getPossibleActions( player), PAY_RENT_ACTION).execute();
+
+                }
+            }
+        }
+        // decision path for unowned property
+        else {
+            boolean notBought = true;
+
+            // if player has enough money (even barely) buy the property
+            if (player.getBalance() >= 1.05 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
+
+                // if the player can pay the average rent after buying this property
+                if (player.getBalance() - gameStatistics.calculateAverageRent() > 0) {
+                    getGameAction(currentPropertyTile.getPossibleActions( player), BUY_PROPERTY_ACTION).execute();
+                    notBought = false;
+                }
+            }
+            // if does not fit the criteria do not buy
+            if( notBought) {
+
+                // do not buy
+                // start auction
+                ArrayList<TitleDeedCard> titleDeedOfCurrentProperty = new ArrayList<TitleDeedCard>();
+                titleDeedOfCurrentProperty.add( currentPropertyTile.getTitleDeedCard());
+                //  player.startAuction(titleDeedOfCurrentProperty );
+            }
+        }
     }
 
     /**
