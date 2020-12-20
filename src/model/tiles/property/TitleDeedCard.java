@@ -27,7 +27,10 @@ public class TitleDeedCard implements Serializable {
     Player owner;
     HashMap<String, GameAction> actionNames;
 
-
+    /**
+     * Constructor for the title deed card, initializes rents, property name and status about
+     * various conditions of the title deed cards.
+     */
     public TitleDeedCard(){
         levelOneRent = 0;
         levelTwoRent = 0;
@@ -136,7 +139,10 @@ public class TitleDeedCard implements Serializable {
         }
     }
 
-
+    /**
+     * To string method for the property name
+     * @return the name of the property.
+     */
     @Override
     public String toString() {
         return this.getPropertyName();
