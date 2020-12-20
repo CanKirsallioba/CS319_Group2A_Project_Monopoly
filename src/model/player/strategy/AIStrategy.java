@@ -12,6 +12,7 @@ public abstract class AIStrategy {
     public abstract void makeAndExecuteAuctionDecision( AIPlayer player);
     public abstract void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer);
     public abstract void makeAndExecuteCardDecision(AIPlayer aiPlayer);
+    public abstract void liftMortgages(AIPlayer player);
 
     /**
      * Gets the relevant game action from the game action list.
