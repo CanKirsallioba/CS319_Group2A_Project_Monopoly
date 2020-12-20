@@ -352,11 +352,6 @@ public class GameBoardController implements Initializable {
     }
 
     private class TitleDeedCardObserver implements Observer {
-//        AnchorPane titleDeedCard;
-//        Label propertyName, rent, level0Price, level1Price, level2Price, level3Price, level4Price, level5Price;
-//        Label upgradeCost, hotelCost;
-//        Label mortgageValue;
-
         @Override
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
@@ -390,6 +385,7 @@ public class GameBoardController implements Initializable {
         controller.setCurrentPlayer(currentPlayer);
         controller.setTurnManager(getTurnManager());
         controller.init();
+
         Stage stage = new Stage(StageStyle.DECORATED);
 
         stage.setTitle("Information Card");
@@ -409,7 +405,6 @@ public class GameBoardController implements Initializable {
         TradeController tradeController = fxmlLoader.<TradeController>getController();
         tradeController.setProposingPlayer(proposingPlayer);
         tradeController.setProposedPlayer(proposedPlayer);
-
         tradeController.setProposingPlayerName(playerNames.get(getPlayerList().indexOf(proposingPlayer)));
         tradeController.setProposedPlayerName(playerNames.get(getPlayerList().indexOf(proposedPlayer)));
         tradeController.init();
@@ -417,6 +412,7 @@ public class GameBoardController implements Initializable {
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Trade Screen");
         Scene scene = new Scene(root);
+
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
         stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
