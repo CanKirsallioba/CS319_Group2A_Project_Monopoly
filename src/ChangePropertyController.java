@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 import model.BoardBuilder;
 import model.player.Player;
 import model.tiles.property.TitleDeedCard;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,9 +50,6 @@ public class ChangePropertyController implements Initializable {
     private Spinner<Integer> mortgageValueSpinner;
     private int mortgageValue;
 
-
-    TitleDeedCard deedCard;
-
     BoardBuilder builder;
 
     int tileIndex;
@@ -63,14 +62,6 @@ public class ChangePropertyController implements Initializable {
         this.tileIndex = tileIndex;
     }
 
-    public TitleDeedCard getDeedCard() {
-        return deedCard;
-    }
-
-    public void setDeedCard(TitleDeedCard deedCard) {
-        this.deedCard = deedCard;
-    }
-
     public BoardBuilder getBuilder() {
         return builder;
     }
@@ -81,32 +72,50 @@ public class ChangePropertyController implements Initializable {
 
     public void init(){
 
+        JSONArray tileConfigs = (JSONArray) getBuilder().getConfigTemplate().get("tiles");
+        TitleDeedCard deedCard = new TitleDeedCard();
+        for (Object tileConfig : tileConfigs) {
+            JSONObject tileObj = (JSONObject) ((JSONObject) tileConfig).get("tile");
+            if (((Long) tileObj.get("tileIndex")).intValue() == tileIndex) {
+                deedCard.setPropertyName((String) tileObj.get("tileName"));
+                deedCard.setPropertyValue(((Number) tileObj.get("price")).intValue());
+                deedCard.setUpgradeCost(((Number) tileObj.get("upgradeCost")).intValue());
+                deedCard.setLevelZeroRent(((Number) tileObj.get("rentLevel0")).intValue());
+                deedCard.setLevelOneRent(((Number) tileObj.get("rentLevel1")).intValue());
+                deedCard.setLevelTwoRent(((Number) tileObj.get("rentLevel2")).intValue());
+                deedCard.setLevelThreeRent(((Number) tileObj.get("rentLevel3")).intValue());
+                deedCard.setLevelFourRent(((Number) tileObj.get("rentLevel4")).intValue());
+                deedCard.setLevelFiveRent(((Number) tileObj.get("rentLevel5")).intValue());
+                deedCard.setMortgageValue(((Number) tileObj.get("mortgageValue")).intValue());
+            }
+        }
+
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory0 =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelZeroRent(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getLevelZeroRent(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory1 =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelOneRent(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getLevelOneRent(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory2 =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelTwoRent(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getLevelTwoRent(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory3 =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelThreeRent(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getLevelThreeRent(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory4 =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelFourRent(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getLevelFourRent(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory5 =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getLevelFiveRent(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getLevelFiveRent(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryProperty =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getPropertyValue(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getPropertyValue(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryUpgrade =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getUpgradeCost(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getUpgradeCost(), STEP_VALUE);
 
         SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryMortgage =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, getDeedCard().getMortgageValue(), STEP_VALUE);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory( MIN_PROPERTY_VAL, MAX_PROPERTY_VAL, deedCard.getMortgageValue(), STEP_VALUE);
 
         rentLevel0Spinner.setValueFactory(spinnerValueFactory0);
         rentLevel1Spinner.setValueFactory(spinnerValueFactory1);
@@ -118,19 +127,19 @@ public class ChangePropertyController implements Initializable {
         upgradeSpinner.setValueFactory( spinnerValueFactoryUpgrade);
         mortgageValueSpinner.setValueFactory( spinnerValueFactoryMortgage);
 
-        rentLevel0 = getDeedCard().getLevelZeroRent();
-        rentLevel1 = getDeedCard().getLevelOneRent();
-        rentLevel2 = getDeedCard().getLevelTwoRent();
-        rentLevel3 = getDeedCard().getLevelThreeRent();
-        rentLevel4 = getDeedCard().getLevelFourRent();
-        rentLevel5 = getDeedCard().getLevelFiveRent();
+        rentLevel0 = deedCard.getLevelZeroRent();
+        rentLevel1 = deedCard.getLevelOneRent();
+        rentLevel2 = deedCard.getLevelTwoRent();
+        rentLevel3 = deedCard.getLevelThreeRent();
+        rentLevel4 = deedCard.getLevelFourRent();
+        rentLevel5 = deedCard.getLevelFiveRent();
 
-        propertyValue = getDeedCard().getPropertyValue();
-        upgradeValue = getDeedCard().getUpgradeCost();
-        mortgageValue = getDeedCard().getMortgageValue();
+        propertyValue = deedCard.getPropertyValue();
+        upgradeValue = deedCard.getUpgradeCost();
+        mortgageValue = deedCard.getMortgageValue();
 
-        propertyNameField.setText(getDeedCard().getPropertyName());
-        propertyName = getDeedCard().getPropertyName();
+        propertyNameField.setText(deedCard.getPropertyName());
+        propertyName = deedCard.getPropertyName();
 
         //property name text field listener
         propertyNameField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -184,4 +193,5 @@ public class ChangePropertyController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 }

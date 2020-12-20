@@ -132,6 +132,6 @@
          </font>
       </Label>
       <TextField fx:id="boardNameField" layoutX="1024.0" layoutY="141.0" prefHeight="35.0" prefWidth="300.0" />
-      <Button layoutX="1300.0" layoutY="850.0" mnemonicParsing="false" onAction="#handleSaveBoard" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="Save Game" />
+      <Button layoutX="1300.0" layoutY="850.0" mnemonicParsing="false" onAction="#handleSaveBoard" prefHeight="100.0" prefWidth="300.0" stylesheets="@ButtonStyle.css" text="Save Board" />
     </children>
 </Pane>

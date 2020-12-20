@@ -10,6 +10,14 @@ public class BoardBuilder {
 
     JSONObject configTemplate = configHandler.getConfigTemplate();
 
+    public JSONObject getConfigTemplate() {
+        return configTemplate;
+    }
+
+    public void setConfigTemplate(JSONObject configTemplate) {
+        this.configTemplate = configTemplate;
+    }
+
     public void changePropertyValues(int tileIndex, String tileName, int level0rent, int level1rent, int level2rent, int level3rent, int level4rent, int level5rent,
                                      int upgradeCost, int propertyValue, int mortgageValue) {
         JSONArray tileConfigs = (JSONArray) configTemplate.get("tiles");

@@ -60,12 +60,11 @@ public class BoardBuilderController implements Initializable {
     }
 
     @FXML
-    public void handleTitleDeed(TitleDeedCard deedCard, BoardBuilder builder, int tileIndex) throws IOException {
+    public void handleTitleDeed(BoardBuilder builder, int tileIndex) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ChangeProperty.fxml"));
 
         Parent root = fxmlLoader.load();
         ChangePropertyController controller = fxmlLoader.<ChangePropertyController>getController();
-        controller.setDeedCard(deedCard);
         controller.setBuilder( builder);
         controller.setTileIndex( tileIndex);
         controller.init();
@@ -86,28 +85,7 @@ public class BoardBuilderController implements Initializable {
     public void selectProperty(ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource();
         int id = Integer.parseInt(clickedButton.getId());
-        System.out.println( id);
-
-        JSONObject configTemplate = configHandler.getConfigTemplate();
-        JSONArray tileConfigs = (JSONArray) configTemplate.get("tiles");
-        TitleDeedCard deedCard = new TitleDeedCard();
-        for (Object tileConfig : tileConfigs) {
-            JSONObject tileObj = (JSONObject) ((JSONObject) tileConfig).get("tile");
-            if (((Long) tileObj.get("tileIndex")).intValue() == id) {
-                deedCard.setPropertyName((String) tileObj.get("tileName"));
-                deedCard.setPropertyValue(((Long) tileObj.get("price")).intValue());
-                deedCard.setUpgradeCost(((Long) tileObj.get("upgradeCost")).intValue());
-                deedCard.setLevelZeroRent(((Long) tileObj.get("rentLevel0")).intValue());
-                deedCard.setLevelOneRent(((Long) tileObj.get("rentLevel1")).intValue());
-                deedCard.setLevelTwoRent(((Long) tileObj.get("rentLevel2")).intValue());
-                deedCard.setLevelThreeRent(((Long) tileObj.get("rentLevel3")).intValue());
-                deedCard.setLevelFourRent(((Long) tileObj.get("rentLevel4")).intValue());
-                deedCard.setLevelFiveRent(((Long) tileObj.get("rentLevel5")).intValue());
-                deedCard.setMortgageValue(((Long) tileObj.get("mortgageValue")).intValue());
-
-                handleTitleDeed( deedCard, builder, id);
-            }
-        }
+        handleTitleDeed( builder, id);
     }
 
     @FXML
