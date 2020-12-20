@@ -385,7 +385,6 @@ public class GameBoardController implements Initializable {
         controller.setCurrentPlayer(currentPlayer);
         controller.setTurnManager(getTurnManager());
         controller.init();
-
         Stage stage = new Stage(StageStyle.DECORATED);
 
         stage.setTitle("Information Card");
@@ -413,7 +412,7 @@ public class GameBoardController implements Initializable {
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Trade Screen");
         Scene scene = new Scene(root);
-
+        stage.setScene(scene);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
         stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
