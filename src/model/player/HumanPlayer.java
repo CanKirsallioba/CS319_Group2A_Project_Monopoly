@@ -6,11 +6,10 @@ public class HumanPlayer extends AbstractPlayer {
     public HumanPlayer(){
         setChanged();
         notifyObservers();
-        System.out.println("IN players ");
     }
 
     /**
-     * playTurn method for the human player, which does the standard and mandorty things each player must do
+     * playTurn method for the human player, which does the standard and mandatory things each player must do
      * if they are not in jail
      */
     @Override

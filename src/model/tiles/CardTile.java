@@ -18,8 +18,11 @@ public class CardTile extends Tile {
      */
     @Override
     protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
-        Card card = cardDeck.drawCard();
-        player.setCurrentlyDrawnCard(card);
+
+        if(player.getCurrentlyDrawnCard() == null){
+            Card card = cardDeck.drawCard();
+            player.setCurrentlyDrawnCard(card);
+        }
 
         setActive(actions, "Apply", true);
 

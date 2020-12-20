@@ -59,7 +59,7 @@ public class CardTileActionStrategy extends ActionStrategy {
             player.moveToken((drawnCard.getCardDetails().get("MOVE_TO") - player.getCurrentTile().getIndex()) % 40);
         }
         System.out.println("END CARD __ \n: " + player);
-        player.setCurrentlyDrawnCard(null);
+        player.changeBalance(0);
     }
 
     @Override

@@ -31,10 +31,6 @@ public class PropertyActionsStrategy extends ActionStrategy {
      */
     @Override
     public void button3Strategy(Player player) {
-        // TODO NULLPOINTEREXCEPTION veriyor
-        if( player == null){
-            System.out.println( "PLAYER IS NULL");
-        }
         mortgageProperty(player);
     }
 
@@ -84,18 +80,9 @@ public class PropertyActionsStrategy extends ActionStrategy {
      * This method is the helper method for the button3Strategy.
      * @param player the player that the action is inflicted on.
      */
-    // TODO NULLPTRXCEPTION
     private void mortgageProperty(Player player){
-        if( player == null){
-            System.out.println( "PLAYER IS NULL at second call");
-        }
         //ArrayList<TitleDeedCard> card = player.getTitleDeeds();
-        // todo big problems
         TitleDeedCard card = player.getSelectedTitleDeed();
-        // TODO DEBUG REMOVE LATER
-        if( card == null){
-            System.out.println("CARD IS NULL");
-        }
         if(!card.isMortgaged()){
             card.resetProperty();
             int mortgageMoney = card.mortgage();
