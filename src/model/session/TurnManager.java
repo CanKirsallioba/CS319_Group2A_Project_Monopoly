@@ -10,6 +10,7 @@ public class TurnManager implements Serializable {
     ArrayList<Player> players;
     int currentPlayerIndex;
     Dice dice;
+
     TurnManager() {
 
     }
@@ -28,10 +29,13 @@ public class TurnManager implements Serializable {
 
     public void endTurn() {
         do {
+
             setCurrentPlayerIndex((getCurrentPlayerIndex() + 1) % players.size());
+
         } while (getPlayers().get(getCurrentPlayerIndex()).isBankrupt() && !getPlayers().stream().allMatch(Player::isBankrupt));
         playTurn();
     }
+
     public void addPlayer(Player player) {
         players.add(player);
     }
