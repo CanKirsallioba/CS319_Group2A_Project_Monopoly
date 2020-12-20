@@ -7,7 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * SerializationHandler handles serialization and deserialization of objects
+ */
 public class SerializationHandler {
+
+    /**
+     * This methods saves the single game session data to a save file with serialization
+     * @param data of game (all objects in game)
+     * @return the filename of the new save file
+     */
     public String save(GameSession data) throws IOException {
 
         try {
@@ -34,6 +43,11 @@ public class SerializationHandler {
         }
     }
 
+    /**
+     * This method loads the game session with deserialization from a .bin file
+     * @param  gameSessionName is game session's name with saveFile_ convention
+     * @return a game session object to initialize the saved game from where it was left off
+     */
     public GameSession load(String gameSessionName) throws IOException, ClassNotFoundException {
 
         try {
@@ -60,6 +74,10 @@ public class SerializationHandler {
         }
     }
 
+    /**
+     * This method returns the saved game session's file names
+     * @return an arraylist of game session save file names
+     */
     public ArrayList<String> getSavedGames() {
         return FileManager.getSavedSessionNames();
     }

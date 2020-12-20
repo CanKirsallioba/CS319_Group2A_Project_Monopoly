@@ -94,7 +94,7 @@ public class BalancedAIStrategy extends AIStrategy {
             boolean notBought = true;
 
             // if player has more than twice the money required to buy the property
-            if (player.getBalance() >= 1.35 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
+            if (player.getBalance() >= 1.85 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
                 if (player.getBalance() - gameStatistics.getMaximumRent() > 0) {
@@ -274,7 +274,7 @@ public class BalancedAIStrategy extends AIStrategy {
     public void liftMortgages(AIPlayer player){
         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
 
-            if (titleDeedCard.isMortgaged () && player.getBalance() > 3 * titleDeedCard.mortgageRemovalPenalty() ){
+            if (titleDeedCard.isMortgaged () && player.getBalance() > 2.40 * titleDeedCard.mortgageRemovalPenalty() ){
                 player.setSelectedTitleDeed( titleDeedCard);
                 getGameAction(titleDeedCard.getPropertyActions(), REMOVE_MORTGAGE_ACTION).execute();
                 player.setSelectedTitleDeed(null);
