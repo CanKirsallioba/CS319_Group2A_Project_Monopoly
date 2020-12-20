@@ -31,11 +31,57 @@
       "tileIndex": 2,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
+
     }},
     {"tile":{
       "tileType": "PropertyTile",
@@ -84,9 +130,59 @@
       "tileIndex": 7,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Temple of Zeus.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Mount Fuji",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Take a trip to Empire State Building. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -145,9 +241,59 @@
       "tileIndex": 12,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Temple of Zeus.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Mount Fuji",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Take a trip to Empire State Building. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -207,9 +353,54 @@
       "tileIndex": 17,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
     }},
@@ -268,9 +459,59 @@
       "tileIndex": 22,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Temple of Zeus.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Mount Fuji",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Take a trip to Empire State Building. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -345,9 +586,54 @@
       "tileIndex": 28,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
     }},
@@ -406,9 +692,54 @@
       "tileIndex": 33,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go, Do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
     }},
@@ -438,9 +769,59 @@
       "tileIndex": 36,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Temple of Zeus.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Mount Fuji",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass GO, do not collect $200.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel of Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Eiffel Tower. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Take a trip to Empire State Building. If you pass Go, collect $200.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},

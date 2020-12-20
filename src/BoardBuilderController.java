@@ -1,4 +1,5 @@
 import data.ConfigHandler;
+import data.FileManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -106,6 +108,7 @@ public class BoardBuilderController implements Initializable {
     @FXML
     public void handleSaveBoard( ActionEvent event) throws IOException {
         builder.changeBoardValues( goTileSalary, boardName);
+        FileManager.getBoardConfigNames();
         builder.saveBoard();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("mainmenu.fxml"));
