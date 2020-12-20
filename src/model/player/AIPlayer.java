@@ -159,6 +159,11 @@ public class AIPlayer extends AbstractPlayer implements Observer {
 
     }
 
+    @Override
+    public boolean isAIControlled() {
+        return true;
+    }
+
     public AIStrategy getAiStrategy() {
         return aiStrategy;
     }

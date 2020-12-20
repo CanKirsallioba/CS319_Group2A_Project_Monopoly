@@ -242,7 +242,7 @@ public class GameBoardController implements Initializable {
     private void currentlyDrawnCardObserverUpdate(Observable o) {
         if (o instanceof Player) {
             Card card = getCurrentPlayer().getCurrentlyDrawnCard();
-            if (card == null) {
+            if (card == null || ((Player)o).isBankrupt()) {
                 titleDeedCard1.setVisible(false);
             } else {
                 communityOrChanceCardLabel.setText(card.getType());
@@ -272,7 +272,10 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
 //                System.out.println("titledeed: + " + getCurrentPlayer().getTitleDeeds().size() + "actions: " + getPossibleActions().size());
-                if (buttonNumber < getPossibleActions().size() && getPossibleActions().get(buttonNumber).isActive() && !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName)) {
+                if (!((Player) o).isAIControlled() &&
+                        (buttonNumber < getPossibleActions().size() &&
+                                getPossibleActions().get(buttonNumber).isActive() &&
+                                !getPossibleActions().get(buttonNumber).getName().equals(lastExecutedActionName))) {
 //                    System.out.println(getPossibleActions().get(buttonNumber).isActive());
 
 //                    System.out.println(buttonNumber + " " + getPossibleActions().get(buttonNumber));
@@ -325,7 +328,7 @@ public class GameBoardController implements Initializable {
         public void update(Observable o, Object arg) {
             if (o instanceof Player) {
                 TitleDeedCard card = getCurrentPlayer().getSelectedTitleDeed();
-                if (card == null) {
+                if (card == null || ((Player)o).isBankrupt()) {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());

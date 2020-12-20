@@ -100,7 +100,7 @@ public class BalancedAIStrategy extends AIStrategy {
             boolean notBought = true;
             System.out.println( "Balanced AI Strategy: Unowned Prop");
             // if player has more than twice the money required to buy the property
-            if (player.getBalance() >= 1.35 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
+            if (player.getBalance() >= 1.05 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
                 if (player.getBalance() - gameStatistics.getMaximumRent() > 0) {

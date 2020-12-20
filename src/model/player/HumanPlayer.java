@@ -32,4 +32,9 @@ public class HumanPlayer extends AbstractPlayer {
         notifyObservers();
         System.out.println(toString());
     }
+
+    @Override
+    public boolean isAIControlled() {
+        return false;
+    }
 }
