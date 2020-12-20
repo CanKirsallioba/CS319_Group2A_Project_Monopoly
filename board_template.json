@@ -1,8 +1,8 @@
 {
   "boardConfig":{
-    "boardName": "Classic",
+    "boardName": "Default",
     "tileCount": 40,
-    "salary": 20000000,
+    "salary": 2000,
     "jailTileIndex": 10
   },
   "tiles": [
@@ -15,15 +15,15 @@
       "tileName": "Kasimpasa",
       "tileIndex": 1,
       "associatedColorGroup": "Brown",
-      "price": 6000,
+      "price": 600,
       "upgradeCost": 5000,
-      "rentLevel0": 200,
-      "rentLevel1": 1000,
-      "rentLevel2": 3000,
-      "rentLevel3": 9000,
-      "rentLevel4": 16000,
-      "rentLevel5": 25000,
-      "mortgageValue": 3000
+      "rentLevel0": 20,
+      "rentLevel1": 100,
+      "rentLevel2": 300,
+      "rentLevel3": 900,
+      "rentLevel4": 1600,
+      "rentLevel5": 2500,
+      "mortgageValue": 300
     }},
     {"tile":{
       "tileType": "CardTile",
@@ -31,31 +31,77 @@
       "tileIndex": 2,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "Receive 560 from the bank",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
+
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Dolapdere",
       "tileIndex": 3,
       "associatedColorGroup": "Brown",
-      "price": 6000,
+      "price": 600,
       "upgradeCost": 5000,
-      "rentLevel0": 400,
-      "rentLevel1": 2000,
-      "rentLevel2": 6000,
-      "rentLevel3": 18000,
-      "rentLevel4": 32000,
-      "rentLevel5": 45000,
-      "mortgageValue": 3000
+      "rentLevel0": 40,
+      "rentLevel1": 200,
+      "rentLevel2": 600,
+      "rentLevel3": 1800,
+      "rentLevel4": 3200,
+      "rentLevel5": 4500,
+      "mortgageValue": 300
     }},
     {"tile":{
       "tileType": "IncomeTaxTile",
       "tileIndex": 4,
-      "fixedTax": 20000,
+      "fixedTax": 2000,
       "percentageTax": 20
     }},
     {"tile":{
@@ -68,15 +114,15 @@
       "tileName": "Sultanahmet",
       "tileIndex": 6,
       "associatedColorGroup": "Light_Blue",
-      "price": 10000,
+      "price": 1000,
       "upgradeCost": 5000,
-      "rentLevel0": 600,
-      "rentLevel1": 3000,
-      "rentLevel2": 9000,
-      "rentLevel3": 27000,
-      "rentLevel4": 40000,
-      "rentLevel5": 55000,
-      "mortgageValue": 5000
+      "rentLevel0": 60,
+      "rentLevel1": 300,
+      "rentLevel2": 900,
+      "rentLevel3": 2700,
+      "rentLevel4": 4000,
+      "rentLevel5": 5500,
+      "mortgageValue": 500
     }},
     {"tile":{
       "tileType": "CardTile",
@@ -84,9 +130,54 @@
       "tileIndex": 7,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -95,29 +186,29 @@
       "tileName": "Karakoy",
       "tileIndex": 8,
       "associatedColorGroup": "Light_blue",
-      "price": 10000,
-      "upgradeCost": 5000,
-      "rentLevel0": 600,
-      "rentLevel1": 3000,
-      "rentLevel2": 9000,
-      "rentLevel3": 27000,
-      "rentLevel4": 40000,
-      "rentLevel5": 55000,
-      "mortgageValue": 5000
+      "price": 1000,
+      "upgradeCost": 500,
+      "rentLevel0": 60,
+      "rentLevel1": 300,
+      "rentLevel2": 900,
+      "rentLevel3": 2700,
+      "rentLevel4": 4000,
+      "rentLevel5": 5500,
+      "mortgageValue": 500
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Sirkeci",
       "tileIndex": 9,
       "associatedColorGroup": "Light_blue",
-      "price": 12000,
-      "upgradeCost": 5000,
-      "rentLevel0": 800,
-      "rentLevel1": 4000,
-      "rentLevel2": 10000,
-      "rentLevel3": 30000,
-      "rentLevel4": 35000,
-      "rentLevel5": 60000,
+      "price": 1200,
+      "upgradeCost": 500,
+      "rentLevel0": 80,
+      "rentLevel1": 400,
+      "rentLevel2": 1000,
+      "rentLevel3": 3000,
+      "rentLevel4": 3500,
+      "rentLevel5": 6000,
       "mortgageValue": 6000
     }},
     {"tile":{
@@ -129,14 +220,14 @@
       "tileName": "Beyoglu",
       "tileIndex": 11,
       "associatedColorGroup": "Pink",
-      "price": 14000,
-      "upgradeCost": 10000,
-      "rentLevel0": 1000,
-      "rentLevel1": 5000,
-      "rentLevel2": 15000,
-      "rentLevel3": 45000,
-      "rentLevel4": 62500,
-      "rentLevel5": 75000,
+      "price": 1400,
+      "upgradeCost": 1000,
+      "rentLevel0": 100,
+      "rentLevel1": 500,
+      "rentLevel2": 1500,
+      "rentLevel3": 4500,
+      "rentLevel4": 6250,
+      "rentLevel5": 7500,
       "mortgageValue": 7000
     }},
     {"tile":{
@@ -145,9 +236,54 @@
       "tileIndex": 12,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -156,30 +292,30 @@
       "tileName": "Besiktas",
       "tileIndex": 13,
       "associatedColorGroup": "Pink",
-      "price": 14000,
-      "upgradeCost": 10000,
-      "rentLevel0": 1000,
-      "rentLevel1": 5000,
-      "rentLevel2": 15000,
-      "rentLevel3": 45000,
-      "rentLevel4": 62500,
-      "rentLevel5": 75000,
-      "mortgageValue": 7000
+      "price": 1400,
+      "upgradeCost": 1000,
+      "rentLevel0": 100,
+      "rentLevel1": 500,
+      "rentLevel2": 1500,
+      "rentLevel3": 4500,
+      "rentLevel4": 6250,
+      "rentLevel5": 7500,
+      "mortgageValue": 700
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Taksim",
       "tileIndex": 14,
       "associatedColorGroup": "Pink",
-      "price": 16000,
-      "upgradeCost": 10000,
-      "rentLevel0": 1200,
-      "rentLevel1": 6000,
-      "rentLevel2": 18000,
-      "rentLevel3": 50000,
-      "rentLevel4": 70000,
-      "rentLevel5": 90000,
-      "mortgageValue": 8000
+      "price": 1600,
+      "upgradeCost": 1000,
+      "rentLevel0": 120,
+      "rentLevel1": 600,
+      "rentLevel2": 1800,
+      "rentLevel3": 5000,
+      "rentLevel4": 7000,
+      "rentLevel5": 9000,
+      "mortgageValue": 800
     }},
     {"tile":{
       "tileType": "TeleportTile",
@@ -191,15 +327,15 @@
       "tileName": "Harbiye",
       "tileIndex": 16,
       "associatedColorGroup": "Orange",
-      "price": 18000,
-      "upgradeCost": 10000,
-      "rentLevel0": 1400,
-      "rentLevel1": 7000,
-      "rentLevel2": 20000,
-      "rentLevel3": 55000,
-      "rentLevel4": 75000,
-      "rentLevel5": 95000,
-      "mortgageValue": 9000
+      "price": 1800,
+      "upgradeCost": 1000,
+      "rentLevel0": 140,
+      "rentLevel1": 700,
+      "rentLevel2": 2000,
+      "rentLevel3": 5500,
+      "rentLevel4": 7500,
+      "rentLevel5": 9500,
+      "mortgageValue": 900
     }},
     {"tile":{
       "tileType": "CardTile",
@@ -207,9 +343,54 @@
       "tileIndex": 17,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
     }},
@@ -218,30 +399,30 @@
       "tileName": "Sisli",
       "tileIndex": 18,
       "associatedColorGroup": "Orange",
-      "price": 18000,
-      "upgradeCost": 10000,
-      "rentLevel0": 1400,
-      "rentLevel1": 7000,
-      "rentLevel2": 20000,
-      "rentLevel3": 55000,
-      "rentLevel4": 75000,
-      "rentLevel5": 95000,
-      "mortgageValue": 9000
+      "price": 1800,
+      "upgradeCost": 1000,
+      "rentLevel0": 140,
+      "rentLevel1": 700,
+      "rentLevel2": 2000,
+      "rentLevel3": 5500,
+      "rentLevel4": 7500,
+      "rentLevel5": 9500,
+      "mortgageValue": 900
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Mecidiyekoy",
       "tileIndex": 19,
       "associatedColorGroup": "Orange",
-      "price": 20000,
-      "upgradeCost": 10000,
-      "rentLevel0": 1600,
-      "rentLevel1": 8000,
-      "rentLevel2": 22000,
-      "rentLevel3": 60000,
-      "rentLevel4": 80000,
-      "rentLevel5": 100000,
-      "mortgageValue": 10000
+      "price": 2000,
+      "upgradeCost": 1000,
+      "rentLevel0": 160,
+      "rentLevel1": 800,
+      "rentLevel2": 2200,
+      "rentLevel3": 6000,
+      "rentLevel4": 8000,
+      "rentLevel5": 10000,
+      "mortgageValue": 1000
     }},
     {"tile":{
       "tileType": "FreeParkingTile",
@@ -252,15 +433,15 @@
       "tileName": "Bostanci",
       "tileIndex": 21,
       "associatedColorGroup": "Red",
-      "price": 22000,
-      "upgradeCost": 15000,
-      "rentLevel0": 1800,
-      "rentLevel1": 9000,
-      "rentLevel2": 25000,
-      "rentLevel3": 70000,
-      "rentLevel4": 87500,
-      "rentLevel5": 105000,
-      "mortgageValue": 11000
+      "price": 2200,
+      "upgradeCost": 1500,
+      "rentLevel0": 180,
+      "rentLevel1": 900,
+      "rentLevel2": 2500,
+      "rentLevel3": 7000,
+      "rentLevel4": 8750,
+      "rentLevel5": 10500,
+      "mortgageValue": 1100
     }},
     {"tile":{
       "tileType": "CardTile",
@@ -268,9 +449,54 @@
       "tileIndex": 22,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -279,30 +505,30 @@
       "tileName": "Erenkoy",
       "tileIndex": 23,
       "associatedColorGroup": "Red",
-      "price": 22000,
-      "upgradeCost": 15000,
-      "rentLevel0": 1800,
-      "rentLevel1": 9000,
-      "rentLevel2": 25000,
-      "rentLevel3": 70000,
-      "rentLevel4": 87500,
-      "rentLevel5": 105000,
-      "mortgageValue": 11000
+      "price": 2200,
+      "upgradeCost": 1500,
+      "rentLevel0": 180,
+      "rentLevel1": 900,
+      "rentLevel2": 2500,
+      "rentLevel3": 7000,
+      "rentLevel4": 8750,
+      "rentLevel5": 10500,
+      "mortgageValue": 1100
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Caddebostan",
       "tileIndex": 24,
       "associatedColorGroup": "Red",
-      "price": 24000,
-      "upgradeCost": 15000,
-      "rentLevel0": 2000,
-      "rentLevel1": 10000,
-      "rentLevel2": 30000,
-      "rentLevel3": 75000,
-      "rentLevel4": 92500,
-      "rentLevel5": 110000,
-      "mortgageValue": 12000
+      "price": 2400,
+      "upgradeCost": 1500,
+      "rentLevel0": 200,
+      "rentLevel1": 1000,
+      "rentLevel2": 3000,
+      "rentLevel3": 7500,
+      "rentLevel4": 9250,
+      "rentLevel5": 11000,
+      "mortgageValue": 1200
     }},
     {"tile":{
       "tileType": "TeleportTile",
@@ -314,30 +540,30 @@
       "tileName": "Nisantasi",
       "tileIndex": 26,
       "associatedColorGroup": "Yellow",
-      "price": 26000,
-      "upgradeCost": 15000,
-      "rentLevel0": 2200,
-      "rentLevel1": 11000,
-      "rentLevel2": 33000,
-      "rentLevel3": 80000,
-      "rentLevel4": 97500,
-      "rentLevel5": 115000,
-      "mortgageValue": 13000
+      "price": 2600,
+      "upgradeCost": 1500,
+      "rentLevel0": 220,
+      "rentLevel1": 1100,
+      "rentLevel2": 3300,
+      "rentLevel3": 8000,
+      "rentLevel4": 9750,
+      "rentLevel5": 11500,
+      "mortgageValue": 1300
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Tesvikiye",
       "tileIndex": 27,
       "associatedColorGroup": "Yellow",
-      "price": 26000,
-      "upgradeCost": 15000,
-      "rentLevel0": 2200,
-      "rentLevel1": 11000,
-      "rentLevel2": 33000,
-      "rentLevel3": 80000,
-      "rentLevel4": 97500,
-      "rentLevel5": 115000,
-      "mortgageValue": 13000
+      "price": 2600,
+      "upgradeCost": 1500,
+      "rentLevel0": 220,
+      "rentLevel1": 1100,
+      "rentLevel2": 3300,
+      "rentLevel3": 8000,
+      "rentLevel4": 9750,
+      "rentLevel5": 11500,
+      "mortgageValue": 1300
     }},
     {"tile":{
       "tileType": "CardTile",
@@ -345,9 +571,54 @@
       "tileIndex": 28,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
     }},
@@ -356,15 +627,15 @@
       "tileName": "Macka",
       "tileIndex": 29,
       "associatedColorGroup": "Yellow",
-      "price": 28000,
-      "upgradeCost": 15000,
-      "rentLevel0": 2400,
-      "rentLevel1": 12000,
-      "rentLevel2": 36000,
-      "rentLevel3": 85000,
-      "rentLevel4": 102500,
-      "rentLevel5": 120000,
-      "mortgageValue": 14000
+      "price": 2800,
+      "upgradeCost": 1500,
+      "rentLevel0": 240,
+      "rentLevel1": 1200,
+      "rentLevel2": 3600,
+      "rentLevel3": 8500,
+      "rentLevel4": 10250,
+      "rentLevel5": 12000,
+      "mortgageValue": 1400
     }},
     {"tile":{
       "tileType": "GoToJailTile",
@@ -375,30 +646,30 @@
       "tileName": "Levent",
       "tileIndex": 31,
       "associatedColorGroup": "Green",
-      "price": 30000,
-      "upgradeCost": 20000,
-      "rentLevel0": 2600,
-      "rentLevel1": 13000,
-      "rentLevel2": 39000,
-      "rentLevel3": 90000,
-      "rentLevel4": 110000,
-      "rentLevel5": 127500,
-      "mortgageValue": 15000
+      "price": 3000,
+      "upgradeCost": 2000,
+      "rentLevel0": 260,
+      "rentLevel1": 1300,
+      "rentLevel2": 3900,
+      "rentLevel3": 9000,
+      "rentLevel4": 11000,
+      "rentLevel5": 12750,
+      "mortgageValue": 1500
     }},
     {"tile":{
       "tileType": "PropertyTile",
       "tileName": "Etiler",
       "tileIndex": 32,
       "associatedColorGroup": "Green",
-      "price": 30000,
-      "upgradeCost": 20000,
-      "rentLevel0": 2600,
-      "rentLevel1": 13000,
-      "rentLevel2": 39000,
-      "rentLevel3": 90000,
-      "rentLevel4": 110000,
-      "rentLevel5": 127500,
-      "mortgageValue": 15000
+      "price": 3000,
+      "upgradeCost": 2000,
+      "rentLevel0": 260,
+      "rentLevel1": 1300,
+      "rentLevel2": 3900,
+      "rentLevel3": 9000,
+      "rentLevel4": 11000,
+      "rentLevel5": 12750,
+      "mortgageValue": 1500
     }},
     {"tile":{
       "tileType": "CardTile",
@@ -406,9 +677,54 @@
       "tileIndex": 33,
       "CommunityChestCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Bank error in your favor. Collect $200.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "You went to the doctor. Pay $200",
+          "command": "PAY",
+          "parameter": 200
+        }},
+        {"card":{
+          "instruction": "Get out of jail free. This card may be kept until needed or sold/traded.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go directly to jail. Do not pass Go Tile, Do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Holiday Fund matures. Receive $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Income tax refund. Collect $20.",
+          "command": "RECEIVE",
+          "parameter": 20
+        }},
+        {"card":{
+          "instruction": "Life insurance matures. Collect $100",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Hospital Fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
+        }},
+        {"card":{
+          "instruction": "School fees. Pay $50.",
+          "command": "PAY",
+          "parameter": 50
         }}
       ]
     }},
@@ -417,14 +733,14 @@
       "tileName": "Bebek",
       "tileIndex": 34,
       "associatedColorGroup": "Green",
-      "price": 32000,
-      "upgradeCost": 20000,
-      "rentLevel0": 2800,
-      "rentLevel1": 15000,
-      "rentLevel2": 45000,
-      "rentLevel3": 100000,
-      "rentLevel4": 120000,
-      "rentLevel5": 140500,
+      "price": 3200,
+      "upgradeCost": 2000,
+      "rentLevel0": 280,
+      "rentLevel1": 1500,
+      "rentLevel2": 4500,
+      "rentLevel3": 10000,
+      "rentLevel4": 12000,
+      "rentLevel5": 14050,
       "mortgageValue": 16000
     }},
     {"tile":{
@@ -438,9 +754,54 @@
       "tileIndex": 36,
       "ChanceCardDeck": [
         {"card":{
-          "instruction": "",
+          "instruction": "Advance to Go Tile. Do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Advance to Mecidiyekoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 19
+        }},
+        {"card":{
+          "instruction": "Advance to Yenikoy. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 39
+        }},
+        {"card":{
+          "instruction": "Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+          "command": "BAIL_OUT_OF_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Go back four spaces.",
+          "command": "BACKWARD",
+          "parameter": 4
+        }},
+        {"card":{
+          "instruction": "Go directly to Jail. Do not pass Go Tile, do not collect $2000.",
+          "command": "GO_TO_JAIL",
+          "parameter": 0
+        }},
+        {"card":{
+          "instruction": "Take a trip to Sultanahmet. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 6
+        }},
+        {"card":{
+          "instruction": "Your building loan matures. Receive $150.",
           "command": "RECEIVE",
-          "parameter": 560
+          "parameter": 150
+        }},
+        {"card":{
+          "instruction": "You have won a crossword competition. Collect $100.",
+          "command": "RECEIVE",
+          "parameter": 100
+        }},
+        {"card":{
+          "instruction": "Take a trip to Taksim. If you pass Go Tile, do not collect $2000.",
+          "command": "MOVE_TO",
+          "parameter": 14
         }}
       ]
     }},
@@ -449,15 +810,15 @@
       "tileName": "Tarabya",
       "tileIndex": 37,
       "associatedColorGroup": "Blue",
-      "price": 35000,
-      "upgradeCost": 20000,
-      "rentLevel0": 3500,
-      "rentLevel1": 17500,
-      "rentLevel2": 50000,
-      "rentLevel3": 110000,
-      "rentLevel4": 130000,
-      "rentLevel5": 150000,
-      "mortgageValue": 17500
+      "price": 3500,
+      "upgradeCost": 2000,
+      "rentLevel0": 350,
+      "rentLevel1": 1750,
+      "rentLevel2": 5000,
+      "rentLevel3": 11000,
+      "rentLevel4": 13000,
+      "rentLevel5": 15000,
+      "mortgageValue": 1750
     }},
     {"tile":{
       "tileType": "IncomeTaxTile",
@@ -470,15 +831,15 @@
       "tileName": "Yenikoy",
       "tileIndex": 39,
       "associatedColorGroup": "Blue",
-      "price": 35000,
-      "upgradeCost": 40000,
-      "rentLevel0": 5000,
-      "rentLevel1": 20000,
-      "rentLevel2": 60000,
-      "rentLevel3": 140000,
-      "rentLevel4": 170000,
-      "rentLevel5": 200000,
-      "mortgageValue": 20000
+      "price": 4000,
+      "upgradeCost": 4000,
+      "rentLevel0": 500,
+      "rentLevel1": 2000,
+      "rentLevel2": 6000,
+      "rentLevel3": 14000,
+      "rentLevel4": 17000,
+      "rentLevel5": 20000,
+      "mortgageValue": 2000
     }}
   ]
 }
