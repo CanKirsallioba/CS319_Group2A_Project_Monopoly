@@ -20,6 +20,7 @@ import model.GamePace;
 import model.player.AICharacteristic;
 import model.session.GameSession;
 import model.session.GameSessionManager;
+import model.tiles.property.Color;
 import org.json.simple.JSONObject;
 
 import java.io.File;
@@ -39,13 +40,17 @@ public class NewGameController implements Initializable {
     private Spinner<Integer> humanSpinner;
 
     @FXML
-    private int humanPlayers = 1;
+    private int humanPlayers = 2;
     @FXML
     private int botPlayers = 0;
     @FXML
     private int maxHumanPlayers = 6;
     @FXML
     private int maxBotPlayers = 5;
+    @FXML
+    private int minBotPlayers = 0;
+    @FXML
+    private int minHumanPlayers = 2;
 
     private int numOfPlayers;
     private ConfigHandler configHandler = new ConfigHandler();
@@ -68,8 +73,8 @@ public class NewGameController implements Initializable {
     private ComboBox<String> comboAI;
     private ObservableList<String> comboAIData = FXCollections.observableArrayList();
 
-    SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryHuman = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, maxHumanPlayers);
-    SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryBot= new SpinnerValueFactory.IntegerSpinnerValueFactory(0, maxBotPlayers);
+    SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryHuman = new SpinnerValueFactory.IntegerSpinnerValueFactory(minHumanPlayers, maxHumanPlayers);
+    SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactoryBot= new SpinnerValueFactory.IntegerSpinnerValueFactory(minBotPlayers, maxBotPlayers);
 
     @FXML
     @Override
@@ -83,14 +88,26 @@ public class NewGameController implements Initializable {
         //spinner listeners
         humanSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
             humanPlayers = newValue;
+            if(humanPlayers+botPlayers>=2){
+                minBotPlayers =0;
+                minHumanPlayers = 1;
+            }
             maxBotPlayers = MAX_NUM_PLAYERS - humanPlayers;
             spinnerValueFactoryBot.setMax(maxBotPlayers);
+            spinnerValueFactoryBot.setMin(minBotPlayers);
+            spinnerValueFactoryHuman.setMin(minHumanPlayers);
             });
 
         botSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
             botPlayers = newValue;
+            if(botPlayers+humanPlayers>=2){
+                minBotPlayers =0;
+                minHumanPlayers = 1;
+            }
             maxHumanPlayers = MAX_NUM_PLAYERS - botPlayers;
-            spinnerValueFactoryHuman.setMax(maxHumanPlayers);});
+            spinnerValueFactoryHuman.setMax(maxHumanPlayers);
+            spinnerValueFactoryBot.setMin(minBotPlayers);
+            spinnerValueFactoryHuman.setMin(minHumanPlayers);});
 
         //combobox for board initialization
         //fill this from stored board templates
@@ -176,62 +193,29 @@ public class NewGameController implements Initializable {
     @FXML
     //where we give/save these settings to boardconfig object (model)
     private void handleStartGame(ActionEvent event) throws IOException {
-        // User ID acquired from a textbox called txtUserId
-//        int userId = Integer.parseInt(this.txtUserId.getText());
-        System.out.println( selectedAIChar + selectedPace + configFileName);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
         Parent root = (Parent)fxmlLoader.load();
 
         GameBoardController controller = fxmlLoader.<GameBoardController>getController();
 
-        String filename;
-
-        // Two Human Player.
-        BoardConfiguration humanPlayerTestConfiguration = new BoardConfiguration();
-        humanPlayerTestConfiguration.setGamePace(GamePace.MEDIUM); //delete this when test is over
-        //uncomment this
-        //humanPlayerTestConfiguration.setGamePace( selectedPace);
-        humanPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED); //delete this when test is over
-        //uncomment this when test is over
-        //humanPlayerTestConfiguration.setAiCharacteristic(selectedAIChar);
-        humanPlayerTestConfiguration.setHumanPlayerCount(1);
-        humanPlayerTestConfiguration.setMaxPlayerCount(1);
-//        filename = "board_template.json";
-
-        // Two AI player
-        BoardConfiguration AIPlayerTestConfiguration = new BoardConfiguration();
-        AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
-        AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
-        AIPlayerTestConfiguration.setHumanPlayerCount(1);
-        AIPlayerTestConfiguration.setMaxPlayerCount(2);
-//        filename = "board_template.json";
-
+        BoardConfiguration boardConfiguration = new BoardConfiguration();
+        boardConfiguration.setGamePace( GamePace.valueOf(selectedPace));
+        boardConfiguration.setAiCharacteristic(AICharacteristic.valueOf(selectedAIChar));
+        boardConfiguration.setHumanPlayerCount( humanPlayers);
+        numOfPlayers = humanPlayers + botPlayers;
+        boardConfiguration.setMaxPlayerCount( numOfPlayers);
 
         GameSessionManager sessionManager = new GameSessionManager();
-//        sessionManager.setFileName("board_template.json");  //delete this when test is over
-//        uncomment this when test is over
         sessionManager.setConfigFileName(configFileName);
-        sessionManager.newGame(humanPlayerTestConfiguration);
+        sessionManager.newGame(boardConfiguration);
         GameSession session = sessionManager.getGame();
-//        System.out.println(session);
-        numOfPlayers = humanPlayers + botPlayers;
         controller.setGameSession(session);
-        //sessionManager.saveGame(session); //for test purpse
         controller.init();
 
-
         Scene scene = new Scene(root);
-
-//        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
-//        Scene tableViewScene = new Scene(tableViewParent);
-//        BoardConfiguration boardConfiguration;
         // Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
         window.setScene(scene);
-
-        //primaryStage.setMaximized(true);
-        //primaryStage.setFullScreen(true);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
         window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
