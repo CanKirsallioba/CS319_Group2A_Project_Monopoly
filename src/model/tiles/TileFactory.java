@@ -8,10 +8,18 @@ import model.tiles.property.TitleDeedCard;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
-
+/**
+ * Tile factory is responsible for creation of tiles in the game
+ */
 public class TileFactory extends AbstractTileFactory {
     private final int PACE_CONST = 5;
 
+    /**
+     * Method changes the board configurations in board builder
+     * @param config is the JSONObject of tile to read features from
+     * @param gamePace is the game pace selected to modify property values
+     * @return Tile is created
+     */
     public Tile getTile(JSONObject config, int gamePace) {
         String tileType = (String) config.get("tileType");
         int tileIndex = ((Long) config.get("tileIndex")).intValue();
@@ -28,9 +36,6 @@ public class TileFactory extends AbstractTileFactory {
 
             String colorGroupName = (String) config.get("associatedColorGroup");
             colorGroupName = colorGroupName.toUpperCase();
-//            System.out.println("Color" + colorGroupName);
-//            System.out.println(""+ Color.valueOf(colorGroupName));
-//            System.out.println(Color.valueOf(colorGroupName).getClass());
             colorGroup.setColor( Color.valueOf(colorGroupName));
             deedCard.setColorGroup( colorGroup);
 

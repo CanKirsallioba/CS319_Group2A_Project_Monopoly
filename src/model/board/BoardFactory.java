@@ -63,9 +63,6 @@ public class BoardFactory {
             }
         }
 
-        //set board pace
-
-
         //set jail index to board
         JSONObject boardConfig = (JSONObject) config.get("boardConfig");
         if(boardConfig.get("jailTileIndex") != null){
@@ -73,13 +70,13 @@ public class BoardFactory {
             board.setJailTileIndex(jailTileIndex);
         }
 
-        // set salary
+        //set salary
         if(boardConfig.get("salary") != null){
             int salary = ((Long) boardConfig.get("salary")).intValue();
             board.setBoardSalary(salary);
         }
 
-        // set board name.
+        //set board name.
         String boardName = (String) boardConfig.get("boardName");
         board.setBoardName(boardName);
 
