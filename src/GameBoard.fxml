@@ -280,14 +280,14 @@
                               <Image url="@./boot.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="player2Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@./towerToken.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fitHeight="140.0" fitWidth="85.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@plane-up.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="player2Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@./towerToken.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="player1Tile25TokenImage" fitHeight="40.0" fitWidth="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
