@@ -30,35 +30,27 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecutePropertyDecision(AIPlayer player) {
-        System.out.println( "Balanced AI Strategy: Property Decision");
         PropertyTile currentPropertyTile = (PropertyTile) player.getCurrentTile();
 
         // decision path for owned property
         if (currentPropertyTile.getTitleDeedCard().isOwned()){
             if ( currentPropertyTile.getTitleDeedCard().getOwner() != player ) {
-                System.out.println( "Balanced AI Strategy: Paying Rent");
 
                 // if the player cannot pay the rent even if he/she sold everything of value, declare bankruptcy
                 if (player.getLiquidTotalWorth() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-                    // todo remove debug println
-                    System.out.println( "Balanced AI Strategy: No money to pay, no property to mortgage");
-                    System.out.println( "No woman no cry -- Bankruptcy");
 
                     player.declareBankruptcy();
                 }
                 // if player can pay the rent, pay the rent
                 else {
-                    System.out.println( "Balanced AI Owned Property: Owner Some1 else");
 
                     // if player does not have the balance to pay rent &&
                     // but liquid total worth > rent
                     // mortgage & downgrade to pay rent
                     if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()
                             && player.getLiquidTotalWorth() >= currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-                        System.out.println( "Player cannot payRent, but has liquid assets");
-                        System.out.println( "AXBBC191-P1");
+
                         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
-                            System.out.println( "Attempting to downgrade 2 pay");
 
                             if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                     && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
@@ -71,21 +63,16 @@ public class BalancedAIStrategy extends AIStrategy {
                         }
                         if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
                             for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
-                                System.out.println( "Attempting 2 mortgage pay");
 
 
                                 if (titleDeedCard.isMortgaged () == false
                                         && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-                                    System.out.println( "Mortgaging property");
-                                    System.out.println( "Balance b4 mortgage:" + player.getBalance());
-                                    System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
+
                                     player.setSelectedTitleDeed( titleDeedCard);
                                     getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
                                     player.setSelectedTitleDeed(null);
                                     currentPropertyTile.getPossibleActions(player);
                                     // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
-                                    System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
-                                    System.out.println( "Balance after mortgage:" + player.getBalance());
                                 }
                             }
                         }
@@ -93,18 +80,11 @@ public class BalancedAIStrategy extends AIStrategy {
                     // if after selling everything player cannot pay, declare bankruptcy
                     // which should have not happened in this decision path
                     if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-                        // todo bir kere buraya geldi execution, don't know why
-                        System.out.println("Error: Liquid total worth calculations wrong.");
                         player.declareBankruptcy();
                         return;
                     }
-                    // error
-                    System.out.println("Paying rent statistics");
-                    System.out.println( "Current tile:" + currentPropertyTile.getTileName());
-                    System.out.println("Rent that should be paid: " + currentPropertyTile.getTitleDeedCard().getCurrentRent());
-                    System.out.println("Player balance b4 rent: " + player.getBalance());
+
                     getGameAction(currentPropertyTile.getPossibleActions( player), PAY_RENT_ACTION).execute();
-                    System.out.println("Player balance after rent: " + player.getBalance());
 
                 }
             }
@@ -112,27 +92,23 @@ public class BalancedAIStrategy extends AIStrategy {
         // decision path for unowned property
         else {
             boolean notBought = true;
-            System.out.println( "Balanced AI Strategy: Unowned Prop");
+
             // if player has more than twice the money required to buy the property
-            if (player.getBalance() >= 1.05 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
+            if (player.getBalance() >= 1.35 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
                 if (player.getBalance() - gameStatistics.getMaximumRent() > 0) {
-                    System.out.println( "Decided to buy property balance:" + player.getBalance());
                     getGameAction(currentPropertyTile.getPossibleActions( player), BUY_PROPERTY_ACTION).execute();
                     notBought = false;
-                    System.out.println( "Bought property balance:" + player.getBalance());
                 }
             }
             // if does not fit the criteria do not buy
             if( notBought) {
-                System.out.println( "Debug: AiStrategy: Decided to not buy the property. Starting auction...");
 
                 // do not buy
                 // start auction
                 ArrayList<TitleDeedCard> titleDeedOfCurrentProperty = new ArrayList<TitleDeedCard>();
                 titleDeedOfCurrentProperty.add( currentPropertyTile.getTitleDeedCard());
-                System.out.println( "Auction starting...");
               //  player.startAuction(titleDeedOfCurrentProperty );
             }
         }
@@ -217,7 +193,6 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer) {
-        System.out.println( "Balanced AI Strategy: Income Tax");
 
         if (aiPlayer.getTaxOption() == null || aiPlayer.getTaxOption() == TaxOption.UNDETERMINED) {
             aiPlayer.setTaxOption(TaxOption.TAX_WITH_RATIO);
@@ -237,7 +212,6 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecuteCardDecision(AIPlayer aiPlayer) {
-        System.out.println( "Balanced AI Strategy: Card");
 
         ArrayList<GameAction> gameActions = aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
         Card currentCard = aiPlayer.getCurrentlyDrawnCard();
@@ -248,15 +222,12 @@ public class BalancedAIStrategy extends AIStrategy {
                 getGameAction(gameActions, APPLY_ACTION).execute();
             }
             else if( aiPlayer.getLiquidTotalWorth() >= moneyToPay){
-                System.out.println( "AXBBC191-C2");
 
                 while( aiPlayer.getBalance() < moneyToPay){
 
                     for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
                         if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                 && aiPlayer.getBalance() < moneyToPay) {
-
-                            System.out.println( "DEBUG: Downgrading to pay debt to card.");
 
                             aiPlayer.setSelectedTitleDeed( titleDeedCard);
                             getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
@@ -266,24 +237,15 @@ public class BalancedAIStrategy extends AIStrategy {
                     }
                     if (aiPlayer.getBalance() < moneyToPay) {
                         for (TitleDeedCard titleDeedCard : aiPlayer.getTitleDeeds()) {
-                            System.out.println( "Attempting 2 mortgage 2 pay card mandated money");
-
 
                             if (!titleDeedCard.isMortgaged ()
                                     && aiPlayer.getBalance() < moneyToPay) {
 
-
-                                System.out.println( "Mortgaging property to pay card");
-                                System.out.println( "Balance b4 mortgage:" + aiPlayer.getBalance());
-                                System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
                                 aiPlayer.setSelectedTitleDeed( titleDeedCard);
                                 getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
                                 aiPlayer.setSelectedTitleDeed(null);
                                 aiPlayer.getCurrentTile().getPossibleActions(aiPlayer);
                                 // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
-                                System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
-                                System.out.println( "Balance after mortgage:" + aiPlayer.getBalance());
-
                             }
                         }
                     }
@@ -313,7 +275,6 @@ public class BalancedAIStrategy extends AIStrategy {
         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
 
             if (titleDeedCard.isMortgaged () && player.getBalance() > 3 * titleDeedCard.mortgageRemovalPenalty() ){
-                System.out.println( "AXBBC191-LKG2");
                 player.setSelectedTitleDeed( titleDeedCard);
                 getGameAction(titleDeedCard.getPropertyActions(), REMOVE_MORTGAGE_ACTION).execute();
                 player.setSelectedTitleDeed(null);
