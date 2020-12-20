@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.player.Player;
+import model.session.TurnManager;
 import model.tiles.GameAction;
 import model.tiles.property.TitleDeedCard;
 
@@ -26,6 +27,15 @@ public class InformationCardController implements Initializable {
 
     private String selectedTitleDeedCardName = "";
     private TitleDeedCard selectedTitleDeedCard = null;
+    public TurnManager turnManager;
+
+    public TurnManager getTurnManager() {
+        return turnManager;
+    }
+
+    public void setTurnManager(TurnManager turnManager) {
+        this.turnManager = turnManager;
+    }
 
     public Player getPlayer() {
         return player;
@@ -96,6 +106,7 @@ public class InformationCardController implements Initializable {
         updateTitleDeedCard();
         Stage stage = (Stage)button5.getScene().getWindow();
         stage.close();
+        turnManager.endTurn();
     }
 
     public void updateTitleDeedCard() {

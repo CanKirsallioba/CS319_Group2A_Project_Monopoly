@@ -295,6 +295,14 @@ public class GameBoardController implements Initializable {
             playerCardAnchorPanes[index].setVisible(false);
 
         } else {
+            for (int i = 0; i < getPlayerList().size(); i++) {
+                if (player == getPlayerList().get(i)) {
+                    playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(2,0,36,1) 0%, rgba(223,174,163,1) 0%, rgba(255,115,87,1) 79%, rgba(120,97,97,1) 100%);");
+                } else {
+                    playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,255,255,1) 0%, rgba(29,119,128,1) 100%);");
+                }
+            }
+
             playerMoneyLabels[index].setText("" + player.getBalance());
             playerNumberOfPropertiesLabels[index].setText("" + player.getBalance());
         }
@@ -344,6 +352,7 @@ public class GameBoardController implements Initializable {
         InformationCardController controller = fxmlLoader.<InformationCardController>getController();
         controller.setPlayer(player);
         controller.setCurrentPlayer(currentPlayer);
+        controller.setTurnManager(getTurnManager());
         controller.init();
         Stage stage = new Stage(StageStyle.DECORATED);
 
