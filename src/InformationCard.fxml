@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url(CreditsBackground.jpg);" stylesheets="@CreditsStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InformationCardController">
    <children>
-      <ListView fx:id="listView" layoutX="20.0" layoutY="30.0" prefHeight="400.0" prefWidth="475.0" />
+      <ListView fx:id="listView" layoutX="20.0" layoutY="30.0" prefHeight="400.0" prefWidth="475.0" styleClass="list-cell" stylesheets="@GameBoardStyle.css" />
       <Button fx:id="button1" layoutX="98.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleButton1" prefHeight="30.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Upgrade Property">
          <padding>
             <Insets left="20.0" right="20.0" />
