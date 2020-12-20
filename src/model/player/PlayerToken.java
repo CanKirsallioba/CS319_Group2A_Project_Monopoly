@@ -118,14 +118,26 @@ public class PlayerToken implements Serializable {
         this.board = board;
     }
 
+    /**
+     * Getter method for currentTileIndex
+     * @return the index of the current tile
+     */
     public int getCurrentTileIndex() {
         return currentTileIndex;
     }
 
+    /**
+     * Setter method for currentTileIndex
+     * @param currentTileIndex is the new index for the current tile
+     */
     public void setCurrentTileIndex(int currentTileIndex) {
         this.currentTileIndex = currentTileIndex;
     }
 
+    /**
+     * Setter method for currentTile
+     * @param currentTile is the new current tile
+     */
     public void setCurrentTile(Tile currentTile) {
         this.currentTile = currentTile;
     }
