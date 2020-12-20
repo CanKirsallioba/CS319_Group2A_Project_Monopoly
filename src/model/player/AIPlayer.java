@@ -67,7 +67,6 @@ public class AIPlayer extends AbstractPlayer implements Observer {
      */
     @Override
     public void playTurn(){
-        System.out.println("debug: AIPlayer: playTurn chkpt--1\n" + this.toString() );
         updatePlayerWorth();
         setChanged();
         notifyObservers();
@@ -84,11 +83,8 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                     setGetOutOfJailChoice(BailOutChoice.MONEY);
                 }
                 else{
-                    System.out.println("DEBUG: DOWNGRADE & MORTGAGE TO GET OUT OF JAIL with money");
-                    System.out.println( "AXBBC191-J3");
                     for(TitleDeedCard titleDeedCard: getTitleDeeds()){
                         if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && getBalance() < (getPlayerToken().getBoard().getBoardSalary() / 4)){
-                            System.out.println(" DEBUG: Downgrading to get out of jail");
                             setSelectedTitleDeed( titleDeedCard);
                             aiStrategy.getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
                             setSelectedTitleDeed(null);
@@ -98,22 +94,16 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                     if( getBalance() < (getPlayerToken().getBoard().getBoardSalary() / 4)){
                         for(TitleDeedCard titleDeedCard: getTitleDeeds()){
                             if( titleDeedCard.isMortgaged() == false && getBalance() < (getPlayerToken().getBoard().getBoardSalary() /4)){
-                                System.out.println(" DEBUG: Mortgaging to get out of jail");
-                                System.out.println( "Mortgaging property");
-                                System.out.println( "Balance b4 mortgage:" + getBalance());
-                                System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
+
                                 setSelectedTitleDeed( titleDeedCard);
                                 aiStrategy.getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
                                 setSelectedTitleDeed(null);
                                 getCurrentTile().getPossibleActions(this);
                                 // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
-                                System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
-                                System.out.println( "Balance after mortgage:" + getBalance());
                             }
                         }
                     }
                     if( getBalance() < (getPlayerToken().getBoard().getBoardSalary() / 4)){
-                        System.out.println( "ERROR: Calculations incorrect!");
                         setGetOutOfJailChoice(BailOutChoice.DOUBLE_DICE);
                     }
                     else{
@@ -173,11 +163,10 @@ public class AIPlayer extends AbstractPlayer implements Observer {
             }
 
         }
+        aiStrategy.liftMortgages( this);
         updatePlayerWorth();
         setChanged();
         notifyObservers();
-        System.out.println("debug: AIPlayer: playTurn chkpt--2 \n" + this.toString() );
-
     }
 
     @Override

@@ -12,6 +12,7 @@ public abstract class AIStrategy {
     public abstract void makeAndExecuteAuctionDecision( AIPlayer player);
     public abstract void makeAndExecuteIncomeTaxDecision(AIPlayer aiPlayer);
     public abstract void makeAndExecuteCardDecision(AIPlayer aiPlayer);
+    public abstract void liftMortgages(AIPlayer player);
 
     /**
      * Gets the relevant game action from the game action list.
@@ -28,10 +29,18 @@ public abstract class AIStrategy {
         throw new RuntimeException("Given Action Name is not found in the action list. Action Name: " + gameActionName);
     }
 
+    /**
+     * Getter method for game statistics.
+     * @return
+     */
     public GameStatistics getGameStatistics() {
         return gameStatistics;
     }
 
+    /**
+     * Setter method for game statistics.
+     * @param gameStatistics is the new gameStatistics.
+     */
     public void setGameStatistics(GameStatistics gameStatistics) {
         this.gameStatistics = gameStatistics;
     }

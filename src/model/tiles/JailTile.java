@@ -16,7 +16,6 @@ public class JailTile extends Tile {
     @Override
     protected ArrayList<GameAction> hook(Player player, ArrayList<GameAction> actions) {
 
-//        System.out.println("jail tile hook called");
         if (player.isInJail()) {
             if (player.getGetOutOfJailChoice() == BailOutChoice.WAIT) {
                 if (player.getBailOutOfJailCards().size() == 0) {
