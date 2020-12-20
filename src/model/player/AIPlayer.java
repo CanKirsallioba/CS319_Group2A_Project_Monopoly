@@ -172,6 +172,7 @@ public class AIPlayer extends AbstractPlayer implements Observer {
             }
 
         }
+        aiStrategy.liftMortgages( this);
         updatePlayerWorth();
         setChanged();
         notifyObservers();

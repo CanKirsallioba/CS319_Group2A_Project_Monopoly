@@ -33,53 +33,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.concurrent.*;
 
 public class GameBoardController implements Initializable {
-
-
-    public AnchorPane gameBoard;
-    public String lastExecutedActionName = "";
-    //    Image[] diceImages = {File file = new File("src/Box13.jpg");
-//    Image image1 = new Image(file.toURI().toString());};
-    @FXML
-    TurnManager turnManager;
-    @FXML
-    Board board;
-    @FXML
-    Dice dice;
-    @FXML
-    ArrayList<Player> playerList;
-    // trade controllera bu modeli aktarmak gerekli.
-    @FXML
-    TradeModel model;
-
-    // auction controllera bu modeli aktarmak gerekli.
-    @FXML
-    AuctionModel auctionModel;
-    @FXML
-    ImageView[] player6TokenImages;
-    @FXML
-    ImageView[][] playerTokenList;
-    @FXML
-    ImageView[] player5TokenImages;
-    @FXML
-    ImageView[] player4TokenImages;
-    @FXML
-    ImageView[] player3TokenImages;
-    @FXML
-    ImageView[] player1TokenImages;
-    @FXML
-    ImageView[] player2TokenImages;
-    @FXML
-    AnchorPane[] playerCardAnchorPanes;
-    @FXML
-    Label[] playerMoneyLabels;
-    @FXML
-    Label[] playerNumberOfPropertiesLabels;
-    @FXML
-    Button[] playerTradeButtonList;
-
-    ArrayList<String> playerNames;
 
     public void init() {
 
@@ -142,28 +98,10 @@ public class GameBoardController implements Initializable {
             }
             playerCount++;
         }
-        for (ImageView view : player1TokenImages) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player2TokenImages) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player3TokenImages) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player4TokenImages) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player5TokenImages) {
-            view.setVisible(false);
-        }
-
-        for (ImageView view : player6TokenImages) {
-            view.setVisible(false);
+        for (ImageView[] imageViews : playerTokenList) {
+            for (ImageView imageView : imageViews) {
+                imageView.setVisible(false);
+            }
         }
         int aiPlayerCount = 1;
         int humanPlayerCount = 1;
@@ -207,6 +145,7 @@ public class GameBoardController implements Initializable {
 
 
         getGameSession().getTurnManager().getCurrentPlayer().playTurn();
+
     }
 
     @Override
@@ -238,7 +177,6 @@ public class GameBoardController implements Initializable {
     private void tileObserverUpdate(Observable o, int index) {
         if (o instanceof Player) {
             Player player = (Player) o;
-//            System.out.println(playerTokenList[getPlayerList().indexOf(player)][index]);
             playerTokenList[getPlayerList().indexOf(player)][index].setVisible((index == ((Player) o).getCurrentTile().getIndex()) && !player.isBankrupt());
 
         }
@@ -277,15 +215,6 @@ public class GameBoardController implements Initializable {
         }
     }
 
-//    private class PlayerObserver implements Observer {
-//        @Override
-//        public void update(Observable o, Object arg) {
-//            if (o instanceof Player) {
-//                if (((Player) o).isBankrupt()) handleEndTurnButton();
-//            }
-//        }
-//    }
-
     private class GameActionButtonObserver implements Observer {
         Button button;
         int buttonNumber;
@@ -323,8 +252,7 @@ public class GameBoardController implements Initializable {
             for (AnchorPane playerCardAnchorPane : playerCardAnchorPanes) {
                 playerCardAnchorPane.setVisible(false);
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < getPlayerList().size(); i++) {
                 playerCardAnchorPanes[i].setVisible(!getPlayerList().get(i).isBankrupt());
                 if (getCurrentPlayer() == getPlayerList().get(i)) {
@@ -332,7 +260,7 @@ public class GameBoardController implements Initializable {
                     playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(2,0,36,1) 0%, rgba(223,174,163,1) 0%, rgba(255,115,87,1) 79%);");
                 } else {
                     playerCardAnchorPanes[i].setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,255,255,1) 0%, rgba(29,119,128,1) 100%);");
-                    playerTradeButtonList[i].setDisable(false);
+                    playerTradeButtonList[i].setDisable(false || getCurrentPlayer().isAIControlled());
                 }
             }
         }
@@ -444,11 +372,7 @@ public class GameBoardController implements Initializable {
         getCurrentPlayer().setSelectedTitleDeed(null);
         getCurrentPlayer().setCurrentlyDrawnCard(null);
         getGameSession().getTurnManager().endTurn();
-//        System.out.println("Player: " + getGameSession().getTurnManager().getCurrentPlayerIndex() + "\n"
-//                + "TileIndex: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getIndex() + "\n"
-//                + "Tile: " + getGameSession().getTurnManager().getCurrentPlayer().getCurrentTile().getTileName());
-//
-//        System.out.println(getGameSession().getTurnManager().getCurrentPlayer().toString());
+
     }
 
     public ArrayList<GameAction> getPossibleActions() {
@@ -521,27 +445,27 @@ public class GameBoardController implements Initializable {
     }
 
     public void tradeWithPlayer1() throws IOException {
-        handleTrade( getCurrentPlayer(), getPlayerList().get(0));
+        handleTrade(getCurrentPlayer(), getPlayerList().get(0));
     }
 
     public void tradeWithPlayer2() throws IOException {
-        handleTrade( getCurrentPlayer(), getPlayerList().get(1));
+        handleTrade(getCurrentPlayer(), getPlayerList().get(1));
     }
 
     public void tradeWithPlayer3() throws IOException {
-        handleTrade( getCurrentPlayer(), getPlayerList().get(2));
+        handleTrade(getCurrentPlayer(), getPlayerList().get(2));
     }
 
     public void tradeWithPlayer4() throws IOException {
-        handleTrade( getCurrentPlayer(), getPlayerList().get(3));
+        handleTrade(getCurrentPlayer(), getPlayerList().get(3));
     }
 
     public void tradeWithPlayer5() throws IOException {
-        handleTrade( getCurrentPlayer(), getPlayerList().get(4));
+        handleTrade(getCurrentPlayer(), getPlayerList().get(4));
     }
 
     public void tradeWithPlayer6() throws IOException {
-        handleTrade( getCurrentPlayer(), getPlayerList().get(5));
+        handleTrade(getCurrentPlayer(), getPlayerList().get(5));
     }
 
     public void seeInformationCardPlayer1() throws IOException {
@@ -1232,6 +1156,51 @@ public class GameBoardController implements Initializable {
 
     @FXML
     private GameSession gameSession;
+
+
+    public AnchorPane gameBoard;
+    public String lastExecutedActionName = "";
+    //    Image[] diceImages = {File file = new File("src/Box13.jpg");
+//    Image image1 = new Image(file.toURI().toString());};
+    @FXML
+    TurnManager turnManager;
+    @FXML
+    Board board;
+    @FXML
+    Dice dice;
+    @FXML
+    ArrayList<Player> playerList;
+    // trade controllera bu modeli aktarmak gerekli.
+    @FXML
+    TradeModel model;
+
+    // auction controllera bu modeli aktarmak gerekli.
+    @FXML
+    AuctionModel auctionModel;
+    @FXML
+    ImageView[] player6TokenImages;
+    @FXML
+    ImageView[][] playerTokenList;
+    @FXML
+    ImageView[] player5TokenImages;
+    @FXML
+    ImageView[] player4TokenImages;
+    @FXML
+    ImageView[] player3TokenImages;
+    @FXML
+    ImageView[] player1TokenImages;
+    @FXML
+    ImageView[] player2TokenImages;
+    @FXML
+    AnchorPane[] playerCardAnchorPanes;
+    @FXML
+    Label[] playerMoneyLabels;
+    @FXML
+    Label[] playerNumberOfPropertiesLabels;
+    @FXML
+    Button[] playerTradeButtonList;
+
+    ArrayList<String> playerNames;
 
     public GameSession getGameSession() {
         return gameSession;
