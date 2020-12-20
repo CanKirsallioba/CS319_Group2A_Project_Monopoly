@@ -41,12 +41,15 @@ public class ColorGroup implements Serializable {
      * @return a boolean value that is if the player owns all the tiles in that color group
      */
     public boolean allOwnedByPlayer(Player player){
-        for(int i = 0; i < group.size(); i++)
+
+        //group is empty - bug
+        for(Tile tile: group)
         {
-            if(((PropertyTile)group.get(i)).getTitleDeedCard().getOwner() != player){
+            if(((PropertyTile) tile).getTitleDeedCard().getOwner() != player){
                 return false;
             }
         }
+
         return true;
     }
 
