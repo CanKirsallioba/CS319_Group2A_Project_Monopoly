@@ -94,7 +94,7 @@ public class BalancedAIStrategy extends AIStrategy {
             boolean notBought = true;
 
             // if player has more than twice the money required to buy the property
-            if (player.getBalance() >= 1.35 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
+            if (player.getBalance() >= 1.85 * currentPropertyTile.getTitleDeedCard().getPropertyValue()) {
 
                 // if the player can pay the maximum rent even after buying this property, buy it
                 if (player.getBalance() - gameStatistics.getMaximumRent() > 0) {

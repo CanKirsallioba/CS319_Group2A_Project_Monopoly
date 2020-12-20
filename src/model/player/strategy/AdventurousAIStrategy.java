@@ -115,31 +115,6 @@ public class AdventurousAIStrategy extends AIStrategy{
     }
 
     /**
-     *  Is invoked when the player is made a trade offer.
-     *  Makes a decision and executes the corresponding game action according to the the strategy.
-     *  Strategy now is playing adventurous, i.e. collecting many properties.
-     *  If both players are giving the same amount and subject player is getting more properties,
-     *  or the subject player is receiving significantly more in monetary value, the trade offer is accepted.
-     * @param player is the player subject to the decision
-     */
-    @Override
-    public void makeAndExecuteTradeDecision( AIPlayer player){
-
-    }
-
-    /**
-     *  Is invoked when the player is involved in an auction.
-     *  Makes a decision and executes the corresponding game action according to the the strategy.
-     *  Strategy now is playing adventurous,
-     *  so the AI player tries to buy if it does not create extreme dagner of bankruptcy.
-     * @param player is the player subject to the decision
-     */
-    @Override
-    public void makeAndExecuteAuctionDecision( AIPlayer player){
-
-    }
-
-    /**
      *  Is invoked when the player lands on an IncomeTaxTile.
      *  Makes a decision and executes the corresponding game action according to the the strategy.
      * @param aiPlayer is the player subject to the decision
@@ -236,4 +211,29 @@ public class AdventurousAIStrategy extends AIStrategy{
         }
     }
 
+
+    /**
+     *  Is invoked when the player is made a trade offer.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing adventurous, i.e. collecting many properties.
+     *  If both players are giving the same amount and subject player is getting more properties,
+     *  or the subject player is receiving significantly more in monetary value, the trade offer is accepted.
+     * @param player is the player subject to the decision
+     */
+    @Override
+    public void makeAndExecuteTradeDecision( AIPlayer player){
+
+    }
+
+    /**
+     *  Is invoked when the player is involved in an auction.
+     *  Makes a decision and executes the corresponding game action according to the the strategy.
+     *  Strategy now is playing adventurous,
+     *  so the AI player tries to buy if it does not create extreme dagner of bankruptcy.
+     * @param player is the player subject to the decision
+     */
+    @Override
+    public void makeAndExecuteAuctionDecision( AIPlayer player){
+
+    }
 }
