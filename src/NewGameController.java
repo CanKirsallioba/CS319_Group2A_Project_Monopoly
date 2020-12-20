@@ -203,7 +203,7 @@ public class NewGameController implements Initializable {
         AIPlayerTestConfiguration.setGamePace(GamePace.MEDIUM);
         AIPlayerTestConfiguration.setAiCharacteristic(AICharacteristic.BALANCED);
         AIPlayerTestConfiguration.setHumanPlayerCount(0);
-        AIPlayerTestConfiguration.setMaxPlayerCount(2);
+        AIPlayerTestConfiguration.setMaxPlayerCount(3);
 //        filename = "board_template.json";
 
         // TileDebug_Team1
