@@ -56,13 +56,14 @@ public class BalancedAIStrategy extends AIStrategy {
                     if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()
                             && player.getLiquidTotalWorth() >= currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
                         System.out.println( "Player cannot payRent, but has liquid assets");
+                        System.out.println( "AXBBC191");
                         for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
                             System.out.println( "Attempting to downgrade 2 pay");
 
                             if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                     && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
 
-                                getGameAction(titleDeedCard.getPossibleActions(), DOWNGRADE_PROPERTY_ACTION).execute();
+                                getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
                             }
                         }
                         if (player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
@@ -71,8 +72,10 @@ public class BalancedAIStrategy extends AIStrategy {
 
                                 if (titleDeedCard.isMortgaged () == false
                                         && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
-
-                                    getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                    System.out.println( "Mortgaging property");
+                                    System.out.println( "Balance b4 mortgage:" + player.getBalance());
+                                    getGameAction(currentPropertyTile.getTitleDeedCard().getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                    System.out.println( "Balance after mortgage:" + player.getBalance());
                                 }
                             }
                         }
