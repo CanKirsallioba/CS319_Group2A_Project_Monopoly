@@ -80,25 +80,25 @@ public class InformationCardController implements Initializable {
 
 
     public void handleButton1() {
-        selectedTitleDeedCard.getPossibleActions().get(0).execute();
+        selectedTitleDeedCard.getPropertyActions().get(0).execute();
         updateButtons();
         updateTitleDeedCard();
     }
 
     public void handleButton2() {
-        selectedTitleDeedCard.getPossibleActions().get(1).execute();
+        selectedTitleDeedCard.getPropertyActions().get(1).execute();
         updateButtons();
         updateTitleDeedCard();
     }
 
     public void handleButton3() {
-        selectedTitleDeedCard.getPossibleActions().get(2).execute();
+        selectedTitleDeedCard.getPropertyActions().get(2).execute();
         updateButtons();
         updateTitleDeedCard();
     }
 
     public void handleButton4() {
-        selectedTitleDeedCard.getPossibleActions().get(3).execute();
+        selectedTitleDeedCard.getPropertyActions().get(3).execute();
         updateButtons();
         updateTitleDeedCard();
     }

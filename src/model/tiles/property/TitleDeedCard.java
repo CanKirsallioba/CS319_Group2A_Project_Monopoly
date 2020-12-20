@@ -88,6 +88,7 @@ public class TitleDeedCard implements Serializable {
      */
     public ArrayList<GameAction> getPropertyActions() {
         ArrayList<GameAction> actions = new ArrayList<>() ;
+        updateActions();
         for (GameAction propertyAction : propertyActions) {
             if (propertyAction.isActive()) {
                 actions.add(propertyAction);
@@ -313,7 +314,7 @@ public class TitleDeedCard implements Serializable {
      * @return the penalty of removing the mortgage of the property
      */
     public int mortgageRemovalPenalty() {
-        return 0; //TODO penalty or multiplier?
+        return (int)(mortgageValue * getMortgageRemovalMultiplier()); //TODO penalty or multiplier?
     }
 
     public String getPropertyName() {
@@ -376,13 +377,6 @@ public class TitleDeedCard implements Serializable {
      */
     public void setLevelThreeRent(int levelThreeRent) {
         this.levelThreeRent = levelThreeRent;
-    }
-
-    /**
-     * @return the possible actions associated with the property
-     */
-    public ArrayList<GameAction> getPossibleActions() {
-        return null;
     }
 
     /**
@@ -475,7 +469,7 @@ public class TitleDeedCard implements Serializable {
      */
     public boolean isUpgradeable(){
         //return actionNames.get("Upgrade Property").isActive();
-        if (owner == null) {
+        if (owner == null || colorGroup == null) {
             return false;
         }
         if(!colorGroup.allOwnedByPlayer(owner))
@@ -501,10 +495,12 @@ public class TitleDeedCard implements Serializable {
 
     /**
      * Checks if the action of downgrading the property is active at a moment
-     * @return true if the property is downgradable
+     * @return true if the property is downgradeable
      */
     public boolean isDowngradeable(){
         //return actionNames.get("Downgrade Property").isActive();
+        if(owner == null || colorGroup == null)
+            return false;
 
         for (Tile tile: colorGroup.getGroup ()) {
             int otherUpgradeLevel = ((PropertyTile) tile).getTitleDeedCard ().getUpgradeLevel();

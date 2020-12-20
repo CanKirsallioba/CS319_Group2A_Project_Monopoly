@@ -244,7 +244,7 @@ public class BalancedAIStrategy extends AIStrategy {
                         if (titleDeedCard.getUpgradeLevel() >= 1 && titleDeedCard.isDowngradeable()
                                 && aiPlayer.getBalance() < moneyToPay) {
 
-                           getGameAction(titleDeedCard.getPossibleActions(), DOWNGRADE_PROPERTY_ACTION).execute();
+                           getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
                         }
                     }
                     if (aiPlayer.getBalance() < moneyToPay) {
@@ -252,7 +252,7 @@ public class BalancedAIStrategy extends AIStrategy {
                             if (!titleDeedCard.isMortgaged ()
                                     && aiPlayer.getBalance() < moneyToPay) {
 
-                             getGameAction(titleDeedCard.getPossibleActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                             getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
                             }
                         }
                     }
