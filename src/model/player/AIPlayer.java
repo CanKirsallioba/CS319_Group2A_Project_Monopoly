@@ -8,6 +8,10 @@ import org.omg.Messaging.SyncScopeHelper;
 import java.sql.SQLOutput;
 import java.util.Observable;
 import java.util.Observer;
+import model.tiles.GameAction;
+
+import static model.tiles.GameActionConstants.DOWNGRADE_PROPERTY_ACTION;
+import static model.tiles.GameActionConstants.MORTGAGE_PROPERTY_ACTION;
 
 public class AIPlayer extends AbstractPlayer implements Observer {
     AIStrategy aiStrategy;
@@ -79,15 +83,31 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                     setGetOutOfJailChoice(BailOutChoice.MONEY);
                 }
                 else{
+                    System.out.println("DEBUG: DOWNGRADE & MORTGAGE TO GET OUT OF JAIL with money");
+                    System.out.println( "AXBBC191-J3");
                     for(TitleDeedCard titleDeedCard: getTitleDeeds()){
                         if( titleDeedCard.getUpgradeLevel() > 1 && titleDeedCard.isDowngradeable() && getBalance() < (getPlayerToken().getBoard().getBoardSalary() / 4)){
-                            titleDeedCard.downgrade();
+                            System.out.println(" DEBUG: Downgrading to get out of jail");
+                            setSelectedTitleDeed( titleDeedCard);
+                            aiStrategy.getGameAction(titleDeedCard.getPropertyActions(), DOWNGRADE_PROPERTY_ACTION).execute();
+                            setSelectedTitleDeed(null);
+                            getCurrentTile().getPossibleActions(this);
                         }
                     }
                     if( getBalance() < (getPlayerToken().getBoard().getBoardSalary() / 4)){
                         for(TitleDeedCard titleDeedCard: getTitleDeeds()){
                             if( titleDeedCard.isMortgaged() == false && getBalance() < (getPlayerToken().getBoard().getBoardSalary() /4)){
-                                titleDeedCard.mortgage();
+                                System.out.println(" DEBUG: Mortgaging to get out of jail");
+                                System.out.println( "Mortgaging property");
+                                System.out.println( "Balance b4 mortgage:" + getBalance());
+                                System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
+                                setSelectedTitleDeed( titleDeedCard);
+                                aiStrategy.getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                setSelectedTitleDeed(null);
+                                getCurrentTile().getPossibleActions(this);
+                                // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
+                                System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
+                                System.out.println( "Balance after mortgage:" + getBalance());
                             }
                         }
                     }
@@ -120,7 +140,7 @@ public class AIPlayer extends AbstractPlayer implements Observer {
                 notifyObservers();
                 Tile currentlyLandedTile = getCurrentTile();
                 if( currentlyLandedTile instanceof PropertyTile){
-//                    setSelectedTitleDeed(((PropertyTile) currentlyLandedTile).getTitleDeedCard());
+                    setSelectedTitleDeed(((PropertyTile) currentlyLandedTile).getTitleDeedCard());
                     makeAndExecutePropertyDecision();
                     setCurrentlyDrawnCard(null);
                 } else {

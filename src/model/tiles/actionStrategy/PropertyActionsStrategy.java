@@ -3,6 +3,8 @@ package model.tiles.actionStrategy;
 import model.player.Player;
 import model.tiles.property.TitleDeedCard;
 
+import java.util.ArrayList;
+
 public class PropertyActionsStrategy extends ActionStrategy {
 
     /**
@@ -62,6 +64,7 @@ public class PropertyActionsStrategy extends ActionStrategy {
         if ((player.getBalance() >= card.getUpgradeCost()) && card.isUpgradeable()) {
             System.out.println("Upgrade Successful");
             player.changeBalance(-(card.upgrade()));
+            card.updateActions();
         }
     }
 
@@ -86,6 +89,8 @@ public class PropertyActionsStrategy extends ActionStrategy {
         if( player == null){
             System.out.println( "PLAYER IS NULL at second call");
         }
+        //ArrayList<TitleDeedCard> card = player.getTitleDeeds();
+        // todo big problems
         TitleDeedCard card = player.getSelectedTitleDeed();
         // TODO DEBUG REMOVE LATER
         if( card == null){

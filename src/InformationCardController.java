@@ -81,36 +81,37 @@ public class InformationCardController implements Initializable {
 
     public void handleButton1() {
         selectedTitleDeedCard.getPropertyActions().get(0).execute();
-        updateButtons();
         updateTitleDeedCard();
+        updateButtons();
     }
 
     public void handleButton2() {
         selectedTitleDeedCard.getPropertyActions().get(1).execute();
-        updateButtons();
         updateTitleDeedCard();
+        updateButtons();
     }
 
     public void handleButton3() {
         selectedTitleDeedCard.getPropertyActions().get(2).execute();
-        updateButtons();
         updateTitleDeedCard();
+        updateButtons();
     }
 
     public void handleButton4() {
         selectedTitleDeedCard.getPropertyActions().get(3).execute();
-        updateButtons();
         updateTitleDeedCard();
+        updateButtons();
     }
 
     public void handleButton5() {
         listViewData.clear();
-        updateButtons();
-        updateTitleDeedCard();
+
         Stage stage = (Stage)button5.getScene().getWindow();
         stage.close();
         player.declareBankruptcy();
         turnManager.endTurn();
+        updateTitleDeedCard();
+        updateButtons();
     }
 
     public void updateTitleDeedCard() {
@@ -124,7 +125,7 @@ public class InformationCardController implements Initializable {
         if (selectedTitleDeedCard == null || player.isBankrupt()) {
             titleDeedCard.setVisible(false);
         } else {
-            propertyNameLabel.setText(selectedTitleDeedCard.getPropertyName());
+            propertyNameLabel.setText(selectedTitleDeedCard.getPropertyName() + " LVL." + selectedTitleDeedCard.getUpgradeLevel());
             rentSiteOnlyValueLabel.setText("" + selectedTitleDeedCard.getLevelZeroRent());
             rentWith1HouseValueLabel.setText("" + selectedTitleDeedCard.getLevelOneRent());
             rentWith2HousesValueLabel.setText("" + selectedTitleDeedCard.getLevelTwoRent());
@@ -160,10 +161,21 @@ public class InformationCardController implements Initializable {
             ArrayList<GameAction> actions = selectedTitleDeedCard.getPropertyActions();
             int buttonCount = 0;
             for (GameAction action : actions) {
-                buttons[buttonCount].setVisible(buttonCount < actions.size());
-                buttons[buttonCount].setText(action.getName());
-                buttonCount++;
+                System.out.println("INFORMATION CARD" + action);
+
             }
+            int actionCounter = 0;
+            for (int i = buttonCount; i <= 4; i++) {
+                if (i < actions.size()) {
+                    buttons[i].setVisible(true);
+                    buttons[i].setText(actions.get(actionCounter).getName());
+                    actionCounter++;
+                } else {
+                    buttons[i].setVisible(false);
+                }
+
+            }
+
             button5.setVisible(!player.isBankrupt() && !player.isAIControlled());
         }
     }
@@ -177,19 +189,7 @@ public class InformationCardController implements Initializable {
         buttons = new Button[]{button1, button2, button3, button4};
 
         ArrayList<TitleDeedCard> deedCards = player.getTitleDeeds();
-//        for (TitleDeedCard deedCard: deedCards){
-//            informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
-//                    "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
-//                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n\n");
-//            informationOfPlayer = informationOfPlayer + informationOfProperty;
-//            index++;
 
-////            informationOfProperty = ("Property " + index + ": " + deedCard.getPropertyName() + "\n" +
-////                    "Rent: " + deedCard.getCurrentRent() + "\n" + "Color: " + deedCard.getColorGroup().getColor() + "\n" +
-////                    "Upgrade Level: " + deedCard.getUpgradeLevel() + "\n");
-////            informationOfPlayer = informationOfPlayer + informationOfProperty;
-////            index++;
-//        }
 
         for (TitleDeedCard deedCard : deedCards) {
             listViewData.add(deedCard.getPropertyName());

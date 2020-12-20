@@ -360,7 +360,7 @@ public class GameBoardController implements Initializable {
                     titleDeedCard.setVisible(false);
                 } else {
                     paintPane(propertyColorPane, card.getColorGroup().getColor().name());
-                    propertyNameLabel.setText(card.getPropertyName());
+                    propertyNameLabel.setText(card.getPropertyName() + " LVL." + card.getUpgradeLevel());
                     rentSiteOnlyValueLabel.setText("" + card.getLevelZeroRent());
                     rentWith1HouseValueLabel.setText("" + card.getLevelOneRent());
                     rentWith2HousesValueLabel.setText("" + card.getLevelTwoRent());

@@ -2,6 +2,7 @@ package model.tiles.property;
 
 import model.player.Player;
 import model.tiles.GameAction;
+import model.tiles.GameActionConstants;
 import model.tiles.PropertyTile;
 import model.tiles.Tile;
 import model.tiles.actionStrategy.ActionFactory;
@@ -91,6 +92,7 @@ public class TitleDeedCard implements Serializable {
         updateActions();
         for (GameAction propertyAction : propertyActions) {
             propertyAction.setPlayer(getOwner());
+            System.out.println(propertyAction);
             if (propertyAction.isActive()) {
                 actions.add(propertyAction);
             }
@@ -144,7 +146,11 @@ public class TitleDeedCard implements Serializable {
      * Updates the property's actions based according to the state of property (owned, mortgaged and upgradeLevel)
      */
     public void updateActions() {
-
+//        if (upgradeLevel == 0) {
+//            activateAction(GameActionConstants.UPGRADE_PROPERTY_ACTION);
+//            activateAction(GameActionConstants.);
+//        }
+//
         if(isMortgaged()) {
             activateAction("Remove Mortgage");
             deactivateAction("Mortgage Property");
@@ -479,6 +485,9 @@ public class TitleDeedCard implements Serializable {
             return false;
         }
         if(!colorGroup.allOwnedByPlayer(owner))
+            return false;
+
+        if(isMortgaged)
             return false;
 
         // Calculate upgrade level differences for each pair of properties in a color group.
