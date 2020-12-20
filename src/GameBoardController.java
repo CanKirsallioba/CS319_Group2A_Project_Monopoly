@@ -367,7 +367,7 @@ public class GameBoardController implements Initializable {
         stage.show();
     }
 
-    public void handleTrade(Player proposingPlayer, Player proposedPlayer) {
+    public void handleTrade(Player proposingPlayer, Player proposedPlayer) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Trade.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         TradeController tradeController = fxmlLoader.<TradeController>getController();
