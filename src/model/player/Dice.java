@@ -15,7 +15,7 @@ public class Dice implements Serializable {
      */
     public void rollDice(){
 //            dice1 = 1;
-//            dice2 = 1;
+//            dice2 = 2;
         dice1 = (int) ( (Math.random() * 5) + 1 );
         dice2 = (int) ( (Math.random() * 5) + 1 );
     }

@@ -19,9 +19,10 @@ public class AuctionController implements Initializable {
     }
 
     AuctionModel auctionModel;
+    Button[] buttons;
 
     public void init() {
-
+        buttons = new Button[]{auctionButton1, auctionButton2, auctionButton3, auctionButton4, auctionButton5, auctionButton6};
     }
 
     @FXML
