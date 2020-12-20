@@ -45,6 +45,10 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Slider>
-      <ImageView fx:id="back" fitHeight="48.0" fitWidth="55.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="back" fitHeight="48.0" fitWidth="55.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" >
+         <image>
+            <Image url="@back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
