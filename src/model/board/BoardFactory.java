@@ -9,7 +9,17 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Board factory responsible for creating and initializing boards.
+ */
 public class BoardFactory {
+
+    /**
+     * Creates and initializes a board according to the user input and configuration file.
+     * @param boardConfiguration is the user input for initializing the board.
+     * @param config is the configuration file.
+     * @return the initialized board.
+     */
     public Board get(BoardConfiguration boardConfiguration, JSONObject config) {
         // todo Tile Katsayilari degismiyor.
         Board board = new Board();
