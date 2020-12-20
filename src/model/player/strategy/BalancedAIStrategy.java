@@ -70,11 +70,18 @@ public class BalancedAIStrategy extends AIStrategy {
                             for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
                                 System.out.println( "Attempting 2 mortgage pay");
 
+
                                 if (titleDeedCard.isMortgaged () == false
                                         && player.getBalance() < currentPropertyTile.getTitleDeedCard().getCurrentRent()) {
                                     System.out.println( "Mortgaging property");
                                     System.out.println( "Balance b4 mortgage:" + player.getBalance());
-                                    getGameAction(currentPropertyTile.getTitleDeedCard().getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                    System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
+                                    player.setSelectedTitleDeed( titleDeedCard);
+                                    getGameAction(titleDeedCard.getPropertyActions(), MORTGAGE_PROPERTY_ACTION).execute();
+                                    player.setSelectedTitleDeed(null);
+                                    currentPropertyTile.getPossibleActions(player);
+                                    // player.setSelectedTitleDeed( currentPropertyTile.getTitleDeedCard());
+                                    System.out.println( "Property & Mortgaged: " + titleDeedCard.getPropertyName() + " & " + titleDeedCard.isMortgaged());
                                     System.out.println( "Balance after mortgage:" + player.getBalance());
                                 }
                             }
