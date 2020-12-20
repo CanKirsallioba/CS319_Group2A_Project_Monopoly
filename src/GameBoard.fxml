@@ -1920,7 +1920,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="player1Card" layoutX="20.0" layoutY="50.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
-            <Label fx:id="p1NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" stylesheets="@GameBoardStyle.css" text="PlayerName">
+            <Label fx:id="p1NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" stylesheets="@GameBoardStyle.css" text="Player 1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -1950,7 +1950,7 @@
       </AnchorPane>
       <AnchorPane fx:id="player2Card" layoutX="1580.0" layoutY="50.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
-            <Label fx:id="p2NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="PlayerName">
+            <Label fx:id="p2NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="Player 2">
                <font>
                   <Font size="24.0" />
                </font>
@@ -1979,7 +1979,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="player3Card" layoutX="20.0" layoutY="390.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
-            <Label fx:id="p3NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="PlayerName">
+            <Label fx:id="p3NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="Player 3">
                <font>
                   <Font size="24.0" />
                </font>
@@ -2008,7 +2008,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="player6Card" layoutX="1580.0" layoutY="730.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
-            <Label fx:id="p6NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="PlayerName">
+            <Label fx:id="p6NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="Player 6">
                <font>
                   <Font size="24.0" />
                </font>
@@ -2037,7 +2037,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="player5Card" layoutX="20.0" layoutY="730.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
-            <Label fx:id="p5NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="PlayerName">
+            <Label fx:id="p5NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="Player 5">
                <font>
                   <Font size="24.0" />
                </font>
@@ -2066,7 +2066,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="player4Card" layoutX="1580.0" layoutY="390.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
-            <Label fx:id="p4NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="PlayerName">
+            <Label fx:id="p4NameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="320.0" text="Player 4">
                <font>
                   <Font size="24.0" />
                </font>

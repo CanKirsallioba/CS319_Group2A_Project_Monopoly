@@ -1,9 +1,9 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.TradeModel;
+import model.player.Player;
 
 import java.net.URL;
 import java.util.Observable;
@@ -11,6 +11,30 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class TradeController implements Initializable {
+
+    private Player proposingPlayer, proposedPlayer;
+
+    public Player getProposingPlayer() {
+        return proposingPlayer;
+    }
+
+    public void setProposingPlayer(Player proposingPlayer) {
+        this.proposingPlayer = proposingPlayer;
+    }
+
+    public Player getProposedPlayer() {
+        return proposedPlayer;
+    }
+
+    public void setProposedPlayer(Player proposedPlayer) {
+        this.proposedPlayer = proposedPlayer;
+    }
+
+    @FXML
+    public ListView playerLeftProperties, playerRightProperties, playerLeftOffered, playerRightOffered;
+
+    @FXML
+    public Label playerLeftLabel, proposingPlayerLabel, playerRightLabel;
 
     @FXML
     public Button playerAAddButton;
@@ -33,8 +57,15 @@ public class TradeController implements Initializable {
 
 
     public void init() {
+        playerLeftProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerLeftOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerRightProperties.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        playerRightOffered.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
 
     }
+
+
     private class TradeObserver implements Observer {
 
         @Override
