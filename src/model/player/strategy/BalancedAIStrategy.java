@@ -301,4 +301,23 @@ public class BalancedAIStrategy extends AIStrategy {
             getGameAction(gameActions, APPLY_ACTION).execute();
         }
     }
+
+    /**
+     * Is invoked at the end of each turn.
+     * Lifts mortgages if they have any mortgaged properties, if they have enough and it is feasible for the AIPlayer
+     * to do so.
+     * @param player is the player subject to the decision
+     */
+    @Override
+    public void liftMortgages(AIPlayer player){
+        for (TitleDeedCard titleDeedCard : player.getTitleDeeds()) {
+
+            if (titleDeedCard.isMortgaged () && player.getBalance() > 3 * titleDeedCard.mortgageRemovalPenalty() ){
+                player.setSelectedTitleDeed( titleDeedCard);
+                getGameAction(titleDeedCard.getPropertyActions(), REMOVE_MORTGAGE_ACTION).execute();
+                player.setSelectedTitleDeed(null);
+                player.getCurrentTile().getPossibleActions(player);
+            }
+        }
+    }
 }

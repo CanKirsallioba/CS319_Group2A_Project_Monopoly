@@ -70,4 +70,14 @@ public class StingyAIStrategy extends AIStrategy {
 
     }
 
+    /**
+     * Is invoked at the end of each turn.
+     * Lifts mortgages if they have any mortgaged properties, if they have enough and it is feasible for the AIPlayer
+     * to do so.
+     * @param player is the player subject to the decision
+     */
+    @Override
+    public void liftMortgages(AIPlayer player){
+
+    }
 }
