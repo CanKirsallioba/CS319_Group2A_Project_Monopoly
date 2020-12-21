@@ -4,9 +4,11 @@ import model.TradeModel;
 import model.player.AIPlayer;
 import model.tiles.GameAction;
 
+import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
-public abstract class AIStrategy {
+public abstract class AIStrategy implements Serializable {
     GameStatistics gameStatistics;
     public abstract void makeAndExecutePropertyDecision( AIPlayer player);
     public abstract void makeAndExecuteTradeDecision( AIPlayer player, TradeModel model);
@@ -32,7 +34,7 @@ public abstract class AIStrategy {
 
     /**
      * Getter method for game statistics.
-     * @return
+     * @return statistics
      */
     public GameStatistics getGameStatistics() {
         return gameStatistics;
