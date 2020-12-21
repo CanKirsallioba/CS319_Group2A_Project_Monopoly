@@ -5,9 +5,10 @@ import model.player.Player;
 import model.tiles.PropertyTile;
 import model.tiles.Tile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GameStatistics {
+public class GameStatistics implements Serializable {
     Board board;
     ArrayList<Player> players;
 
