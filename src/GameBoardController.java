@@ -4,7 +4,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,10 +31,7 @@ import model.tiles.property.TitleDeedCard;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class GameBoardController implements Initializable {
@@ -264,10 +263,27 @@ public class GameBoardController implements Initializable {
             }
         }
     }
-
+    boolean end = false;
     private void playerCardObserverUpdate(Observable o) {
         Player player = (Player) o;
         int index = getPlayerList().indexOf(player);
+        int notBankruptHumanCount = 0;
+        int notBankruptAICount = 0;
+        for (Player p: getPlayerList()) {
+            if(!p.isBankrupt()&& !p.isAIControlled()) notBankruptHumanCount++;
+            if(!p.isBankrupt()&& p.isAIControlled()) notBankruptAICount++;
+        }
+
+        if (notBankruptHumanCount == 0 || (notBankruptHumanCount == 1 && notBankruptAICount == 0)) {
+            if (!end) {
+                    try {
+                        showEndGame();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            }
+        }
+
         if (getPlayerList().stream().allMatch(Player::isBankrupt)) {
             for (AnchorPane playerCardAnchorPane : playerCardAnchorPanes) {
                 playerCardAnchorPane.setVisible(false);
@@ -287,6 +303,35 @@ public class GameBoardController implements Initializable {
         playerMoneyLabels[index].setText("Balance: " + player.getBalance());
         playerNumberOfPropertiesLabels[index].setText("Property Count: " + player.getTitleDeeds().size());
 
+    }
+
+    private void showEndGame() throws IOException {
+        end = true;
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("GAME OVER");
+        alert.setHeaderText("You can exit the game.");
+        alert.setContentText("Game Over");
+
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("mainmenu.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+
+            Stage current = (Stage) gameBoard.getScene().getWindow();
+            current.close();
+
+            Stage window = Main.primaryStage;
+            tableViewParent.setId("pane");
+
+            window.setScene(tableViewScene);
+
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+            window.setX((screenBounds.getWidth() - window.getWidth()) / 2);
+            window.setY((screenBounds.getHeight() - window.getHeight()) / 2);
+
+            window.show();
+        }
     }
 
     private class PlayerCardObserver implements Observer {
