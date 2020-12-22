@@ -1,6 +1,6 @@
 {
   "boardConfig":{
-    "boardName": "Default",
+    "boardName": "Classic",
     "tileCount": 40,
     "salary": 2000,
     "jailTileIndex": 10
