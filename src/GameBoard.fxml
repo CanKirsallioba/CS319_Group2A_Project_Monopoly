@@ -1945,7 +1945,11 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
-            <ImageView fx:id="p1TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="p1TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@./wheelbarrow.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="player2Card" layoutX="1580.0" layoutY="50.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
@@ -1975,7 +1979,11 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
-            <ImageView fx:id="p2TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="p2TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@./towerToken.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <AnchorPane fx:id="player3Card" layoutX="20.0" layoutY="390.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
@@ -2004,7 +2012,11 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
-            <ImageView fx:id="p3TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="p3TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@./hat.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <AnchorPane fx:id="player6Card" layoutX="1580.0" layoutY="730.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
@@ -2033,7 +2045,11 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
-            <ImageView fx:id="p6TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="p6TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@./dog.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <AnchorPane fx:id="player5Card" layoutX="20.0" layoutY="730.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
@@ -2062,7 +2078,11 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
-            <ImageView fx:id="p5TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="p5TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@./boot.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <AnchorPane fx:id="player4Card" layoutX="1580.0" layoutY="390.0" prefHeight="330.0" prefWidth="320.0" styleClass="card" stylesheets="@GameBoardStyle.css">
          <children>
@@ -2091,7 +2111,11 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
-            <ImageView fx:id="p4TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="p4TokenImage" fitHeight="70.0" fitWidth="70.0" layoutX="170.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@./car.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <Button fx:id="menuButton" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleMenuButton" prefHeight="30.0" prefWidth="320.0" styleClass="menuButtons" stylesheets="@GameBoardStyle.css" text="Menu" textFill="WHITE">
