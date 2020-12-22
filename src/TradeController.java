@@ -167,7 +167,7 @@ public class TradeController implements Initializable {
             tradeModel.setTitleDeedCardsPlayer1(lefts);
             tradeModel.setTitleDeedCardsPlayer2(rights);
             tradeModel.setMoneyPlayer1(playerAOfferedMoney);
-            tradeModel.setMoneyPlayer1(playerBOfferedMoney);
+            tradeModel.setMoneyPlayer2(playerBOfferedMoney);
             tradeModel.setAIAccepts(false);
             tradeModel.startTrade(proposingPlayer, proposedPlayer);
         }
