@@ -222,7 +222,7 @@ public class BalancedAIStrategy extends AIStrategy {
      */
     @Override
     public void makeAndExecuteTradeDecision(AIPlayer player, TradeModel model) {
-        TradeModel tradeModel = model;
+        TradeModel tradeModel = player.getTradeModel();
         int thisPlayerOfferings = 0;
         int otherPlayerOfferings = 0;
 
@@ -261,6 +261,9 @@ public class BalancedAIStrategy extends AIStrategy {
         }
 
         // evaluate the offer
+        System.out.println( "This player's offerings:" + thisPlayerOfferings);
+        System.out.println( "Other player's offerings:" + otherPlayerOfferings);
+
         if( thisPlayerOfferings <= otherPlayerOfferings){
             tradeModel.setAIAccepts(true);
         }

@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="CS319_Group2A_Project_Monopoly" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
